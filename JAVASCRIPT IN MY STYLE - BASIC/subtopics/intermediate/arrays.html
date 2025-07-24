@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrays &amp; Methods - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1> Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>Arrays &amp; Methods</span>
+      </div>
+      <h1>Arrays &amp; Methods</h1>
+      <p>Master working with arrays and their powerful built-in methods in JavaScript.</p>
+    </div>
+        <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header> 
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Arrays in JavaScript are versatile list-like objects used to store multiple values in a single variable. JavaScript offers a rich set of built-in methods to manipulate arrays easily, allowing for sorting, filtering, transforming, and iterating over data effectively.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating common array methods:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Array Methods Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Define an array of numbers
+const numbers = [1, 2, 3, 4, 5];
+
+// Use map() to create a new array with each number doubled
+const doubled = numbers.map(num => num * 2);
+
+// Use filter() to get numbers greater than 2
+const filtered = numbers.filter(num => num > 2);
+
+// Use reduce() to sum all numbers
+const sum = numbers.reduce((acc, curr) => acc + curr, 0);
+
+// Output results
+console.log('Original:', numbers);
+console.log('Doubled:', doubled);
+console.log('Filtered (>2):', filtered);
+console.log('Sum:', sum);
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Creating arrays and accessing elements.</li>
+          <li>Using <code>map()</code> for transformation.</li>
+          <li>Filtering arrays with <code>filter()</code>.</li>
+          <li>Aggregating values using <code>reduce()</code>.</li>
+          <li>Logging results to the console.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>Arrays:</strong> Ordered collections of values stored under a single variable. Arrays can hold any type of data including numbers, strings, objects, and even other arrays.</p>
+        <p><strong>Common Array Methods:</strong></p>
+        <ul>
+          <li><code>push()</code> - Adds one or more elements to the end.</li>
+          <li><code>pop()</code> - Removes the last element.</li>
+          <li><code>shift()</code> - Removes the first element.</li>
+          <li><code>unshift()</code> - Adds elements to the beginning.</li>
+          <li><code>map()</code> - Creates a new array by applying a function to each element.</li>
+          <li><code>filter()</code> - Creates a new array with elements that pass a test.</li>
+          <li><code>reduce()</code> - Executes a reducer function on each element to reduce the array to a single value.</li>
+          <li><code>forEach()</code> - Executes a function for each element (no return).</li>
+          <li><code>find()</code> - Returns the first element that satisfies a condition.</li>
+          <li><code>includes()</code> - Checks if an array contains a value.</li>
+          <li><code>sort()</code> - Sorts the array elements.</li>
+        </ul>
+        <p>These methods empower developers to manipulate arrays efficiently and elegantly in JavaScript.</p>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Processing lists of data such as user inputs, API responses, or database records.</li>
+          <li>Transforming data for rendering in UI components like tables, lists, and charts.</li>
+          <li>Filtering and sorting data for search and navigation features.</li>
+          <li>Aggregating numerical data like totals, averages, and statistics.</li>
+          <li>Building complex data pipelines using chained array methods.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which method creates a new array by applying a function to every element?</p>
+            <ul>
+              <li>A. <code>filter()</code></li>
+              <li>B. <code>map()</code></li>
+              <li>C. <code>reduce()</code></li>
+              <li>D. <code>forEach()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>map()</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> How do you remove the last element from an array?</p>
+            <ul>
+              <li>A. <code>pop()</code></li>
+              <li>B. <code>shift()</code></li>
+              <li>C. <code>unshift()</code></li>
+              <li>D. <code>splice()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> A. <code>pop()</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What does the <code>reduce()</code> method do?</p>
+            <ul>
+              <li>A. Filters elements based on a condition.</li>
+              <li>B. Creates a new array with transformed elements.</li>
+              <li>C. Combines all elements into a single value.</li>
+              <li>D. Loops over each element without returning a new array.</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Combines all elements into a single value.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which method checks if an array contains a specific element?</p>
+            <ul>
+              <li>A. <code>find()</code></li>
+              <li>B. <code>includes()</code></li>
+              <li>C. <code>indexOf()</code></li>
+              <li>D. <code>some()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>includes()</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+    
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

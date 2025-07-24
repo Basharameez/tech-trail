@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch API and AJAX - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+        
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Fetch API and AJAX</span>
+      </div>
+      <h1>Fetch API and AJAX</h1>
+      <p>Learn how to make HTTP requests and handle responses using modern web APIs.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Modern JavaScript applications heavily rely on server communication to fetch and send data. The Fetch API has become the standard way to make HTTP requests, replacing older AJAX techniques that used <code>XMLHttpRequest</code>. It provides a cleaner and more powerful promise-based syntax for handling asynchronous communication with APIs.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Here's an example showing how to use the Fetch API to retrieve and post data:</p>
+
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Fetch API GET and POST</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// GET Request using Fetch API
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => response.json())
+  .then(data => console.log('GET:', data))
+  .catch(error => console.error('Error:', error));
+
+// POST Request using Fetch API
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    title: 'New Post',
+    body: 'This is the post content',
+    userId: 1
+  })
+})
+  .then(response => response.json())
+  .then(data => console.log('POST:', data))
+  .catch(error => console.error('Error:', error));
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Making HTTP GET and POST requests with <code>fetch()</code>.</li>
+          <li>Using <code>.then()</code> to handle Promise-based responses.</li>
+          <li>Converting response to JSON with <code>response.json()</code>.</li>
+          <li>Sending data with appropriate headers using POST.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>AJAX</strong> (Asynchronous JavaScript and XML) is a technique for making asynchronous web requests to update parts of a web page without refreshing.</p>
+        <p>The modern <strong>Fetch API</strong> simplifies AJAX by using promises. It's cleaner, more powerful, and supports the full suite of HTTP methods (GET, POST, PUT, DELETE, etc.).</p>
+        <ul>
+          <li><code>fetch(url, options)</code> initiates a request to the server.</li>
+          <li>Responses are returned as Promises and can be converted to JSON using <code>response.json()</code>.</li>
+          <li>Headers and body content can be customized for POST/PUT requests.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Fetching data from RESTful APIs (e.g., posts, comments, user profiles).</li>
+          <li>Submitting form data asynchronously.</li>
+          <li>Creating interactive single-page applications (SPAs).</li>
+          <li>Loading content dynamically without page reloads.</li>
+          <li>Communicating with serverless backends or databases (e.g., Firebase).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What does the Fetch API return?</p>
+            <ul>
+              <li>A. String</li>
+              <li>B. Object</li>
+              <li>C. Promise</li>
+              <li>D. Array</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Promise</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which method is used to parse a fetch response into JSON?</p>
+            <ul>
+              <li>A. <code>parseJSON()</code></li>
+              <li>B. <code>response.text()</code></li>
+              <li>C. <code>response.json()</code></li>
+              <li>D. <code>JSON.parse()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>response.json()</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which HTTP method is commonly used to submit form data?</p>
+            <ul>
+              <li>A. GET</li>
+              <li>B. PUT</li>
+              <li>C. DELETE</li>
+              <li>D. POST</li>
+            </ul>
+            <p><strong>Answer:</strong> D. POST</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> What is one advantage of the Fetch API over XMLHttpRequest?</p>
+            <ul>
+              <li>A. It uses JSON by default</li>
+              <li>B. It is synchronous</li>
+              <li>C. It returns promises</li>
+              <li>D. It supports only GET requests</li>
+            </ul>
+            <p><strong>Answer:</strong> C. It returns promises</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

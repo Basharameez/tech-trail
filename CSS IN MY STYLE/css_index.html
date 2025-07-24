@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Property Explorer</title>
+  <meta name="description" content="A comprehensive reference guide for all CSS properties organized by category and alphabetically">
+  <meta name="author" content="CSS Property Explorer">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="CSS Property Explorer">
+  <meta property="og:description" content="A comprehensive reference guide for all CSS properties organized by category and alphabetically">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://placehold.co/1200x630/2965f1/ffffff?text=CSS+Property+Explorer">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS Property Explorer">
+  <meta name="twitter:description" content="A comprehensive reference guide for all CSS properties organized by category and alphabetically">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/2965f1/ffffff?text=CSS+Property+Explorer">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>" type="image/svg+xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css_index.css">
+</head>
+<body>
+  <!-- Header with Back Button, Logo, and Search -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="back-button" title="Go Back">← Back</a>
+        <div class="logo-container">
+          <div class="logo">
+            <span class="logo-text">{ }</span>
+          </div>
+          <div class="site-title">
+            <h1>CSS Property Explorer</h1>
+            <p>A comprehensive reference for web developers</p>
+          </div>
+        </div>
+        <div class="search-container">
+          <div class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <input id="search-input" type="text" placeholder="Search CSS properties...">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Introduction Section -->
+    <section class="intro-section fade-in">
+      <div class="intro-card">
+        <h2>Welcome to the CSS Property Explorer</h2>
+        <p>This reference guide organizes all CSS properties by their purpose and provides an alphabetical listing. Click on any property to learn more about its usage and syntax.</p>
+        <div class="intro-actions">
+          <a href="#categories" class="btn btn-primary">Explore by Category</a>
+          <a href="#alphabetical" class="btn btn-secondary">View Alphabetical List</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section fade-in">
+      <h2 class="section-title">CSS Properties by Category</h2>
+      <p class="section-description">Properties are grouped by their primary function and purpose in CSS styling.</p>
+      
+      <div class="categories-grid" id="categories-container">
+        <!-- Categories will be inserted by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Alphabetical Section -->
+    <section id="alphabetical" class="alphabetical-section fade-in">
+      <h2 class="section-title">CSS Properties (Alphabetical)</h2>
+      <p class="section-description">Complete list of all CSS properties arranged alphabetically.</p>
+      
+      <div class="alphabetical-container">
+        <ul class="tag-list" id="alphabetical-container">
+          <!-- Alphabetical properties will be inserted by JavaScript -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="copyright">
+          <p>© 2025 CSS In My Style, All rights reserved | Powered by Tech In My Style | Made with ❤️ by Tech In My Style |</p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Back to Top</a>
+          <a href="#categories">Categories</a>
+          <a href="#alphabetical">Alphabetical</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="css-tagData.js"></script>
+  <script src="css-app.js"></script>
+</body>
+</html>

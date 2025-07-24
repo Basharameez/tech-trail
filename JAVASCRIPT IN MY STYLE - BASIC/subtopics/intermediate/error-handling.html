@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error Handling - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>Error Handling</span>
+      </div>
+      <h1>Error Handling</h1>
+      <p>Implement <code>try...catch</code> blocks and handle errors effectively in your code.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript provides structured error handling through the <code>try...catch</code> statement. This allows developers to anticipate potential runtime errors and respond to them gracefully without crashing the entire application. Additionally, the <code>finally</code> block and custom error creation using <code>throw</code> enhance the robustness and clarity of error management in code.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Here’s how you can use <code>try...catch</code> for error handling in JavaScript:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>try...catch Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+function parseJSON(data) {
+  try {
+    const result = JSON.parse(data);
+    console.log("Parsed successfully:", result);
+  } catch (error) {
+    console.error("Failed to parse JSON:", error.message);
+  } finally {
+    console.log("Parsing attempt complete.");
+  }
+}
+
+parseJSON('{"name": "Alice"}');       // Valid JSON
+parseJSON('{name: Alice}');           // Invalid JSON
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Using <code>try</code> to wrap potentially unsafe code.</li>
+          <li>Handling errors in the <code>catch</code> block.</li>
+          <li>Executing cleanup or final steps with <code>finally</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>The <code>try...catch</code> construct allows developers to handle runtime errors:</p>
+        <ul>
+          <li><strong>try:</strong> Contains code that might throw an error.</li>
+          <li><strong>catch:</strong> Executes if an error occurs in the try block. Provides access to the error object.</li>
+          <li><strong>finally:</strong> (Optional) Always executes after <code>try</code> and <code>catch</code>, regardless of the outcome.</li>
+        </ul>
+        <p>You can also use <code>throw</code> to create custom errors:</p>
+        <pre><code class="language-javascript">throw new Error("Custom error message");</code></pre>
+        <p>Error handling is critical for creating resilient applications that can recover from unexpected issues gracefully.</p>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Handling API response errors or invalid data formats.</li>
+          <li>Managing unexpected user inputs.</li>
+          <li>Preventing application crashes from runtime errors.</li>
+          <li>Adding graceful fallbacks for failed operations.</li>
+          <li>Logging or reporting issues for debugging purposes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What is the purpose of the <code>catch</code> block?</p>
+            <ul>
+              <li>A. To execute code after <code>try</code></li>
+              <li>B. To catch syntax errors</li>
+              <li>C. To handle runtime errors from <code>try</code></li>
+              <li>D. To prevent code execution</li>
+            </ul>
+            <p><strong>Answer:</strong> C. To handle runtime errors from <code>try</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What happens if an error occurs in a <code>try</code> block without a <code>catch</code>?</p>
+            <ul>
+              <li>A. The error is silently ignored</li>
+              <li>B. JavaScript throws a warning</li>
+              <li>C. The script halts or throws a runtime error</li>
+              <li>D. <code>finally</code> will catch it</li>
+            </ul>
+            <p><strong>Answer:</strong> C. The script halts or throws a runtime error</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What does the <code>finally</code> block do?</p>
+            <ul>
+              <li>A. Executes only if an error occurs</li>
+              <li>B. Executes after <code>try</code> and <code>catch</code> regardless of outcome</li>
+              <li>C. Prevents the error from being thrown</li>
+              <li>D. Logs the error</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Executes after <code>try</code> and <code>catch</code> regardless of outcome</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> How do you throw a custom error in JavaScript?</p>
+            <ul>
+              <li>A. error("message")</li>
+              <li>B. raise "message"</li>
+              <li>C. throw new Error("message")</li>
+              <li>D. throw.error("message")</li>
+            </ul>
+            <p><strong>Answer:</strong> C. throw new Error("message")</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

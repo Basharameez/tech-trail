@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial - LINK Tag</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://i.pinimg.com/736x/e6/c4/e5/e6c4e514ce0663723430416a2dd09e4a.jpg" type="image/svg+xml">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.01);
+        }
+
+        /* Navigation Styles */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            max-width: 80vw; /* Reduced from 90vw for better mobile view */
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+
+        .nav-menu.open {
+            transform: translateX(0);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Menu Button Styles */
+        .menu-button {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            z-index: 10; /* Ensure it's above other elements */
+        }
+
+        .menu-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            padding: 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: #374151;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-radius: 0.375rem;
+        }
+
+        .nav-links a:hover {
+            background-color: #f3f4f6;
+        }
+
+        /* Close Button */
+        .close-button {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .close-button:hover {
+            background-color: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f3f4f6;
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            width: 100%;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        @media (min-width: 640px) {
+            main {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            main {
+                padding: 2rem;
+            }
+        }
+
+        footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 1.5rem 1rem;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 2rem 0;
+            }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+                gap: 0;
+            }
+        }
+
+        .footer-text h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-text p {
+            color: #9ca3af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .social-icons {
+                gap: 2rem;
+            }
+        }
+
+        .social-icon-wrapper {
+            position: relative;
+        }
+
+        .social-icon {
+            display: block;
+            padding: 0.5rem;
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+            color: white;
+        }
+
+        .social-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            display: block;
+        }
+
+        .social-icon-label {
+            position: absolute;
+            top: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .contact-email {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .contact-email {
+                text-align: right;
+                margin-top: 0;
+            }
+        }
+
+        .copyright {
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            border-top: 1px solid #374151;
+        }
+
+        /* Instagram */
+        .social-icon-wrapper:nth-child(1) .social-icon:hover {
+            background-color: #db2777;
+        }
+        .social-icon-wrapper:nth-child(1) .social-icon-label {
+            background-color: #db2777;
+        }
+
+        /* YouTube */
+        .social-icon-wrapper:nth-child(2) .social-icon:hover {
+            background-color: #dc2626;
+        }
+        .social-icon-wrapper:nth-child(2) .social-icon-label {
+            background-color: #dc2626;
+        }
+
+        /* Telegram */
+        .social-icon-wrapper:nth-child(3) .social-icon:hover {
+            background-color: #2563eb;
+        }
+        .social-icon-wrapper:nth-child(3) .social-icon-label {
+            background-color: #2563eb;
+        }
+
+        .social-icon:hover + .social-icon-label {
+            opacity: 1;
+        }
+
+        /* Monaco Editor Styles */
+        #editor {
+            width: 100%;
+            height: 250px; /* Reduced initial height for mobile */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        @media (min-width: 768px) {
+            #editor {
+                height: 400px;
+            }
+        }
+
+        .preview-section {
+            margin-top: 20px;
+        }
+
+        #preview {
+            width: 100%;
+            height: 250px; /* Reduced initial height for mobile */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        @media (min-width: 768px) {
+            #preview {
+                height: 400px;
+            }
+        }
+
+        .editor-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: space-between; /* Even spacing for mobile */
+        }
+
+        @media (min-width: 640px) {
+            .editor-actions {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+        }
+
+        .action-button {
+            flex: 1;
+            min-width: 70px; /* Reduced from 90px for smaller screens */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        @media (min-width: 640px) {
+            .action-button {
+                min-width: auto;
+                padding: 0.5rem 1rem;
+            }
+        }
+        
+        /* Fix for header on small devices */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem; /* Smaller font for very small screens */
+            }
+            
+            .menu-button {
+                right: 0.5rem;
+                top: 0.5rem;
+            }
+            
+            header a {
+                left: 0.5rem;
+                top: 0.5rem;
+            }
+            
+            #BackBtn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 flex flex-col">
+<!-- Header -->
+<header class="bg-gradient-to-r from-[#e34c26] to-[#f06529] text-white text-center py-6 px-4 shadow-lg relative">
+    <div class="flex items-center justify-between md:justify-center relative">
+        <a href="HTML_INDEX.html" class="absolute left-3 top-0 md:left-4 md:top-1">
+            <button id="BackBtn" class="px-3 py-1.5 md:px-4 md:py-2 bg-[#e34c26] border-2 border-white text-white text-sm md:text-base rounded hover:bg-[#f06529] transition-colors">
+                Back
+            </button>
+        </a>
+        <h1 class="text-2xl md:text-4xl font-bold animate-fade-in mx-auto">HTML IN MY STYLE</h1>
+    </div>
+</header>
+            
+            <!-- Triple Dot Menu Button -->
+            <button class="menu-button md:absolute md:right-4 md:top-1" onclick="toggleNav()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="1"/>
+                    <circle cx="12" cy="5" r="1"/>
+                    <circle cx="12" cy="19" r="1"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <div class="nav-menu" id="navMenu">
+        <button class="close-button" onclick="toggleNav()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <nav class="nav-links">
+            <p><b>A - Z Html Tags</b></p><br>
+            <p>A - Series</p>
+            <a href="A.html">&lt;a&gt; tag</a>
+            <a href="ABBR.html">&lt;abbr&gt; tag</a>
+            <a href="ADDRESS.html">&lt;address&gt; tag</a>
+            <a href="ARTICLE.html">&lt;article&gt; tag</a>
+            <a href="ASIDE.html">&lt;aside&gt; tag</a>
+            <a href="AUDIO.html">&lt;audio&gt; tag</a>
+        
+            <p>B - Series</p>
+            <a href="B.html">&lt;b&gt; tag</a>
+            <a href="BASE.html">&lt;base&gt; tag</a>
+            <a href="BDI.html">&lt;bdi&gt; tag</a>
+            <a href="BDO.html">&lt;bdo&gt; tag</a>
+            <a href="BLOCKQUOTE.html">&lt;blockquote&gt; tag</a>
+            <a href="BUTTON.html">&lt;button&gt; tag</a>
+        
+            <p>C - Series</p>
+            <a href="CANVAS.html">&lt;canvas&gt; tag</a>
+            <a href="CAPTION.html">&lt;caption&gt; tag</a>
+            <a href="CITE.html">&lt;cite&gt; tag</a>
+            <a href="CODE.html">&lt;code&gt; tag</a>
+            <a href="COL.html">&lt;col&gt; tag</a>
+        
+            <p>D - Series</p>
+            <a href="DATA.html">&lt;data&gt; tag</a>
+            <a href="DATALIST.html">&lt;datalist&gt; tag</a>
+            <a href="DEL.html">&lt;del&gt; tag</a>
+            <a href="DETAILS.html">&lt;details&gt; tag</a>
+            <a href="DFN.html">&lt;dfn&gt; tag</a>
+            <a href="DIALOG.html">&lt;dialog&gt; tag</a>
+            <a href="DIV.html">&lt;div&gt; tag</a>
+        
+            <p>E - Series</p>
+            <a href="EM.html">&lt;em&gt; tag</a>
+            <a href="EMBED.html">&lt;embed&gt; tag</a>
+        
+            <p>F - Series</p>
+            <a href="FIELDSET.html">&lt;fieldset&gt; tag</a>
+            <a href="FIGCAPTION.html">&lt;figcaption&gt; tag</a>
+            <a href="FIGURE.html">&lt;figure&gt; tag</a>
+            <a href="FOOTER.html">&lt;footer&gt; tag</a>
+            <a href="FORM.html">&lt;form&gt; tag</a>
+        
+            <p>H - Series</p>
+            <a href="H1-H6.html">&lt;h1&gt; to &lt;h6&gt; tags</a>
+            <a href="HEADER.html">&lt;header&gt; tag</a>
+            <a href="HGROUP.html">&lt;hgroup&gt; tag</a>
+        
+            <p>I - Series</p>
+            <a href="I.html">&lt;i&gt; tag</a>
+            <a href="IFRAME.html">&lt;iframe&gt; tag</a>
+            <a href="IMG.html">&lt;img&gt; tag</a>
+            <a href="INPUT.html">&lt;input&gt; tag</a>
+            <a href="INS.html">&lt;ins&gt; tag</a>
+        
+            <p>K - Series</p>
+            <a href="KBD.html">&lt;kbd&gt; tag</a>
+        
+            <p>L - Series</p>
+            <a href="LABEL.html">&lt;label&gt; tag</a>
+            <a href="LEGEND.html">&lt;legend&gt; tag</a>
+            <a href="LI.html">&lt;li&gt; tag</a>
+            <a href="LINK.html">&lt;link&gt; tag</a>
+        
+            <p>M - Series</p>
+            <a href="MAIN.html">&lt;main&gt; tag</a>
+            <a href="MARK.html">&lt;mark&gt; tag</a>
+            <a href="META.html">&lt;meta&gt; tag</a>
+            <a href="METER.html">&lt;meter&gt; tag</a>
+        
+            <p>N - Series</p>
+            <a href="NAV.html">&lt;nav&gt; tag</a>
+       
+        
+            <p>O - Series</p>
+            <a href="OBJECT.html">&lt;object&gt; tag</a>
+            <a href="OL.html">&lt;ol&gt; tag</a>
+            <a href="OPTGROUP.html">&lt;optgroup&gt; tag</a>
+            <a href="OPTION.html">&lt;option&gt; tag</a>
+            <a href="OUTPUT.html">&lt;output&gt; tag</a>
+        
+            <p>P - Series</p>
+            <a href="P.html">&lt;p&gt; tag</a>
+            <a href="PARAM.html">&lt;param&gt; tag</a>
+            <a href="PICTURE.html">&lt;picture&gt; tag</a>
+            <a href="PRE.html">&lt;pre&gt; tag</a>
+            <a href="PROGRESS.html">&lt;progress&gt; tag</a>
+        
+            <p>Q - Series</p>
+            <a href="Q.html">&lt;q&gt; tag</a>
+                
+            <p>S - Series</p>
+            <a href="S.html">&lt;s&gt; tag</a>
+            <a href="SECTION.html">&lt;section&gt; tag</a>
+            <a href="SELECT.html">&lt;select&gt; tag</a>
+            <a href="SMALL.html">&lt;small&gt; tag</a>
+            <a href="SOURCE.html">&lt;source &gt; tag</a> 
+           <a href="SPAN.html">&lt;span&gt; tag</a>
+            <a href="STRONG.html">&lt;strong&gt; tag</a>
+            <a href="STYLE.html">&lt;style&gt; tag</a>
+        
+            <p>T - Series</p>
+            <a href="TABLE.html">&lt;table&gt; tag</a>
+            <a href="TBODY.html">&lt;tbody&gt; tag</a>
+            <a href="TD.html">&lt;td&gt; tag</a>
+            <a href="TEXTAREA.html">&lt;textarea&gt; tag</a>
+            <a href="TFOOT.html">&lt;tfoot&gt; tag</a>
+            <a href="THEAD.html">&lt;thead&gt; tag</a>
+            <a href="TH.html">&lt;th&gt; tag</a>
+            <a href="TIME.html">&lt;time&gt; tag</a>
+            <a href="TITLE.html">&lt;title&gt; tag</a>
+            <a href="TR.html">&lt;tr&gt; tag</a>
+            <a href="TRACK.html">&lt;track&gt; tag</a>     
+        
+            <p>U - Series</p>
+            <a href="U.html">&lt;u&gt; tag</a>
+            <a href="UL.html">&lt;ul&gt; tag</a>
+        
+            <p>V - Series</p>
+            <a href="VAR.html">&lt;var&gt; tag</a>
+            <a href="VIDEO.html">&lt;video&gt; tag</a>
+        
+            <p>W - Series</p>
+            <a href="WBR.html">&lt;wbr&gt; tag</a>
+
+        </nav>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleNav()"></div>
+
+<!-- LINK Tag Info Banner -->
+<div class="bg-red-100 text-red-600 py-3 px-4 md:py-4 md:px-6 border-l-4 border-red-500 text-sm md:text-base">
+    <p class="flex items-center flex-wrap">
+        <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        <span>The <code class="bg-red-50 px-2 py-1 rounded mx-1 inline-block">&#60;link&#62;</code> tag is used to define a link between a document and an external resource.</span>
+    </p>
+</div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 sm:p-6 flex-grow">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <!-- Code Editor -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover-scale">
+                <div class="bg-gray-800 p-3 md:p-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-gray-700 px-2 py-0.5 md:px-3 md:py-1 rounded text-white text-xs md:text-sm font-semibold">HTML</span>
+                        <span class="text-gray-400 text-xs md:text-sm hidden sm:inline">Editable Code</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-2.5 h-2.5 md:w-3 md:h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                </div>
+                <div id="editor" class="w-full"></div>
+                <div class="p-3 md:p-4 bg-gray-800">
+                    <div class="editor-actions">
+                        <button id="runBtn" class="action-button bg-green-500 text-white hover:bg-green-600 transition-colors">
+                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 md:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span class="hidden sm:inline">Run</span>
+                        </button>
+                        <a href="COMPILER.html" class="action-button bg-yellow-500 text-white hover:bg-yellow-600 transition-colors">
+                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 md:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            <span class="hidden sm:inline">Compiler</span>
+                        </a>
+                        <button id="copyBtn" class="action-button bg-blue-500 text-white hover:bg-blue-600 transition-colors">
+                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 md:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="hidden sm:inline">Copy</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Output Preview -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-3 md:p-4 border-b">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg md:text-xl font-bold text-gray-800">Output Preview</h2>
+                        <span class="bg-green-500 text-white text-xs px-2 py-1 rounded">Live Result</span>
+                    </div>
+                </div>
+                <iframe id="preview" title="output" class="w-full bg-white p-2 md:p-4" sandbox="allow-same-origin allow-scripts"></iframe>
+                <div class="p-3 md:p-4 bg-gray-50">
+                    <p class="flex items-start text-gray-700 mb-2 text-sm md:text-base">
+                        <svg class="w-4 h-4 mr-2 text-blue-500 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Important Notes:
+                    </p>
+                    <ul class="ml-6 list-disc text-gray-600 space-y-1 text-xs md:text-sm">
+                        <li>If the above code is not working properly, please copy the code and run it in my compiler. This will help you view the content correctly in an understandable format</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <!-- Footer -->
+   <footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-text">
+                <h3>HTML IN MY STYLE</h3>
+                <p>Learn all the HTML content in my style</p>
+            </div>
+            <div class="social-icons">
+                <div class="social-icon-wrapper">
+                    <a href="https://www.instagram.com/tech_in_my_style?igsh=MWVpb2dzcmhwZ2NicQ==" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                        </svg>
+                    </a>
+                    <span class="social-icon-label">Instagram</span>
+                </div>
+                <div class="social-icon-wrapper">
+                    <a href="https://www.youtube.com/@TECH-IN-MY-STYLE" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                        </svg>
+                    </a>
+                    <span class="social-icon-label">YouTube</span>
+                </div>
+                <div class="social-icon-wrapper">
+                    <a href="https://t.me/tech_in_my_style_bot" class="social-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 2L11 13"/>
+                            <path d="M22 2L15 22L11 13L2 9L22 2z"/>
+                        </svg>
+                    </a>
+                    <span class="social-icon-label">Telegram</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CONTACT US -->
+        <div class="contact-email mt-4 md:mt-6">
+            <p class="text-sm"><a href="mailto:techinmystyle@gmail.com" class="text-gray-300 hover:text-white transition-colors">Contact us: techinmystyle@gmail.com</a></p>
+        </div>
+
+        <!-- Copyright Notice -->
+        <div class="copyright mt-4 md:mt-6">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> HTML IN MY STYLE. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navigation Toggle Function
+    function toggleNav() {
+        const navMenu = document.getElementById('navMenu');
+        const overlay = document.getElementById('overlay');
+        
+        navMenu.classList.toggle('open');
+        overlay.classList.toggle('active');
+        
+        // Prevent body scrolling when nav is open
+        if (navMenu.classList.contains('open')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Check if device is mobile
+    function isMobileDevice() {
+        return window.innerWidth < 768;
+    }
+
+    // Initialize Monaco Editor with optimizations for mobile
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+        // Initial editor height based on device
+        const editorHeight = isMobileDevice() ? 250 : 400;
+        
+        // Create editor with mobile-optimized settings
+        const editor = monaco.editor.create(document.getElementById('editor'), {
+            value: 
+`<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Tag Example</title>
+    <link rel="canonical" href="https://www.google.com/maps/place/Taj+Mahal/">
+</head>
+<body>
+    <h1>Link Tag Example</h1>
+    <p>This page uses an external CSS file and a Google Maps India location link using &lt;link&gt;.</p>
+
+    <p>View location on <a href="https://www.google.com/maps/place/Taj+Mahal/" target="_blank">Google Maps: Taj Mahal, India</a></p>
+    
+</body>
+</html>
+`,
+            language: 'html',
+            theme: 'vs-dark',
+            automaticLayout: true,
+            lineNumbers: 'on',
+            minimap: {
+                enabled: !isMobileDevice() // Disable minimap on mobile
+            },
+            fontSize: isMobileDevice() ? 12 : 14, // Smaller font on mobile
+            scrollBeyondLastLine: false,
+            wordWrap: 'on', // Enable word wrap for better mobile experience
+            folding: !isMobileDevice(), // Disable code folding on mobile
+            scrollbar: {
+                vertical: 'visible',
+                horizontal: 'visible',
+                verticalScrollbarSize: isMobileDevice() ? 8 : 14, // Thinner scrollbars on mobile
+                horizontalScrollbarSize: isMobileDevice() ? 8 : 14
+            }
+        });
+
+        // Adjust editor and preview sizes on window resize
+        window.addEventListener('resize', function() {
+            const isMobile = isMobileDevice();
+            editor.updateOptions({
+                minimap: { enabled: !isMobile },
+                fontSize: isMobile ? 12 : 14,
+                folding: !isMobile,
+                scrollbar: {
+                    verticalScrollbarSize: isMobile ? 8 : 14,
+                    horizontalScrollbarSize: isMobile ? 8 : 14
+                }
+            });
+            
+            // Update editor height based on screen size
+            document.getElementById('editor').style.height = isMobile ? '250px' : '400px';
+            document.getElementById('preview').style.height = isMobile ? '250px' : '400px';
+            
+            // Force layout update
+            editor.layout();
+        });
+
+        // Run button - ONLY update the preview when clicked
+        document.getElementById('runBtn').addEventListener('click', () => {
+            const code = editor.getValue();
+            updatePreview(code);
+        });
+
+        // Copy button with better mobile feedback
+        document.getElementById('copyBtn').addEventListener('click', async () => {
+            const code = editor.getValue();
+            try {
+                await navigator.clipboard.writeText(code);
+                
+                // Show feedback to user
+                const copyBtn = document.getElementById('copyBtn');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<span class="hidden sm:inline">Copied!</span>';
+                copyBtn.classList.add('bg-green-600');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.classList.remove('bg-green-600');
+                }, 2000);
+            } catch (err) {
+                // Fallback for mobile browsers that don't support clipboard API
+                const textarea = document.createElement('textarea');
+                textarea.value = code;
+                textarea.style.position = 'fixed';
+                document.body.appendChild(textarea);
+                textarea.focus();
+                textarea.select();
+                
+                try {
+                    document.execCommand('copy');
+                    const copyBtn = document.getElementById('copyBtn');
+                    const originalText = copyBtn.innerHTML;
+                    copyBtn.innerHTML = '<span class="hidden sm:inline">Copied!</span>';
+                    copyBtn.classList.add('bg-green-600');
+                    
+                    setTimeout(() => {
+                        copyBtn.innerHTML = originalText;
+                        copyBtn.classList.remove('bg-green-600');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy code');
+                }
+                
+                document.body.removeChild(textarea);
+            }
+        });
+
+        // Back button functionality
+        document.getElementById('BackBtn').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        // Function to update preview with better error handling
+        function updatePreview(code) {
+            try {
+                const previewFrame = document.getElementById('preview');
+                const preview = previewFrame.contentWindow.document;
+                
+                // Clear existing content
+                preview.open();
+                
+                // Write the new content
+                preview.write(code);
+                
+                // Close the document
+                preview.close();
+            } catch (error) {
+                console.error('Preview error:', error);
+                
+                // Show error in preview
+                const preview = document.getElementById('preview').contentWindow.document;
+                preview.open();
+                preview.write(`<div style="color:red; padding: 20px;">
+                    <h3>Error rendering preview:</h3>
+                    <p>\${error.message}</p>
+                </div>`);
+                preview.close();
+            }
+        }
+
+        // Clear the preview initially - show a message telling user to click Run
+        const preview = document.getElementById('preview').contentWindow.document;
+        preview.open();
+        preview.write(`
+            <div style="display: flex; height: 100%; align-items: center; justify-content: center; color: #666; font-family: system-ui, sans-serif; text-align: center; padding: 20px;">
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto 10px;">
+                        <path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                        <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <p>Click the Run button to see the output</p>
+                </div>
+            </div>
+        `);
+        preview.close();
+        
+        // Do NOT auto-run the code when the page loads
+        // Removed the auto-run code
+    });
+</script>
+</body>
+</html>
+
+                            

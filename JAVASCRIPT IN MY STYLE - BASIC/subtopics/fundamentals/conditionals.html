@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditionals - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Conditionals</span>
+      </div>
+      <h1>Conditionals</h1>
+      <p>Master <code>if</code>, <code>else</code>, <code>else if</code>, and <code>switch</code> statements for decision making in JavaScript.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Conditionals are a core part of programming that allow you to make decisions based on certain conditions. In JavaScript, you can use <code>if</code>, <code>else if</code>, and <code>else</code> statements, as well as <code>switch</code> cases to control the flow of your program based on various expressions.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>This example demonstrates the use of conditional statements in JavaScript:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Conditional Statements</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+let score = 85;
+
+// if-else if-else
+if (score >= 90) {
+  console.log("Grade: A");
+} else if (score >= 75) {
+  console.log("Grade: B");
+} else if (score >= 60) {
+  console.log("Grade: C");
+} else {
+  console.log("Grade: F");
+}
+
+// switch-case
+let fruit = "apple";
+
+switch (fruit) {
+  case "apple":
+    console.log("Apples are red or green.");
+    break;
+  case "banana":
+    console.log("Bananas are yellow.");
+    break;
+  case "orange":
+    console.log("Oranges are orange.");
+    break;
+  default:
+    console.log("Unknown fruit.");
+}
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Using <code>if</code>, <code>else if</code>, and <code>else</code> to check multiple conditions.</li>
+          <li>Using <code>switch</code> to select among multiple values of a single variable.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Conditional statements allow a program to perform different actions based on different conditions:
+        <ul>
+          <li><strong>if:</strong> Executes a block of code if a specified condition is true.</li>
+          <li><strong>else if:</strong> Specifies a new condition if the previous one is false.</li>
+          <li><strong>else:</strong> Executes if none of the previous conditions are true.</li>
+          <li><strong>switch:</strong> Tests a variable against a list of values, executing corresponding code blocks.</li>
+        </ul>
+        Using these constructs, developers can create complex decision trees in their applications.
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li><strong>User Input Handling:</strong> Respond to different user inputs with appropriate actions.</li>
+          <li><strong>Form Validation:</strong> Check for valid data formats and requirements.</li>
+          <li><strong>Game Logic:</strong> Determine actions based on player state or game conditions.</li>
+          <li><strong>Feature Toggles:</strong> Enable or disable features based on flags or permissions.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What will be the output of: <code>if (0) { console.log("True"); } else { console.log("False"); }</code></p>
+            <ul>
+              <li>A. True</li>
+              <li>B. False</li>
+              <li>C. Error</li>
+              <li>D. Undefined</li>
+            </ul>
+            <p><strong>Answer:</strong> B. False</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which keyword is used to check multiple possible values of a variable?</p>
+            <ul>
+              <li>A. if</li>
+              <li>B. else</li>
+              <li>C. switch</li>
+              <li>D. case</li>
+            </ul>
+            <p><strong>Answer:</strong> C. switch</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> In a <code>switch</code> statement, what happens if you forget the <code>break</code> statement?</p>
+            <ul>
+              <li>A. Only the matching case runs</li>
+              <li>B. The default case always runs</li>
+              <li>C. Execution falls through to the next case</li>
+              <li>D. It throws an error</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Execution falls through to the next case</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which is the correct structure of an if-else statement?</p>
+            <ul>
+              <li>A. <code>if { condition } else { }</code></li>
+              <li>B. <code>if (condition) { } else { }</code></li>
+              <li>C. <code>if condition: then else</code></li>
+              <li>D. <code>if then else</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>if (condition) { } else { }</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
+  
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

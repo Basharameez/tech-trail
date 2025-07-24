@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500">
+  <style>
+    .neuron {
+      fill: #4361ee;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+    .neuron-active {
+      fill: #7209b7;
+    }
+    .connection {
+      stroke: #4361ee;
+      stroke-width: 1.5;
+    }
+    .connection-active {
+      stroke: #7209b7;
+      stroke-width: 2.5;
+    }
+    @keyframes pulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    .connection-animate {
+      stroke-dasharray: 8;
+      animation: dash 1.5s linear infinite;
+    }
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -16;
+      }
+    }
+  </style>
+  
+  <!-- Input Layer -->
+  <circle class="neuron" cx="100" cy="100" r="15"/>
+  <circle class="neuron" cx="100" cy="170" r="15"/>
+  <circle class="neuron" cx="100" cy="240" r="15"/>
+  <circle class="neuron" cx="100" cy="310" r="15"/>
+  <circle class="neuron" cx="100" cy="380" r="15"/>
+  
+  <!-- Hidden Layer 1 -->
+  <circle class="neuron neuron-active pulse" cx="250" cy="120" r="15"/>
+  <circle class="neuron" cx="250" cy="190" r="15"/>
+  <circle class="neuron neuron-active" cx="250" cy="260" r="15"/>
+  <circle class="neuron" cx="250" cy="330" r="15"/>
+  
+  <!-- Hidden Layer 2 -->
+  <circle class="neuron" cx="400" cy="150" r="15"/>
+  <circle class="neuron neuron-active pulse" cx="400" cy="230" r="15"/>
+  <circle class="neuron" cx="400" cy="310" r="15"/>
+  
+  <!-- Output Layer -->
+  <circle class="neuron neuron-active" cx="550" cy="200" r="15"/>
+  <circle class="neuron" cx="550" cy="280" r="15"/>
+  
+  <!-- Connections - Input to Hidden 1 -->
+  <line class="connection" x1="115" y1="100" x2="235" y2="120"/>
+  <line class="connection connection-active connection-animate" x1="115" y1="170" x2="235" y2="120"/>
+  <line class="connection" x1="115" y1="240" x2="235" y2="120"/>
+  <line class="connection" x1="115" y1="310" x2="235" y2="120"/>
+  <line class="connection" x1="115" y1="380" x2="235" y2="120"/>
+  
+  <line class="connection" x1="115" y1="100" x2="235" y2="190"/>
+  <line class="connection" x1="115" y1="170" x2="235" y2="190"/>
+  <line class="connection" x1="115" y1="240" x2="235" y2="190"/>
+  <line class="connection" x1="115" y1="310" x2="235" y2="190"/>
+  <line class="connection" x1="115" y1="380" x2="235" y2="190"/>
+  
+  <line class="connection" x1="115" y1="100" x2="235" y2="260"/>
+  <line class="connection" x1="115" y1="170" x2="235" y2="260"/>
+  <line class="connection connection-active" x1="115" y1="240" x2="235" y2="260"/>
+  <line class="connection" x1="115" y1="310" x2="235" y2="260"/>
+  <line class="connection" x1="115" y1="380" x2="235" y2="260"/>
+  
+  <line class="connection" x1="115" y1="100" x2="235" y2="330"/>
+  <line class="connection" x1="115" y1="170" x2="235" y2="330"/>
+  <line class="connection" x1="115" y1="240" x2="235" y2="330"/>
+  <line class="connection" x1="115" y1="310" x2="235" y2="330"/>
+  <line class="connection" x1="115" y1="380" x2="235" y2="330"/>
+  
+  <!-- Connections - Hidden 1 to Hidden 2 -->
+  <line class="connection" x1="265" y1="120" x2="385" y2="150"/>
+  <line class="connection" x1="265" y1="190" x2="385" y2="150"/>
+  <line class="connection" x1="265" y1="260" x2="385" y2="150"/>
+  <line class="connection" x1="265" y1="330" x2="385" y2="150"/>
+  
+  <line class="connection connection-active connection-animate" x1="265" y1="120" x2="385" y2="230"/>
+  <line class="connection" x1="265" y1="190" x2="385" y2="230"/>
+  <line class="connection connection-active" x1="265" y1="260" x2="385" y2="230"/>
+  <line class="connection" x1="265" y1="330" x2="385" y2="230"/>
+  
+  <line class="connection" x1="265" y1="120" x2="385" y2="310"/>
+  <line class="connection" x1="265" y1="190" x2="385" y2="310"/>
+  <line class="connection" x1="265" y1="260" x2="385" y2="310"/>
+  <line class="connection" x1="265" y1="330" x2="385" y2="310"/>
+  
+  <!-- Connections - Hidden 2 to Output -->
+  <line class="connection" x1="415" y1="150" x2="535" y2="200"/>
+  <line class="connection connection-active connection-animate" x1="415" y1="230" x2="535" y2="200"/>
+  <line class="connection" x1="415" y1="310" x2="535" y2="200"/>
+  
+  <line class="connection" x1="415" y1="150" x2="535" y2="280"/>
+  <line class="connection" x1="415" y1="230" x2="535" y2="280"/>
+  <line class="connection" x1="415" y1="310" x2="535" y2="280"/>
+  
+  <!-- Layer Labels -->
+  <text x="100" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">Input Layer</text>
+  <text x="250" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">Hidden Layer 1</text>
+  <text x="400" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">Hidden Layer 2</text>
+  <text x="550" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">Output Layer</text>
+</svg>

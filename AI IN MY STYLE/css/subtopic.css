@@ -1,0 +1,333 @@
+/* Subtopic Page Specific Styles */
+
+/* Breadcrumb */
+.breadcrumb {
+    background-color: var(--dark-surface);
+    padding: 6rem 0 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.breadcrumb ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary-dark);
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '/';
+    margin: 0 var(--space-xs);
+    color: var(--text-secondary-dark);
+}
+
+.breadcrumb li:last-child {
+    color: var(--secondary-color);
+}
+
+.breadcrumb a {
+    color: var(--text-secondary-dark);
+}
+
+.breadcrumb a:hover {
+    color: var(--secondary-color);
+}
+
+/* Subtopic Content Layout */
+.subtopic-content {
+    padding: var(--space-lg) 0 var(--space-xl);
+}
+
+.content-wrapper {
+    display: flex;
+    gap: var(--space-lg);
+}
+
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.main-content {
+    flex: 1;
+    padding: var(--space-lg);
+}
+
+/* Sidebar */
+.topic-nav {
+    padding: var(--space-md);
+    position: sticky;
+    top: 90px;
+}
+
+.topic-nav h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topic-nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--space-md);
+}
+
+.topic-nav li {
+    margin-bottom: 2px;
+}
+
+.topic-nav a {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    color: var(--text-secondary-dark);
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s ease;
+}
+
+.topic-nav a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--secondary-color);
+}
+
+.topic-nav li.active a {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--secondary-color);
+    border-left: 3px solid var(--secondary-color);
+}
+
+/* Main Content */
+.main-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.content-section {
+    margin-bottom: var(--space-xl);
+}
+
+.content-section h2 {
+    font-size: 1.7rem;
+    margin-bottom: var(--space-md);
+    color: var(--secondary-color);
+}
+
+/* Info Box */
+.info-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.info-box ul {
+    padding-left: var(--space-md);
+}
+
+/* Code Examples */
+pre {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--space-md);
+    position: relative;
+}
+
+pre code {
+    padding: var(--space-md);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    display: block;
+}
+
+/* Applications Grid */
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.application-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.application-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.application-card i {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-bottom: var(--space-sm);
+}
+
+.application-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.application-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary-dark);
+    margin-bottom: 0;
+}
+
+/* Table Styles */
+.table-container {
+    overflow-x: auto;
+    margin-bottom: var(--space-md);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background: rgba(0, 229, 255, 0.1);
+}
+
+th, td {
+    padding: var(--space-sm);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* Resources Box */
+.resources-box {
+    background: linear-gradient(145deg, rgba(102, 16, 242, 0.1), rgba(0, 229, 255, 0.1));
+    border-radius: var(--border-radius-md);
+    padding: var(--space-md);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Accordion for Interview Questions */
+.accordion {
+    margin-top: var(--space-md);
+}
+
+.accordion-item {
+    margin-bottom: var(--space-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.accordion-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: var(--space-md);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.accordion-header h3 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.accordion-content {
+    padding: 0 var(--space-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    padding: var(--space-md);
+    max-height: 1000px;
+}
+
+.accordion-item.active .icon i {
+    transform: rotate(180deg);
+}
+
+.icon i {
+    transition: transform 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: var(--space-md);
+    }
+    
+    .topic-nav {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content h1 {
+        font-size: 2rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .applications-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .breadcrumb {
+        padding-top: 5.5rem;
+    }
+    
+    .breadcrumb li {
+        font-size: 0.8rem;
+    }
+    
+    .main-content {
+        padding: var(--space-md);
+    }
+    
+    .main-content h1 {
+        font-size: 1.7rem;
+    }
+    
+    .applications-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    table {
+        font-size: 0.85rem;
+    }
+    
+    th, td {
+        padding: var(--space-xs);
+    }
+}

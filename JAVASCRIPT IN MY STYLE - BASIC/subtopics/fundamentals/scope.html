@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scope - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+        
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Scope</span>
+      </div>
+      <h1>Scope</h1>
+      <p>Understand global vs local scope, hoisting, and closures in JavaScript.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Scope in JavaScript defines the accessibility of variables and functions in different parts of the code. Understanding the difference between global and local scope, hoisting behavior, and closures is crucial for writing bug-free and maintainable code.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating scope, hoisting, and closures:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Scope Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Global Scope
+var globalVar = "I am global";
+
+function outer() {
+  // Local Scope
+  var localVar = "I am local";
+
+  function inner() {
+    // Closure capturing localVar
+    console.log(globalVar); // Accessible (global)
+    console.log(localVar);  // Accessible (closure)
+  }
+
+  inner();
+}
+
+outer();
+
+// Hoisting example
+console.log(hoistedVar); // undefined (due to hoisting)
+var hoistedVar = "This is hoisted";
+
+// let/const are not hoisted in the same way:
+// console.log(notHoisted); // ReferenceError
+// let notHoisted = 10;
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>The difference between global and local scope.</li>
+          <li>How closures allow inner functions to access outer variables.</li>
+          <li>Variable hoisting behavior with <code>var</code>.</li>
+          <li>Difference in hoisting with <code>let</code> and <code>const</code>.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>Scope:</strong> Defines the visibility and lifetime of variables and functions in JavaScript.</p>
+        <ul>
+          <li><strong>Global Scope:</strong> Variables declared outside any function or block are globally accessible.</li>
+          <li><strong>Local Scope:</strong> Variables declared within a function or block are only accessible within that scope.</li>
+          <li><strong>Hoisting:</strong> JavaScript moves declarations (not initializations) to the top of their scope during compilation. <code>var</code> declarations are hoisted and initialized with <code>undefined</code>, whereas <code>let</code> and <code>const</code> are hoisted but not initialized, causing a temporal dead zone.</li>
+          <li><strong>Closures:</strong> Functions retain access to the scope in which they were created, allowing them to remember variables from their outer scope even after that scope has finished execution.</li>
+        </ul>
+        Understanding these concepts helps prevent common bugs related to variable access and lifecycle.
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li><strong>Encapsulation:</strong> Using local scope to hide internal data and avoid polluting global namespace.</li>
+          <li><strong>Callbacks and Async Programming:</strong> Closures allow callback functions to access outer variables.</li>
+          <li><strong>Module Pattern:</strong> Leveraging closures to create private variables and methods.</li>
+          <li><strong>Hoisting Awareness:</strong> Prevent bugs by understanding when and how variables are accessible.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which statement about <code>var</code> hoisting is true?</p>
+            <ul>
+              <li>A. Variables declared with <code>var</code> are hoisted and initialized to <code>undefined</code>.</li>
+              <li>B. Variables declared with <code>var</code> are not hoisted.</li>
+              <li>C. Variables declared with <code>var</code> throw an error if accessed before declaration.</li>
+              <li>D. <code>var</code> behaves the same as <code>let</code> regarding hoisting.</li>
+            </ul>
+            <p><strong>Answer:</strong> A. Variables declared with <code>var</code> are hoisted and initialized to <code>undefined</code>.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What is a closure in JavaScript?</p>
+            <ul>
+              <li>A. A function bundled with references to its surrounding state.</li>
+              <li>B. A special type of global variable.</li>
+              <li>C. A method to declare private variables globally.</li>
+              <li>D. A loop that runs indefinitely.</li>
+            </ul>
+            <p><strong>Answer:</strong> A. A function bundled with references to its surrounding state.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Variables declared with <code>let</code> and <code>const</code> are:</p>
+            <ul>
+              <li>A. Hoisted and initialized to <code>undefined</code>.</li>
+              <li>B. Not hoisted at all.</li>
+              <li>C. Hoisted but not initialized, causing temporal dead zone.</li>
+              <li>D. Accessible globally no matter where declared.</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Hoisted but not initialized, causing temporal dead zone.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> What will be logged to the console?</p>
+            <pre><code>function outer() {
+  var x = 10;
+  return function inner() {
+    console.log(x);
+  }
+}
+const fn = outer();
+fn();</code></pre>
+            <ul>
+              <li>A. undefined</li>
+              <li>B. 10</li>
+              <li>C. Error</li>
+              <li>D. null</li>
+            </ul>
+            <p><strong>Answer:</strong> B. 10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+   
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

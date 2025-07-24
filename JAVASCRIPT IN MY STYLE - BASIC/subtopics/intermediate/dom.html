@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>DOM</span>
+      </div>
+      <h1>DOM</h1>
+      <p>Deep dive into the Document Object Model structure and manipulation.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        The DOM (Document Object Model) is a programming interface for HTML and XML documents. It represents the structure of a document as a tree of nodes, enabling developers to access and manipulate content, structure, and styles of web pages using JavaScript.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example of accessing and modifying DOM elements:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>DOM Manipulation</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Selecting an element
+const heading = document.getElementById("main-heading");
+
+// Changing text content
+heading.textContent = "Updated Heading";
+
+// Changing style
+heading.style.color = "blue";
+
+// Creating and appending a new element
+const newParagraph = document.createElement("p");
+newParagraph.textContent = "This is a new paragraph.";
+document.body.appendChild(newParagraph);
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>How to select elements from the DOM using <code>getElementById</code>.</li>
+          <li>Updating text content of a DOM node.</li>
+          <li>Modifying styles dynamically.</li>
+          <li>Creating and inserting new elements into the DOM.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>The Document Object Model (DOM) represents the page so that programs can change the document structure, style, and content. It treats an HTML or XML document as a tree structure where each node is an object representing a part of the document.</p>
+        <p>Key DOM manipulation techniques include:</p>
+        <ul>
+          <li><strong>Selectors:</strong> Methods like <code>getElementById</code>, <code>querySelector</code>, and <code>getElementsByClassName</code> are used to access elements.</li>
+          <li><strong>Content Manipulation:</strong> You can change or retrieve text, HTML, and attributes using properties like <code>textContent</code>, <code>innerHTML</code>, and <code>setAttribute</code>.</li>
+          <li><strong>Style Manipulation:</strong> CSS styles can be modified via the <code>style</code> property.</li>
+          <li><strong>Element Creation:</strong> New elements can be created and inserted into the document using <code>createElement</code>, <code>appendChild</code>, and <code>insertBefore</code>.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Creating interactive web pages with dynamic content updates.</li>
+          <li>Implementing features like dropdowns, modals, sliders, and tabs.</li>
+          <li>Real-time form validation and user feedback.</li>
+          <li>Manipulating content in response to user events.</li>
+          <li>Building single-page applications (SPAs) without full page reloads.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What does the DOM stand for?</p>
+            <ul>
+              <li>A. Document Object Map</li>
+              <li>B. Data Object Model</li>
+              <li>C. Document Object Model</li>
+              <li>D. Data Oriented Module</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Document Object Model</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which method is used to select an element by ID?</p>
+            <ul>
+              <li>A. querySelector</li>
+              <li>B. getElementById</li>
+              <li>C. getElementByTagName</li>
+              <li>D. getElementsByClassName</li>
+            </ul>
+            <p><strong>Answer:</strong> B. getElementById</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> How can you change the text of an element?</p>
+            <ul>
+              <li>A. element.value</li>
+              <li>B. element.innerHTML</li>
+              <li>C. element.textContent</li>
+              <li>D. element.text</li>
+            </ul>
+            <p><strong>Answer:</strong> C. element.textContent</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which method is used to create a new element in the DOM?</p>
+            <ul>
+              <li>A. createElement</li>
+              <li>B. appendChild</li>
+              <li>C. insertElement</li>
+              <li>D. newElement</li>
+            </ul>
+            <p><strong>Answer:</strong> A. createElement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

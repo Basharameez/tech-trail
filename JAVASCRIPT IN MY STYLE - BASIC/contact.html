@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" class="logo-spin">
+        <h1>JS Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Contact Header -->
+  <section class="hero" style="padding: var(--space-5) 0;">
+    <div class="container">
+      <h1 class="fade-in-element">Get in Touch</h1>
+      <p class="fade-in-element">Have questions or feedback? We'd love to hear from you!</p>
+    </div>
+  </section>
+
+  <!-- Contact Content -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <p>Reach out to us through any of the following channels:</p>
+          
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>hello@jsbasics.com</span>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fab fa-telegram"></i>
+            <span>@jsbasics</span>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fab fa-instagram"></i>
+            <span>@jsbasics</span>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fab fa-whatsapp"></i>
+            <span>+1 (234) 567-8901</span>
+          </div>
+          
+          <h3 style="margin-top: var(--space-4);">Connect With Us</h3>
+          <p>Join our community channels to connect with other learners:</p>
+          
+          <div class="social-links" style="margin-top: var(--space-3);">
+            <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+            <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" id="email" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <input type="text" id="subject" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" class="form-textarea" required></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      
+      <!-- FAQ Section -->
+      <div style="margin-top: var(--space-6);">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item" style="margin-bottom: var(--space-3); background-color: white; padding: var(--space-3); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+          <h3>Is this content suitable for complete beginners?</h3>
+          <p>Absolutely! Our curriculum starts from the very basics and progressively builds up to more advanced concepts. No prior programming experience is required.</p>
+        </div>
+        
+        <div class="faq-item" style="margin-bottom: var(--space-3); background-color: white; padding: var(--space-3); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+          <h3>How often is the content updated?</h3>
+          <p>We regularly update our content to ensure it reflects the latest JavaScript features and best practices. Major updates happen quarterly, with minor updates happening more frequently.</p>
+        </div>
+        
+        <div class="faq-item" style="margin-bottom: var(--space-3); background-color: white; padding: var(--space-3); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+          <h3>Can I suggest new topics or improvements?</h3>
+          <p>Absolutely! We welcome feedback and suggestions. Please use the contact form or reach out through any of our social channels to share your ideas.</p>
+        </div>
+        
+        <div class="faq-item" style="background-color: white; padding: var(--space-3); border-radius: var(--radius-md); box-shadow: var(--shadow-sm);">
+          <h3>Do you offer personalized support?</h3>
+          <p>Yes, you can reach out with specific questions through our community channels. We try to respond to all queries within 24-48 hours, depending on complexity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script>
+    // Contact form submission
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contactForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+          
+          // In a real application, you would send this data to a server
+          // For demo purposes, we'll just show an alert
+          alert(`Thank you, ${name}! Your message has been received. We'll get back to you soon.`);
+          
+          // Reset the form
+          contactForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

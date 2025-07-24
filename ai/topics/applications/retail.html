@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Retail</title> | AI Topics</title>
+    <link rel="icon" type="image/svg+xml" href="../../img/Ai.svg">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <h1><span class="gradient-text">AI</span>ntelligence</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../topics.html">Topics</a></li>
+                    <li><a href="../../about.html">About</a></li>
+                 
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../topics.html">Topics</a></li>
+                <li><a href="../../topics.html">Applications</a></li>
+                <li>Artificial Intelligence in Retail</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Subtopic Content -->
+    <section class="subtopic-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="topic-nav glass">
+                        <h3>Applications</h3>
+                        <ul>
+                            <li ><a href="healthcare.html">AI in Healthcare</a></li>
+                            <li ><a href="finance.html">AI in Finance</a></li>
+                            <li class="active"><a href="retail.html">AI in Retail</a></li>
+                            <li><a href="education.html">Ai in Education</a></li>
+                            <li><a href="transportation.html">AI in Transportation</a></li>
+                            <li><a href="gaming.html"> AI in Gaming </a></li>
+                        </ul>
+                        <h3>Related Topics</h3>
+                        <ul>
+                            <li><a href="../types/narrow-ai.html">Types of AI</a></li>
+                            <li><a href="../agents/agent-types.html">AI agents</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                
+                <main class="main-content glass">
+                    <h1>Artificial Intelligence in Retail</h1>
+                    
+                    <section class="content-section">
+                        <h2>Description</h2>
+                        <p>AI in the retail industry enhances customer experience, optimizes inventory management, enables dynamic pricing, and personalizes marketing strategies. From virtual assistants to predictive analytics, AI empowers retailers to better understand their customers and streamline operations.</p>
+                        
+                        
+                        
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Examples (Code)</h2>
+                        <p>Below is the sample code</p>
+                        
+                        <pre><code class="language-python"># AI-powered product recommendation system using cosine similarity
+from sklearn.metrics.pairwise import cosine_similarity
+import pandas as pd
+
+# Sample customer-item purchase matrix
+data = {
+    'Product_A': [1, 0, 1],
+    'Product_B': [0, 1, 1],
+    'Product_C': [1, 1, 0]
+}
+df = pd.DataFrame(data, index=['User1', 'User2', 'User3'])
+
+# Calculate similarity between products
+similarity = cosine_similarity(df.T)
+similarity_df = pd.DataFrame(similarity, index=df.columns, columns=df.columns)
+
+print("Product Similarities:\n", similarity_df)
+
+
+
+</code></pre>
+                        
+                        
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Real-World Applications</h2>
+                        <div class="applications-grid">
+                            <div class="application-card">
+                                <i class="fas fa-user-tag"></i>
+                                <h3>Personalized Recommendations</h3>
+                                <p>Suggest products based on user preferences and behavior.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-warehouse"></i>
+                                <h3>Inventory Management</h3>
+                                <p>Predict stock needs and reduce overstock or understock.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-tags"></i>
+                                <h3>Dynamic Pricing</h3>
+                                <p> Adjust prices in real-time based on demand and competition.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-headset"></i>
+                                <h3>AI Chatbots</h3>
+                                <p>Provide 24/7 support for queries and orders.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-store-alt"></i>
+                                <h3>Visual Search</h3>
+                                <p>Allow users to search products using images.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Where topic Is Applied</h2>
+                        
+                        <div class="table-container">
+                            <table>
+   <thead>
+    <tr>
+      <th>Use Case</th>
+      <th>AI Technique</th>
+      <th>Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Product Recommendation</td>
+      <td>Collaborative Filtering, Deep Learning</td>
+      <td>Higher customer engagement and sales</td>
+    </tr>
+    <tr>
+      <td>Inventory Optimization</td>
+      <td>Predictive Analytics</td>
+      <td>Reduced inventory costs and stock-outs</td>
+    </tr>
+    <tr>
+      <td>Dynamic Pricing</td>
+      <td>Reinforcement Learning</td>
+      <td>Maximized profit margins</td>
+    </tr>
+    <tr>
+      <td>Chatbots</td>
+      <td>Natural Language Processing</td>
+      <td>Enhanced customer service availability</td>
+    </tr>
+    <tr>
+      <td>In-store Analytics</td>
+      <td>Computer Vision</td>
+      <td>Understand foot traffic and customer behavior</td>
+    </tr>
+  </tbody>
+</table>
+</table>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Resources</h2>
+                        <div class="resources-box">
+                            <p>Additional resources </p>
+                            <ul>
+                                <a href=""><li>YouTube video tutorials </li></a>
+                              <a href="">  <li>PDF/DOC files via Drive links</li></a>
+                               <a href=""> <li>Recommended books and articles</li></a>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Interview Questions with Answers</h2>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>How does AI help in product recommendations?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>AI uses customer purchase history and behavior (via collaborative or content-based filtering) to suggest personalized products.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>What is dynamic pricing in retail?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>It's the real-time adjustment of prices using AI models based on demand, competition, time, and stock levels.</p>
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>Explain the role of AI in inventory management.</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p> AI predicts which items will be needed and when, helping retailers reduce waste and restock just in time.</p>
+                               
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>How do chatbots benefit retail?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>They offer automated customer service, helping users find products, track orders, and solve issues 24/7.</p>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>What is visual search in AI for retail?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>AI allows users to upload images to find similar-looking products using computer vision.</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2><span class="gradient-text">AI</span>ntelligence</h2>
+                    <p>Your comprehensive resource for learning Artificial Intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="topics.html">Topics</a></li>
+                        <li><a href="about.html">About</a></li>
+                    
+                    </ul>
+                </div>
+                 <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/tech_in_my_style?igsh=MXU0dG5qMDYwdG1xcw==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://youtube.com/@tech-in-my-style?si=G48ugz-d8oO7-4Dw" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AIntelligence. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

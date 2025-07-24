@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objects &amp; JSON - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>Objects &amp; JSON</span>
+      </div>
+      <h1>Objects &amp; JSON</h1>
+      <p>Learn about JavaScript objects, JSON data format, and object methods.</p>
+    </div>
+        <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header> 
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Objects in JavaScript allow for the storage of keyed collections of various data and more complex entities. JSON (JavaScript Object Notation) is a lightweight data-interchange format based on JavaScript object syntax, widely used for APIs and data exchange.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating object creation, manipulation, and JSON usage:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Object and JSON Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Create a JavaScript object
+const user = {
+  name: "Alice",
+  age: 25,
+  isAdmin: true,
+  greet: function() {
+    return `Hello, my name is ${this.name}`;
+  }
+};
+
+// Accessing properties and calling methods
+console.log(user.name);       // "Alice"
+console.log(user.greet());    // "Hello, my name is Alice"
+
+// Convert object to JSON
+const jsonString = JSON.stringify(user);
+console.log(jsonString);
+
+// Convert JSON back to object
+const parsedUser = JSON.parse(jsonString);
+console.log(parsedUser.name); // "Alice"
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Creating and accessing object properties.</li>
+          <li>Using methods within objects.</li>
+          <li>Serializing objects to JSON using <code>JSON.stringify()</code>.</li>
+          <li>Parsing JSON strings to objects with <code>JSON.parse()</code>.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>JavaScript Objects:</strong> Collections of key-value pairs, where keys are strings and values can be any data type. Objects are used to represent real-world entities in code.</p>
+        <p><strong>JSON:</strong> A data format derived from JavaScript object syntax, used for storing and exchanging data between servers and web applications.</p>
+        <p><strong>Key Object Features:</strong></p>
+        <ul>
+          <li><code>Object.keys(obj)</code> - Returns an array of object keys.</li>
+          <li><code>Object.values(obj)</code> - Returns an array of values.</li>
+          <li><code>Object.entries(obj)</code> - Returns an array of key-value pairs.</li>
+          <li>Methods can be defined directly within objects.</li>
+          <li><code>JSON.stringify(obj)</code> - Converts an object to a JSON string.</li>
+          <li><code>JSON.parse(jsonStr)</code> - Converts a JSON string to an object.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Modeling real-world data such as users, products, or settings.</li>
+          <li>Communicating with APIs using JSON payloads.</li>
+          <li>Storing configuration or state in structured form.</li>
+          <li>Representing structured data in client-side applications.</li>
+          <li>Data serialization and persistence in local storage or databases.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which method converts a JavaScript object to a JSON string?</p>
+            <ul>
+              <li>A. <code>JSON.parse()</code></li>
+              <li>B. <code>JSON.convert()</code></li>
+              <li>C. <code>JSON.stringify()</code></li>
+              <li>D. <code>Object.toJSON()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>JSON.stringify()</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> How do you access the value of a property <code>name</code> in an object <code>user</code>?</p>
+            <ul>
+              <li>A. <code>user.name</code></li>
+              <li>B. <code>user->name</code></li>
+              <li>C. <code>user(name)</code></li>
+              <li>D. <code>user::name</code></li>
+            </ul>
+            <p><strong>Answer:</strong> A. <code>user.name</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What does <code>JSON.parse()</code> do?</p>
+            <ul>
+              <li>A. Converts an object to a string.</li>
+              <li>B. Parses a JSON string to a JavaScript object.</li>
+              <li>C. Encrypts the JSON data.</li>
+              <li>D. Copies the object.</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Parses a JSON string to a JavaScript object.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which method retrieves all the keys of an object?</p>
+            <ul>
+              <li>A. <code>Object.values()</code></li>
+              <li>B. <code>Object.entries()</code></li>
+              <li>C. <code>Object.keys()</code></li>
+              <li>D. <code>Object.getKeys()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>Object.keys()</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+   
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

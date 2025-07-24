@@ -1,0 +1,249 @@
+/* Root Variables */
+:root {
+  --primary-color: #f7df1e;
+  --text-color: #333;
+  --bg-color: #fff;
+  --accent-color: #282c34;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --radius-md: 8px;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f0f0f0;
+  --accent-color: #f7df1e;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: var(--space-3) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-logo img {
+  width: 40px;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: var(--space-3);
+}
+
+.navbar-menu li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-menu li a.active,
+.navbar-menu li a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(to right, #f7df1e, #ffe100);
+  text-align: center;
+  padding: var(--space-5) 0;
+}
+
+.hero h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: var(--bg-color);
+  padding: var(--space-5) 0;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.contact-info,
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.social-links a {
+  color: var(--text-color);
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  transition: var(--transition);
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: var(--space-3);
+}
+
+.form-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-submit {
+  background-color: var(--accent-color);
+  color: #000;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-submit:hover {
+  background-color: #ffd500;
+}
+
+/* FAQ Section */
+.faq-item h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--accent-color);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--accent-color);
+  color: #000;
+  padding: var(--space-4) 0;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-logo img {
+  width: 30px;
+}
+
+.footer-text {
+  margin-top: var(--space-3);
+  font-size: 0.9rem;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Page Transition */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+  }
+}

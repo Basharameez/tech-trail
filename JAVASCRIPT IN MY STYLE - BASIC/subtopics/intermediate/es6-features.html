@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ES6 Features - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>ES6 Features</span>
+      </div>
+      <h1>ES6 Features</h1>
+      <p>Explore destructuring, spread operator, template literals, and more modern JavaScript features.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        ES6 (ECMAScript 2015) brought major improvements to JavaScript with new syntax and capabilities that make the language more powerful and expressive. These features are widely supported in modern environments and have become standard practice in development.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating destructuring, spread operator, and template literals:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>ES6 Syntax Examples</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Destructuring
+const user = { name: "Bob", age: 30 };
+const { name, age } = user;
+console.log(name); // "Bob"
+
+// Spread operator
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4];
+console.log(arr2); // [1, 2, 3, 4]
+
+// Template literals
+const greeting = `Hello, my name is ${name} and I am ${age} years old.`;
+console.log(greeting);
+
+// Arrow function
+const add = (a, b) => a + b;
+console.log(add(2, 3)); // 5
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Object destructuring to extract properties.</li>
+          <li>Using spread operator to copy and combine arrays.</li>
+          <li>Template literals for cleaner string interpolation.</li>
+          <li>Arrow functions as concise alternatives to traditional functions.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>ES6 introduced several key enhancements to JavaScript:</p>
+        <ul>
+          <li><strong>Destructuring:</strong> Allows unpacking of values from arrays or properties from objects into distinct variables.</li>
+          <li><strong>Spread Operator (...):</strong> Expands arrays or objects into individual elements or properties.</li>
+          <li><strong>Template Literals:</strong> Use backticks for multi-line strings and embedded expressions using <code>${expression}</code>.</li>
+          <li><strong>Arrow Functions:</strong> Shorter syntax for writing functions, and lexically binds the <code>this</code> keyword.</li>
+          <li><strong>Let and Const:</strong> Block-scoped variable declarations, with <code>const</code> for constants and <code>let</code> as a replacement for <code>var</code>.</li>
+          <li><strong>Default Parameters:</strong> Functions can define default values for parameters.</li>
+          <li><strong>Rest Parameters:</strong> Allows functions to accept an indefinite number of arguments as an array.</li>
+          <li><strong>Modules:</strong> Enables modular programming with <code>import</code> and <code>export</code>.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Writing cleaner and more readable code using modern syntax.</li>
+          <li>Improving modularity and reusability of code through ES6 modules.</li>
+          <li>Handling data more efficiently with destructuring and spread/rest operators.</li>
+          <li>Enhancing user interfaces and dynamic behavior with concise arrow functions and template literals.</li>
+          <li>Working with modern frameworks like React, Vue, and Angular, which heavily rely on ES6 features.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What does the spread operator <code>...</code> do?</p>
+            <ul>
+              <li>A. Combines strings</li>
+              <li>B. Expands arrays or objects into individual elements</li>
+              <li>C. Declares variables</li>
+              <li>D. Defines template strings</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Expands arrays or objects into individual elements</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which syntax is used for template literals in ES6?</p>
+            <ul>
+              <li>A. " "</li>
+              <li>B. ' '</li>
+              <li>C. ` `</li>
+              <li>D. ~ ~</li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>` `</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> How do arrow functions differ from traditional functions?</p>
+            <ul>
+              <li>A. They use a different return syntax</li>
+              <li>B. They don’t require parentheses</li>
+              <li>C. They lexically bind the <code>this</code> value</li>
+              <li>D. All of the above</li>
+            </ul>
+            <p><strong>Answer:</strong> D. All of the above</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which keyword is used to import modules in ES6?</p>
+            <ul>
+              <li>A. include</li>
+              <li>B. import</li>
+              <li>C. require</li>
+              <li>D. load</li>
+            </ul>
+            <p><strong>Answer:</strong> B. import</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

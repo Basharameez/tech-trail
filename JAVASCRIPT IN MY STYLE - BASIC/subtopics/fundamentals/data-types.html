@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Types - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Subtopic Content -->
+ <div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Data Types</span>
+      </div>
+      <h1>Data Types</h1>
+      <p>Explore the fundamental data types in JavaScript, including both primitive and reference types, which form the basis for handling and manipulating data in programs.</p>
+    </div>
+      <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript supports a dynamic typing system where variables can hold multiple types during execution. Data types in JavaScript are broadly categorized into <strong>primitive types</strong> (like string, number, boolean, null, undefined, symbol, bigint) and <strong>reference types</strong> (like objects, arrays, functions). Understanding these types is crucial for writing robust and predictable code.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>This code snippet demonstrates how various data types are used in JavaScript:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Data Types</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Primitive types
+let name = "Alice";            // String
+let age = 25;                  // Number
+let isStudent = true;          // Boolean
+let unknown = undefined;       // Undefined
+let empty = null;              // Null
+let id = Symbol("id");         // Symbol
+let bigIntValue = 123456789012345678901234567890n; // BigInt
+
+// Reference types
+let person = { name: "Alice", age: 25 }; // Object
+let colors = ["red", "green", "blue"];   // Array
+function greet() { console.log("Hello"); } // Function
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Declaration and usage of primitive data types</li>
+          <li>Creation of object and array reference types</li>
+          <li>Usage of BigInt and Symbol for special use cases</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript variables can hold different types of data. These are categorized into:
+        <ul>
+          <li><strong>Primitive Types:</strong> These include <code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, <code>symbol</code>, and <code>bigint</code>. They are immutable and stored by value.</li>
+          <li><strong>Reference Types:</strong> Includes <code>objects</code>, <code>arrays</code>, and <code>functions</code>. These are mutable and stored by reference.</li>
+        </ul>
+        Type checking can be performed using <code>typeof</code> for most types and <code>Array.isArray()</code> or <code>instanceof</code> for reference types.
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li><strong>Web Development:</strong> Store user inputs, preferences, and responses.</li>
+          <li><strong>APIs and Backend:</strong> Handle structured data with objects and arrays.</li>
+          <li><strong>Form Validation:</strong> Check and enforce types for user input fields.</li>
+          <li><strong>Data Structures:</strong> Build complex logic using objects and arrays as data containers.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What type does <code>typeof null</code> return?</p>
+            <ul>
+              <li>A. "null"</li>
+              <li>B. "object"</li>
+              <li>C. "undefined"</li>
+              <li>D. "boolean"</li>
+            </ul>
+            <p><strong>Answer:</strong> B. "object"</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which of the following is a reference type?</p>
+            <ul>
+              <li>A. Number</li>
+              <li>B. String</li>
+              <li>C. Object</li>
+              <li>D. Boolean</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Object</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What is the result of <code>typeof NaN</code>?</p>
+            <ul>
+              <li>A. "NaN"</li>
+              <li>B. "undefined"</li>
+              <li>C. "number"</li>
+              <li>D. "object"</li>
+            </ul>
+            <p><strong>Answer:</strong> C. "number"</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which statement is true about BigInt?</p>
+            <ul>
+              <li>A. It can store decimal values.</li>
+              <li>B. It's used for representing very large integers.</li>
+              <li>C. It is a reference type.</li>
+              <li>D. It replaces the number type.</li>
+            </ul>
+            <p><strong>Answer:</strong> B. It's used for representing very large integers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+   
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web APIs - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<style>
+  .footer {
+  background-color: #2f2f2c;
+  color: #fff;
+  padding: 20px 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.footer-center {
+  text-align: center;
+  flex: 1;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.footer-right a {
+  color: white;
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+}
+
+.footer-right a:hover {
+  transform: scale(1.1);
+  color: #f7df1e; /* Optional: JS yellow hover */
+}
+
+</style>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+     
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+     
+        <span>Web APIs</span>
+      </div>
+      <h1>Web APIs</h1>
+      <p>Explore modern browser APIs like Geolocation, Web Workers, and more.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Modern browsers provide a wide range of Web APIs that allow JavaScript to interact with device hardware, perform background tasks, access location data, manipulate media, and more. These APIs enhance the capabilities of web applications, making them more powerful and responsive.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example showing usage of Geolocation API and Web Workers:</p>
+
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Geolocation & Web Worker Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Using Geolocation API to get current position
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(
+    position => {
+      console.log('Latitude:', position.coords.latitude);
+      console.log('Longitude:', position.coords.longitude);
+    },
+    error => {
+      console.error('Error getting location:', error);
+    }
+  );
+} else {
+  console.log('Geolocation is not supported by this browser.');
+}
+
+// Creating a simple Web Worker
+if (window.Worker) {
+  const worker = new Worker('worker.js'); // worker.js contains the background task
+
+  worker.postMessage('Start');
+
+  worker.onmessage = function(event) {
+    console.log('Message from worker:', event.data);
+  };
+} else {
+  console.log('Web Workers are not supported in this browser.');
+}
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>How to request and handle user location using the Geolocation API.</li>
+          <li>Basic setup and communication with a Web Worker for background processing.</li>
+          <li>Checking for API support before usage to ensure compatibility.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>Web APIs</strong> are interfaces provided by modern browsers to allow web applications to access features beyond basic HTML, CSS, and JavaScript capabilities.</p>
+        <p>Some commonly used Web APIs include:</p>
+        <ul>
+          <li><strong>Geolocation API:</strong> Allows retrieval of the user's geographic location with permission.</li>
+          <li><strong>Web Workers:</strong> Enable running JavaScript in background threads for better performance.</li>
+          <li><strong>Fetch API:</strong> For making network requests.</li>
+          <li><strong>Canvas API:</strong> For drawing graphics and animations.</li>
+          <li><strong>Web Storage API:</strong> For client-side data storage.</li>
+          <li><strong>Notification API:</strong> For displaying system notifications.</li>
+          <li><strong>Media Devices API:</strong> To access camera and microphone.</li>
+        </ul>
+        <p>These APIs improve the user experience by enabling richer interactions, parallel processing, and access to device capabilities.</p>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Building location-aware apps like maps, weather, and delivery services.</li>
+          <li>Offloading heavy computations to Web Workers to keep UI responsive.</li>
+          <li>Creating real-time communication apps using WebRTC.</li>
+          <li>Enhancing multimedia applications with Canvas and Media APIs.</li>
+          <li>Sending push notifications for user engagement.</li>
+          <li>Implementing offline capabilities using Service Workers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What is the primary purpose of the Geolocation API?</p>
+            <ul>
+              <li>A. To display graphics on a web page</li>
+              <li>B. To retrieve the user's geographic location</li>
+              <li>C. To run JavaScript in a background thread</li>
+              <li>D. To send notifications to the user</li>
+            </ul>
+            <p><strong>Answer:</strong> B. To retrieve the user's geographic location</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What do Web Workers allow you to do?</p>
+            <ul>
+              <li>A. Access device hardware directly</li>
+              <li>B. Run JavaScript code in a background thread</li>
+              <li>C. Manipulate the DOM more efficiently</li>
+              <li>D. Make network requests</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Run JavaScript code in a background thread</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which Web API would you use to draw graphics on a webpage?</p>
+            <ul>
+              <li>A. Notification API</li>
+              <li>B. Canvas API</li>
+              <li>C. Fetch API</li>
+              <li>D. Storage API</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Canvas API</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> How can you check if the browser supports a specific Web API?</p>
+            <ul>
+              <li>A. By trying to use the API without checks</li>
+              <li>B. Using feature detection like `if (navigator.geolocation)`</li>
+              <li>C. It is always supported in modern browsers</li>
+              <li>D. By looking at the user’s IP address</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Using feature detection like `if (navigator.geolocation)`</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+
+
+  <!-- Footer -->
+   <!-- Footer -->
+ <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" class="footer-logo">
+      <span class="footer-title">JS Basics</span>
+    </div>
+    <div class="footer-center">
+      <p>&copy; 2025 JS Basics in My Style. All rights reserved.</p>
+    </div>
+    <div class="footer-right">
+      <a href="https://t.me/jsbasics" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://instagram.com/jsbasics" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+  </div>
+</footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>
