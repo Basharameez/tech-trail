@@ -16,7 +16,7 @@ async function submitTask(course, taskId) {
   };
 
   try {
-    const res = await fetch("http://localhost:8000/task/complete", {
+    const res = await fetch("https://tech-trail-w2ap.onrender.com/task/complete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
