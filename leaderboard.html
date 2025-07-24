@@ -403,7 +403,7 @@
     }
 
     function loadBoard() {
-      fetch("http://127.0.0.1:8000/leaderboard")
+      fetch("https://tech-trail-w2ap.onrender.com/leaderboard")
         .then(r => r.json())
         .then(data => {
           leaderboardData = data;
@@ -447,7 +447,7 @@
       progressTable.hidden = true;
       progressTableBody.innerHTML = '';
 
-      fetch(`http://127.0.0.1:8000/progress/${encodeURIComponent(username)}`)
+      fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`)
         .then(res => res.json())
         .then(prog => {
           currentUserProgress = prog;
