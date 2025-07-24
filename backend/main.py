@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
 # ------------------ MongoDB Connection ------------------
 
@@ -16,10 +17,10 @@ users_collection = db["users"]
 
 app = FastAPI()
 
-# Enable CORS for local frontend dev
+# Enable CORS for local and production frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5500", "http://127.0.0.1:5500"],
+    allow_origins=["*"],  # Use specific frontend domain in production for security
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,22 +44,19 @@ class TaskUpdate(BaseModel):
 
 # ------------------ API Endpoints ------------------
 
-# ✅ User Registration
 @app.post("/register")
 def register(user: RegisterData):
     if users_collection.find_one({"username": user.username}):
         return {"message": "Username already exists."}
-
     users_collection.insert_one({
         "username": user.username,
         "password": user.password,
         "email": user.email,
-        "progress": {},               # course-wise task list
-        "total_completed": 0         # total number of completed tasks
+        "progress": {},
+        "total_completed": 0
     })
     return {"message": "success"}
 
-# ✅ FIXED User Login
 @app.post("/login")
 def login(data: LoginData):
     user = users_collection.find_one({
@@ -75,7 +73,6 @@ def login(data: LoginData):
         }
     return {"message": "Invalid username or password."}
 
-# ✅ Task Completion
 @app.post("/task/complete")
 def complete_task(task: TaskUpdate):
     user = users_collection.find_one({"username": task.username})
@@ -101,7 +98,6 @@ def complete_task(task: TaskUpdate):
 
     return {"message": "Task marked as complete."}
 
-# ✅ Leaderboard with course breakdown
 @app.get("/leaderboard")
 def leaderboard():
     users = users_collection.find()
@@ -116,7 +112,6 @@ def leaderboard():
         })
     return sorted(board, key=lambda x: x["score"], reverse=True)
 
-# ✅ Get full progress of a user
 @app.get("/progress/{username}")
 def progress(username: str):
     user = users_collection.find_one({"username": username})
@@ -124,7 +119,6 @@ def progress(username: str):
         return {}
     return user.get("progress", {})
 
-# ✅ Optional: Login + Get Progress in one call
 @app.post("/user/progress")
 def get_progress(user: dict):
     username = user.get("username")
@@ -133,3 +127,10 @@ def get_progress(user: dict):
     if user_data:
         return {"progress": user_data.get("progress", {})}
     return {"message": "unauthorized"}
+
+# ------------------ Uvicorn Entry Point ------------------
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))  # Render provides PORT env var
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
