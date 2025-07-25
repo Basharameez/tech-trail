@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
-from bson.objectid import ObjectId
 import os
 
 # ------------------ MongoDB Connection ------------------
@@ -20,7 +19,7 @@ app = FastAPI()
 # Enable CORS for local and production frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Use specific frontend domain in production for security
+    allow_origins=["*"],  # Replace with frontend domain in production for security
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -127,6 +126,23 @@ def get_progress(user: dict):
     if user_data:
         return {"progress": user_data.get("progress", {})}
     return {"message": "unauthorized"}
+
+@app.get("/courses/meta")
+def courses_meta():
+    # Updated course list with 10 tasks each
+    return {
+        "ai": 10,
+        "ml": 10,
+        "dl": 10,
+        "java": 10,
+        "c": 10,
+        "html": 10,
+        "css": 10,
+        "js": 10,
+        "js-intermediate": 10,
+        "python": 10,
+        "dsc": 10
+    }
 
 # ------------------ Uvicorn Entry Point ------------------
 
