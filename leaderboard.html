@@ -301,7 +301,6 @@
     <div>
       <button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
       <div id="modalUser" aria-live="polite">User Progress</div>
-
       <div class="modal-content-bottom">
         <div class="modal-table-wrap">
           <table id="progressTable" aria-label="Course-wise progress table" hidden>
@@ -311,9 +310,24 @@
             <tbody id="progressTableBody"></tbody>
           </table>
         </div>
-
         <div class="modal-chart-wrap">
           <canvas id="userProgressChart" width="360" height="300"></canvas>
+        </div>
+        <!-- NEW: Table showing completed/total per course and per-course pie chart -->
+        <div class="modal-table-wrap">
+          <table id="userCourseProgressTable" aria-label="Course-wise progress vs total table" hidden>
+            <thead>
+              <tr>
+                <th>Course</th>
+                <th>Completed</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody id="userCourseProgressBody"></tbody>
+          </table>
+        </div>
+        <div class="modal-chart-wrap">
+          <canvas id="userCoursePieChart" width="310" height="280"></canvas>
         </div>
       </div>
     </div>
@@ -321,6 +335,9 @@
 
   <script>
     let leaderboardData = [];
+    let courseTotals = {};
+    let userSelectedCourse = null;
+    let userCoursePieInstance = null;
     const medals = [
       '<span class="rank-medal gold">🥇</span>',
       '<span class="rank-medal silver">🥈</span>',
@@ -420,17 +437,87 @@
     function toggleTheme() {
       document.body.classList.toggle("dark");
     }
+
     function goHome() {
       window.location.href = "../index.html";
     }
 
     function closeModal() {
-      const modal = document.getElementById('progressModal');
-      modal.style.display = 'none';
       if (progressChartInstance) {
         progressChartInstance.destroy();
         progressChartInstance = null;
       }
+      if (userCoursePieInstance) {
+        userCoursePieInstance.destroy();
+        userCoursePieInstance = null;
+      }
+      const modal = document.getElementById('progressModal');
+      modal.style.display = 'none';
+    }
+
+    // Fetch course totals at page load
+    function fetchCourseTotals() {
+      fetch('https://tech-trail-w2ap.onrender.com/courses/meta')
+        .then(r => r.json())
+        .then(data => { courseTotals = data; })
+        .catch(() => {
+          // fallback example, update as needed:
+          courseTotals = {
+            "Python": 10,
+            "Web Dev": 12,
+            "AI": 6
+          };
+        });
+    }
+    fetchCourseTotals();
+
+    // ********* NEW: Render courses user's progress vs totals table *********
+    function renderCourseTaskTable() {
+      if (!currentUserProgress) return;
+      const table = document.getElementById('userCourseProgressTable');
+      const tbody = document.getElementById('userCourseProgressBody');
+      tbody.innerHTML = "";
+      Object.entries(courseTotals).forEach(([course, total]) => {
+        const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
+        tbody.innerHTML += `
+          <tr data-course="${course}">
+            <td>${course}</td>
+            <td>${completed}</td>
+            <td>${total}</td>
+          </tr>
+        `;
+      });
+      table.hidden = false;
+    }
+
+    function renderUserCoursePieChart(course) {
+      if (!courseTotals[course]) return;
+      const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
+      const total = courseTotals[course];
+      const remaining = Math.max(total - completed, 0);
+      const ctx = document.getElementById('userCoursePieChart').getContext('2d');
+      if (userCoursePieInstance) userCoursePieInstance.destroy();
+      userCoursePieInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['Completed', 'Remaining'],
+          datasets: [{
+            data: [completed, remaining],
+            backgroundColor: ['#56b881', '#ddd']
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: true, position:'bottom' },
+            datalabels: {
+              color: '#222',
+              formatter: (v, ctx) => v
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
     }
 
     function loadUserProgress(username) {
@@ -446,6 +533,14 @@
       const progressTableBody = document.getElementById('progressTableBody');
       progressTable.hidden = true;
       progressTableBody.innerHTML = '';
+      // Hide the new tables and charts too (will be shown by renderers)
+      document.getElementById('userCourseProgressTable').hidden = true;
+      // Clean up piecharts
+      if (userCoursePieInstance) {
+        userCoursePieInstance.destroy();
+        userCoursePieInstance = null;
+      }
+      document.getElementById('userCoursePieChart').getContext('2d').clearRect(0,0,310,280);
 
       fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`)
         .then(res => res.json())
@@ -462,6 +557,27 @@
           }
           progressTable.hidden = false;
           renderProgressChart();
+
+          // ---- Render the 2nd (completed/total) table and per-course pie chart ----
+          renderCourseTaskTable();
+          // Pick a reasonable default to show a pie chart
+          let firstCourse = Object.keys(courseTotals)[0];
+          if (courses.length > 0) {
+            // prefer first course where user has progress
+            for (const c of courses) {
+              if (courseTotals[c] !== undefined) { firstCourse = c; break; }
+            }
+          }
+          renderUserCoursePieChart(firstCourse);
+          // Add click handler for pie charts
+          setTimeout(() => {
+            Array.from(document.querySelectorAll('#userCourseProgressBody tr')).forEach(row => {
+              row.onclick = () => {
+                const course = row.getAttribute('data-course');
+                renderUserCoursePieChart(course);
+              }
+            });
+          }, 0);
         })
         .catch(() => {
           progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
