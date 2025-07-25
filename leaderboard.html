@@ -32,7 +32,14 @@
       --header-text: #fff;
       --shadow: 0 8px 32px rgba(12,20,60,0.28);
     }
-    html, body { height: 100%; background: var(--bg); color: var(--text); margin: 0; padding: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
     body {
       min-height: 100vh;
       display: flex;
@@ -277,33 +284,57 @@
     #userCourseProgressTable,
     #courseSummaryTable {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 8px;
       font-size: 15px;
-      margin-bottom: 8px;
+      background: var(--card);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 12px;
     }
     #progressTable th, #progressTable td,
     #userCourseProgressTable th, #userCourseProgressTable td,
     #courseSummaryTable th, #courseSummaryTable td {
-      border: 1px solid #dee2e6;
-      padding: 8px 12px;
+      padding: 12px 16px;
       text-align: center;
       background-color: #f7f9fc;
+      border-bottom: none;
+      font-weight: 600;
+      color: var(--text);
     }
     #progressTable th,
     #userCourseProgressTable th,
     #courseSummaryTable th {
       background-color: var(--primary-accent);
       color: white;
-      font-weight: 600;
       user-select: none;
+    }
+    #userCourseProgressTable td {
+      cursor: pointer;
+      font-weight: 500;
+      color: var(--text);
+    }
+    #userCourseProgressTable tr:hover td {
+      background-color: #e3eafc;
+    }
+    #userCourseProgressTable tr td:first-child {
+      text-align: left;
+      font-weight: 700;
+      color: var(--primary-accent);
     }
     body.dark #progressTable th,
     body.dark #userCourseProgressTable th,
     body.dark #courseSummaryTable th {
       background-color: #1842a1;
     }
-    #userCourseProgressTable td {
-      cursor: pointer;
+    body.dark #userCourseProgressTable td,
+    body.dark #userCourseProgressTable tr:hover td {
+      background-color: #23263a;
+      color: var(--text);
+    }
+    body.dark #userCourseProgressTable tr:hover td {
+      background-color: #2a2e48;
     }
     #courseSummarySelect {
       font-size: 15px;
@@ -486,7 +517,7 @@
       filtered.sort((a,b) => a.user.localeCompare(b.user));
     } else if(sortValue === "score") {
       filtered.sort((a,b) => b.score - a.score);
-    } // By rank is default order already
+    }
 
     renderTable(filtered);
     updateChart(filtered);
@@ -532,13 +563,12 @@
   function toggleTheme() {
     const body = document.body;
     body.classList.toggle('dark');
-    // Update aria-pressed for the theme toggle button
     const themeBtn = document.querySelector('.theme-toggle');
     themeBtn.setAttribute('aria-pressed', body.classList.contains('dark'));
   }
 
   function goHome() {
-    window.location.href = "../index.html"; // Adjust if needed
+    window.location.href = "../index.html";
   }
 
   function closeModal() {
