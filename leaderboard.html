@@ -20,7 +20,9 @@
       --header-bg: #3950a1;
       --header-text: #fff;
       --shadow: 0 8px 24px rgba(45,68,136,0.09);
-      --gold: #FFD700; --silver: #C0C0C0; --bronze: #CD7F32;
+      --gold: #FFD700;
+      --silver: #C0C0C0;
+      --bronze: #CD7F32;
     }
     body.dark {
       --bg: #15172b;
@@ -30,22 +32,22 @@
       --header-text: #fff;
       --shadow: 0 8px 32px rgba(12,20,60,0.28);
     }
-    html,body { height:100%; background:var(--bg); color:var(--text);}
+    html, body { height: 100%; background: var(--bg); color: var(--text); margin: 0; padding: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;}
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin:0; padding:0;
-      min-height:100vh;
-      display: flex; justify-content:center; align-items:flex-start;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
     }
     .container {
-      margin: 40px 0;
-      max-width:980px;
-      width:100%;
+      max-width: 980px;
+      width: 100%;
       background: var(--card);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      padding: 0;
       overflow: hidden;
+      padding-bottom: 24px;
     }
     .leaderboard-header {
       background: var(--header-bg);
@@ -55,14 +57,15 @@
     .leaderboard-header h1 {
       color: var(--header-text);
       font-size: 2.3rem;
-      letter-spacing:1px;
-      margin:3px 0 6px;
+      margin: 0 0 6px;
       font-weight: bold;
+      letter-spacing: 1px;
     }
     .leaderboard-header p {
       color: var(--header-text);
       font-size: 1rem;
-      opacity:0.73;
+      opacity: 0.73;
+      margin: 0;
     }
     .controls {
       display: flex;
@@ -70,21 +73,21 @@
       gap: 14px;
       padding: 18px 26px;
       background: var(--card);
-      box-shadow: 0 2px 10px rgba(44,86,178,0.02);
+      box-shadow: 0 2px 10px rgba(44, 86, 178, 0.02);
     }
-    .controls input[type="text"], .controls select {
+    input[type="text"], select {
       padding: 9px 14px;
       border-radius: 7px;
-      border:1px solid #e3e8f3;
-      font-size:15px;
+      border: 1px solid #e3e8f3;
+      font-size: 15px;
       min-width: 152px;
-      outline:none;
-      transition:border 0.15s;
-      background:var(--bg);
-      color:var(--text);
+      outline: none;
+      transition: border 0.15s;
+      background: var(--bg);
+      color: var(--text);
     }
-    .controls select { min-width:124px;}
-    .controls .spacer {flex:1;}
+    select { min-width: 124px; }
+    .spacer { flex: 1; }
     button.theme-toggle {
       background: var(--primary-accent);
       color: white;
@@ -93,113 +96,144 @@
       border-radius: 6px;
       cursor: pointer;
       font-size: 16px;
-      font-weight:500;
+      font-weight: 500;
       box-shadow: 0 2px 6px rgba(53,116,230,0.10);
-      transition:background 0.14s;
+      transition: background 0.14s;
+    }
+    button.theme-toggle:hover {
+      background: #2a62d4;
     }
     .leaderboard-table-wrap {
-      overflow-x:auto;
-      width:100%;
+      overflow-x: auto;
+      margin: 0 24px 24px 24px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom:8px;
+      margin-bottom: 8px;
       background: transparent;
-      font-size:16px;
+      font-size: 16px;
     }
     th {
       background: #f3f6fc;
-      color:#496ae1;
-      padding:14px 2px;
+      color: #496ae1;
+      padding: 14px 6px;
       text-transform: uppercase;
-      letter-spacing:0.5px;
-      font-size:14px;
-      font-weight:700;
-      border-bottom:1.5px solid #e8ebf3;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-bottom: 1.5px solid #e8ebf3;
+      user-select: none;
     }
     td {
       text-align: center;
       padding: 13px 6px;
-      font-weight:500;
-      border-bottom:1px solid #eef1f8;
+      font-weight: 500;
+      border-bottom: 1px solid #eef1f8;
       background: transparent;
+      user-select: text;
     }
-    td.user-cell { display:flex; align-items:center; gap:14px; }
-    .rank-medal { font-size:1.23rem;}
-    .gold { color:var(--gold);}
-    .silver {color:var(--silver);}
-    .bronze{color:var(--bronze);}
+    td.user-cell {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: flex-start;
+      text-align: left;
+    }
+    .rank-medal {
+      font-size: 1.23rem;
+      user-select: none;
+    }
+    .gold { color: var(--gold); }
+    .silver { color: var(--silver); }
+    .bronze { color: var(--bronze); }
     tr.top-row {
       font-weight: 700;
-      background: #f8f5e8!important;
-      border-left:4px solid #e3c062;
+      background: #f8f5e8 !important;
+      border-left: 4px solid #e3c062;
     }
-    tr:hover td {background: #e7f0ff;}
-    body.dark tr:hover td {background:#23263a;}
+    tr:hover td {
+      background: #e7f0ff;
+      cursor: pointer;
+    }
+    body.dark tr:hover td {
+      background: #23263a;
+    }
     a.user-link {
       color: #3574e6;
       text-decoration: none;
       font-weight: 600;
-      cursor: pointer;
-      border-bottom:1.5px dashed #3574e6;
+      border-bottom: 1.5px dashed #3574e6;
       transition: text-decoration 0.18s;
+      cursor: pointer;
     }
-    a.user-link:hover {text-decoration: underline;}
+    a.user-link:hover {
+      text-decoration: underline;
+    }
     .avatar {
-      width:38px;
-      height:38px;
-      background:#dbdef8;
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      font-weight:bold;
-      color:#4665cc;
-      font-size:1.17rem;
-      user-select:none;
-      border:2px solid #edf0ff;
-      box-shadow:0 1px 3px #bac4e642;
+      width: 38px;
+      height: 38px;
+      background: #dbdef8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #4665cc;
+      font-size: 1.17rem;
+      user-select: none;
+      border: 2px solid #edf0ff;
+      box-shadow: 0 1px 3px #bac4e642;
     }
     body.dark .avatar {
-      background:#232945; color: #b2c2f7; border:1.5px solid #23263a;
+      background: #232945;
+      color: #b2c2f7;
+      border: 1.5px solid #23263a;
     }
     .back-btn {
-      margin:18px 0 22px 0;
-      display:block;
-      width:100%;
-      padding:13px;
+      margin: 18px 24px 24px 24px;
+      display: block;
+      width: auto;
+      padding: 13px 24px;
       font-size: 15px;
       border-radius: 9px;
       background: linear-gradient(135deg, #2e375c, #5a75be);
       color: white;
-      font-weight:500;
+      font-weight: 500;
       border: none;
       cursor: pointer;
-      letter-spacing:.2px;
-      transition:background 0.18s;
+      letter-spacing: 0.2px;
+      transition: background 0.18s;
+      user-select: none;
     }
-    .back-btn:hover {background:linear-gradient(135deg,#233165,#3e60b9);}
-    .leaderboard-table-wrap {margin:0 0 24px 0;}
-    canvas {max-width:99%; margin-top:24px;}
-    /* Modal */
+    .back-btn:hover {
+      background: linear-gradient(135deg, #233165, #3e60b9);
+    }
+    canvas {
+      max-width: 99%;
+      margin-top: 24px;
+    }
+
+    /* Modal styles */
     #progressModal {
       display: none;
       position: fixed;
-      z-index: 9999;
+      z-index: 10000;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
       background: rgba(0,0,0,0.32);
       align-items: center;
       justify-content: center;
       padding: 12px;
+      overflow-y: auto;
     }
     #progressModal > div {
       background: var(--card);
       border-radius: 12px;
       padding: 28px 24px 24px 24px;
-      max-width: 900px;
+      max-width: 950px;
       width: 100%;
       max-height: 85vh;
-      overflow: auto;
       box-shadow: 0 8px 32px #0002;
       display: flex;
       gap: 40px;
@@ -225,11 +259,12 @@
       cursor: pointer;
       color: var(--text);
       z-index: 10;
+      user-select: none;
     }
     .modal-content-bottom {
       display: flex;
-      gap: 40px;
       flex-wrap: wrap;
+      gap: 30px;
       justify-content: center;
     }
     .modal-table-wrap,
@@ -238,44 +273,37 @@
       min-width: 300px;
       max-width: 420px;
     }
-    #progressTable {
+    #progressTable,
+    #userCourseProgressTable,
+    #courseSummaryTable {
       width: 100%;
       border-collapse: collapse;
       font-size: 15px;
+      margin-bottom: 8px;
     }
-    #progressTable th,#progressTable td {
+    #progressTable th, #progressTable td,
+    #userCourseProgressTable th, #userCourseProgressTable td,
+    #courseSummaryTable th, #courseSummaryTable td {
       border: 1px solid #dee2e6;
       padding: 8px 12px;
       text-align: center;
       background-color: #f7f9fc;
     }
-    #progressTable th {
+    #progressTable th,
+    #userCourseProgressTable th,
+    #courseSummaryTable th {
       background-color: var(--primary-accent);
       color: white;
       font-weight: 600;
+      user-select: none;
     }
-    body.dark #progressTable th {
+    body.dark #progressTable th,
+    body.dark #userCourseProgressTable th,
+    body.dark #courseSummaryTable th {
       background-color: #1842a1;
     }
-    #userCourseProgressTable {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-    #userCourseProgressTable th, #userCourseProgressTable td {
-      border: 1px solid #dee2e6;
-      padding: 8px 12px;
-      text-align: center;
-      background-color: #f7f9fc;
+    #userCourseProgressTable td {
       cursor: pointer;
-    }
-    #userCourseProgressTable th {
-      background-color: var(--primary-accent);
-      color: white;
-      font-weight: 600;
-    }
-    body.dark #userCourseProgressTable th {
-      background-color: #1842a1;
     }
     #courseSummarySelect {
       font-size: 15px;
@@ -284,29 +312,11 @@
       appearance: none;
       cursor: pointer;
       margin-bottom: 15px;
-      width: 100%;
       padding: 8px 10px;
-    }
-    #courseSummaryTable {
-      border-collapse: collapse;
-      font-size: 15px;
       width: 100%;
-      margin-bottom: 8px;
+      user-select: none;
     }
-    #courseSummaryTable th, #courseSummaryTable td {
-      border: 1px solid #dee2e6;
-      padding: 8px 12px;
-      text-align: center;
-      background-color: #f7f9fc;
-    }
-    #courseSummaryTable th {
-      background-color: var(--primary-accent);
-      color: white;
-      font-weight: 600;
-    }
-    body.dark #courseSummaryTable th {
-      background-color: #1842a1;
-    }
+
     @media (max-width: 900px) {
       #progressModal > div {
         max-height: 90vh;
@@ -315,80 +325,71 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="leaderboard-header">
+  <div class="container" role="main">
+    <section class="leaderboard-header">
       <h1>🏆 Leaderboard</h1>
       <p>Click a username for full course progress details.</p>
-    </div>
-    <div class="controls">
-      <input type="text" id="searchInput" placeholder="🔍 Search user..." />
-      <select id="sortSelect">
+    </section>
+    <section class="controls" aria-label="Search and filter leaderboard">
+      <input type="text" id="searchInput" aria-label="Search user" placeholder="🔍 Search user..." />
+      <select id="sortSelect" aria-label="Sort leaderboard">
         <option value="rank">Sort by Rank</option>
         <option value="user">Sort by User</option>
         <option value="score">Sort by Score</option>
       </select>
-      <span class="spacer"></span>
-      <button class="theme-toggle" onclick="toggleTheme()">🌙 Toggle Theme</button>
-    </div>
-    <div class="leaderboard-table-wrap">
+      <span class="spacer" aria-hidden="true"></span>
+      <button class="theme-toggle" aria-pressed="false" aria-label="Toggle dark/light theme" onclick="toggleTheme()">🌙 Toggle Theme</button>
+    </section>
+    <section class="leaderboard-table-wrap" aria-label="Leaderboard table">
       <table>
         <thead>
           <tr>
-            <th>Rank</th>
-            <th>User</th>
-            <th>Total Tasks</th>
+            <th scope="col">Rank</th>
+            <th scope="col">User</th>
+            <th scope="col">Total Tasks</th>
           </tr>
         </thead>
-        <tbody id="board"></tbody>
+        <tbody id="board" role="rowgroup"></tbody>
       </table>
-    </div>
-    <canvas id="scoreChart" height="90"></canvas>
+    </section>
+    <canvas id="scoreChart" height="90" role="img" aria-label="Bar chart of total tasks completed by users"></canvas>
     <button class="back-btn" onclick="goHome()">⬅ Back to Dashboard</button>
   </div>
 
-  <!-- Modal with header and two panels side-by-side -->
+  <!-- Modal -->
   <div id="progressModal" role="dialog" aria-modal="true" aria-labelledby="modalUser" tabindex="-1">
     <div>
       <button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
       <div id="modalUser" aria-live="polite">User Progress</div>
       <div class="modal-content-bottom">
+
         <div class="modal-table-wrap">
           <table id="progressTable" aria-label="Course-wise progress table" hidden>
-            <thead>
-              <tr><th>Course Name</th><th>Tasks Completed</th></tr>
-            </thead>
+            <thead><tr><th>Course Name</th><th>Tasks Completed</th></tr></thead>
             <tbody id="progressTableBody"></tbody>
           </table>
         </div>
+
         <div class="modal-chart-wrap">
           <canvas id="userProgressChart" width="360" height="300"></canvas>
         </div>
+
         <div class="modal-table-wrap">
           <table id="userCourseProgressTable" aria-label="Course-wise progress vs total table" hidden>
-            <thead>
-              <tr>
-                <th>Course</th>
-                <th>Completed</th>
-                <th>Total</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Course</th><th>Completed</th><th>Total</th></tr></thead>
             <tbody id="userCourseProgressBody"></tbody>
           </table>
         </div>
+
         <div class="modal-chart-wrap">
           <canvas id="userCoursePieChart" width="310" height="280"></canvas>
         </div>
+
         <div class="modal-table-wrap" style="min-width:260px;max-width:340px;">
           <label for="courseSummarySelect" style="font-weight:600;padding-bottom:5px;display:block;">📚 Select Course:</label>
-          <select id="courseSummarySelect"></select>
+          <select id="courseSummarySelect" aria-label="Select course to show summary"></select>
           <table id="courseSummaryTable" aria-label="Selected Course Progress">
-            <thead>
-              <tr>
-                <th>Course Name</th>
-                <th>Total Tasks</th>
-                <th>Completed Tasks</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Course Name</th><th>Total Tasks</th><th>Completed Tasks</th></tr></thead>
             <tbody>
               <tr>
                 <td id="summaryCourse"></td>
@@ -398,404 +399,422 @@
             </tbody>
           </table>
         </div>
+
         <div class="modal-chart-wrap">
           <canvas id="courseSummaryPie" width="280" height="250"></canvas>
         </div>
+
       </div>
     </div>
   </div>
 
-  <script>
-    let leaderboardData = [];
-    let courseTotals = {};
-    let currentUserProgress = null;
-    let userCoursePieInstance = null;
-    let progressChartInstance = null;
-    let courseSummaryPieInstance = null;
-    const medals = [
-      '<span class="rank-medal gold">🥇</span>',
-      '<span class="rank-medal silver">🥈</span>',
-      '<span class="rank-medal bronze">🥉</span>'
-    ];
-    const chartCtx = document.getElementById('scoreChart').getContext('2d');
-    let scoreChart;
+<script>
+  let leaderboardData = [];
+  let courseTotals = {};
+  let currentUserProgress = null;
+  let userCoursePieInstance = null;
+  let progressChartInstance = null;
+  let courseSummaryPieInstance = null;
+  const medals = [
+    '<span class="rank-medal gold">🥇</span>',
+    '<span class="rank-medal silver">🥈</span>',
+    '<span class="rank-medal bronze">🥉</span>'
+  ];
+  const chartCtx = document.getElementById('scoreChart').getContext('2d');
+  let scoreChart;
 
-    Chart.register(ChartDataLabels);
+  Chart.register(ChartDataLabels);
 
-    function getInitials(name) {
-      if (!name) return "U";
-      let parts = name.split(/[ ._]/).filter(Boolean);
-      return parts.length === 1 ? parts[0][0].toUpperCase() : (parts[0][0]+parts[1][0]).toUpperCase();
-    }
+  function getInitials(name) {
+    if (!name) return "U";
+    const parts = name.split(/[ ._]/).filter(Boolean);
+    return parts.length === 1 ? parts[0][0].toUpperCase() : (parts[0][0] + parts[1][0]).toUpperCase();
+  }
 
-    function renderTable(data) {
-      const tbody = document.getElementById("board");
-      tbody.innerHTML = "";
-      data.forEach((e, i) => {
-        tbody.innerHTML += `
-          <tr class="${i < 3 ? 'top-row' : ''}">
-            <td>${i < 3 ? medals[i] : (i+1)}</td>
-            <td class="user-cell">
-              <span class="avatar">${getInitials(e.user)}</span>
-              <a href="#" class="user-link" data-username="${e.user}">
-                ${e.user}
-              </a>
-            </td>
-            <td>${e.score}</td>
-          </tr>
-        `;
-      });
-    }
+  function renderTable(data) {
+    const tbody = document.getElementById("board");
+    tbody.innerHTML = "";
+    data.forEach((userData, i) => {
+      tbody.innerHTML += `
+        <tr class="${i < 3 ? 'top-row' : ''}">
+          <td>${i < 3 ? medals[i] : (i + 1)}</td>
+          <td class="user-cell">
+            <span class="avatar">${getInitials(userData.user)}</span>
+            <a href="#" class="user-link" data-username="${userData.user}" tabindex="0">${userData.user}</a>
+          </td>
+          <td>${userData.score}</td>
+        </tr>
+      `;
+    });
+  }
 
-    function updateChart(data) {
-      const labels = data.map(item => item.user);
-      const scores = data.map(item => item.score);
-      if (scoreChart) scoreChart.destroy();
-      scoreChart = new Chart(chartCtx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: 'Total Tasks Completed',
-            data: scores,
-            backgroundColor: '#3574e6'
-          }]
+  function updateChart(data) {
+    const labels = data.map(u => u.user);
+    const scores = data.map(u => u.score);
+    if(scoreChart) scoreChart.destroy();
+    scoreChart = new Chart(chartCtx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Total Tasks Completed',
+          data: scores,
+          backgroundColor: '#3574e6',
+        }],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {display: false}
         },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: false }
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { stepSize: 1 }
-            }
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
           }
         }
-      });
-    }
-
-    function applySearchAndSort() {
-      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-      const sortValue = document.getElementById("sortSelect").value;
-      let filtered = leaderboardData.filter(e =>
-        e.user.toLowerCase().includes(searchTerm)
-      );
-      if (sortValue === "user") {
-        filtered.sort((a, b) => a.user.localeCompare(b.user));
-      } else if (sortValue === "score") {
-        filtered.sort((a, b) => b.score - a.score);
       }
-      renderTable(filtered);
-      updateChart(filtered);
-    }
+    });
+  }
 
-    function loadBoard() {
-      fetch("https://tech-trail-w2ap.onrender.com/leaderboard")
-        .then(r => r.json())
-        .then(data => {
-          leaderboardData = data;
-          renderTable(data);
-          updateChart(data);
-        })
-        .catch(err => {
-          document.getElementById("board").innerHTML = `
-            <tr><td colspan="3">⚠️ Failed to load leaderboard.</td></tr>`;
-          console.error("Fetch error:", err);
-        });
-    }
+  function applySearchAndSort() {
+    const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+    const sortValue = document.getElementById('sortSelect').value;
 
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-    }
+    let filtered = leaderboardData.filter(u => u.user.toLowerCase().includes(searchTerm));
+    if(sortValue === "user") {
+      filtered.sort((a,b) => a.user.localeCompare(b.user));
+    } else if(sortValue === "score") {
+      filtered.sort((a,b) => b.score - a.score);
+    } // By rank is default order already
 
-    function goHome() {
-      window.location.href = "../index.html";
-    }
+    renderTable(filtered);
+    updateChart(filtered);
+  }
 
-    function closeModal() {
-      if (progressChartInstance) {
-        progressChartInstance.destroy();
-        progressChartInstance = null;
-      }
-      if (userCoursePieInstance) {
-        userCoursePieInstance.destroy();
-        userCoursePieInstance = null;
-      }
-      if (courseSummaryPieInstance) {
-        courseSummaryPieInstance.destroy();
-        courseSummaryPieInstance = null;
-      }
-      const modal = document.getElementById('progressModal');
-      modal.style.display = 'none';
+  async function loadCourseTotals() {
+    try {
+      const res = await fetch('https://tech-trail-w2ap.onrender.com/courses/meta');
+      if(!res.ok) throw new Error("Failed to fetch course totals");
+      courseTotals = await res.json();
+    } catch {
+      // fallback if API down - match your courses with 10 tasks each
+      courseTotals = {
+        "ai": 10,
+        "ml": 10,
+        "dl": 10,
+        "java": 10,
+        "c": 10,
+        "html": 10,
+        "css": 10,
+        "js": 10,
+        "js-intermediate": 10,
+        "python": 10,
+        "dsc": 10
+      };
     }
+  }
 
-    function fetchCourseTotals() {
-      fetch('https://tech-trail-w2ap.onrender.com/courses/meta')
-        .then(r => r.json())
-        .then(data => { courseTotals = data; })
-        .catch(() => {
-          courseTotals = {
-            "Python": 10,
-            "Web Dev": 12,
-            "AI": 6
-          };
-        });
+  async function loadBoard() {
+    await loadCourseTotals();
+    try {
+      const res = await fetch('https://tech-trail-w2ap.onrender.com/leaderboard');
+      if (!res.ok) throw new Error("Failed to fetch leaderboard");
+      leaderboardData = await res.json();
+      renderTable(leaderboardData);
+      updateChart(leaderboardData);
+    } catch(e) {
+      document.getElementById("board").innerHTML = `<tr><td colspan="3">⚠️ Failed to load leaderboard.</td></tr>`;
+      console.error(e);
     }
-    fetchCourseTotals();
+  }
 
-    function renderCourseTaskTable() {
-      if (!currentUserProgress) return;
-      const table = document.getElementById('userCourseProgressTable');
-      const tbody = document.getElementById('userCourseProgressBody');
-      tbody.innerHTML = "";
-      Object.entries(courseTotals).forEach(([course, total]) => {
-        const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-        tbody.innerHTML += `
-          <tr data-course="${course}">
-            <td>${course}</td>
-            <td>${completed}</td>
-            <td>${total}</td>
-          </tr>
-        `;
-      });
-      table.hidden = false;
+  function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle('dark');
+    // Update aria-pressed for the theme toggle button
+    const themeBtn = document.querySelector('.theme-toggle');
+    themeBtn.setAttribute('aria-pressed', body.classList.contains('dark'));
+  }
+
+  function goHome() {
+    window.location.href = "../index.html"; // Adjust if needed
+  }
+
+  function closeModal() {
+    if(progressChartInstance) {
+      progressChartInstance.destroy();
+      progressChartInstance = null;
     }
+    if(userCoursePieInstance) {
+      userCoursePieInstance.destroy();
+      userCoursePieInstance = null;
+    }
+    if(courseSummaryPieInstance) {
+      courseSummaryPieInstance.destroy();
+      courseSummaryPieInstance = null;
+    }
+    document.getElementById('progressModal').style.display = 'none';
+  }
 
-    function renderUserCoursePieChart(course) {
-      if (!courseTotals[course]) return;
+  function renderCourseTaskTable() {
+    if(!currentUserProgress) return;
+    const table = document.getElementById('userCourseProgressTable');
+    const tbody = document.getElementById('userCourseProgressBody');
+    tbody.innerHTML = "";
+    Object.entries(courseTotals).forEach(([course, total])=>{
       const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-      const total = courseTotals[course];
-      const remaining = Math.max(total - completed, 0);
-      const ctx = document.getElementById('userCoursePieChart').getContext('2d');
-      if (userCoursePieInstance) userCoursePieInstance.destroy();
-      userCoursePieInstance = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ['Completed', 'Remaining'],
-          datasets: [{
-            data: [completed, remaining],
-            backgroundColor: ['#56b881', '#ddd']
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: true, position:'bottom' },
-            datalabels: {
-              color: '#222',
-              formatter: (v, ctx) => v
-            }
+      tbody.innerHTML += `<tr data-course="${course}"><td>${course}</td><td>${completed}</td><td>${total}</td></tr>`;
+    });
+    table.hidden = false;
+  }
+
+  function renderUserCoursePieChart(course) {
+    if(!courseTotals[course]) return;
+    const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
+    const total = courseTotals[course];
+    const remaining = Math.max(total - completed, 0);
+
+    const ctx = document.getElementById('userCoursePieChart').getContext('2d');
+    if(userCoursePieInstance) userCoursePieInstance.destroy();
+
+    userCoursePieInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Completed', 'Remaining'],
+        datasets: [{
+          data: [completed, remaining],
+          backgroundColor: ['#56b881', '#ddd']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true, position:'bottom' },
+          datalabels: {
+            color: '#222',
+            formatter: val => val
           }
-        },
-        plugins: [ChartDataLabels]
-      });
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  }
+
+  function renderProgressChart() {
+    if (!currentUserProgress) return;
+    const ctx = document.getElementById('userProgressChart').getContext('2d');
+    if(progressChartInstance){
+      progressChartInstance.destroy();
+      progressChartInstance = null;
     }
 
-    function loadUserProgress(username) {
-      const modalUser = document.getElementById('modalUser');
-      if (modalUser) {
-        modalUser.textContent = `Course Progress for ${username}`;
-      }
-      const modal = document.getElementById('progressModal');
-      modal.style.display = 'flex';
+    const labels = Object.keys(currentUserProgress);
+    const data = labels.map(c => currentUserProgress[c].length);
+    const bgColors = [
+      '#3574e6', '#56b881', '#ef476f', '#ffd166',
+      '#06d6a0', '#118ab2', '#b388eb', '#f78fb3'
+    ];
 
-      currentUserProgress = null;
-      const progressTable = document.getElementById('progressTable');
-      const progressTableBody = document.getElementById('progressTableBody');
-      progressTable.hidden = true;
-      progressTableBody.innerHTML = '';
+    progressChartInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: labels.length > 0 ? labels : ['No Progress'],
+        datasets: [{
+          data: data.length > 0 ? data : [1],
+          backgroundColor: bgColors.slice(0, labels.length),
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {display: true, position: 'bottom'},
+          datalabels: {
+            color: '#fff',
+            font: {weight: 'bold', size: 14},
+            formatter: (value, context) => {
+              const total = context.chart._metasets[context.datasetIndex].total;
+              if(total === 0) return '0%';
+              return ((value / total) * 100).toFixed(1) + '%';
+            }
+          }
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  }
 
-      // Hide the new tables and charts too (will be shown by renderers)
-      document.getElementById('userCourseProgressTable').hidden = true;
+  function updateCourseSummaryDropdown() {
+    const select = document.getElementById('courseSummarySelect');
+    select.innerHTML = '';
+    Object.keys(courseTotals).forEach(course => {
+      const opt = document.createElement('option');
+      opt.value = course;
+      opt.textContent = course;
+      select.appendChild(opt);
+    });
+    if(Object.keys(courseTotals).length > 0) {
+      select.value = Object.keys(courseTotals)[0];
+      document.getElementById('courseSummaryTable').style.display = '';
+    }
+  }
 
-      if (userCoursePieInstance) {
-        userCoursePieInstance.destroy();
-        userCoursePieInstance = null;
-      }
-      document.getElementById('userCoursePieChart').getContext('2d').clearRect(0,0,310,280);
-
-      // Also clear and hide new summary table and pie
+  function updateCourseSummary(course) {
+    if(!currentUserProgress){
       document.getElementById('courseSummaryTable').style.display = 'none';
-      document.getElementById('courseSummaryPie').getContext('2d').clearRect(0,0,280,250);
-      if (courseSummaryPieInstance){
+      if(courseSummaryPieInstance){
         courseSummaryPieInstance.destroy();
         courseSummaryPieInstance = null;
       }
-      document.getElementById('courseSummarySelect').innerHTML = '';
-
-      fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`)
-        .then(res => res.json())
-        .then(prog => {
-          currentUserProgress = prog;
-          const courses = Object.keys(prog);
-          if (courses.length === 0) {
-            progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
-          } else {
-            progressTableBody.innerHTML = courses.map(course => {
-              const taskCount = prog[course].length;
-              return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
-            }).join('');
-          }
-          progressTable.hidden = false;
-          renderProgressChart();
-
-          renderCourseTaskTable();
-
-          // Pick a reasonable default to show a pie chart:
-          let firstCourse = Object.keys(courseTotals)[0];
-          if (courses.length > 0) {
-            for (const c of courses) {
-              if (courseTotals[c] !== undefined) { firstCourse = c; break; }
-            }
-          }
-          renderUserCoursePieChart(firstCourse);
-
-          // Add click handler for pie charts on course rows
-          setTimeout(() => {
-            Array.from(document.querySelectorAll('#userCourseProgressBody tr')).forEach(row => {
-              row.onclick = () => {
-                const course = row.getAttribute('data-course');
-                renderUserCoursePieChart(course);
-              }
-            });
-          }, 0);
-
-          // Setup course summary dropdown and initial display
-          updateCourseSummaryDropdown();
-          const dropdown = document.getElementById('courseSummarySelect');
-          if (dropdown.value)
-            updateCourseSummary(dropdown.value);
-
-        })
-        .catch(() => {
-          progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
-          progressTable.hidden = false;
-        });
+      return;
     }
 
-    function renderProgressChart() {
-      if (!currentUserProgress) return;
-      const ctx = document.getElementById('userProgressChart').getContext('2d');
-      if (progressChartInstance) {
-        progressChartInstance.destroy();
-        progressChartInstance = null;
-      }
-      const labels = Object.keys(currentUserProgress);
-      const data = labels.map(l => currentUserProgress[l].length);
-      const bgColors = [
-        '#3574e6', '#56b881', '#ef476f', '#ffd166',
-        '#06d6a0', '#118ab2', '#b388eb', '#f78fb3'
-      ];
-      progressChartInstance = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: labels.length > 0 ? labels : ['No Progress'],
-          datasets: [{
-            data: data.length > 0 ? data : [1],
-            backgroundColor: bgColors.slice(0, labels.length),
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: true, position: 'bottom' },
-            datalabels: {
-              color: '#fff',
-              font: { weight: 'bold', size: 14 },
-              formatter: (value, context) => {
-                const total = context.chart._metasets[context.datasetIndex].total;
-                if (total === 0) return '0%';
-                return ((value / total) * 100).toFixed(1) + '%';
-              },
-            }
+    document.getElementById('courseSummaryTable').style.display = '';
+
+    const total = courseTotals[course] ?? 0;
+    const completed = (currentUserProgress && currentUserProgress[course]) ? currentUserProgress[course].length : 0;
+
+    document.getElementById('summaryCourse').textContent = course;
+    document.getElementById('summaryTotal').textContent = total;
+    document.getElementById('summaryCompleted').textContent = completed;
+
+    const ctx = document.getElementById('courseSummaryPie').getContext('2d');
+    if(courseSummaryPieInstance) courseSummaryPieInstance.destroy();
+
+    courseSummaryPieInstance = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Completed', 'Remaining'],
+        datasets: [{
+          data: [completed, total - completed],
+          backgroundColor: ['#56b881', '#dbdef8']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {display: true, position: 'bottom'},
+          datalabels: {
+            color: '#23263a',
+            font: {weight: 'bold'},
+            formatter: v => v,
           }
-        },
-        plugins: [ChartDataLabels]
-      });
-    }
-
-    // New functions for course summary dropdown and summary table + pie chart
-    function updateCourseSummaryDropdown() {
-      const select = document.getElementById('courseSummarySelect');
-      select.innerHTML = '';
-
-      Object.keys(courseTotals).forEach(course => {
-        const opt = document.createElement('option');
-        opt.value = course;
-        opt.textContent = course;
-        select.appendChild(opt);
-      });
-
-      if (Object.keys(courseTotals).length > 0) {
-        select.value = Object.keys(courseTotals)[0];
-        document.getElementById('courseSummaryTable').style.display = '';
-      }
-    }
-
-    function updateCourseSummary(course) {
-      if (!currentUserProgress) {
-        document.getElementById('courseSummaryTable').style.display = 'none';
-        if (courseSummaryPieInstance) {
-          courseSummaryPieInstance.destroy();
-          courseSummaryPieInstance = null;
         }
-        return;
-      }
-      document.getElementById('courseSummaryTable').style.display = '';
+      },
+      plugins: [ChartDataLabels]
+    });
+  }
 
-      const total = courseTotals[course] ?? 0;
-      const completed = (currentUserProgress && currentUserProgress[course]) ? currentUserProgress[course].length : 0;
-      document.getElementById('summaryCourse').textContent = course;
-      document.getElementById('summaryTotal').textContent = total;
-      document.getElementById('summaryCompleted').textContent = completed;
+  async function loadUserProgress(username){
+    const modalUser = document.getElementById('modalUser');
+    modalUser.textContent = `Course Progress for ${username}`;
+    const modal = document.getElementById('progressModal');
+    modal.style.display = 'flex';
 
-      const ctx = document.getElementById('courseSummaryPie').getContext('2d');
-      if (courseSummaryPieInstance) courseSummaryPieInstance.destroy();
-      courseSummaryPieInstance = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ['Completed', 'Remaining'],
-          datasets: [{
-            data: [completed, total - completed],
-            backgroundColor: ['#56b881', '#dbdef8']
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: { display: true, position:'bottom' },
-            datalabels: {
-              color: '#23263a',
-              font: { weight: 'bold' },
-              formatter: (v) => v,
-            }
-          }
-        },
-        plugins: [ChartDataLabels]
-      });
+    currentUserProgress = null;
+    const progressTable = document.getElementById('progressTable');
+    const progressTableBody = document.getElementById('progressTableBody');
+    progressTable.hidden = true;
+    progressTableBody.innerHTML = '';
+
+    document.getElementById('userCourseProgressTable').hidden = true;
+
+    if(userCoursePieInstance){
+      userCoursePieInstance.destroy();
+      userCoursePieInstance = null;
     }
+    document.getElementById('userCoursePieChart').getContext('2d').clearRect(0,0,310,280);
 
-    // Event delegation for dropdown change
-    document.addEventListener('change', function(e) {
-      if (e.target && e.target.id === 'courseSummarySelect') {
-        updateCourseSummary(e.target.value);
+    document.getElementById('courseSummaryTable').style.display = 'none';
+    document.getElementById('courseSummaryPie').getContext('2d').clearRect(0,0,280,250);
+    if(courseSummaryPieInstance){
+      courseSummaryPieInstance.destroy();
+      courseSummaryPieInstance = null;
+    }
+    document.getElementById('courseSummarySelect').innerHTML = '';
+
+    try {
+      const res = await fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`);
+      if(!res.ok) throw new Error("Failed to fetch user progress");
+      const prog = await res.json();
+      currentUserProgress = prog;
+      const courses = Object.keys(prog);
+      if(courses.length === 0) {
+        progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
+      } else {
+        progressTableBody.innerHTML = courses.map(course => {
+          const taskCount = prog[course].length;
+          return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
+        }).join('');
       }
-    });
+      progressTable.hidden = false;
 
-    document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('user-link')) {
-        e.preventDefault();
-        const username = e.target.getAttribute('data-username');
-        loadUserProgress(username);
+      renderProgressChart();
+
+      renderCourseTaskTable();
+
+      // Pick a default course for pie chart (prefer one with data)
+      let firstCourse = Object.keys(courseTotals)[0];
+      if(courses.length>0){
+        for(const c of courses){
+          if(courseTotals[c] !== undefined){
+            firstCourse = c;
+            break;
+          }
+        }
       }
-    });
+      renderUserCoursePieChart(firstCourse);
 
-    document.getElementById("searchInput").addEventListener("input", applySearchAndSort);
-    document.getElementById("sortSelect").addEventListener("change", applySearchAndSort);
+      // Setup click handlers on course progress rows to update pie chart
+      setTimeout(() => {
+        Array.from(document.querySelectorAll('#userCourseProgressBody tr')).forEach(row => {
+          row.onclick = () => {
+            const course = row.getAttribute('data-course');
+            renderUserCoursePieChart(course);
+          };
+          row.style.cursor = 'pointer';
+          row.setAttribute('tabindex', '0');
+          row.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              const course = e.currentTarget.getAttribute('data-course');
+              renderUserCoursePieChart(course);
+            }
+          });
+        });
+      }, 0);
 
-    loadBoard();
-  </script>
+      // Setup course summary dropdown and show initial summary data
+      updateCourseSummaryDropdown();
+      const dropdown = document.getElementById('courseSummarySelect');
+      if(dropdown.value) updateCourseSummary(dropdown.value);
+
+    } catch(e) {
+      progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
+      progressTable.hidden = false;
+      console.error(e);
+    }
+  }
+
+  // Event listeners
+
+  document.addEventListener('click', function(e){
+    if(e.target.classList.contains('user-link')){
+      e.preventDefault();
+      loadUserProgress(e.target.getAttribute('data-username'));
+    }
+  });
+
+  document.getElementById("searchInput").addEventListener("input", applySearchAndSort);
+  document.getElementById("sortSelect").addEventListener("change", applySearchAndSort);
+
+  document.addEventListener('change', function(e){
+    if(e.target.id === 'courseSummarySelect'){
+      updateCourseSummary(e.target.value);
+    }
+  });
+
+  loadBoard();
+</script>
 </body>
 </html>
