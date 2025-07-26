@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
 import os
+import logging
 
 # ------------------ MongoDB Connection ------------------
 
@@ -31,7 +32,7 @@ class RegisterData(BaseModel):
     username: str
     password: str
     email: str
-    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6 digit numeric string
+    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6-digit numeric string
 
 class LoginData(BaseModel):
     username: str
@@ -54,9 +55,9 @@ def register(user: RegisterData):
         return {"message": "Username already exists."}
     users_collection.insert_one({
         "username": user.username,
-        "password": user.password,  # In real use, hash passwords instead of storing plain text
+        "password": user.password,  # In production, hash passwords instead of storing plain text.
         "email": user.email,
-        "securityKey": user.securityKey,
+        "securityKey": str(user.securityKey).strip(),  # Enforce string and strip spaces
         "progress": {},
         "total_completed": 0
     })
@@ -135,7 +136,6 @@ def get_progress(user: dict):
 
 @app.get("/courses/meta")
 def courses_meta():
-    # Updated course list with 10 tasks each
     return {
         "ai": 30,
         "ml": 30,
@@ -156,13 +156,21 @@ def courses_meta():
 def forgot_password(data: ForgotPasswordData):
     user = users_collection.find_one({"username": data.username})
     if not user:
+        logging.warning(f"Forgot password failed: no user for username {data.username}")
         return {"message": "Invalid username or security key."}
-    if user.get("securityKey") == data.securityKey:
-        # WARNING: Returning password in plaintext is NOT safe for production
+
+    stored_key = str(user.get("securityKey")).strip()
+    provided_key = str(data.securityKey).strip()
+
+    logging.info(f"Forgot password check for {data.username}: stored_key={stored_key}, provided_key={provided_key}")
+
+    if stored_key == provided_key:
+        # WARNING: Returning plain text password is insecure for real apps.
         return {
             "message": "success",
             "password": user.get("password", "")
         }
+    logging.warning(f"Forgot password failed: security key mismatch for {data.username}")
     return {"message": "Invalid username or security key."}
 
 # ------------------ Uvicorn Entry Point ------------------
