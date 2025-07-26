@@ -1259,10 +1259,17 @@ class HTMLLearningGame {
     }
   }
   
-  // MongoDB Integration - Submit Task Completion
+  // FIXED: MongoDB Integration - Submit Task Completion with proper EXP calculation
   async submitTask() {
     const taskId = this.currentTask;
     const task = this.tasks[taskId];
+    
+    // FIXED: Check if task is already completed to prevent duplicate EXP
+    if (this.gameState.completedTasks.has(taskId)) {
+      console.warn('Task already completed, not adding EXP again');
+      this.showTaskAnswer();
+      return;
+    }
     
     // Check if user is logged in
     let username = localStorage.getItem("username");
@@ -1272,12 +1279,17 @@ class HTMLLearningGame {
       return;
     }
 
-    // Add to completed tasks locally first
+    // FIXED: Add to completed tasks and EXP only once
     this.gameState.completedTasks.add(taskId);
     this.gameState.exp += task.exp;
     delete this.gameState.editorContent[taskId];
+    
+    // Save state immediately
     this.saveGameState();
     this.updateUI();
+
+    // Debug log to track EXP calculation
+    console.log(`Task ${taskId} completed. Added ${task.exp} EXP. Total EXP: ${this.gameState.exp}`);
 
     // Send completion to MongoDB via API
     try {
@@ -1286,7 +1298,7 @@ class HTMLLearningGame {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           username: username,
-          course: "html", // Changed from "python" to "html"
+          course: "html",
           task_id: taskId
         })
       });
@@ -1514,6 +1526,21 @@ class HTMLLearningGame {
       console.error('Error in downloadCertificate:', error);
       alert('Error generating certificate. Please try again.');
     }
+  }
+
+  // FIXED: Add method to reset all game data (for debugging)
+  resetGameData() {
+    this.gameState = {
+      exp: 0,
+      completedTasks: new Set(),
+      unlockedSolutions: new Set(),
+      failedAttempts: {},
+      theme: 'light',
+      editorContent: {}
+    };
+    this.saveGameState();
+    this.updateUI();
+    console.log('Game data reset successfully');
   }
 }
 
