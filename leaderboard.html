@@ -379,7 +379,6 @@
       <input type="text" id="searchInput" aria-label="Search user" placeholder="🔍 Search user..." />
       <select id="sortSelect" aria-label="Sort leaderboard">
         <option value="rank">Sort by Rank</option>
-        <option value="user">Sort by User</option>
         <option value="score">Sort by Score</option>
       </select>
       <span class="spacer" aria-hidden="true"></span>
@@ -549,7 +548,7 @@
       if(!res.ok) throw new Error("Failed to fetch course totals");
       courseTotals = await res.json();
     } catch {
-      // fallback if API down - match your courses with 10 tasks each
+      // fallback if API down - match your courses with 30 tasks each
       courseTotals = {
         "ai": 30,
         "ml": 30,
