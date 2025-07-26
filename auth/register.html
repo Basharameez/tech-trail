@@ -1,394 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Signup - Tech In My Style</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    :root {
-      --primary-color: #2d6ba9;
-      --accent-color: #007bff;
-      --gradient: linear-gradient(135deg, #4facfe, #00f2fe);
-      --light-bg: #f5f9ff;
-      --input-border: #cbd5e0;
-      --error-color: #e63946;
-      --success-color: #2ecc71;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: var(--light-bg);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 16px;
-    }
-    .form-box, #forgotPasswordSection {
-      background: #fff;
-      padding: 36px 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      width: 360px;
-      max-width: 100%;
-      transition: opacity 0.3s ease;
-    }
-    .form-box h2, #forgotPasswordSection h3 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 24px;
-    }
-    .input-group {
-      position: relative;
-      margin-bottom: 20px;
-    }
-    .input-group input {
-      width: 100%;
-      padding: 12px 14px;
-      font-size: 15px;
-      border: 1px solid var(--input-border);
-      border-radius: 8px;
-    }
-    .input-group label {
-      position: absolute;
-      top: 50%;
-      left: 14px;
-      transform: translateY(-50%);
-      background: #fff;
-      padding: 0 6px;
-      font-size: 14px;
-      color: #777;
-      transition: 0.2s ease;
-      pointer-events: none;
-    }
-    .input-group input:focus + label,
-    .input-group input:not(:placeholder-shown) + label {
-      top: 0;
-      font-size: 12px;
-      color: var(--accent-color);
-    }
-    .input-group .error-msg {
-      color: var(--error-color);
-      font-size: 12px;
-      margin-top: 4px;
-      min-height: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background: var(--gradient);
-      color: white;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s ease;
-    }
-    button:hover:not(:disabled) {
-      background: linear-gradient(135deg, #00aaff, #008ecc);
-    }
-    button:disabled {
-      background: #8fcafc;
-      cursor: not-allowed;
-    }
-    #status, #fpStatus {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 14px;
-      min-height: 20px;
-      user-select: none;
-    }
-    a {
-      display: block;
-      text-align: center;
-      margin-top: 18px;
-      font-size: 14px;
-      color: #555;
-      cursor: pointer;
-      user-select: none;
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-    a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
-    /* Hide forgot password section by default */
-    #forgotPasswordSection {
-      display: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>Signup - Tech In My Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --primary-color: #2d6ba9;
+  --accent-color: #007bff;
+  --gradient: linear-gradient(135deg, #4facfe, #00f2fe);
+  --light-bg: #f5f9ff;
+  --input-border: #cbd5e0;
+  --error-color: #e63946;
+  --success-color: #2ecc71;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--light-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+.form-box, #forgotPasswordSection {
+  background: #fff;
+  padding: 36px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  max-width: 100%;
+  transition: opacity 0.3s ease;
+}
+.form-box h2, #forgotPasswordSection h3 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+}
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  background: #fff;
+  padding: 0 6px;
+  font-size: 14px;
+  color: #777;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 12px;
+  color: var(--accent-color);
+}
+.input-group .error-msg {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 16px;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  background: var(--gradient);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+}
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #00aaff, #008ecc);
+}
+button:disabled {
+  background: #8fcafc;
+  cursor: not-allowed;
+}
+#status, #fpStatus {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  min-height: 20px;
+  user-select: none;
+}
+a {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+/* Hide forgot password section by default */
+#forgotPasswordSection {
+  display: none;
+}
+</style>
 </head>
 <body>
-  <div class="form-box" id="signupFormBox" aria-live="polite" aria-label="Create Account Form">
-    <h2>Create Account</h2>
-    <div class="input-group">
-      <input id="username" placeholder=" " required autocomplete="off" aria-describedby="username-error" />
-      <label for="username">Username</label>
-      <div class="error-msg" id="username-error"></div>
-    </div>
-    <div class="input-group">
-      <input id="email" type="email" placeholder=" " required autocomplete="off" aria-describedby="email-error" />
-      <label for="email">Email</label>
-      <div class="error-msg" id="email-error"></div>
-    </div>
-    <div class="input-group">
-      <input id="password" type="password" placeholder=" " required autocomplete="off" aria-describedby="password-error" />
-      <label for="password">Password</label>
-      <div class="error-msg" id="password-error"></div>
-    </div>
-    <div class="input-group">
-      <input id="securityKey" type="text" maxlength="6" placeholder=" " required autocomplete="off" aria-describedby="securityKey-error" pattern="\d{6}" />
-      <label for="securityKey">Security Key (6-digit)</label>
-      <div class="error-msg" id="securityKey-error"></div>
-    </div>
-    <button onclick="register()" id="registerBtn">Sign Up</button>
-    <p id="status" role="alert" aria-live="assertive"></p>
-    <a href="#" id="forgotPwdLink">Forgot Password?</a>
+<div class="form-box" id="signupFormBox" aria-live="polite" aria-label="Create Account Form">
+  <h2>Create Account</h2>
+  <div class="input-group">
+    <input id="username" placeholder=" " required autocomplete="off" aria-describedby="username-error" />
+    <label for="username">Username</label>
+    <div class="error-msg" id="username-error"></div>
   </div>
-
-  <div id="forgotPasswordSection" aria-live="polite" aria-label="Forgot Password Form">
-    <h3>Retrieve Password</h3>
-    <div class="input-group">
-      <input id="fpUsername" placeholder=" " autocomplete="off" aria-describedby="fpUsername-error" />
-      <label for="fpUsername">Username</label>
-      <div class="error-msg" id="fpUsername-error"></div>
-    </div>
-    <div class="input-group">
-      <input id="fpSecurityKey" type="text" maxlength="6" placeholder=" " autocomplete="off" aria-describedby="fpSecurityKey-error" />
-      <label for="fpSecurityKey">Security Key (6-digit)</label>
-      <div class="error-msg" id="fpSecurityKey-error"></div>
-    </div>
-    <button onclick="retrievePassword()" id="retrieveBtn">Retrieve Password</button>
-    <p id="fpStatus" role="alert" aria-live="assertive"></p>
-    <p>
-      <a href="#" id="backToSignup">Back to Signup</a>
-    </p>
+  <div class="input-group">
+    <input id="email" type="email" placeholder=" " required autocomplete="off" aria-describedby="email-error" />
+    <label for="email">Email</label>
+    <div class="error-msg" id="email-error"></div>
   </div>
+  <div class="input-group">
+    <input id="password" type="password" placeholder=" " required autocomplete="off" aria-describedby="password-error" />
+    <label for="password">Password</label>
+    <div class="error-msg" id="password-error"></div>
+  </div>
+  <div class="input-group">
+    <input id="securityKey" type="text" maxlength="6" placeholder=" " required autocomplete="off" aria-describedby="securityKey-error" pattern="\d{6}" />
+    <label for="securityKey">Security Key (6-digit)</label>
+    <div class="error-msg" id="securityKey-error"></div>
+  </div>
+  <button onclick="register()" id="registerBtn">Sign Up</button>
 
-  <script>
-    const registerBtn = document.getElementById('registerBtn');
-    const retrieveBtn = document.getElementById('retrieveBtn');
+  <!-- Added Already have account link -->
+  <a id="alreadyHaveAccountLink">Already have an account? Sign In</a>
 
-    // Validation Functions
-    function validateUsername(username) {
-      if (!username) return "Username is required.";
-      if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
-        return "Username must be at least 3 characters (letters/numbers only).";
+  <p id="status" role="alert" aria-live="assertive"></p>
+  <a href="#" id="forgotPwdLink">Forgot Password?</a>
+</div>
+<div id="forgotPasswordSection" aria-live="polite" aria-label="Forgot Password Form">
+  <h3>Retrieve Password</h3>
+  <div class="input-group">
+    <input id="fpUsername" placeholder=" " autocomplete="off" aria-describedby="fpUsername-error" />
+    <label for="fpUsername">Username</label>
+    <div class="error-msg" id="fpUsername-error"></div>
+  </div>
+  <div class="input-group">
+    <input id="fpSecurityKey" type="text" maxlength="6" placeholder=" " autocomplete="off" aria-describedby="fpSecurityKey-error" />
+    <label for="fpSecurityKey">Security Key (6-digit)</label>
+    <div class="error-msg" id="fpSecurityKey-error"></div>
+  </div>
+  <button onclick="retrievePassword()" id="retrieveBtn">Retrieve Password</button>
+  <p id="fpStatus" role="alert" aria-live="assertive"></p>
+  <p>
+    <a href="#" id="backToSignup">Back to Signup</a>
+  </p>
+</div>
+<script>
+const registerBtn = document.getElementById('registerBtn');
+const retrieveBtn = document.getElementById('retrieveBtn');
+const alreadyHaveAccountLink = document.getElementById('alreadyHaveAccountLink');
+
+// Redirect to login.html when "Already have an account? Sign In" is clicked
+alreadyHaveAccountLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.href = 'login.html';
+});
+
+// Validation Functions
+function validateUsername(username) {
+  if (!username) return "Username is required.";
+  if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
+    return "Username must be at least 3 characters (letters/numbers only).";
+  }
+  return "";
+}
+function validateEmail(email) {
+  if (!email) return "Email is required.";
+  // Basic email regex
+  if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email)) {
+    return "Enter a valid email address.";
+  }
+  return "";
+}
+function validatePassword(password) {
+  if (!password) return "Password is required.";
+  if (password.length < 8) return "Password must be at least 8 characters.";
+  if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+    return "Password needs letters and numbers.";
+  }
+  return "";
+}
+function validateSecurityKey(key) {
+  if (!key) return "Security key is required.";
+  if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
+  return "";
+}
+function showError(inputId, message) {
+  document.getElementById(inputId + "-error").textContent = message;
+}
+function clearErrors() {
+  showError("username", "");
+  showError("email", "");
+  showError("password", "");
+  showError("securityKey", "");
+  document.getElementById('status').textContent = '';
+}
+// Real-time validation
+document.getElementById("username").addEventListener("input", function() {
+  showError("username", validateUsername(this.value.trim()));
+});
+document.getElementById("email").addEventListener("input", function() {
+  showError("email", validateEmail(this.value.trim()));
+});
+document.getElementById("password").addEventListener("input", function() {
+  showError("password", validatePassword(this.value));
+});
+document.getElementById("securityKey").addEventListener("input", function() {
+  showError("securityKey", validateSecurityKey(this.value.trim()));
+});
+function register() {
+  clearErrors();
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const securityKey = document.getElementById("securityKey").value.trim();
+  const status = document.getElementById("status");
+  let isValid = true;
+  const userErr = validateUsername(username);
+  const mailErr = validateEmail(email);
+  const passErr = validatePassword(password);
+  const keyErr = validateSecurityKey(securityKey);
+  if (userErr) { showError("username", userErr); isValid = false; }
+  if (mailErr) { showError("email", mailErr); isValid = false; }
+  if (passErr) { showError("password", passErr); isValid = false; }
+  if (keyErr) { showError("securityKey", keyErr); isValid = false; }
+  if (!isValid) {
+    status.style.color = "var(--error-color)";
+    status.textContent = "Please fix the errors above.";
+    return;
+  }
+  status.style.color = "";
+  status.textContent = "Registering...";
+  registerBtn.disabled = true;
+  fetch("https://tech-trail-w2ap.onrender.com/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, email, password, securityKey })
+  })
+  .then(res => res.json())
+  .then(data => {
+    registerBtn.disabled = false;
+    if (data.message === "success") {
+      status.style.color = "var(--success-color)";
+      status.textContent = "Signup successful! Redirecting...";
+      localStorage.setItem("username", username);
+      setTimeout(() => window.location.href = "login.html", 1000);
+    } else {
+      status.style.color = "var(--error-color)";
+      // Show specific input error if present
+      if (data.message.toLowerCase().includes("email")) {
+        showError("email", data.message);
+      } else if (data.message.toLowerCase().includes("username")) {
+        showError("username", data.message);
+      } else if (data.message.toLowerCase().includes("security")) {
+        showError("securityKey", data.message);
       }
-      return "";
+      status.textContent = data.message;
     }
-
-    function validateEmail(email) {
-      if (!email) return "Email is required.";
-      // Basic email regex
-      if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email)) {
-        return "Enter a valid email address.";
-      }
-      return "";
+  })
+  .catch(() => {
+    registerBtn.disabled = false;
+    status.style.color = "var(--error-color)";
+    status.textContent = "Server error. Please try again.";
+  });
+}
+// Forgot Password Section Logic
+const forgotPwdLink = document.getElementById('forgotPwdLink');
+const backToSignup = document.getElementById('backToSignup');
+const signupFormBox = document.getElementById('signupFormBox');
+const forgotPasswordSection = document.getElementById('forgotPasswordSection');
+forgotPwdLink.addEventListener('click', e => {
+  e.preventDefault();
+  signupFormBox.style.display = 'none';
+  forgotPasswordSection.style.display = 'block';
+  clearFPFieldsAndErrors();
+});
+backToSignup.addEventListener('click', e => {
+  e.preventDefault();
+  forgotPasswordSection.style.display = 'none';
+  signupFormBox.style.display = 'block';
+  clearErrors();
+  document.getElementById('fpStatus').textContent = '';
+});
+function validateFPUsername(username) {
+  if (!username) return "Username is required.";
+  return "";
+}
+function validateFPSecurityKey(key) {
+  if (!key) return "Security key is required.";
+  if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
+  return "";
+}
+function showFPError(id, msg) {
+  document.getElementById(id + "-error").textContent = msg;
+}
+function clearFPErrors() {
+  showFPError("fpUsername", "");
+  showFPError("fpSecurityKey", "");
+  document.getElementById('fpStatus').textContent = '';
+}
+function clearFPFieldsAndErrors() {
+  document.getElementById('fpUsername').value = '';
+  document.getElementById('fpSecurityKey').value = '';
+  clearFPErrors();
+}
+// Real-time validation on forgot password inputs
+document.getElementById("fpUsername").addEventListener("input", function() {
+  showFPError("fpUsername", validateFPUsername(this.value.trim()));
+});
+document.getElementById("fpSecurityKey").addEventListener("input", function() {
+  showFPError("fpSecurityKey", validateFPSecurityKey(this.value.trim()));
+});
+function retrievePassword() {
+  clearFPErrors();
+  const username = document.getElementById('fpUsername').value.trim();
+  const securityKey = document.getElementById('fpSecurityKey').value.trim();
+  const status = document.getElementById('fpStatus');
+  let isValid = true;
+  const userErr = validateFPUsername(username);
+  const keyErr = validateFPSecurityKey(securityKey);
+  if (userErr){ showFPError('fpUsername', userErr); isValid = false; }
+  if (keyErr){ showFPError('fpSecurityKey', keyErr); isValid = false; }
+  if (!isValid) {
+    status.style.color = "var(--error-color)";
+    status.textContent = "Please fix the errors above.";
+    return;
+  }
+  status.style.color = "";
+  status.textContent = "Checking...";
+  retrieveBtn.disabled = true;
+  fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ username, securityKey })
+  })
+  .then(res => res.json())
+  .then(data => {
+    retrieveBtn.disabled = false;
+    if (data.message === "success" && data.password) {
+      status.style.color = "var(--primary-color)";
+      status.innerHTML = `Your password is: <strong>${data.password}</strong>`;
+    } else {
+      status.style.color = "var(--error-color)";
+      status.textContent = data.message || "Incorrect username or security key.";
     }
-
-    function validatePassword(password) {
-      if (!password) return "Password is required.";
-      if (password.length < 8) return "Password must be at least 8 characters.";
-      if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
-        return "Password needs letters and numbers.";
-      }
-      return "";
-    }
-
-    function validateSecurityKey(key) {
-      if (!key) return "Security key is required.";
-      if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
-      return "";
-    }
-
-    function showError(inputId, message) {
-      document.getElementById(inputId + "-error").textContent = message;
-    }
-    function clearErrors() {
-      showError("username", "");
-      showError("email", "");
-      showError("password", "");
-      showError("securityKey", "");
-      document.getElementById('status').textContent = '';
-    }
-    // Real-time validation
-    document.getElementById("username").addEventListener("input", function() {
-      showError("username", validateUsername(this.value.trim()));
-    });
-    document.getElementById("email").addEventListener("input", function() {
-      showError("email", validateEmail(this.value.trim()));
-    });
-    document.getElementById("password").addEventListener("input", function() {
-      showError("password", validatePassword(this.value));
-    });
-    document.getElementById("securityKey").addEventListener("input", function() {
-      showError("securityKey", validateSecurityKey(this.value.trim()));
-    });
-
-    function register() {
-      clearErrors();
-
-      const username = document.getElementById("username").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-      const securityKey = document.getElementById("securityKey").value.trim();
-      const status = document.getElementById("status");
-
-      let isValid = true;
-      const userErr = validateUsername(username);
-      const mailErr = validateEmail(email);
-      const passErr = validatePassword(password);
-      const keyErr = validateSecurityKey(securityKey);
-
-      if (userErr) { showError("username", userErr); isValid = false; }
-      if (mailErr) { showError("email", mailErr); isValid = false; }
-      if (passErr) { showError("password", passErr); isValid = false; }
-      if (keyErr) { showError("securityKey", keyErr); isValid = false; }
-
-      if (!isValid) {
-        status.style.color = "var(--error-color)";
-        status.textContent = "Please fix the errors above.";
-        return;
-      }
-
-      status.style.color = "";
-      status.textContent = "Registering...";
-      registerBtn.disabled = true;
-
-      fetch("https://tech-trail-w2ap.onrender.com/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password, securityKey })
-      })
-      .then(res => res.json())
-      .then(data => {
-        registerBtn.disabled = false;
-        if (data.message === "success") {
-          status.style.color = "var(--success-color)";
-          status.textContent = "Signup successful! Redirecting...";
-          localStorage.setItem("username", username);
-          setTimeout(() => window.location.href = "login.html", 1000);
-        } else {
-          status.style.color = "var(--error-color)";
-          // Show specific input error if present
-          if (data.message.toLowerCase().includes("email")) {
-            showError("email", data.message);
-          } else if (data.message.toLowerCase().includes("username")) {
-            showError("username", data.message);
-          } else if (data.message.toLowerCase().includes("security")) {
-            showError("securityKey", data.message);
-          }
-          status.textContent = data.message;
-        }
-      })
-      .catch(() => {
-        registerBtn.disabled = false;
-        status.style.color = "var(--error-color)";
-        status.textContent = "Server error. Please try again.";
-      });
-    }
-
-    // Forgot Password Section Logic
-    const forgotPwdLink = document.getElementById('forgotPwdLink');
-    const backToSignup = document.getElementById('backToSignup');
-    const signupFormBox = document.getElementById('signupFormBox');
-    const forgotPasswordSection = document.getElementById('forgotPasswordSection');
-
-    forgotPwdLink.addEventListener('click', e => {
-      e.preventDefault();
-      signupFormBox.style.display = 'none';
-      forgotPasswordSection.style.display = 'block';
-      clearFPFieldsAndErrors();
-    });
-    backToSignup.addEventListener('click', e => {
-      e.preventDefault();
-      forgotPasswordSection.style.display = 'none';
-      signupFormBox.style.display = 'block';
-      clearErrors();
-      document.getElementById('fpStatus').textContent = '';
-    });
-
-    function validateFPUsername(username) {
-      if (!username) return "Username is required.";
-      return "";
-    }
-    function validateFPSecurityKey(key) {
-      if (!key) return "Security key is required.";
-      if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
-      return "";
-    }
-
-    function showFPError(id, msg) {
-      document.getElementById(id + "-error").textContent = msg;
-    }
-    function clearFPErrors() {
-      showFPError("fpUsername", "");
-      showFPError("fpSecurityKey", "");
-      document.getElementById('fpStatus').textContent = '';
-    }
-    function clearFPFieldsAndErrors() {
-      document.getElementById('fpUsername').value = '';
-      document.getElementById('fpSecurityKey').value = '';
-      clearFPErrors();
-    }
-
-    // Real-time validation on forgot password inputs
-    document.getElementById("fpUsername").addEventListener("input", function() {
-      showFPError("fpUsername", validateFPUsername(this.value.trim()));
-    });
-    document.getElementById("fpSecurityKey").addEventListener("input", function() {
-      showFPError("fpSecurityKey", validateFPSecurityKey(this.value.trim()));
-    });
-
-    function retrievePassword() {
-      clearFPErrors();
-      const username = document.getElementById('fpUsername').value.trim();
-      const securityKey = document.getElementById('fpSecurityKey').value.trim();
-      const status = document.getElementById('fpStatus');
-
-      let isValid = true;
-      const userErr = validateFPUsername(username);
-      const keyErr = validateFPSecurityKey(securityKey);
-
-      if (userErr){ showFPError('fpUsername', userErr); isValid = false; }
-      if (keyErr){ showFPError('fpSecurityKey', keyErr); isValid = false; }
-
-      if (!isValid) {
-        status.style.color = "var(--error-color)";
-        status.textContent = "Please fix the errors above.";
-        return;
-      }
-
-      status.style.color = "";
-      status.textContent = "Checking...";
-      retrieveBtn.disabled = true;
-
-      fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ username, securityKey })
-      })
-      .then(res => res.json())
-      .then(data => {
-        retrieveBtn.disabled = false;
-        if (data.message === "success" && data.password) {
-          status.style.color = "var(--primary-color)";
-          status.innerHTML = `Your password is: <strong>${data.password}</strong>`;
-        } else {
-          status.style.color = "var(--error-color)";
-          status.textContent = data.message || "Incorrect username or security key.";
-        }
-      })
-      .catch(() => {
-        retrieveBtn.disabled = false;
-        status.style.color = "var(--error-color)";
-        status.textContent = "Server error. Please try again.";
-      });
-    }
-  </script>
+  })
+  .catch(() => {
+    retrieveBtn.disabled = false;
+    status.style.color = "var(--error-color)";
+    status.textContent = "Server error. Please try again.";
+  });
+}
+</script>
 </body>
 </html>
