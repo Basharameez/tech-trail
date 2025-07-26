@@ -1129,7 +1129,7 @@ class HTMLLearningGame {
     }
   }
   
-  // Task Modal Management
+  // Task Modal Management - FIXED: Properly reset validation state
   openTaskModal(taskId) {
     this.currentTask = taskId;
     const task = this.tasks[taskId];
@@ -1142,7 +1142,7 @@ class HTMLLearningGame {
     const savedContent = this.gameState.editorContent[taskId] || '';
     document.getElementById('codeEditor').value = savedContent;
     
-    // Reset validation state
+    // FIXED: Properly reset validation state
     this.resetValidationState();
     
     // Update solution button state
@@ -1162,13 +1162,34 @@ class HTMLLearningGame {
     this.currentTask = null;
   }
   
+  // FIXED: Properly reset all button states and feedback
   resetValidationState() {
+    const validateBtn = document.getElementById('validateCode');
     const submitBtn = document.getElementById('submitCode');
+    const showSolutionBtn = document.getElementById('showSolution');
     const feedback = document.getElementById('validationFeedback');
     
-    if (submitBtn) submitBtn.disabled = true;
-    if (feedback) feedback.style.display = 'none';
-    if (feedback) feedback.className = 'validation-feedback';
+    // Reset all buttons to enabled state
+    if (validateBtn) {
+      validateBtn.disabled = false;
+      validateBtn.textContent = 'Validate';
+    }
+    
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submit';
+    }
+    
+    if (showSolutionBtn) {
+      showSolutionBtn.disabled = true;
+    }
+    
+    // Hide feedback
+    if (feedback) {
+      feedback.style.display = 'none';
+      feedback.className = 'validation-feedback';
+      feedback.textContent = '';
+    }
   }
   
   updateSolutionButton() {
@@ -1200,7 +1221,6 @@ class HTMLLearningGame {
 
     const code = document.getElementById('codeEditor').value.trim();
     const task = this.tasks[this.currentTask];
-    const feedback = document.getElementById('validationFeedback');
     const submitBtn = document.getElementById('submitCode');
     
     if (!code) {
@@ -1233,6 +1253,9 @@ class HTMLLearningGame {
       feedback.textContent = message;
       feedback.className = `validation-feedback ${type}`;
       feedback.style.display = 'block';
+      
+      // Scroll to feedback for better visibility
+      feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }
   
