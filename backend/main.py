@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
 import os
-import logging
 
 # ------------------ MongoDB Connection ------------------
 
@@ -32,7 +31,7 @@ class RegisterData(BaseModel):
     username: str
     password: str
     email: str
-    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6-digit numeric string
+    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6 digit numeric string
 
 class LoginData(BaseModel):
     username: str
@@ -55,9 +54,9 @@ def register(user: RegisterData):
         return {"message": "Username already exists."}
     users_collection.insert_one({
         "username": user.username,
-        "password": user.password,  # In production, hash passwords instead of storing plain text.
+        "password": user.password,  # In real use, hash passwords instead of storing plain text
         "email": user.email,
-        "securityKey": str(user.securityKey).strip(),  # Enforce string and strip spaces
+        "securityKey": user.securityKey,
         "progress": {},
         "total_completed": 0
     })
@@ -136,18 +135,19 @@ def get_progress(user: dict):
 
 @app.get("/courses/meta")
 def courses_meta():
+    # Updated course list with 10 tasks each
     return {
-        "ai": 30,
-        "ml": 30,
-        "dl": 30,
-        "java": 30,
-        "c": 30,
-        "html": 30,
-        "css": 30,
-        "js": 30,
-        "js-intermediate": 30,
-        "python": 30,
-        "dsc": 30
+        "ai": 10,
+        "ml": 10,
+        "dl": 10,
+        "java": 10,
+        "c": 10,
+        "html": 10,
+        "css": 10,
+        "js": 10,
+        "js-intermediate": 10,
+        "python": 10,
+        "dsc": 10
     }
 
 # ------------------ Forgot Password Endpoint ------------------
@@ -156,21 +156,13 @@ def courses_meta():
 def forgot_password(data: ForgotPasswordData):
     user = users_collection.find_one({"username": data.username})
     if not user:
-        logging.warning(f"Forgot password failed: no user for username {data.username}")
         return {"message": "Invalid username or security key."}
-
-    stored_key = str(user.get("securityKey")).strip()
-    provided_key = str(data.securityKey).strip()
-
-    logging.info(f"Forgot password check for {data.username}: stored_key={stored_key}, provided_key={provided_key}")
-
-    if stored_key == provided_key:
-        # WARNING: Returning plain text password is insecure for real apps.
+    if user.get("securityKey") == data.securityKey:
+        # WARNING: Returning password in plaintext is NOT safe for production
         return {
             "message": "success",
             "password": user.get("password", "")
         }
-    logging.warning(f"Forgot password failed: security key mismatch for {data.username}")
     return {"message": "Invalid username or security key."}
 
 # ------------------ Uvicorn Entry Point ------------------
@@ -179,4 +171,3 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))  # Supports Render or similar env var
     uvicorn.run("main:app", host="0.0.0.0", port=port)
- 
