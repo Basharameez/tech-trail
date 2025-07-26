@@ -65,6 +65,12 @@
       font-size: 12px;
       color: var(--accent-color);
     }
+    .input-group .error-msg {
+      color: var(--error-color);
+      font-size: 12px;
+      margin-top: 4px;
+      min-height: 16px;
+    }
     button {
       width: 100%;
       padding: 12px;
@@ -93,16 +99,19 @@
   <div class="form-box">
     <h2>Create Account</h2>
     <div class="input-group">
-      <input id="username" placeholder=" " required />
+      <input id="username" placeholder=" " required autocomplete="off" />
       <label for="username">Username</label>
+      <div class="error-msg" id="username-error"></div>
     </div>
     <div class="input-group">
-      <input id="email" type="email" placeholder=" " required />
+      <input id="email" type="email" placeholder=" " required autocomplete="off"/>
       <label for="email">Email</label>
+      <div class="error-msg" id="email-error"></div>
     </div>
     <div class="input-group">
-      <input id="password" type="password" placeholder=" " required />
+      <input id="password" type="password" placeholder=" " required autocomplete="off"/>
       <label for="password">Password</label>
+      <div class="error-msg" id="password-error"></div>
     </div>
     <button onclick="register()">Sign Up</button>
     <p id="status"></p>
@@ -110,17 +119,81 @@
   </div>
 
   <script>
+    // Validation Functions
+    function validateUsername(username) {
+      if (!username) return "Username is required.";
+      if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
+        return "Username must be at least 3 characters (letters/numbers).";
+      }
+      return "";
+    }
+
+    function validateEmail(email) {
+      if (!email) return "Email is required.";
+      // Basic email regex
+      if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email)) {
+        return "Enter a valid email address.";
+      }
+      return "";
+    }
+
+    function validatePassword(password) {
+      if (!password) return "Password is required.";
+      if (password.length < 8) return "Password must be at least 8 characters.";
+      if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) {
+        return "Password needs letters and numbers.";
+      }
+      return "";
+    }
+
+    function showError(inputId, message) {
+      document.getElementById(inputId + "-error").textContent = message;
+    }
+    function clearErrors() {
+      showError("username", "");
+      showError("email", "");
+      showError("password", "");
+      document.getElementById('status').textContent = '';
+    }
+
+    // Validate in real time
+    document.getElementById("username").addEventListener("input", function() {
+      showError("username", validateUsername(this.value.trim()));
+    });
+    document.getElementById("email").addEventListener("input", function() {
+      showError("email", validateEmail(this.value.trim()));
+    });
+    document.getElementById("password").addEventListener("input", function() {
+      showError("password", validatePassword(this.value));
+    });
+
     function register() {
+      clearErrors();
+
       const username = document.getElementById("username").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
       const status = document.getElementById("status");
 
-      if (!username || !email || !password) {
+      // Validate fields
+      let isValid = true;
+      const userErr = validateUsername(username);
+      const mailErr = validateEmail(email);
+      const passErr = validatePassword(password);
+
+      if (userErr) { showError("username", userErr); isValid = false; }
+      if (mailErr) { showError("email", mailErr); isValid = false; }
+      if (passErr) { showError("password", passErr); isValid = false; }
+
+      if (!isValid) {
         status.style.color = "var(--error-color)";
-        status.textContent = "Please fill in all fields.";
+        status.textContent = "Please fix the errors above.";
         return;
       }
+
+      // Proceed with submitting
+      status.style.color = ""; // reset color
+      status.textContent = "Registering...";
 
       fetch("https://tech-trail-w2ap.onrender.com/register", {
         method: "POST",
@@ -136,6 +209,12 @@
           setTimeout(() => window.location.href = "login.html", 1000);
         } else {
           status.style.color = "var(--error-color)";
+          // Optionally show specific input error
+          if (data.message.toLowerCase().includes("email")) {
+            showError("email", data.message);
+          } else if (data.message.toLowerCase().includes("username")) {
+            showError("username", data.message);
+          }
           status.textContent = data.message;
         }
       })
