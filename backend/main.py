@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from pymongo import MongoClient
 import os
 
@@ -19,7 +19,7 @@ app = FastAPI()
 # Enable CORS for local and production frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with frontend domain in production for security
+    allow_origins=["*"],  # Replace with frontend domain(s) for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,6 +31,7 @@ class RegisterData(BaseModel):
     username: str
     password: str
     email: str
+    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6 digit numeric string
 
 class LoginData(BaseModel):
     username: str
@@ -41,6 +42,10 @@ class TaskUpdate(BaseModel):
     course: str
     task_id: str
 
+class ForgotPasswordData(BaseModel):
+    username: str
+    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")
+
 # ------------------ API Endpoints ------------------
 
 @app.post("/register")
@@ -49,8 +54,9 @@ def register(user: RegisterData):
         return {"message": "Username already exists."}
     users_collection.insert_one({
         "username": user.username,
-        "password": user.password,
+        "password": user.password,  # In real use, hash passwords instead of storing plain text
         "email": user.email,
+        "securityKey": user.securityKey,
         "progress": {},
         "total_completed": 0
     })
@@ -144,9 +150,24 @@ def courses_meta():
         "dsc": 10
     }
 
+# ------------------ Forgot Password Endpoint ------------------
+
+@app.post("/forgot-password")
+def forgot_password(data: ForgotPasswordData):
+    user = users_collection.find_one({"username": data.username})
+    if not user:
+        return {"message": "Invalid username or security key."}
+    if user.get("securityKey") == data.securityKey:
+        # WARNING: Returning password in plaintext is NOT safe for production
+        return {
+            "message": "success",
+            "password": user.get("password", "")
+        }
+    return {"message": "Invalid username or security key."}
+
 # ------------------ Uvicorn Entry Point ------------------
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # Render provides PORT env var
+    port = int(os.environ.get("PORT", 8000))  # Supports Render or similar env var
     uvicorn.run("main:app", host="0.0.0.0", port=port)
