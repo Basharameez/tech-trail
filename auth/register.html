@@ -144,6 +144,7 @@ a:hover {
   <p id="status" role="alert" aria-live="assertive"></p>
   <a href="#" id="forgotPwdLink">Forgot Password?</a>
 </div>
+
 <div id="forgotPasswordSection" aria-live="polite" aria-label="Forgot Password Form">
   <h3>Retrieve Password</h3>
   <div class="input-group">
@@ -153,10 +154,9 @@ a:hover {
   </div>
   <button onclick="retrievePassword()" id="retrieveBtn">Retrieve Password</button>
   <p id="fpStatus" role="alert" aria-live="assertive"></p>
-  <p>
-    <a href="#" id="backToSignup">Back to Signup</a>
-  </p>
+  <p><a href="#" id="backToSignup">Back to Signup</a></p>
 </div>
+
 <script>
 const registerBtn = document.getElementById('registerBtn');
 const retrieveBtn = document.getElementById('retrieveBtn');
@@ -192,6 +192,7 @@ function validatePassword(password) {
   }
   return "";
 }
+
 function showError(inputId, message) {
   document.getElementById(inputId + "-error").textContent = message;
 }
@@ -201,7 +202,8 @@ function clearErrors() {
   showError("password", "");
   document.getElementById('status').textContent = '';
 }
-// Real-time validation
+
+// Real-time validation for signup inputs
 document.getElementById("username").addEventListener("input", function() {
   showError("username", validateUsername(this.value.trim()));
 });
@@ -211,27 +213,34 @@ document.getElementById("email").addEventListener("input", function() {
 document.getElementById("password").addEventListener("input", function() {
   showError("password", validatePassword(this.value));
 });
+
 function register() {
   clearErrors();
+
   const username = document.getElementById("username").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   const status = document.getElementById("status");
+
   let isValid = true;
   const userErr = validateUsername(username);
   const mailErr = validateEmail(email);
   const passErr = validatePassword(password);
+
   if (userErr) { showError("username", userErr); isValid = false; }
   if (mailErr) { showError("email", mailErr); isValid = false; }
   if (passErr) { showError("password", passErr); isValid = false; }
+
   if (!isValid) {
     status.style.color = "var(--error-color)";
     status.textContent = "Please fix the errors above.";
     return;
   }
+
   status.style.color = "";
   status.textContent = "Registering...";
   registerBtn.disabled = true;
+
   fetch("https://tech-trail-w2ap.onrender.com/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -240,6 +249,7 @@ function register() {
   .then(res => res.json())
   .then(data => {
     registerBtn.disabled = false;
+
     if (data.message === "success") {
       status.style.color = "var(--success-color)";
       status.textContent = "Signup successful! Redirecting...";
@@ -267,12 +277,14 @@ const forgotPwdLink = document.getElementById('forgotPwdLink');
 const backToSignup = document.getElementById('backToSignup');
 const signupFormBox = document.getElementById('signupFormBox');
 const forgotPasswordSection = document.getElementById('forgotPasswordSection');
+
 forgotPwdLink.addEventListener('click', e => {
   e.preventDefault();
   signupFormBox.style.display = 'none';
   forgotPasswordSection.style.display = 'block';
   clearFPFieldsAndErrors();
 });
+
 backToSignup.addEventListener('click', e => {
   e.preventDefault();
   forgotPasswordSection.style.display = 'none';
@@ -280,6 +292,7 @@ backToSignup.addEventListener('click', e => {
   clearErrors();
   document.getElementById('fpStatus').textContent = '';
 });
+
 function validateFPEmail(email) {
   if (!email) return "Email is required.";
   if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email)) {
@@ -287,6 +300,7 @@ function validateFPEmail(email) {
   }
   return "";
 }
+
 function showFPError(id, msg) {
   document.getElementById(id + "-error").textContent = msg;
 }
@@ -294,29 +308,40 @@ function clearFPErrors() {
   showFPError("fpEmail", "");
   document.getElementById('fpStatus').textContent = '';
 }
+
 function clearFPFieldsAndErrors() {
   document.getElementById('fpEmail').value = '';
   clearFPErrors();
 }
+
 // Real-time validation on forgot password input
 document.getElementById("fpEmail").addEventListener("input", function() {
   showFPError("fpEmail", validateFPEmail(this.value.trim()));
 });
+
 function retrievePassword() {
   clearFPErrors();
+
   const email = document.getElementById('fpEmail').value.trim();
   const status = document.getElementById('fpStatus');
   let isValid = true;
+
   const mailErr = validateFPEmail(email);
-  if (mailErr){ showFPError('fpEmail', mailErr); isValid = false; }
+  if (mailErr) {
+    showFPError('fpEmail', mailErr);
+    isValid = false;
+  }
+
   if (!isValid) {
     status.style.color = "var(--error-color)";
     status.textContent = "Please fix the errors above.";
     return;
   }
+
   status.style.color = "";
   status.textContent = "Checking...";
   retrieveBtn.disabled = true;
+
   fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
@@ -325,9 +350,9 @@ function retrievePassword() {
   .then(res => res.json())
   .then(data => {
     retrieveBtn.disabled = false;
-    if (data.message === "success" && data.password) {
-      status.style.color = "var(--primary-color)";
-      status.innerHTML = `Your password is: <strong>${data.password}</strong>`;
+    if (data.message === "success") {
+      status.style.color = "var(--success-color)";
+      status.textContent = "If this email is registered, instructions to reset your password have been sent.";
     } else {
       status.style.color = "var(--error-color)";
       status.textContent = data.message || "Incorrect email address.";
