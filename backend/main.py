@@ -137,17 +137,17 @@ def get_progress(user: dict):
 def courses_meta():
     # Updated course list with 10 tasks each
     return {
-        "ai": 10,
-        "ml": 10,
-        "dl": 10,
-        "java": 10,
-        "c": 10,
-        "html": 10,
-        "css": 10,
-        "js": 10,
-        "js-intermediate": 10,
-        "python": 10,
-        "dsc": 10
+        "ai": 30,
+        "ml": 30,
+        "dl": 30,
+        "java": 30,
+        "c": 30,
+        "html": 30,
+        "css": 30,
+        "js": 30,
+        "js-intermediate": 30,
+        "python": 30,
+        "dsc": 30
     }
 
 # ------------------ Forgot Password Endpoint ------------------
