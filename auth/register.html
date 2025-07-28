@@ -139,30 +139,17 @@ a:hover {
     <label for="password">Password</label>
     <div class="error-msg" id="password-error"></div>
   </div>
-  <div class="input-group">
-    <input id="securityKey" type="text" maxlength="6" placeholder=" " required autocomplete="off" aria-describedby="securityKey-error" pattern="\d{6}" />
-    <label for="securityKey">Security Key (6-digit)</label>
-    <div class="error-msg" id="securityKey-error"></div>
-  </div>
   <button onclick="register()" id="registerBtn">Sign Up</button>
-
-  <!-- Added Already have account link -->
   <a id="alreadyHaveAccountLink">Already have an account? Sign In</a>
-
   <p id="status" role="alert" aria-live="assertive"></p>
   <a href="#" id="forgotPwdLink">Forgot Password?</a>
 </div>
 <div id="forgotPasswordSection" aria-live="polite" aria-label="Forgot Password Form">
   <h3>Retrieve Password</h3>
   <div class="input-group">
-    <input id="fpUsername" placeholder=" " autocomplete="off" aria-describedby="fpUsername-error" />
-    <label for="fpUsername">Username</label>
-    <div class="error-msg" id="fpUsername-error"></div>
-  </div>
-  <div class="input-group">
-    <input id="fpSecurityKey" type="text" maxlength="6" placeholder=" " autocomplete="off" aria-describedby="fpSecurityKey-error" />
-    <label for="fpSecurityKey">Security Key (6-digit)</label>
-    <div class="error-msg" id="fpSecurityKey-error"></div>
+    <input id="fpEmail" type="email" placeholder=" " autocomplete="off" aria-describedby="fpEmail-error" />
+    <label for="fpEmail">Email</label>
+    <div class="error-msg" id="fpEmail-error"></div>
   </div>
   <button onclick="retrievePassword()" id="retrieveBtn">Retrieve Password</button>
   <p id="fpStatus" role="alert" aria-live="assertive"></p>
@@ -205,11 +192,6 @@ function validatePassword(password) {
   }
   return "";
 }
-function validateSecurityKey(key) {
-  if (!key) return "Security key is required.";
-  if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
-  return "";
-}
 function showError(inputId, message) {
   document.getElementById(inputId + "-error").textContent = message;
 }
@@ -217,7 +199,6 @@ function clearErrors() {
   showError("username", "");
   showError("email", "");
   showError("password", "");
-  showError("securityKey", "");
   document.getElementById('status').textContent = '';
 }
 // Real-time validation
@@ -230,25 +211,19 @@ document.getElementById("email").addEventListener("input", function() {
 document.getElementById("password").addEventListener("input", function() {
   showError("password", validatePassword(this.value));
 });
-document.getElementById("securityKey").addEventListener("input", function() {
-  showError("securityKey", validateSecurityKey(this.value.trim()));
-});
 function register() {
   clearErrors();
   const username = document.getElementById("username").value.trim();
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
-  const securityKey = document.getElementById("securityKey").value.trim();
   const status = document.getElementById("status");
   let isValid = true;
   const userErr = validateUsername(username);
   const mailErr = validateEmail(email);
   const passErr = validatePassword(password);
-  const keyErr = validateSecurityKey(securityKey);
   if (userErr) { showError("username", userErr); isValid = false; }
   if (mailErr) { showError("email", mailErr); isValid = false; }
   if (passErr) { showError("password", passErr); isValid = false; }
-  if (keyErr) { showError("securityKey", keyErr); isValid = false; }
   if (!isValid) {
     status.style.color = "var(--error-color)";
     status.textContent = "Please fix the errors above.";
@@ -260,7 +235,7 @@ function register() {
   fetch("https://tech-trail-w2ap.onrender.com/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, email, password, securityKey })
+    body: JSON.stringify({ username, email, password })
   })
   .then(res => res.json())
   .then(data => {
@@ -272,13 +247,10 @@ function register() {
       setTimeout(() => window.location.href = "login.html", 1000);
     } else {
       status.style.color = "var(--error-color)";
-      // Show specific input error if present
       if (data.message.toLowerCase().includes("email")) {
         showError("email", data.message);
       } else if (data.message.toLowerCase().includes("username")) {
         showError("username", data.message);
-      } else if (data.message.toLowerCase().includes("security")) {
-        showError("securityKey", data.message);
       }
       status.textContent = data.message;
     }
@@ -289,6 +261,7 @@ function register() {
     status.textContent = "Server error. Please try again.";
   });
 }
+
 // Forgot Password Section Logic
 const forgotPwdLink = document.getElementById('forgotPwdLink');
 const backToSignup = document.getElementById('backToSignup');
@@ -307,45 +280,35 @@ backToSignup.addEventListener('click', e => {
   clearErrors();
   document.getElementById('fpStatus').textContent = '';
 });
-function validateFPUsername(username) {
-  if (!username) return "Username is required.";
-  return "";
-}
-function validateFPSecurityKey(key) {
-  if (!key) return "Security key is required.";
-  if (!/^\d{6}$/.test(key)) return "Security key must be exactly 6 digits.";
+function validateFPEmail(email) {
+  if (!email) return "Email is required.";
+  if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/.test(email)) {
+    return "Enter a valid email address.";
+  }
   return "";
 }
 function showFPError(id, msg) {
   document.getElementById(id + "-error").textContent = msg;
 }
 function clearFPErrors() {
-  showFPError("fpUsername", "");
-  showFPError("fpSecurityKey", "");
+  showFPError("fpEmail", "");
   document.getElementById('fpStatus').textContent = '';
 }
 function clearFPFieldsAndErrors() {
-  document.getElementById('fpUsername').value = '';
-  document.getElementById('fpSecurityKey').value = '';
+  document.getElementById('fpEmail').value = '';
   clearFPErrors();
 }
-// Real-time validation on forgot password inputs
-document.getElementById("fpUsername").addEventListener("input", function() {
-  showFPError("fpUsername", validateFPUsername(this.value.trim()));
-});
-document.getElementById("fpSecurityKey").addEventListener("input", function() {
-  showFPError("fpSecurityKey", validateFPSecurityKey(this.value.trim()));
+// Real-time validation on forgot password input
+document.getElementById("fpEmail").addEventListener("input", function() {
+  showFPError("fpEmail", validateFPEmail(this.value.trim()));
 });
 function retrievePassword() {
   clearFPErrors();
-  const username = document.getElementById('fpUsername').value.trim();
-  const securityKey = document.getElementById('fpSecurityKey').value.trim();
+  const email = document.getElementById('fpEmail').value.trim();
   const status = document.getElementById('fpStatus');
   let isValid = true;
-  const userErr = validateFPUsername(username);
-  const keyErr = validateFPSecurityKey(securityKey);
-  if (userErr){ showFPError('fpUsername', userErr); isValid = false; }
-  if (keyErr){ showFPError('fpSecurityKey', keyErr); isValid = false; }
+  const mailErr = validateFPEmail(email);
+  if (mailErr){ showFPError('fpEmail', mailErr); isValid = false; }
   if (!isValid) {
     status.style.color = "var(--error-color)";
     status.textContent = "Please fix the errors above.";
@@ -357,7 +320,7 @@ function retrievePassword() {
   fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({ username, securityKey })
+    body: JSON.stringify({ email })
   })
   .then(res => res.json())
   .then(data => {
@@ -367,7 +330,7 @@ function retrievePassword() {
       status.innerHTML = `Your password is: <strong>${data.password}</strong>`;
     } else {
       status.style.color = "var(--error-color)";
-      status.textContent = data.message || "Incorrect username or security key.";
+      status.textContent = data.message || "Incorrect email address.";
     }
   })
   .catch(() => {
