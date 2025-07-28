@@ -3,4 +3,4 @@ uvicorn
 pymongo
 python-multipart
 jinja2
-smtplib
+python-dotenv
