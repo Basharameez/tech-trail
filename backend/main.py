@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from pymongo import MongoClient
 import os
 
@@ -16,10 +16,10 @@ users_collection = db["users"]
 
 app = FastAPI()
 
-# Enable CORS for local and production frontend
+# Enable CORS (allow frontend requests)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace with frontend domain(s) for production
+    allow_origins=["*"],  # For production, specify your frontend domain
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -31,7 +31,6 @@ class RegisterData(BaseModel):
     username: str
     password: str
     email: str
-    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")  # 6 digit numeric string
 
 class LoginData(BaseModel):
     username: str
@@ -43,8 +42,7 @@ class TaskUpdate(BaseModel):
     task_id: str
 
 class ForgotPasswordData(BaseModel):
-    username: str
-    securityKey: str = Field(..., min_length=6, max_length=6, regex="^\d{6}$")
+    email: str
 
 # ------------------ API Endpoints ------------------
 
@@ -52,11 +50,12 @@ class ForgotPasswordData(BaseModel):
 def register(user: RegisterData):
     if users_collection.find_one({"username": user.username}):
         return {"message": "Username already exists."}
+    if users_collection.find_one({"email": user.email}):
+        return {"message": "Email already registered."}
     users_collection.insert_one({
         "username": user.username,
-        "password": user.password,  # In real use, hash passwords instead of storing plain text
+        "password": user.password,  # For production: hash passwords!
         "email": user.email,
-        "securityKey": user.securityKey,
         "progress": {},
         "total_completed": 0
     })
@@ -135,7 +134,7 @@ def get_progress(user: dict):
 
 @app.get("/courses/meta")
 def courses_meta():
-    # Updated course list with 10 tasks each
+    # Each course has exactly 30 tasks
     return {
         "ai": 30,
         "ml": 30,
@@ -154,20 +153,18 @@ def courses_meta():
 
 @app.post("/forgot-password")
 def forgot_password(data: ForgotPasswordData):
-    user = users_collection.find_one({"username": data.username})
+    user = users_collection.find_one({"email": data.email})
     if not user:
-        return {"message": "Invalid username or security key."}
-    if user.get("securityKey") == data.securityKey:
-        # WARNING: Returning password in plaintext is NOT safe for production
-        return {
-            "message": "success",
-            "password": user.get("password", "")
-        }
-    return {"message": "Invalid username or security key."}
+        return {"message": "Incorrect email address."}
+    # SECURITY WARNING: Don't return plain-text passwords in production!
+    return {
+        "message": "success",
+        "password": user.get("password", "")
+    }
 
 # ------------------ Uvicorn Entry Point ------------------
 
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # Supports Render or similar env var
+    port = int(os.environ.get("PORT", 8000))  # For Render or Heroku
     uvicorn.run("main:app", host="0.0.0.0", port=port)
