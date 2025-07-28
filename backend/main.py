@@ -3,30 +3,30 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from pymongo import MongoClient
 import os
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-# ------------------ MongoDB Connection ------------------
-
+# --- MongoDB Connection ---
 client = MongoClient(
     "mongodb+srv://shaikbasharam20:basharam@cluster0.lwcietu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 )
 db = client["tech_in_my_style"]
 users_collection = db["users"]
 
-# ------------------ FastAPI Setup ------------------
-
+# --- FastAPI Setup ---
 app = FastAPI()
 
-# Enable CORS (allow frontend requests)
+# Enable CORS (adapt allow_origins for production)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For production, specify your frontend domain
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# ------------------ Pydantic Models ------------------
-
+# --- Pydantic Models ---
 class RegisterData(BaseModel):
     username: str
     password: str
@@ -44,8 +44,7 @@ class TaskUpdate(BaseModel):
 class ForgotPasswordData(BaseModel):
     email: str
 
-# ------------------ API Endpoints ------------------
-
+# --- Register ---
 @app.post("/register")
 def register(user: RegisterData):
     if users_collection.find_one({"username": user.username}):
@@ -54,13 +53,14 @@ def register(user: RegisterData):
         return {"message": "Email already registered."}
     users_collection.insert_one({
         "username": user.username,
-        "password": user.password,  # For production: hash passwords!
+        "password": user.password,    # WARNING: Insecure! Use hashed passwords in production.
         "email": user.email,
         "progress": {},
         "total_completed": 0
     })
     return {"message": "success"}
 
+# --- Login ---
 @app.post("/login")
 def login(data: LoginData):
     user = users_collection.find_one({
@@ -77,6 +77,7 @@ def login(data: LoginData):
         }
     return {"message": "Invalid username or password."}
 
+# --- Task Complete ---
 @app.post("/task/complete")
 def complete_task(task: TaskUpdate):
     user = users_collection.find_one({"username": task.username})
@@ -99,9 +100,9 @@ def complete_task(task: TaskUpdate):
                 "total_completed": total_completed
             }}
         )
-
     return {"message": "Task marked as complete."}
 
+# --- Leaderboard ---
 @app.get("/leaderboard")
 def leaderboard():
     users = users_collection.find()
@@ -116,6 +117,7 @@ def leaderboard():
         })
     return sorted(board, key=lambda x: x["score"], reverse=True)
 
+# --- Progress by username ---
 @app.get("/progress/{username}")
 def progress(username: str):
     user = users_collection.find_one({"username": username})
@@ -132,9 +134,9 @@ def get_progress(user: dict):
         return {"progress": user_data.get("progress", {})}
     return {"message": "unauthorized"}
 
+# --- Courses Meta ---
 @app.get("/courses/meta")
 def courses_meta():
-    # Each course has exactly 30 tasks
     return {
         "ai": 30,
         "ml": 30,
@@ -149,22 +151,52 @@ def courses_meta():
         "dsc": 30
     }
 
-# ------------------ Forgot Password Endpoint ------------------
+# --- Forgot Password with Email ---
+EMAIL_ADDRESS = "techinmystyle@gmail.com"
+EMAIL_PASSWORD = os.getenv("EMAIL_PASS")
 
 @app.post("/forgot-password")
 def forgot_password(data: ForgotPasswordData):
     user = users_collection.find_one({"email": data.email})
+    # Always return generic response for privacy
+    generic_success = {"message": "success"}
+    generic_error = {"message": "Failed to send recovery email. Please try again later."}
+
     if not user:
-        return {"message": "Incorrect email address."}
-    # SECURITY WARNING: Don't return plain-text passwords in production!
-    return {
-        "message": "success",
-        "password": user.get("password", "")
-    }
+        return generic_success
 
-# ------------------ Uvicorn Entry Point ------------------
+    user_password = user.get("password")
+    if not user_password:
+        return generic_error
 
+    msg = MIMEMultipart()
+    msg["From"] = EMAIL_ADDRESS
+    msg["To"] = data.email
+    msg["Subject"] = "Your Password Recovery - Tech In My Style"
+    body = f"""Hello {user['username']},
+
+You, or someone using your email, requested to recover your password on Tech In My Style.
+
+Your password is: {user_password}
+
+We recommend you log in and change your password if you did not initiate this request.
+
+Best regards,
+Tech In My Style Team
+"""
+    msg.attach(MIMEText(body, "plain"))
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+            smtp.send_message(msg)
+        return generic_success
+    except Exception as e:
+        print("Error sending email:", e)
+        return generic_error
+
+# --- Uvicorn entry point for local/dev ---
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000))  # For Render or Heroku
+    port = int(os.environ.get("PORT", 8000))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
