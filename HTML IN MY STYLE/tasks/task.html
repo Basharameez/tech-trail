@@ -383,11 +383,18 @@
   </div>
 
   <script src="task.js"></script>
-  <script>
-document.getElementById("backBtn").onclick = function() {
-  // Replace with correct relative path to index.html in the parent folder
-  window.location.href = "../index.html";
-};
+
+<script>
+  document.getElementById("backBtn").addEventListener("click", function () {
+    // Try going back if user came from another page
+    if (document.referrer !== "") {
+      window.history.back();
+    } else {
+      // Fallback if user directly opened the page
+      window.location.href = "../index.html"; // update if needed
+    }
+  });
+
 </script>
 
 </body>
