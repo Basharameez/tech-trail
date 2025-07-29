@@ -298,7 +298,7 @@ async function loadBoard() {
     leaderboardData = await res.json();
     applySearchAndSort();
   } catch(e) {
-    document.getElementById("board").innerHTML = <tr><td colspan="3">⚠ Failed to load leaderboard.</td></tr>;
+    document.getElementById("board").innerHTML = `<tr><td colspan="3">⚠ Failed to load leaderboard.</td></tr>`;
     console.error(e);
   }
 }
@@ -324,7 +324,7 @@ function renderCourseTaskTable() {
   tbody.innerHTML = "";
   Object.entries(courseTotals).forEach(([course, total])=>{
     const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-    tbody.innerHTML += <tr data-course="${course}"><td>${course}</td><td>${completed}</td><td>${total}</td></tr>;
+    tbody.innerHTML += `<tr data-course="${course}"><td>${course}</td><td>${completed}</td><td>${total}</td></tr>`;
   });
   table.hidden = false;
 }
@@ -443,7 +443,7 @@ async function loadUserProgress(username){
   const modal = document.getElementById('progressModal');
   if(!modal) return alert("Modal element not found.");
   const modalUser = document.getElementById('modalUser');
-  modalUser.textContent = Course Progress for ${username};
+  modalUser.textContent = `Course Progress for ${username}`;
   modal.style.display = 'flex';
   currentUserProgress = null;
   const progressTable = document.getElementById('progressTable');
@@ -457,17 +457,17 @@ async function loadUserProgress(username){
   document.getElementById('courseSummarySelect').innerHTML='';
   document.getElementById('courseSummaryTable').style.display = 'none';
   try {
-    const res = await fetch(https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)});
+    const res = await fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`);
     if(!res.ok) throw new Error("Failed to fetch user progress");
     const prog = await res.json();
     currentUserProgress = prog;
     const courses = Object.keys(prog);
     if(courses.length === 0) {
-      progressTableBody.innerHTML = <tr><td colspan="2">No task progress found for this user.</td></tr>;
+      progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
     } else {
       progressTableBody.innerHTML = courses.map(course => {
         const taskCount = prog[course].length;
-        return <tr><td>${course}</td><td>${taskCount}</td></tr>;
+        return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
       }).join('');
     }
     progressTable.hidden = false;
@@ -502,7 +502,7 @@ async function loadUserProgress(username){
     dropdown.onchange = (e)=>updateCourseSummary(e.target.value);
     if(dropdown.value) updateCourseSummary(dropdown.value);
   } catch(e) {
-    progressTableBody.innerHTML = <tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>;
+    progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
     progressTable.hidden = false;
     console.error(e);
   }
