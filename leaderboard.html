@@ -148,7 +148,15 @@
         <div class="modal-chart-wrap chart-card">
           <canvas id="userProgressChart" width="360" height="300"></canvas>
         </div>
-       
+        <div class="modal-table-wrap chart-card">
+          <table id="userCourseProgressTable" aria-label="Course-wise progress vs total table" hidden>
+            <thead><tr><th>Course</th><th>Completed</th><th>Total</th></tr></thead>
+            <tbody id="userCourseProgressBody"></tbody>
+          </table>
+        </div>
+        <div class="modal-chart-wrap chart-card">
+          <canvas id="userCoursePieChart" width="310" height="280"></canvas>
+        </div>
         <div class="modal-summary chart-card">
           <select id="courseSummarySelect" aria-label="Select course for summary"></select>
           <table id="courseSummaryTable" style="display: none;">
