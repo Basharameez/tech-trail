@@ -35,8 +35,7 @@
     select { min-width:124px;}
     .spacer { flex:1; }
     button.theme-toggle { background:var(--primary-accent); color:white; border:none; padding:8px 16px; border-radius:6px;
-      cursor:pointer; font-size:16px; font-weight:500; box-shadow:0 2px 6px rgba(53,116,230,0.10);
-      transition:background 0.14s;}
+      cursor:pointer; font-size:16px; font-weight:500; box-shadow:0 2px 6px rgba(53,116,230,0.10); transition:background 0.14s;}
     button.theme-toggle:hover { background:#2a62d4;}
     .leaderboard-table-wrap { overflow-x: auto; margin: 0 24px 24px 24px; }
     table { width:100%; border-collapse:collapse; margin-bottom:8px; background:transparent; font-size:16px;}
@@ -69,7 +68,19 @@
     #progressTable, #courseSummaryTable { width:100%; border-collapse:separate; border-spacing:0 8px; font-size:15px; background:var(--card); border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:12px;}
     #progressTable th, #progressTable td, #courseSummaryTable th, #courseSummaryTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc; border-bottom:none; font-weight:600; color: var(--text);}
     #progressTable th, #courseSummaryTable th { background-color:var(--primary-accent); color:white; user-select:none;}
-    #courseSummarySelect { font-size:15px; border-radius:6px; border:1px solid #ddd; appearance:none; cursor:pointer; margin-bottom:15px; padding:8px 10px; width:100%; user-select:none;}
+    #courseSummarySelect { font-size:15px; border-radius:6px; border:1px solid #ddd; margin-bottom:15px; padding:8px 10px; width:100%; user-select:none;
+      background: url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8.5 9L16 1' stroke='%233574e6' stroke-width='2'/%3E%3C/svg%3E")
+      no-repeat right 10px center/16px 10px;
+      padding-right:40px;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    body.dark #courseSummarySelect {
+      background-image:
+        url("data:image/svg+xml,%3Csvg width='17' height='10' viewBox='0 0 17 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8.5 9L16 1' stroke='%23edf0ff' stroke-width='2'/%3E%3C/svg%3E");
+    }
     #courseSummaryTable th, #courseSummaryTable td { background:#f7f9fc; color:var(--text); font-weight:600;}
     body.dark #progressTable th, body.dark #courseSummaryTable th { background:#1842a1; color:#fff;}
     #courseSummaryTable { margin-top:8px;}
@@ -108,7 +119,7 @@
     <canvas id="scoreChart" height="90" role="img" aria-label="Bar chart of total tasks completed by users"></canvas>
     <button class="back-btn" onclick="goHome()">⬅ Back to Dashboard</button>
   </div>
-  <!-- Modal for user progress, with summary (two sections removed per request) -->
+  <!-- Modal for user progress (keeps only the progress table, pie chart, and course summary with dropdown arrow) -->
   <div id="progressModal" role="dialog" aria-modal="true" aria-labelledby="modalUser" tabindex="-1">
     <div>
       <button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
