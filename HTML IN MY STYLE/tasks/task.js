@@ -950,7 +950,7 @@ class HTMLLearningGame {
   setupEventListeners() {
     // Back button
     document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
     });
     
     // Theme toggle
