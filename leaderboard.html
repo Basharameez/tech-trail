@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <title>Leaderboard - Tech In My Style</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Chart.js and Data Labels plugin -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
   <style>
@@ -32,8 +30,7 @@
     .leaderboard-header { background:var(--header-bg); padding:32px 24px 20px 24px; text-align:center; }
     .leaderboard-header h1 { color:var(--header-text); font-size:2.3rem; margin:0 0 6px; font-weight:bold; letter-spacing:1px;}
     .leaderboard-header p { color:var(--header-text); font-size:1rem; opacity:0.73; margin:0; }
-    .controls { display:flex; align-items:center; gap:14px; padding:18px 26px; background:var(--card);
-      box-shadow:0 2px 10px rgba(44,86,178,0.02);}
+    .controls { display:flex; align-items:center; gap:14px; padding:18px 26px; background:var(--card); box-shadow:0 2px 10px rgba(44,86,178,0.02);}
     input[type="text"], select { padding:9px 14px; border-radius:7px; border:1px solid #e3e8f3; font-size:15px; min-width:152px;
       outline:none; transition:border 0.15s; background:var(--bg); color:var(--text); }
     select { min-width:124px;}
@@ -64,49 +61,14 @@
       cursor:pointer; letter-spacing:.2px; transition:background .18s; user-select: none;}
     .back-btn:hover { background:linear-gradient(135deg,#233165,#3e60b9);}
     canvas { max-width:99%; margin-top:24px;}
-    .chart-card, .modal-table-wrap, .modal-chart-wrap {
-      background:var(--card); border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.06); padding:18px 12px; margin-bottom:18px;
-    }
-    #progressModal { display:none; position:fixed; z-index:10000; top:0; left:0; width:100vw; height:100vh;
-      background:rgba(0,0,0,0.32); align-items:center; justify-content:center; padding:12px; overflow-y:auto; }
-    #progressModal > div { background:var(--card); border-radius:12px; padding:28px 24px 24px 24px; max-width:950px; width:100%;
-      max-height:85vh; box-shadow:0 8px 32px #0002; display:flex; gap:40px; color:var(--text);
-      position:relative; flex-direction:column; align-items:stretch;}
-    #modalUser { font-weight:600; font-size:1.3rem; color:var(--primary-accent); margin-bottom:20px; text-align:center;}
-    .closeModalBtn { position:absolute; top:10px; right:15px; font-size:22px; background:none; border:none; cursor:pointer; color:var(--text); z-index:10; user-select:none;}
-    .modal-content-bottom { display:flex; flex-wrap:wrap; gap:30px; justify-content:center;}
-    .modal-table-wrap, .modal-chart-wrap, .chart-card {
-      flex:1 1 320px; min-width:300px; max-width:420px;
-    }
-    .modal-summary { flex:1 1 340px; min-width:300px; max-width:420px; display:flex; flex-direction:column; align-items:stretch;}
-    #progressTable, #userCourseProgressTable, #courseSummaryTable { width:100%;
-      border-collapse:separate; border-spacing:0 8px; font-size:15px; background:var(--card); border-radius:12px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:12px;}
-    #progressTable th, #progressTable td, #userCourseProgressTable th, #userCourseProgressTable td,
-    #courseSummaryTable th, #courseSummaryTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc;
-      border-bottom:none; font-weight:600; color: var(--text);}
-    #progressTable th, #userCourseProgressTable th, #courseSummaryTable th { background-color:var(--primary-accent);
-      color:white; user-select:none;}
-    #userCourseProgressTable td { cursor:pointer; font-weight:500;}
-    #userCourseProgressTable tr:hover td { background-color:#e3eafc;}
-    #userCourseProgressTable tr td:first-child { text-align:left; font-weight:700; color:var(--primary-accent);}
-    body.dark #progressTable th, body.dark #userCourseProgressTable th, body.dark #courseSummaryTable th { background-color:#1842a1;}
-    body.dark #userCourseProgressTable td, body.dark #userCourseProgressTable tr:hover td { background-color:#23263a;}
-    body.dark #userCourseProgressTable tr:hover td { background-color:#2a2e48;}
-    #courseSummarySelect { font-size:15px; border-radius:6px; border:1px solid #ddd; appearance:none; cursor:pointer;
-      margin-bottom:15px; padding:8px 10px; width:100%; user-select:none;}
-    #courseSummaryTable th, #courseSummaryTable td { background:#f7f9fc; color:var(--text); font-weight:600;}
-    body.dark #courseSummaryTable th { background:#1842a1; color:#fff;}
-    #courseSummaryTable { margin-top:8px;}
-    .chart-card canvas { width:100% !important; background:transparent !important;}
-    @media (max-width:900px) { #progressModal>div { max-height:90vh;} }
+    @media (max-width:900px) { .container {padding:8px;}}
   </style>
 </head>
 <body>
   <div class="container" role="main">
     <section class="leaderboard-header">
       <h1>🏆 Leaderboard</h1>
-      <p>Click a username for full course progress details.</p>
+      <p>Users and total tasks completed.</p>
     </section>
     <section class="controls" aria-label="Search and filter leaderboard">
       <input type="text" id="searchInput" aria-label="Search user" placeholder="🔍 Search user..." />
@@ -133,53 +95,6 @@
     <canvas id="scoreChart" height="90" role="img" aria-label="Bar chart of total tasks completed by users"></canvas>
     <button class="back-btn" onclick="goHome()">⬅ Back to Dashboard</button>
   </div>
-  <!-- Modal for user progress, with summary -->
-  <div id="progressModal" role="dialog" aria-modal="true" aria-labelledby="modalUser" tabindex="-1">
-    <div>
-      <button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
-      <div id="modalUser" aria-live="polite">User Progress</div>
-      <div class="modal-content-bottom">
-        <div class="modal-table-wrap chart-card">
-          <table id="progressTable" aria-label="Course-wise progress table" hidden>
-            <thead><tr><th>Course Name</th><th>Tasks Completed</th></tr></thead>
-            <tbody id="progressTableBody"></tbody>
-          </table>
-        </div>
-        <div class="modal-chart-wrap chart-card">
-          <canvas id="userProgressChart" width="360" height="300"></canvas>
-        </div>
-        <div class="modal-table-wrap chart-card">
-          <table id="userCourseProgressTable" aria-label="Course-wise progress vs total table" hidden>
-            <thead><tr><th>Course</th><th>Completed</th><th>Total</th></tr></thead>
-            <tbody id="userCourseProgressBody"></tbody>
-          </table>
-        </div>
-        <div class="modal-chart-wrap chart-card">
-          <canvas id="userCoursePieChart" width="310" height="280"></canvas>
-        </div>
-        <div class="modal-summary chart-card">
-          <select id="courseSummarySelect" aria-label="Select course for summary"></select>
-          <table id="courseSummaryTable" style="display: none;">
-            <thead>
-              <tr>
-                <th>Course</th>
-                <th>Completed</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="summaryCourse">&ndash;</td>
-                <td id="summaryCompleted">0</td>
-                <td id="summaryTotal">0</td>
-              </tr>
-            </tbody>
-          </table>
-          <canvas id="courseSummaryPie" width="280" height="250"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
 <script>
 Chart.register({
   id: 'customBgCard',
@@ -193,11 +108,6 @@ Chart.register({
   }
 });
 let leaderboardData = [];
-let courseTotals = {};
-let currentUserProgress = null;
-let userCoursePieInstance = null;
-let progressChartInstance = null;
-let courseSummaryPieInstance = null;
 const medals = [
   '<span class="rank-medal gold">🥇</span>',
   '<span class="rank-medal silver">🥈</span>',
@@ -207,7 +117,6 @@ const chartCtx = document.getElementById('scoreChart').getContext('2d');
 let scoreChart;
 Chart.register(ChartDataLabels);
 
-// Helper: get user's initials
 function getInitials(name) {
   if (!name) return "U";
   const parts = name.split(/[ ._]/).filter(Boolean);
@@ -222,7 +131,7 @@ function renderTable(data) {
         <td>${i < 3 ? medals[i] : (i + 1)}</td>
         <td class="user-cell">
           <span class="avatar">${getInitials(userData.user)}</span>
-          <a href="#" class="user-link" data-username="${userData.user}" tabindex="0">${userData.user}</a>
+          <span>${userData.user}</span>
         </td>
         <td>${userData.score}</td>
       </tr>
@@ -278,20 +187,7 @@ function applySearchAndSort() {
   renderTable(filtered);
   updateChart(filtered);
 }
-async function loadCourseTotals() {
-  try {
-    const res = await fetch('https://tech-trail-w2ap.onrender.com/courses/meta');
-    if(!res.ok) throw new Error("Failed to fetch course totals");
-    courseTotals = await res.json();
-  } catch {
-    courseTotals = {
-      "ai": 30,"ml":30,"dl":30,"java":30,"c":30,"html":30,
-      "css":30,"js":30,"js-intermediate":30,"python":30,"dsc":30
-    };
-  }
-}
 async function loadBoard() {
-  await loadCourseTotals();
   try {
     const res = await fetch('https://tech-trail-w2ap.onrender.com/leaderboard');
     if (!res.ok) throw new Error("Failed to fetch leaderboard");
@@ -310,216 +206,8 @@ function toggleTheme() {
 function goHome() {
   window.location.href = "../index.html";
 }
-function closeModal() {
-  if(progressChartInstance) { progressChartInstance.destroy(); progressChartInstance=null;}
-  if(userCoursePieInstance) { userCoursePieInstance.destroy(); userCoursePieInstance=null;}
-  if(courseSummaryPieInstance) { courseSummaryPieInstance.destroy(); courseSummaryPieInstance=null;}
-  const modal = document.getElementById('progressModal');
-  if(modal) modal.style.display = 'none';
-}
-function renderCourseTaskTable() {
-  if(!currentUserProgress) return;
-  const table = document.getElementById('userCourseProgressTable');
-  const tbody = document.getElementById('userCourseProgressBody');
-  tbody.innerHTML = "";
-  Object.entries(courseTotals).forEach(([course, total])=>{
-    const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-    tbody.innerHTML += `<tr data-course="${course}"><td>${course}</td><td>${completed}</td><td>${total}</td></tr>`;
-  });
-  table.hidden = false;
-}
-function renderUserCoursePieChart(course) {
-  if(!courseTotals[course]) return;
-  const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-  const total = courseTotals[course];
-  const remaining = Math.max(total - completed, 0);
-  const ctx = document.getElementById('userCoursePieChart').getContext('2d');
-  if(userCoursePieInstance) userCoursePieInstance.destroy();
-  userCoursePieInstance = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Completed', 'Remaining'],
-      datasets: [{
-        data: [completed, remaining],
-        backgroundColor: ['#56b881', '#ddd']
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: true, position:'bottom' },
-        datalabels: { color: '#222', formatter: val => val }
-      }
-    },
-    plugins: [ChartDataLabels]
-  });
-}
-function renderProgressChart() {
-  if (!currentUserProgress) return;
-  const ctx = document.getElementById('userProgressChart').getContext('2d');
-  if(progressChartInstance){ progressChartInstance.destroy(); progressChartInstance=null;}
-  const labels = Object.keys(currentUserProgress);
-  const data = labels.map(c => currentUserProgress[c]?.length || 0);
-  const bgColors = [
-    '#3574e6','#56b881','#ef476f','#ffd166',
-    '#06d6a0','#118ab2','#b388eb','#f78fb3'
-  ];
-  progressChartInstance = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: labels.length ? labels : ['No Progress'],
-      datasets: [{
-        data: data.length ? data : [1],
-        backgroundColor: bgColors.slice(0, labels.length),
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {display: true, position: 'bottom'},
-        datalabels: {
-          color: '#fff',
-          font: {weight: 'bold', size: 14},
-          formatter: (value, context) => {
-            const {dataset} = context;
-            const total = dataset.data.reduce((a,b) => a+b, 0) || 1;
-            return ((value/total)*100).toFixed(1) + '%';
-          }
-        }
-      }
-    },
-    plugins: [ChartDataLabels]
-  });
-}
-function updateCourseSummaryDropdown() {
-  const select = document.getElementById('courseSummarySelect');
-  select.innerHTML = '';
-  Object.keys(courseTotals).forEach(course => {
-    const opt = document.createElement('option');
-    opt.value = course;
-    opt.textContent = course;
-    select.appendChild(opt);
-  });
-  if(Object.keys(courseTotals).length > 0) select.value = Object.keys(courseTotals)[0];
-}
-function updateCourseSummary(course) {
-  if(!currentUserProgress||!courseTotals[course]){
-    document.getElementById('courseSummaryTable').style.display = 'none';
-    if(courseSummaryPieInstance){ courseSummaryPieInstance.destroy(); courseSummaryPieInstance = null; }
-    return;
-  }
-  document.getElementById('courseSummaryTable').style.display = '';
-  const total = courseTotals[course] ?? 0;
-  const completed = (currentUserProgress && currentUserProgress[course]) ? currentUserProgress[course].length : 0;
-  document.getElementById('summaryCourse').textContent = course;
-  document.getElementById('summaryTotal').textContent = total;
-  document.getElementById('summaryCompleted').textContent = completed;
-  const ctx = document.getElementById('courseSummaryPie').getContext('2d');
-  if(courseSummaryPieInstance) courseSummaryPieInstance.destroy();
-  courseSummaryPieInstance = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Completed', 'Remaining'],
-      datasets: [{
-        data: [completed, Math.max(total-completed,0)],
-        backgroundColor: ['#56b881', '#dbdef8']
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {display: true, position: 'bottom'},
-        datalabels: {
-          color: '#23263a',
-          font: {weight: 'bold'},
-          formatter: v => v,
-        }
-      }
-    },
-    plugins: [ChartDataLabels]
-  });
-}
-async function loadUserProgress(username){
-  const modal = document.getElementById('progressModal');
-  if(!modal) return alert("Modal element not found.");
-  const modalUser = document.getElementById('modalUser');
-  modalUser.textContent = `Course Progress for ${username}`;
-  modal.style.display = 'flex';
-  currentUserProgress = null;
-  const progressTable = document.getElementById('progressTable');
-  const progressTableBody = document.getElementById('progressTableBody');
-  progressTable.hidden = true;
-  progressTableBody.innerHTML = '';
-  document.getElementById('userCourseProgressTable').hidden = true;
-  if(userCoursePieInstance){ userCoursePieInstance.destroy(); userCoursePieInstance=null;}
-  if(progressChartInstance){ progressChartInstance.destroy(); progressChartInstance=null;}
-  if(courseSummaryPieInstance){ courseSummaryPieInstance.destroy(); courseSummaryPieInstance = null;}
-  document.getElementById('courseSummarySelect').innerHTML='';
-  document.getElementById('courseSummaryTable').style.display = 'none';
-  try {
-    const res = await fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`);
-    if(!res.ok) throw new Error("Failed to fetch user progress");
-    const prog = await res.json();
-    currentUserProgress = prog;
-    const courses = Object.keys(prog);
-    if(courses.length === 0) {
-      progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
-    } else {
-      progressTableBody.innerHTML = courses.map(course => {
-        const taskCount = prog[course].length;
-        return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
-      }).join('');
-    }
-    progressTable.hidden = false;
-    renderProgressChart();
-    renderCourseTaskTable();
-    let firstCourse = Object.keys(courseTotals)[0];
-    if(courses.length>0){
-      for(const c of courses){
-        if(courseTotals[c]!==undefined){ firstCourse=c; break;}
-      }
-    }
-    renderUserCoursePieChart(firstCourse);
-    setTimeout(()=>{
-      Array.from(document.querySelectorAll('#userCourseProgressBody tr')).forEach(row => {
-        row.onclick = () => {
-          const course = row.getAttribute('data-course');
-          renderUserCoursePieChart(course);
-        };
-        row.style.cursor = 'pointer';
-        row.setAttribute('tabindex', '0');
-        row.addEventListener('keydown', (e) => {
-          if(e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const course = e.currentTarget.getAttribute('data-course');
-            renderUserCoursePieChart(course);
-          }
-        });
-      });
-    }, 0);
-    updateCourseSummaryDropdown();
-    const dropdown = document.getElementById('courseSummarySelect');
-    dropdown.onchange = (e)=>updateCourseSummary(e.target.value);
-    if(dropdown.value) updateCourseSummary(dropdown.value);
-  } catch(e) {
-    progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
-    progressTable.hidden = false;
-    console.error(e);
-  }
-}
-document.addEventListener('click', function(e){
-  if(e.target.classList.contains('user-link')){
-    e.preventDefault();
-    loadUserProgress(e.target.getAttribute('data-username'));
-  }
-});
 document.getElementById("searchInput").addEventListener("input", applySearchAndSort);
 document.getElementById("sortSelect").addEventListener("change", applySearchAndSort);
-document.addEventListener("keydown", function(e){
-  if(document.getElementById('progressModal').style.display === 'flex'){
-    if(e.key === "Escape"){ closeModal(); }
-  }
-});
 loadBoard();
 </script>
 </body>
