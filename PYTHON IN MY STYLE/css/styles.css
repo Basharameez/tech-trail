@@ -2,19 +2,22 @@
   /* Pythonized Colors */
   --color-bg-body: #f6f8fa;
   --color-bg-card: #fbfdff;
-  --color-bg-header: #316089;
+  --color-bg-header: #306998;
   --color-bg-footer: #2f3654;
+
   --color-primary: #3776ab;
   --color-primary-dark: #264769;
-  --color-accent: #ffdf76;
-  --color-accent-dark: #e7ba43;
+
+  /* Replace accent yellow with primary blue to keep consistent blue/white */
+  --color-accent: #3776ab;       /* same as primary */
+  --color-accent-dark: #264769;  /* same as primary dark */
+
   --color-text-main: #193252;
   --color-text-secondary: #46628a;
   --color-text-footer: #f5dcc0;
 
   /* Spacing & Radius */
-  --radius: 14px;
-  --space: 1.2rem;
+  --radius: 16px;
 
   /* Shadows */
   --shadow-card: 0 2px 18px #26476912;
@@ -54,12 +57,19 @@ a:hover {
 }
 
 .logo h1 {
-  color: var(--color-accent);
-  letter-spacing: 1.5px;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 2.1rem;
   font-weight: bold;
-  font-size: 2rem;
-  text-shadow: 0 1px 8px #ffdf7620;
+  color: var(--color-accent);
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px #0002;
+}
+
+/* Example: Place SVG Python logo before text in HTML */
+.logo h1 svg {
+  vertical-align: middle;
+  margin-right: 12px;
 }
 
 .nav, .nav ul {
@@ -119,7 +129,8 @@ a:hover {
   align-items: center;
   justify-content: space-between;
   padding: 3rem 1.1rem 2rem;
-  background: #fafdff;
+  /* Change hero gradient: blue to a lighter blue instead of yellow */
+  background: linear-gradient(90deg, #306998 60%, #a0c4ff 110%);
   border-bottom: 1px solid #e6eef7;
   min-height: 350px;
 }
@@ -134,8 +145,8 @@ a:hover {
   margin-bottom: 0.45em;
   letter-spacing: 1.5px;
 }
-
 .highlight {
+  /* Use primary accent (blue) */
   color: var(--color-accent);
   font-weight: 700;
   letter-spacing: 2px;
@@ -145,13 +156,12 @@ a:hover {
   font-size: 1.19rem;
   margin: 1em 0 2em;
 }
-
 .cta-button {
   font-weight: 600;
   padding: 0.75em 2em;
   border-radius: var(--radius);
   background: var(--color-accent);
-  color: var(--color-primary-dark);
+  color: var(--color-bg-header);
   border: none;
   font-size: 1.13rem;
   letter-spacing: 1px;
@@ -160,26 +170,39 @@ a:hover {
 }
 .cta-button:hover {
   background: var(--color-accent-dark);
-  color: var(--color-bg-header);
+  color: var(--color-primary-dark);
   box-shadow: var(--shadow-hover);
 }
-
 .hero-image {
   flex: 1 1 300px;
   margin-top: 2rem;
 }
 
+/* CODE SNIPPET */
 .code-snippet {
   background: #232833;
-  color: #ffe36e;
+  /* Replace yellow text with a softer blue-based color */
+  color: #9cc4ff;
   padding: 1.1rem 1.3rem;
   font-family: 'Fira Mono', monospace;
   font-size: 1rem;
-  border-radius: var(--radius);
+  border-radius: 1.2em;
   overflow-x: auto;
   box-shadow: 0 3px 18px #22486928;
   margin-top: 0.8em;
-  border-left: 6px solid var(--color-primary);
+  border-left: 8px solid var(--color-primary);
+  position: relative;
+}
+.code-snippet::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 7px;
+  /* Gradient from primary blue to a lighter blue instead of yellow */
+  background: linear-gradient(90deg, #3776ab 60%, #a0c4ff 100%);
+  border-radius: 1.2em 1.2em 0 0;
 }
 
 /* FEATURES */
@@ -201,7 +224,7 @@ a:hover {
   transition: box-shadow 0.22s, background 0.21s, transform 0.25s;
 }
 .feature:hover {
-  background: #f9f4e1;
+  background: #e6f0ff; /* a lighter blue highlight instead of yellow */
   box-shadow: var(--shadow-hover);
   transform: translateY(-5px) scale(1.015);
 }
@@ -209,7 +232,7 @@ a:hover {
   font-size: 2.2rem;
   margin-bottom: .7rem;
   color: var(--color-accent);
-  text-shadow: 1px 2px 8px #ffe03644;
+  text-shadow: 1px 2px 8px #a0c4ff44;
 }
 
 /* PREVIEW SECTION */
@@ -235,7 +258,7 @@ a:hover {
   transition: background 0.24s, box-shadow 0.24s, transform 0.23s;
 }
 .topic-card:hover {
-  background: #fffbe5;
+  background: #ddeaff; /* lighter blue hover */
   transform: translateY(-3px) scale(1.02);
   box-shadow: var(--shadow-hover);
 }
@@ -243,44 +266,40 @@ a:hover {
 .secondary-button {
   background: none;
   color: var(--color-primary-dark);
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-primary);
   padding: .6rem 1.4rem;
-  border-radius: 11px;
+  border-radius: 12px;
   font-weight: 500;
   transition: background 0.14s, color 0.15s;
   margin-top: .7em;
 }
-
 .secondary-button:hover {
-  background: var(--color-accent);
-  color: #334365;
+  background: var(--color-primary);
+  color: #f0f7ff;
 }
 
+/* FOOTER */
 .footer {
   background: var(--color-bg-footer);
   color: var(--color-text-footer);
   padding: 2rem 2rem 1.2rem 2rem;
 }
-
 .footer-content {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
 }
-
 .footer-logo h2 {
   color: var(--color-accent);
   margin-bottom: 0.5rem;
   font-weight: 600;
   letter-spacing: .7px;
 }
-
 .footer-links h3,
 .footer-social h3 {
   color: var(--color-accent);
 }
-
 .footer-links ul {
   list-style: none;
 }
@@ -294,7 +313,6 @@ a:hover {
 .footer-links a:hover {
   color: #fff;
 }
-
 .social-icons {
   display: flex;
   gap: 1rem;
@@ -305,18 +323,16 @@ a:hover {
   transition: stroke 0.18s;
 }
 .social-icon:hover svg {
-  stroke: #fffde8;
+  stroke: #f0f7ff;
 }
-
 .footer-bottom {
   text-align: center;
   margin-top: 2rem;
   font-size: 0.95rem;
   border-top: 1px solid #252b35;
   padding-top: 1rem;
-  color: #ffe36e;
+  color: #a0c4ff;
 }
-
 
 /* ANIMATIONS & RESPONSIVE */
 .topic-card,
