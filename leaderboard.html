@@ -23,70 +23,290 @@
       --header-bg: #23263a; --header-text: #fff;
       --shadow: 0 8px 32px rgba(12,20,60,0.28);
     }
-    html, body { height:100%; background:var(--bg); color:var(--text); margin:0; padding:0; font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;}
-    body { min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding-top:40px;}
-    .container { max-width:980px; width:100%; background:var(--card); border-radius:18px;
-      box-shadow:var(--shadow); overflow:hidden; padding-bottom:24px;}
-    .leaderboard-header { background:var(--header-bg); padding:32px 24px 20px 24px; text-align:center; }
-    .leaderboard-header h1 { color:var(--header-text); font-size:2.3rem; margin:0 0 6px; font-weight:bold; letter-spacing:1px;}
-    .leaderboard-header p { color:var(--header-text); font-size:1rem; opacity:0.73; margin:0; }
-    .controls { display:flex; align-items:center; gap:14px; padding:18px 26px; background:var(--card);
-      box-shadow:0 2px 10px rgba(44,86,178,0.02);}
-    input[type="text"], select { padding:9px 14px; border-radius:7px; border:1px solid #e3e8f3; font-size:15px; min-width:152px;
-      outline:none; transition:border 0.15s; background:var(--bg); color:var(--text); }
-    select { min-width:124px;}
-    .spacer { flex:1; }
-    button.theme-toggle { background:var(--primary-accent); color:white; border:none; padding:8px 16px; border-radius:6px;
-      cursor:pointer; font-size:16px; font-weight:500; box-shadow:0 2px 6px rgba(53,116,230,0.10);
-      transition:background 0.14s;}
-    button.theme-toggle:hover { background:#2a62d4;}
-    .leaderboard-table-wrap { overflow-x: auto; margin: 0 24px 24px 24px; }
-    table { width:100%; border-collapse:collapse; margin-bottom:8px; background:transparent; font-size:16px;}
-    th { background:#f3f6fc; color:#496ae1; padding:14px 6px; text-transform:uppercase; letter-spacing:.5px; font-size:14px;
-      font-weight:700; border-bottom:1.5px solid #e8ebf3; user-select:none;}
-    td { text-align:center; padding:13px 6px; font-weight:500; border-bottom:1px solid #eef1f8; background:transparent; }
-    td.user-cell { display:flex; align-items:center; gap:14px; justify-content:flex-start; text-align:left;}
-    .rank-medal { font-size:1.23rem; user-select:none;}
-    .gold { color:var(--gold); } .silver { color:var(--silver); } .bronze { color:var(--bronze);}
-    tr.top-row { font-weight:700; background:#f8f5e8 !important; border-left:4px solid #e3c062; }
-    tr:hover td { background: #e7f0ff; cursor: pointer; }
-    body.dark tr:hover td { background: #23263a; }
-    a.user-link { color: #3574e6; text-decoration: none; font-weight:600; border-bottom:1.5px dashed #3574e6;
-      transition: text-decoration .18s; cursor:pointer;}
-    a.user-link:hover { text-decoration: underline;}
-    .avatar { width:38px; height:38px; background:#dbdef8; border-radius:50%; display:flex; align-items:center; justify-content:center;
-      font-weight:bold; color:#4665cc; font-size:1.17rem; user-select:none; border:2px solid #edf0ff; box-shadow:0 1px 3px #bac4e642;}
-    body.dark .avatar { background:#232945; color:#b2c2f7; border:1.5px solid #23263a;}
-    .back-btn { margin:18px 24px 24px 24px; display:block; width:auto; padding:13px 24px; font-size:15px;
-      border-radius:9px; background:linear-gradient(135deg,#2e375c,#5a75be); color:white; font-weight:500; border:none;
-      cursor:pointer; letter-spacing:.2px; transition:background .18s; user-select: none;}
-    .back-btn:hover { background:linear-gradient(135deg,#233165,#3e60b9);}
-    canvas { max-width:99%; margin-top:24px;}
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 40px;
+    }
+    .container {
+      max-width: 980px;
+      width: 100%;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      padding-bottom: 24px;
+    }
+    .leaderboard-header {
+      background: var(--header-bg);
+      padding: 32px 24px 20px 24px;
+      text-align: center;
+    }
+    .leaderboard-header h1 {
+      color: var(--header-text);
+      font-size: 2.3rem;
+      margin: 0 0 6px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .leaderboard-header p {
+      color: var(--header-text);
+      font-size: 1rem;
+      opacity: 0.73;
+      margin: 0;
+    }
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 26px;
+      background: var(--card);
+      box-shadow: 0 2px 10px rgba(44,86,178,0.02);
+    }
+    input[type="text"], select {
+      padding: 9px 14px;
+      border-radius: 7px;
+      border: 1px solid #e3e8f3;
+      font-size: 15px;
+      min-width: 152px;
+      outline: none;
+      transition: border 0.15s;
+      background: var(--bg);
+      color: var(--text);
+    }
+    select {
+      min-width: 124px;
+    }
+    .spacer {
+      flex: 1;
+    }
+    button.theme-toggle {
+      background: var(--primary-accent);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(53,116,230,0.10);
+      transition: background 0.14s;
+    }
+    button.theme-toggle:hover {
+      background: #2a62d4;
+    }
+    .leaderboard-table-wrap {
+      overflow-x: auto;
+      margin: 0 24px 24px 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 8px;
+      background: transparent;
+      font-size: 16px;
+    }
+    th {
+      background: #f3f6fc;
+      color: #496ae1;
+      padding: 14px 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 14px;
+      font-weight: 700;
+      border-bottom: 1.5px solid #e8ebf3;
+      user-select: none;
+    }
+    td {
+      text-align: center;
+      padding: 13px 6px;
+      font-weight: 500;
+      border-bottom: 1px solid #eef1f8;
+      background: transparent;
+    }
+    td.user-cell {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: flex-start;
+      text-align: left;
+    }
+    .rank-medal {
+      font-size: 1.23rem;
+      user-select: none;
+    }
+    .gold {
+      color: var(--gold);
+    }
+    .silver {
+      color: var(--silver);
+    }
+    .bronze {
+      color: var(--bronze);
+    }
+    tr.top-row {
+      font-weight: 700;
+      background: #f8f5e8 !important;
+      border-left: 4px solid #e3c062;
+    }
+    tr:hover td {
+      background: #e7f0ff;
+      cursor: pointer;
+    }
+    body.dark tr:hover td {
+      background: #23263a;
+    }
+    a.user-link {
+      color: #3574e6;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1.5px dashed #3574e6;
+      transition: text-decoration 0.18s;
+      cursor: pointer;
+    }
+    a.user-link:hover {
+      text-decoration: underline;
+    }
+    .avatar {
+      width: 38px;
+      height: 38px;
+      background: #dbdef8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #4665cc;
+      font-size: 1.17rem;
+      user-select: none;
+      border: 2px solid #edf0ff;
+      box-shadow: 0 1px 3px #bac4e642;
+    }
+    body.dark .avatar {
+      background: #232945;
+      color: #b2c2f7;
+      border: 1.5px solid #23263a;
+    }
+    .back-btn {
+      margin: 18px 24px 24px 24px;
+      display: block;
+      width: auto;
+      padding: 13px 24px;
+      font-size: 15px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #2e375c, #5a75be);
+      color: white;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      transition: background 0.18s;
+      user-select: none;
+    }
+    .back-btn:hover {
+      background: linear-gradient(135deg, #233165, #3e60b9);
+    }
+    canvas {
+      max-width: 99%;
+      margin-top: 24px;
+    }
     .chart-card, .modal-table-wrap, .modal-chart-wrap {
-      background:var(--card); border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.06); padding:18px 12px; margin-bottom:18px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      padding: 18px 12px;
+      margin-bottom: 18px;
     }
-    #progressModal { display:none; position:fixed; z-index:10000; top:0; left:0; width:100vw; height:100vh;
-      background:rgba(0,0,0,0.32); align-items:center; justify-content:center; padding:12px; overflow-y:auto; }
-    #progressModal > div { background:var(--card); border-radius:12px; padding:28px 24px 24px 24px; max-width:950px; width:100%;
-      max-height:85vh; box-shadow:0 8px 32px #0002; display:flex; gap:40px; color:var(--text);
-      position:relative; flex-direction:column; align-items:stretch;}
-    #modalUser { font-weight:600; font-size:1.3rem; color:var(--primary-accent); margin-bottom:20px; text-align:center;}
-    .closeModalBtn { position:absolute; top:10px; right:15px; font-size:22px; background:none; border:none; cursor:pointer; color:var(--text); z-index:10; user-select:none;}
-    .modal-content-bottom { display:flex; flex-wrap:wrap; gap:30px; justify-content:center;}
-    .modal-table-wrap, .modal-chart-wrap, .chart-card {
-      flex:1 1 320px; min-width:300px; max-width:420px;
+    #progressModal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.32);
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      overflow-y: auto;
     }
-    .modal-summary { flex:1 1 340px; min-width:300px; max-width:420px; display:flex; flex-direction:column; align-items:stretch;}
-    #progressTable { width:100%;
-      border-collapse:separate; border-spacing:0 8px; font-size:15px; background:var(--card); border-radius:12px;
-      box-shadow:0 3px 10px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:12px;}
-    #progressTable th, #progressTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc;
-      border-bottom:none; font-weight:600; color: var(--text);}
-    #progressTable th { background-color:var(--primary-accent); color:white; user-select:none;}
-    body.dark #progressTable th { background-color:#1842a1;}
-    @media (max-width:900px) { #progressModal>div { max-height:90vh;} }
-    .modal-table-wrap {margin-bottom:0;}
-    .modal-summary, .modal-chart-wrap {display:none;}
+    #progressModal>div {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 28px 24px 24px 24px;
+      max-width: 950px;
+      width: 100%;
+      max-height: 85vh;
+      box-shadow: 0 8px 32px #0002;
+      display: flex;
+      gap: 40px;
+      color: var(--text);
+      position: relative;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    #modalUser {
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--primary-accent);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .closeModalBtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      z-index: 10;
+      user-select: none;
+    }
+    #progressTable {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+      font-size: 15px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    #progressTable th, #progressTable td {
+      padding: 12px 16px;
+      text-align: center;
+      background-color: #f7f9fc;
+      border-bottom: none;
+      font-weight: 600;
+      color: var(--text);
+    }
+    #progressTable th {
+      background-color: var(--primary-accent);
+      color: white;
+      user-select: none;
+    }
+    body.dark #progressTable th {
+      background-color: #1842a1;
+    }
+    @media (max-width:900px) {
+      #progressModal>div {
+        max-height: 90vh;
+      }
+    }
   </style>
 </head>
 <body>
@@ -120,7 +340,8 @@
     <canvas id="scoreChart" height="90" role="img" aria-label="Bar chart of total tasks completed by users"></canvas>
     <button class="back-btn" onclick="goHome()">⬅ Back to Dashboard</button>
   </div>
-  <!-- Modal for user progress (no per-course breakdown) -->
+
+  <!-- Modal for user progress -->
   <div id="progressModal" role="dialog" aria-modal="true" aria-labelledby="modalUser" tabindex="-1">
     <div>
       <button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
@@ -128,13 +349,16 @@
       <div class="modal-content-bottom">
         <div class="modal-table-wrap chart-card">
           <table id="progressTable" aria-label="Course-wise progress table" hidden>
-            <thead><tr><th>Course Name</th><th>Tasks Completed</th></tr></thead>
+            <thead>
+              <tr><th>Course Name</th><th>Tasks Completed</th></tr>
+            </thead>
             <tbody id="progressTableBody"></tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
+
 <script>
 Chart.register({
   id: 'customBgCard',
@@ -150,7 +374,6 @@ Chart.register({
 let leaderboardData = [];
 let courseTotals = {};
 let currentUserProgress = null;
-let progressChartInstance = null;
 const medals = [
   '<span class="rank-medal gold">🥇</span>',
   '<span class="rank-medal silver">🥈</span>',
@@ -160,11 +383,14 @@ const chartCtx = document.getElementById('scoreChart').getContext('2d');
 let scoreChart;
 Chart.register(ChartDataLabels);
 
+// Helper: get user's initials
 function getInitials(name) {
   if (!name) return "U";
   const parts = name.split(/[ ._]/).filter(Boolean);
   return parts.length === 1 ? parts[0][0].toUpperCase() : (parts[0][0] + parts[1][0]).toUpperCase();
 }
+
+// Render leaderboard table rows
 function renderTable(data) {
   const tbody = document.getElementById("board");
   tbody.innerHTML = "";
@@ -181,6 +407,8 @@ function renderTable(data) {
     `;
   });
 }
+
+// Update leaderboard bar chart
 function updateChart(data) {
   const labels = data.map(u => u.user);
   const scores = data.map(u => u.score);
@@ -216,6 +444,8 @@ function updateChart(data) {
     plugins: [ChartDataLabels]
   });
 }
+
+// Filter and sort leaderboard based on the controls
 function applySearchAndSort() {
   const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
   const sortValue = document.getElementById('sortSelect').value;
@@ -230,6 +460,7 @@ function applySearchAndSort() {
   renderTable(filtered);
   updateChart(filtered);
 }
+
 async function loadCourseTotals() {
   try {
     const res = await fetch('https://tech-trail-w2ap.onrender.com/courses/meta');
@@ -242,6 +473,7 @@ async function loadCourseTotals() {
     };
   }
 }
+
 async function loadBoard() {
   await loadCourseTotals();
   try {
@@ -254,19 +486,22 @@ async function loadBoard() {
     console.error(e);
   }
 }
+
 function toggleTheme() {
   document.body.classList.toggle('dark');
   const themeBtn = document.querySelector('.theme-toggle');
   themeBtn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? "true" : "false");
 }
+
 function goHome() {
   window.location.href = "../index.html";
 }
+
 function closeModal() {
-  if(progressChartInstance) { progressChartInstance.destroy(); progressChartInstance=null;}
   const modal = document.getElementById('progressModal');
   if(modal) modal.style.display = 'none';
 }
+
 async function loadUserProgress(username){
   const modal = document.getElementById('progressModal');
   if(!modal) return alert("Modal element not found.");
@@ -276,8 +511,8 @@ async function loadUserProgress(username){
   currentUserProgress = null;
   const progressTable = document.getElementById('progressTable');
   const progressTableBody = document.getElementById('progressTableBody');
-  progressTable.hidden = true;
-  progressTableBody.innerHTML = '';
+  if(progressTable) progressTable.hidden = true;
+  if(progressTableBody) progressTableBody.innerHTML = '';
   try {
     const res = await fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`);
     if(!res.ok) throw new Error("Failed to fetch user progress");
@@ -285,20 +520,28 @@ async function loadUserProgress(username){
     currentUserProgress = prog;
     const courses = Object.keys(prog);
     if(courses.length === 0) {
-      progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
+      if(progressTableBody) {
+        progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
+      }
     } else {
-      progressTableBody.innerHTML = courses.map(course => {
-        const taskCount = prog[course].length;
-        return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
-      }).join('');
+      if(progressTableBody) {
+        progressTableBody.innerHTML = courses.map(course => {
+          const taskCount = prog[course].length;
+          return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
+        }).join('');
+      }
     }
-    progressTable.hidden = false;
+    if(progressTable) progressTable.hidden = false;
   } catch(e) {
-    progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
-    progressTable.hidden = false;
+    if(progressTableBody) {
+      progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
+    }
+    if(progressTable) progressTable.hidden = false;
     console.error(e);
   }
 }
+
+// Event listeners
 document.addEventListener('click', function(e){
   if(e.target.classList.contains('user-link')){
     e.preventDefault();
@@ -312,6 +555,8 @@ document.addEventListener("keydown", function(e){
     if(e.key === "Escape"){ closeModal(); }
   }
 });
+
+// Initial load
 loadBoard();
 </script>
 </body>
