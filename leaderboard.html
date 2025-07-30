@@ -78,20 +78,14 @@ position:relative; flex-direction:column; align-items:stretch;}
 flex:1 1 320px; min-width:300px; max-width:420px;
 }
 .modal-summary { flex:1 1 340px; min-width:300px; max-width:420px; display:flex; flex-direction:column; align-items:stretch;}
-#progressTable, #userCourseProgressTable, #courseSummaryTable { width:100%;
+#progressTable, #courseSummaryTable { width:100%;
 border-collapse:separate; border-spacing:0 8px; font-size:15px; background:var(--card); border-radius:12px;
 box-shadow:0 3px 10px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:12px;}
-#progressTable th, #progressTable td, #userCourseProgressTable th, #userCourseProgressTable td,
-#courseSummaryTable th, #courseSummaryTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc;
+#progressTable th, #progressTable td, #courseSummaryTable th, #courseSummaryTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc;
 border-bottom:none; font-weight:600; color: var(--text);}
-#progressTable th, #userCourseProgressTable th, #courseSummaryTable th { background-color:var(--primary-accent);
+#progressTable th, #courseSummaryTable th { background-color:var(--primary-accent);
 color:white; user-select:none;}
-#userCourseProgressTable td { cursor:pointer; font-weight:500;}
-#userCourseProgressTable tr:hover td { background-color:#e3eafc;}
-#userCourseProgressTable tr td:first-child { text-align:left; font-weight:700; color:var(--primary-accent);}
-body.dark #progressTable th, body.dark #userCourseProgressTable th, body.dark #courseSummaryTable th { background-color:#1842a1;}
-body.dark #userCourseProgressTable td, body.dark #userCourseProgressTable tr:hover td { background-color:#23263a;}
-body.dark #userCourseProgressTable tr:hover td { background-color:#2a2e48;}
+body.dark #progressTable th, body.dark #courseSummaryTable th { background-color:#1842a1;}
 #courseSummarySelect { font-size:15px; border-radius:6px; border:1px solid #ddd; appearance:none; cursor:pointer;
 margin-bottom:15px; padding:8px 10px; width:100%; user-select:none;}
 #courseSummaryTable th, #courseSummaryTable td { background:#f7f9fc; color:var(--text); font-weight:600;}
@@ -147,15 +141,7 @@ body.dark #courseSummaryTable th { background:#1842a1; color:#fff;}
 <div class="modal-chart-wrap chart-card">
 <canvas id="userProgressChart" width="360" height="300"></canvas>
 </div>
-<div class="modal-table-wrap chart-card">
-<table id="userCourseProgressTable" aria-label="Course-wise progress vs total table" hidden>
-<thead><tr><th>Course</th><th>Completed</th><th>Total</th></tr></thead>
-<tbody id="userCourseProgressBody"></tbody>
-</table>
-</div>
-<div class="modal-chart-wrap chart-card">
-<canvas id="userCoursePieChart" width="310" height="280"></canvas>
-</div>
+<!-- Removed userCourseProgressTable and userCoursePieChart -->
 <div class="modal-summary chart-card">
 <select id="courseSummarySelect" aria-label="Select course for summary"></select>
 <table id="courseSummaryTable" style="display: none;">
@@ -194,7 +180,6 @@ Chart.register({
 let leaderboardData = [];
 let courseTotals = {};
 let currentUserProgress = null;
-let userCoursePieInstance = null;
 let progressChartInstance = null;
 let courseSummaryPieInstance = null;
 const medals = [
@@ -310,47 +295,9 @@ function goHome() {
 }
 function closeModal() {
   if(progressChartInstance) { progressChartInstance.destroy(); progressChartInstance=null;}
-  if(userCoursePieInstance) { userCoursePieInstance.destroy(); userCoursePieInstance=null;}
   if(courseSummaryPieInstance) { courseSummaryPieInstance.destroy(); courseSummaryPieInstance=null;}
   const modal = document.getElementById('progressModal');
   if(modal) modal.style.display = 'none';
-}
-function renderCourseTaskTable() {
-  if(!currentUserProgress) return;
-  const table = document.getElementById('userCourseProgressTable');
-  const tbody = document.getElementById('userCourseProgressBody');
-  tbody.innerHTML = "";
-  Object.entries(courseTotals).forEach(([course, total])=>{
-    const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-    tbody.innerHTML += `<tr data-course="${course}"><td>${course}</td><td>${completed}</td><td>${total}</td></tr>`;
-  });
-  table.hidden = false;
-}
-function renderUserCoursePieChart(course) {
-  if(!courseTotals[course]) return;
-  const completed = currentUserProgress[course] ? currentUserProgress[course].length : 0;
-  const total = courseTotals[course];
-  const remaining = Math.max(total - completed, 0);
-  const ctx = document.getElementById('userCoursePieChart').getContext('2d');
-  if(userCoursePieInstance) userCoursePieInstance.destroy();
-  userCoursePieInstance = new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: ['Completed', 'Remaining'],
-      datasets: [{
-        data: [completed, remaining],
-        backgroundColor: ['#56b881', '#ddd']
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: { display: true, position:'bottom' },
-        datalabels: { color: '#222', formatter: val => val }
-      }
-    },
-    plugins: [ChartDataLabels]
-  });
 }
 function renderProgressChart() {
   if (!currentUserProgress) return;
@@ -448,8 +395,6 @@ async function loadUserProgress(username){
   const progressTableBody = document.getElementById('progressTableBody');
   progressTable.hidden = true;
   progressTableBody.innerHTML = '';
-  document.getElementById('userCourseProgressTable').hidden = true;
-  if(userCoursePieInstance){ userCoursePieInstance.destroy(); userCoursePieInstance=null;}
   if(progressChartInstance){ progressChartInstance.destroy(); progressChartInstance=null;}
   if(courseSummaryPieInstance){ courseSummaryPieInstance.destroy(); courseSummaryPieInstance = null;}
   document.getElementById('courseSummarySelect').innerHTML='';
@@ -470,31 +415,6 @@ async function loadUserProgress(username){
     }
     progressTable.hidden = false;
     renderProgressChart();
-    renderCourseTaskTable();
-    let firstCourse = Object.keys(courseTotals)[0];
-    if(courses.length>0){
-      for(const c of courses){
-        if(courseTotals[c]!==undefined){ firstCourse=c; break;}
-      }
-    }
-    renderUserCoursePieChart(firstCourse);
-    setTimeout(()=>{
-      Array.from(document.querySelectorAll('#userCourseProgressBody tr')).forEach(row => {
-        row.onclick = () => {
-          const course = row.getAttribute('data-course');
-          renderUserCoursePieChart(course);
-        };
-        row.style.cursor = 'pointer';
-        row.setAttribute('tabindex', '0');
-        row.addEventListener('keydown', (e) => {
-          if(e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const course = e.currentTarget.getAttribute('data-course');
-            renderUserCoursePieChart(course);
-          }
-        });
-      });
-    }, 0);
     updateCourseSummaryDropdown();
     const dropdown = document.getElementById('courseSummarySelect');
     dropdown.onchange = (e)=>updateCourseSummary(e.target.value);
