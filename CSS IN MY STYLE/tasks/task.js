@@ -1,5 +1,5 @@
 // API Base URL - Update this to match your FastAPI endpoint
-const API_BASE = "http://127.0.0.1:8000"; // your FastAPI endpoint
+const API_BASE = "https://tech-trail-w2ap.onrender.com"; // your FastAPI endpoint
 
 // Game State Management
 class CSSLearningGame {
