@@ -2263,7 +2263,7 @@ document.getElementById("todoInput").addEventListener("keypress", function(e) {
       };
       
       img.crossOrigin = 'anonymous';
-      img.src = '3.png';
+      img.src = '1.png';
       
     } catch (error) {
       console.error('Error in downloadCertificate:', error);
