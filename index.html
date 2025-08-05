@@ -1945,6 +1945,95 @@
             mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
         });
 
+        // WebGL Particle Animation
+        function initWebGL() {
+            const canvas = document.getElementById('webgl-canvas');
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                alpha: true,
+                antialias: true
+            });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 1500;
+            
+            const posArray = new Float32Array(particlesCount * 3);
+            
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 5;
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+            
+            const getParticleColor = () => {
+                const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
+                return isDarkTheme ? 0xb388ff : 0x2196F3;
+            };
+            
+            let particlesMaterial = new THREE.PointsMaterial({
+                size: 0.02,
+                color: getParticleColor(),
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+            
+            camera.position.z = 2;
+            
+            let mouseX = 0;
+            let mouseY = 0;
+            
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX / window.innerWidth - 0.5;
+                mouseY = event.clientY / window.innerHeight - 0.5;
+            });
+            
+            // Update particle color when theme changes
+            function updateParticleColor() {
+                setTimeout(() => {
+                    particlesMaterial.color.setHex(getParticleColor());
+                }, 100);
+            }
+            
+            themeToggle.addEventListener('change', updateParticleColor);
+            desktopThemeToggle.addEventListener('change', updateParticleColor);
+            
+            const animate = () => {
+                requestAnimationFrame(animate);
+                
+                particlesMesh.rotation.x += 0.001;
+                particlesMesh.rotation.y += 0.001;
+                
+                particlesMesh.rotation.x += mouseY * 0.05;
+                particlesMesh.rotation.y += mouseX * 0.05;
+                
+                renderer.render(scene, camera);
+            };
+            
+            animate();
+            
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        if (window.WebGLRenderingContext) {
+            try {
+                initWebGL();
+            } catch (e) {
+                console.log('WebGL initialization failed:', e);
+            }
+        }
+
         // Scroll to Section
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
