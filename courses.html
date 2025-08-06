@@ -400,6 +400,7 @@
           text-align: center;
           border: 1px solid rgba(255, 255, 255, 0.1);
           transition: all 0.3s ease;
+          cursor: pointer;
         }
 
         .category-card:hover {
@@ -422,6 +423,7 @@
 
         .category-card p {
           color: var(--text-secondary);
+          cursor: pointer;
         }
 
         @media (max-width: 768px) {
@@ -473,11 +475,18 @@
           box-shadow: var(--shadow-md);
           transition: all 0.3s ease;
           border: 1px solid rgba(255, 255, 255, 0.1);
+          scroll-margin-top: 100px; /* Added for smooth scrolling */
         }
 
         .course-card:hover {
           transform: translateY(-10px);
           box-shadow: var(--shadow-xl);
+        }
+
+        .highlight-course {
+          box-shadow: 0 0 20px var(--primary) !important;
+          transform: translateY(-15px) !important;
+          transition: all 0.5s ease !important;
         }
 
         .course-image {
@@ -922,12 +931,12 @@
             <!-- Desktop Navigation -->
             <nav class="nav">
                 <div class="nav-links" id="navLinks">
-                       <a class='nav-link' href='index.html'>Home</a>
-                    <a class='nav-link active' href='courses.html'>Courses</a>
-                    <a class='nav-link' href='certifications.html'>Certifications</a>
-                    <a class='nav-link' href='about-us.html'>About Us</a>
-                    <a class='nav-link' href='stay-connected.html'>Stay Connected</a>
-                    <a class='nav-link' href='leaderboard.html'>Leaderboard</a>
+                       <a class='nav-link' href='/'>Home</a>
+                    <a class='nav-link active' href='/courses'>Courses</a>
+                    <a class='nav-link' href='/certifications'>Certifications</a>
+                    <a class='nav-link' href='/about-us'>About Us</a>
+                    <a class='nav-link' href='/stay-connected'>Stay Connected</a>
+                    <a class='nav-link' href='/leaderboard'>Leaderboard</a>
                 </div>
                 <div class="theme-toggle">
                     <i class="fas fa-sun"></i>
@@ -972,7 +981,7 @@
                     <p>Boost your python confidence</p>
                 </div>
                 <div class="category-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-robot"></i>
+                                        <i class="fas fa-robot"></i>
                     <h3>Additionals</h3>
                     <p>ML, DL, AI, Data Science</p>
                 </div>
@@ -981,11 +990,11 @@
     </section>
 
     <!-- All Courses -->
-    <section class="all-courses">
+    <section class="all-courses" id="allCourses">
         <div class="container">
             <h2 data-aos="fade-up">All Courses</h2>
             <div class="courses-grid">
-                <div class="course-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="50" id="html-course">
                     <div class="course-image">
                         <i class="fab fa-html5"></i>
                     </div>
@@ -996,7 +1005,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="100" id="css-course">
                     <div class="course-image">
                         <i class="fab fa-css3-alt"></i>
                     </div>
@@ -1007,7 +1016,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="150">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="150" id="js-course">
                     <div class="course-image">
                         <i class="fab fa-js-square"></i>
                     </div>
@@ -1018,7 +1027,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="200" id="java-course">
                     <div class="course-image">
                         <i class="fab fa-java"></i>
                     </div>
@@ -1029,7 +1038,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="250">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="250" id="python-course">
                     <div class="course-image">
                         <i class="fab fa-python"></i>
                     </div>
@@ -1040,7 +1049,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="300" id="ml-course">
                     <div class="course-image">
                         <i class="fas fa-robot"></i>
                     </div>
@@ -1051,7 +1060,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="350">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="350" id="dl-course">
                     <div class="course-image">
                         <i class="fas fa-project-diagram"></i>
                     </div>
@@ -1062,7 +1071,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="400" id="ai-course">
                     <div class="course-image">
                        <i class="fas fa-brain"></i>
                     </div>
@@ -1073,7 +1082,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="450">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="450" id="ds-course">
                     <div class="course-image">
                          <i class="fas fa-chart-bar"></i>
                     </div>
@@ -1084,7 +1093,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="500" id="js-intermediate-course">
                     <div class="course-image">
                        <i class="fab fa-js-square"></i>
                     </div>
@@ -1095,7 +1104,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="550">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="550" id="c-course">
                     <div class="course-image">
                         <i class="fas fa-code"></i>
                     </div>
@@ -1106,7 +1115,7 @@
                     </div>
                 </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="course-card" data-aos="fade-up" data-aos-delay="600" id="nlp-course">
                     <div class="course-image">
                         <span style="position: relative; display: inline-block;">
                             <i class="fas fa-user" style="position: absolute; left: 0; top: 0;"></i>
@@ -1184,10 +1193,10 @@
                     <div class="footer-column">
                         <h4>Quick Links</h4>
                         <a href="/">HOME</a>
-                        <a href="courses.html">COURSES</a>
-                        <a href="certifications.html">CERTIFICATIONS</a>
-                        <a href="about-us.html">ABOUT US</a>
-                        <a href="stay-connected.html">STAY CONNECTED</a>
+                        <a href='/courses'>COURSES</a>
+                        <a href='/certifications'>CERTIFICATIONS</a>
+                        <a href='/about-us'>ABOUT US</a>
+                        <a href='/stay-connected'>STAY CONNECTED</a>
                     </div>
                     <div class="footer-column">
                         <h4>Courses</h4>
@@ -1409,7 +1418,7 @@
             }
         });
 
-        // Course URLs mapping - Updated with your provided URLs
+        // Course URLs mapping
         const courseUrls = {
             'HTML Fundamentals': '/HTML IN MY STYLE/index.html',
             'CSS': '/CSS IN MY STYLE/index.html',
@@ -1454,6 +1463,101 @@
                     window.open(courseUrl, '_blank');
                 } else {
                     alert(`${courseName} course page is under development. Coming soon!`);
+                }
+            });
+        });
+
+        // Map category cards to course sections
+        const categoryToCourse = {
+            'Frontend': {
+                'HTML': 'HTML Fundamentals',
+                'CSS': 'CSS',
+                'JS': 'JavaScript'
+            },
+            'Compiler Language': {
+                'JAVA': 'Java'
+            },
+            'Python': {
+                'Boost your python confidence': 'Python'
+            },
+            'Additionals': {
+                'ML': 'Machine Learning',
+                'DL': 'Deep Learning',
+                'AI': 'Artificial Intelligence',
+                'Data Science': 'Data Science'
+            }
+        };
+
+        // Add click event listeners to category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function(event) {
+                const categoryTitle = this.querySelector('h3').textContent.trim();
+                const categoryText = this.querySelector('p').textContent.trim();
+                
+                // Determine which course to navigate to based on click target
+                let targetCourseName = null;
+                
+                // Check if a specific technology was clicked
+                const clickedText = event.target.textContent.trim();
+                
+                if (categoryTitle === 'Frontend') {
+                    if (clickedText === 'HTML') {
+                        targetCourseName = 'HTML Fundamentals';
+                    } else if (clickedText === 'CSS') {
+                        targetCourseName = 'CSS';
+                    } else if (clickedText === 'JS') {
+                        targetCourseName = 'JavaScript';
+                    } else {
+                        // Default to HTML if they clicked elsewhere on the card
+                        targetCourseName = 'HTML Fundamentals';
+                    }
+                } else if (categoryTitle === 'Compiler Language') {
+                    targetCourseName = 'Java';
+                } else if (categoryTitle === 'Python') {
+                    targetCourseName = 'Python';
+                } else if (categoryTitle === 'Additionals') {
+                    if (clickedText.includes('ML')) {
+                        targetCourseName = 'Machine Learning';
+                    } else if (clickedText.includes('DL')) {
+                        targetCourseName = 'Deep Learning';
+                    } else if (clickedText.includes('AI')) {
+                        targetCourseName = 'Artificial Intelligence';
+                    } else if (clickedText.includes('Data Science')) {
+                        targetCourseName = 'Data Science';
+                    } else {
+                        // Default to ML if they clicked elsewhere on the card
+                        targetCourseName = 'Machine Learning';
+                    }
+                }
+                
+                // Find the target course card
+                if (targetCourseName) {
+                    const allCourseCards = document.querySelectorAll('.course-card');
+                    let targetCourse = null;
+                    
+                    allCourseCards.forEach(course => {
+                        const courseTitle = course.querySelector('h3').textContent.trim();
+                        if (courseTitle === targetCourseName) {
+                            targetCourse = course;
+                        }
+                    });
+                    
+                    // Scroll to the target course if found
+                    if (targetCourse) {
+                        // Scroll to the courses section first
+                        document.getElementById('allCourses').scrollIntoView({behavior: 'smooth'});
+                        
+                        // Then after a short delay, scroll to the specific course
+                        setTimeout(() => {
+                            targetCourse.scrollIntoView({behavior: 'smooth', block: 'center'});
+                            
+                            // Add a highlight effect
+                            targetCourse.classList.add('highlight-course');
+                            setTimeout(() => {
+                                targetCourse.classList.remove('highlight-course');
+                            }, 2000);
+                        }, 500);
+                    }
                 }
             });
         });
@@ -1519,6 +1623,7 @@
            ✅ Improved Visual Separation & Typography
            ✅ Better Touch Targets for Mobile
            ✅ Consistent with Main Page Footer
+           ✅ Added Navigation from Category Cards to Courses
            
            Course URLs Active & Working! ⚡
         `);
