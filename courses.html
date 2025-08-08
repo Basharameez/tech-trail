@@ -78,6 +78,7 @@
           transition: all 0.3s ease;
           width: 100%;
           max-width: 100vw;
+          cursor: none; /* Hide the default cursor */
         }
 
         .container {
@@ -95,6 +96,47 @@
           height: 100%;
           z-index: -1;
           pointer-events: none;
+        }
+
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        a, button, .category-card, .course-card, .scroll-top, .nav-link, .switch {
+            cursor: none;
+        }
+
+        @media (max-width: 768px) {
+            .custom-cursor {
+                display: none;
+            }
+            
+            body {
+                cursor: auto;
+            }
+            
+            a, button, .category-card, .course-card, .scroll-top, .nav-link, .switch {
+                cursor: pointer;
+            }
         }
 
         /* HEADER WITH MOBILE-FIRST APPROACH */
@@ -993,645 +1035,729 @@
             </div>
         </div>
     </section>
-
     <!-- All Courses -->
-    <section class="all-courses" id="allCourses">
-        <div class="container">
-            <h2 data-aos="fade-up">All Courses</h2>
-            <div class="courses-grid">
-                <div class="course-card" data-aos="fade-up" data-aos-delay="50" id="html-course">
-                    <div class="course-image">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>HTML Fundamentals</h3>
-                        <p>Master the building blocks of web development with comprehensive HTML training</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+<section class="all-courses" id="allCourses">
+    <div class="container">
+        <h2 data-aos="fade-up">All Courses</h2>
+        <div class="courses-grid">
+            <div class="course-card" data-aos="fade-up" data-aos-delay="50" id="html-course">
+                <div class="course-image">
+                    <i class="fab fa-html5"></i>
                 </div>
-
-                <div class="course-card" data-aos="fade-up" data-aos-delay="100" id="css-course">
-                    <div class="course-image">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>CSS</h3>
-                        <p>Create stunning designs and layouts with advanced CSS techniques and frameworks</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+                <div class="course-content">
+                    <h3>HTML Fundamentals</h3>
+                    <p>Master the building blocks of web development with comprehensive HTML training</p>
+                    <button class="btn course-btn">Visit Course</button>
                 </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="150" id="js-course">
-                    <div class="course-image">
-                        <i class="fab fa-js-square"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>JavaScript</h3>
-                        <p>Bring your websites to life with interactive JavaScript programming</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="100" id="css-course">
+                <div class="course-image">
+                    <i class="fab fa-css3-alt"></i>
                 </div>
-
-                <div class="course-card" data-aos="fade-up" data-aos-delay="200" id="java-course">
-                    <div class="course-image">
-                        <i class="fab fa-java"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Java</h3>
-                        <p>Master object-oriented programming with Java</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+                <div class="course-content">
+                    <h3>CSS</h3>
+                    <p>Create stunning designs and layouts with advanced CSS techniques and frameworks</p>
+                    <button class="btn course-btn">Visit Course</button>
                 </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="250" id="python-course">
-                    <div class="course-image">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Python</h3>
-                        <p>Start your python programming journey</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="150" id="js-course">
+                <div class="course-image">
+                    <i class="fab fa-js-square"></i>
                 </div>
-
-                <div class="course-card" data-aos="fade-up" data-aos-delay="300" id="ml-course">
-                    <div class="course-image">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Machine Learning</h3>
-                        <p>Build, Train, Test, Validate and learn</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+                <div class="course-content">
+                    <h3>JavaScript</h3>
+                    <p>Bring your websites to life with interactive JavaScript programming</p>
+                    <button class="btn course-btn">Visit Course</button>
                 </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="350" id="dl-course">
-                    <div class="course-image">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Deep Learning</h3>
-                        <p>Build Models using Deep learning and Deploy</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="200" id="java-course">
+                <div class="course-image">
+                    <i class="fab fa-java"></i>
                 </div>
-
-                <div class="course-card" data-aos="fade-up" data-aos-delay="400" id="ai-course">
-                    <div class="course-image">
-                       <i class="fas fa-brain"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Artificial Intelligence</h3>
-                        <p>Learn to simulate Human Intelligence</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+                <div class="course-content">
+                    <h3>Java</h3>
+                    <p>Master object-oriented programming with Java</p>
+                    <button class="btn course-btn">Visit Course</button>
                 </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="450" id="ds-course">
-                    <div class="course-image">
-                         <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>Data Science</h3>
-                        <p>Explore the world of Data</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="250" id="python-course">
+                <div class="course-image">
+                    <i class="fab fa-python"></i>
                 </div>
-
-                <div class="course-card" data-aos="fade-up" data-aos-delay="500" id="js-intermediate-course">
-                    <div class="course-image">
-                       <i class="fab fa-js-square"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>JavaScript INTERMEDIATE</h3>
-                        <p>Beyond Validations, Learn the Behaviour of Web Pages</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+                <div class="course-content">
+                    <h3>Python</h3>
+                    <p>Start your python programming journey</p>
+                    <button class="btn course-btn">Visit Course</button>
                 </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="550" id="c-course">
-                    <div class="course-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="course-content">
-                        <h3>C Programming</h3>
-                        <p>Master the fundamentals of C programming language</p>
-                        <button class="btn course-btn">Visit Course</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="300" id="ml-course">
+                <div class="course-image">
+                    <i class="fas fa-robot"></i>
                 </div>
+                <div class="course-content">
+                    <h3>Machine Learning</h3>
+                    <p>Build, Train, Test, Validate and learn</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
 
-                <div class="course-card" data-aos="fade-up" data-aos-delay="600" id="nlp-course">
-                    <div class="course-image">
-                        <span style="position: relative; display: inline-block;">
-                            <i class="fas fa-user" style="position: absolute; left: 0; top: 0;"></i>
-                            <i class="fas fa-comment" style="position: absolute; left: 18px; top: 0; color: #4e73df;"></i>
-                        </span>
-                    </div>
-                    <div class="course-content">
-                        <h3>Natural Language Processing</h3>
-                        <p>Give machines the capacity to analyse, understand, and interpret human language</p>
-                        <button class="btn course-btn">Coming Soon</button>
-                    </div>
+            <div class="course-card" data-aos="fade-up" data-aos-delay="350" id="dl-course">
+                <div class="course-image">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Deep Learning</h3>
+                    <p>Build Models using Deep learning and Deploy</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="400" id="ai-course">
+                <div class="course-image">
+                   <i class="fas fa-brain"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Artificial Intelligence</h3>
+                    <p>Learn to simulate Human Intelligence</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="450" id="ds-course">
+                <div class="course-image">
+                     <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Data Science</h3>
+                    <p>Explore the world of Data</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="500" id="js-intermediate-course">
+                <div class="course-image">
+                   <i class="fab fa-js-square"></i>
+                </div>
+                <div class="course-content">
+                    <h3>JavaScript INTERMEDIATE</h3>
+                    <p>Beyond Validations, Learn the Behaviour of Web Pages</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="550" id="c-course">
+                <div class="course-image">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="course-content">
+                    <h3>C Programming</h3>
+                    <p>Master the fundamentals of C programming language</p>
+                    <button class="btn course-btn">Visit Course</button>
+                </div>
+            </div>
+
+            <div class="course-card" data-aos="fade-up" data-aos-delay="600" id="nlp-course">
+                <div class="course-image">
+                    <span style="position: relative; display: inline-block;">
+                        <i class="fas fa-user" style="position: absolute; left: 0; top: 0;"></i>
+                        <i class="fas fa-comment" style="position: absolute; left: 18px; top: 0; color: #4e73df;"></i>
+                    </span>
+                </div>
+                <div class="course-content">
+                    <h3>Natural Language Processing</h3>
+                    <p>Give machines the capacity to analyse, understand, and interpret human language</p>
+                    <button class="btn course-btn">Coming Soon</button>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Learning Path -->
-    <section class="learning-path">
-        <div class="container">
-            <h2 data-aos="fade-up">🚦 Realistic Roadmaps for Aspiring Full-Stack Developers</h2>
-            <div class="modern-paths-grid">
-                <!-- Python Path -->
-                <div class="modern-path-card" data-aos="fade-up" data-aos-delay="50">
-                    <div class="modern-path-header" style="background:linear-gradient(90deg,#3776AB,#4e73df);">
-                        <i class="fab fa-python"></i>
-                        <span>Full-Stack Python for Web Development</span>
-                    </div>
-                    <ul class="modern-path-steps">
-                        <li><span class="step-dot"></span>HTML & CSS Fundamentals <span class="step-desc">Build the foundation of web structure and design</span></li>
-                        <li><span class="step-dot"></span>JavaScript Essentials <span class="step-desc">Add interactivity to your web pages</span></li>
-                        <li><span class="step-dot"></span>Python Programming Basics <span class="step-desc">Master Python syntax and core concepts</span></li>
-                        <li><span class="step-dot"></span>Version Control with Git & GitHub <span class="step-desc">Collaborate and manage your codebase</span></li>
-                        <li><span class="step-dot"></span>Backend with Flask <span class="step-desc">Create REST APIs and dynamic web apps</span></li>
-                        <li><span class="step-dot"></span>Databases (SQL & ORM) <span class="step-desc">Work with SQLite/PostgreSQL and SQLAlchemy</span></li>
-                        <li><span class="step-dot"></span>Frontend with React.js <span class="step-desc">Build modern, component-based UIs</span></li>
-                        <li><span class="step-dot"></span>User Authentication & Security <span class="step-desc">Implement login, registration, and secure your app</span></li>
-                        <li><span class="step-dot"></span>Deployment <span class="step-desc">Host your app on Heroku, Vercel, or AWS</span></li>
-                        <li><span class="step-dot"></span>Capstone Project <span class="step-desc">Build and deploy a full-stack Python web application</span></li>
-                    </ul>
-                    <div class="modern-path-note">This roadmap is a suggested learning journey for aspiring full-stack Python web developers.</div>
+<!-- Learning Path -->
+<section class="learning-path">
+    <div class="container">
+        <h2 data-aos="fade-up">🚦 Realistic Roadmaps for Aspiring Full-Stack Developers</h2>
+        <div class="modern-paths-grid">
+            <!-- Python Path -->
+            <div class="modern-path-card" data-aos="fade-up" data-aos-delay="50">
+                <div class="modern-path-header" style="background:linear-gradient(90deg,#3776AB,#4e73df);">
+                    <i class="fab fa-python"></i>
+                    <span>Full-Stack Python for Web Development</span>
                 </div>
-                <!-- Java Path -->
-                <div class="modern-path-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="modern-path-header" style="background:linear-gradient(90deg,#E76F00,#f7b733);">
-                        <i class="fab fa-java"></i>
-                        <span>Full-Stack Java for Web Development</span>
-                    </div>
-                    <ul class="modern-path-steps">
-                        <li><span class="step-dot"></span>HTML & CSS Fundamentals <span class="step-desc">Structure and style your web pages</span></li>
-                        <li><span class="step-dot"></span>JavaScript Essentials <span class="step-desc">Add dynamic features to your sites</span></li>
-                        <li><span class="step-dot"></span>Java Programming Basics <span class="step-desc">Understand OOP and Java syntax</span></li>
-                        <li><span class="step-dot"></span>Version Control with Git & GitHub <span class="step-desc">Track and collaborate on code</span></li>
-                        <li><span class="step-dot"></span>Backend with Spring Boot <span class="step-desc">Develop robust RESTful APIs</span></li>
-                        <li><span class="step-dot"></span>Databases (MySQL & JPA/Hibernate) <span class="step-desc">Integrate and manage data</span></li>
-                        <li><span class="step-dot"></span>Frontend with Angular or React.js <span class="step-desc">Build scalable, interactive UIs</span></li>
-                        <li><span class="step-dot"></span>User Authentication & Security <span class="step-desc">Secure your Java web apps</span></li>
-                        <li><span class="step-dot"></span>Deployment <span class="step-desc">Deploy on AWS, Azure, or DigitalOcean</span></li>
-                        <li><span class="step-dot"></span>Capstone Project <span class="step-desc">Deliver a production-ready full-stack Java application</span></li>
-                    </ul>
-                    <div class="modern-path-note">This roadmap is a suggested learning journey for aspiring full-stack Java web developers.</div>
+                <ul class="modern-path-steps">
+                    <li><span class="step-dot"></span>HTML & CSS Fundamentals <span class="step-desc">Build the foundation of web structure and design</span></li>
+                    <li><span class="step-dot"></span>JavaScript Essentials <span class="step-desc">Add interactivity to your web pages</span></li>
+                    <li><span class="step-dot"></span>Python Programming Basics <span class="step-desc">Master Python syntax and core concepts</span></li>
+                    <li><span class="step-dot"></span>Version Control with Git & GitHub <span class="step-desc">Collaborate and manage your codebase</span></li>
+                    <li><span class="step-dot"></span>Backend with Flask <span class="step-desc">Create REST APIs and dynamic web apps</span></li>
+                    <li><span class="step-dot"></span>Databases (SQL & ORM) <span class="step-desc">Work with SQLite/PostgreSQL and SQLAlchemy</span></li>
+                    <li><span class="step-dot"></span>Frontend with React.js <span class="step-desc">Build modern, component-based UIs</span></li>
+                    <li><span class="step-dot"></span>User Authentication & Security <span class="step-desc">Implement login, registration, and secure your app</span></li>
+                    <li><span class="step-dot"></span>Deployment <span class="step-desc">Host your app on Heroku, Vercel, or AWS</span></li>
+                    <li><span class="step-dot"></span>Capstone Project <span class="step-desc">Build and deploy a full-stack Python web application</span></li>
+                </ul>
+                <div class="modern-path-note">This roadmap is a suggested learning journey for aspiring full-stack Python web developers.</div>
+            </div>
+            <!-- Java Path -->
+            <div class="modern-path-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="modern-path-header" style="background:linear-gradient(90deg,#E76F00,#f7b733);">
+                    <i class="fab fa-java"></i>
+                    <span>Full-Stack Java for Web Development</span>
+                </div>
+                <ul class="modern-path-steps">
+                    <li><span class="step-dot"></span>HTML & CSS Fundamentals <span class="step-desc">Structure and style your web pages</span></li>
+                    <li><span class="step-dot"></span>JavaScript Essentials <span class="step-desc">Add dynamic features to your sites</span></li>
+                    <li><span class="step-dot"></span>Java Programming Basics <span class="step-desc">Understand OOP and Java syntax</span></li>
+                    <li><span class="step-dot"></span>Version Control with Git & GitHub <span class="step-desc">Track and collaborate on code</span></li>
+                    <li><span class="step-dot"></span>Backend with Spring Boot <span class="step-desc">Develop robust RESTful APIs</span></li>
+                    <li><span class="step-dot"></span>Databases (MySQL & JPA/Hibernate) <span class="step-desc">Integrate and manage data</span></li>
+                    <li><span class="step-dot"></span>Frontend with Angular or React.js <span class="step-desc">Build scalable, interactive UIs</span></li>
+                    <li><span class="step-dot"></span>User Authentication & Security <span class="step-desc">Secure your Java web apps</span></li>
+                    <li><span class="step-dot"></span>Deployment <span class="step-desc">Deploy on AWS, Azure, or DigitalOcean</span></li>
+                    <li><span class="step-dot"></span>Capstone Project <span class="step-desc">Deliver a production-ready full-stack Java application</span></li>
+                </ul>
+                <div class="modern-path-note">This roadmap is a suggested learning journey for aspiring full-stack Java web developers.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMPROVED FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>TECH IN MY STYLE</h3>
+                <p>Empowering the next generation of developers with hands-on learning experiences and industry-recognized certifications.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <a href="/">HOME</a>
+                    <a href='/courses'>COURSES</a>
+                    <a href='/certifications'>CERTIFICATIONS</a>
+                    <a href='/about-us'>ABOUT US</a>
+                    <a href='/stay-connected'>STAY CONNECTED</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Courses</h4>
+                    <a href="/HTML IN MY STYLE/index.html">HTML IN MY STYLE</a>
+                    <a href="/CSS IN MY STYLE/index.html">CSS IN MY STYLE</a>
+                    <a href="/JAVASCRIPT IN MY STYLE - BASIC/index.html">JS IN MY STYLE (BASIC)</a>
+                    <a href="/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html">JS IN MY STYLE (INTERMEDIATE)</a>
+                    <a href="/C IN MY STYLE/index.html">C IN MY STYLE</a>
+                    <a href="/JAVA IN MY STYLE/index.html">JAVA IN MY STYLE</a>
+                    <a href="/PYTHON IN MY STYLE/index.html">PYTHON IN MY STYLE</a>
+                    <a href="/ML IN MY STYLE/index.html">ML IN MY STYLE</a>
+                    <a href="https://deeplearning-in-my-style.netlify.app/">DL IN MY STYLE</a>
+                    <a href="https://datascience-in-my-style.netlify.app/">DSC IN MY STYLE</a>
+                    <a href="https://ai-in-my-style.netlify.app/">AI IN MY STYLE</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <a href="https://www.instagram.com/tech_in_my_style?igsh=MWVpb2dzcmhwZ2NicQ=="><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://youtube.com/@tech-in-my-style?si=G48ugz-d8oO7-4Dw"><i class="fab fa-youtube"></i> YouTube</a>
+                    <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/Tech_in_my_style_bot"><i class="fab fa-telegram"></i> Telegram</a>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- IMPROVED FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>TECH IN MY STYLE</h3>
-                    <p>Empowering the next generation of developers with hands-on learning experiences and industry-recognized certifications.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Quick Links</h4>
-                        <a href="/">HOME</a>
-                        <a href='/courses'>COURSES</a>
-                        <a href='/certifications'>CERTIFICATIONS</a>
-                        <a href='/about-us'>ABOUT US</a>
-                        <a href='/stay-connected'>STAY CONNECTED</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Courses</h4>
-                        <a href="/HTML IN MY STYLE/index.html">HTML IN MY STYLE</a>
-                        <a href="/CSS IN MY STYLE/index.html">CSS IN MY STYLE</a>
-                        <a href="/JAVASCRIPT IN MY STYLE - BASIC/index.html">JS IN MY STYLE (BASIC)</a>
-                        <a href="/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html">JS IN MY STYLE (INTERMEDIATE)</a>
-                        <a href="/C IN MY STYLE/index.html">C IN MY STYLE</a>
-                        <a href="/JAVA IN MY STYLE/index.html">JAVA IN MY STYLE</a>
-                        <a href="/PYTHON IN MY STYLE/index.html">PYTHON IN MY STYLE</a>
-                        <a href="/ML IN MY STYLE/index.html">ML IN MY STYLE</a>
-                        <a href="https://deeplearning-in-my-style.netlify.app/">DL IN MY STYLE</a>
-                        <a href="https://datascience-in-my-style.netlify.app/">DSC IN MY STYLE</a>
-                        <a href="https://ai-in-my-style.netlify.app/">AI IN MY STYLE</a>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Support</h4>
-                        <a href="https://www.instagram.com/tech_in_my_style?igsh=MWVpb2dzcmhwZ2NicQ=="><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="https://youtube.com/@tech-in-my-style?si=G48ugz-d8oO7-4Dw"><i class="fab fa-youtube"></i> YouTube</a>
-                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="https://t.me/Tech_in_my_style_bot"><i class="fab fa-telegram"></i> Telegram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Tech In My Style. All rights reserved.</p>
-                <div class="scroll-top" onclick="scrollToTop()">
-                    <i class="fas fa-arrow-up"></i>
-                </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Tech In My Style. All rights reserved.</p>
+            <div class="scroll-top" onclick="scrollToTop()">
+                <i class="fas fa-arrow-up"></i>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // Initialize AOS with minimal lazy loading
-        AOS.init({
-            duration: 600,
-            easing: 'ease-in-out',
-            once: false,
-            mirror: true,
-            offset: 20
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+    // Initialize AOS with minimal lazy loading
+    AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: false,
+        mirror: true,
+        offset: 20
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const menuIcon = mobileMenuBtn.querySelector('i');
+
+    mobileMenuBtn.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        
+        if (navLinks.classList.contains('active')) {
+            menuIcon.className = 'fas fa-times';
+            document.body.style.overflow = 'hidden';
+        } else {
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu when clicking on nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
         });
+    });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        const menuIcon = mobileMenuBtn.querySelector('i');
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target) && !event.target.closest('.mobile-header-controls')) {
+            navLinks.classList.remove('active');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+    });
 
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            
-            if (navLinks.classList.contains('active')) {
-                menuIcon.className = 'fas fa-times';
-                document.body.style.overflow = 'hidden';
-            } else {
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
-            }
-        });
+    // Sync Theme Toggles
+    const mobileThemeToggle = document.getElementById('themeToggle');
+    const desktopThemeToggle = document.getElementById('desktopThemeToggle');
+    const body = document.body;
 
-        // Close mobile menu when clicking on nav links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
-            });
-        });
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'dark') {
+        body.setAttribute('data-theme', 'dark');
+        mobileThemeToggle.checked = true;
+        desktopThemeToggle.checked = true;
+    }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target) && !event.target.closest('.mobile-header-controls')) {
-                navLinks.classList.remove('active');
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Sync Theme Toggles
-        const mobileThemeToggle = document.getElementById('themeToggle');
-        const desktopThemeToggle = document.getElementById('desktopThemeToggle');
-        const body = document.body;
-
-        const currentTheme = localStorage.getItem('theme') || 'light';
-        if (currentTheme === 'dark') {
+    function syncThemeToggles(isDark) {
+        mobileThemeToggle.checked = isDark;
+        desktopThemeToggle.checked = isDark;
+        
+        if (isDark) {
             body.setAttribute('data-theme', 'dark');
-            mobileThemeToggle.checked = true;
-            desktopThemeToggle.checked = true;
+            localStorage.setItem('theme', 'dark');
+        } else {
+            body.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
         }
+    }
 
-        function syncThemeToggles(isDark) {
-            mobileThemeToggle.checked = isDark;
-            desktopThemeToggle.checked = isDark;
+    mobileThemeToggle.addEventListener('change', function() {
+        syncThemeToggles(this.checked);
+    });
+
+    desktopThemeToggle.addEventListener('change', function() {
+        syncThemeToggles(this.checked);
+    });
+
+    // WebGL Animation with Three.js
+    function initWebGL() {
+        const canvas = document.getElementById('webgl-canvas');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: canvas,
+            alpha: true,
+            antialias: true
+        });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 1500;
+        
+        const posArray = new Float32Array(particlesCount * 3);
+        
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 5;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        
+        const getParticleColor = () => {
+            const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
+            return isDarkTheme ? 0xb388ff : 0x2196F3;
+        };
+        
+        let particlesMaterial = new THREE.PointsMaterial({
+            size: 0.02,
+            color: getParticleColor(),
+            transparent: true,
+            opacity: 0.8
+        });
+        
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+        
+        camera.position.z = 2;
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
+        let isMoving = false;
+        let moveTimeout;
+        
+        document.addEventListener('mousemove', (event) => {
+            // Calculate mouse position
+            mouseX = (event.clientX / window.innerWidth - 0.5) * 0.05;
+            mouseY = (event.clientY / window.innerHeight - 0.5) * 0.05;
             
-            if (isDark) {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
+            // Set target rotation based on mouse position
+            targetRotationX = mouseY;
+            targetRotationY = mouseX;
+            
+            // Set moving flag
+            isMoving = true;
+            
+            // Clear previous timeout
+            clearTimeout(moveTimeout);
+            
+            // Set timeout to reset moving flag
+            moveTimeout = setTimeout(() => {
+                isMoving = false;
+            }, 1000);
+        });
+        
+        function updateParticleColor() {
+            setTimeout(() => {
+                particlesMaterial.color.setHex(getParticleColor());
+            }, 100);
+        }
+        
+        mobileThemeToggle.addEventListener('change', updateParticleColor);
+        desktopThemeToggle.addEventListener('change', updateParticleColor);
+        
+        const animate = () => {
+            requestAnimationFrame(animate);
+            
+            // Very slow constant rotation when not moving
+            particlesMesh.rotation.x += 0.0002;
+            particlesMesh.rotation.y += 0.0002;
+            
+            // Smooth transition to target rotation when mouse moves
+            if (isMoving) {
+                // Move towards target rotation
+                currentRotationX += (targetRotationX - currentRotationX) * 0.1;
+                currentRotationY += (targetRotationY - currentRotationY) * 0.1;
+                
+                // Apply the rotation
+                particlesMesh.rotation.x += currentRotationX;
+                particlesMesh.rotation.y += currentRotationY;
             } else {
-                body.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
+                // Gradually return to static position
+                currentRotationX *= 0.95;
+                currentRotationY *= 0.95;
+                
+                // Apply diminishing rotation
+                particlesMesh.rotation.x += currentRotationX;
+                particlesMesh.rotation.y += currentRotationY;
             }
-        }
-
-        mobileThemeToggle.addEventListener('change', function() {
-            syncThemeToggles(this.checked);
-        });
-
-        desktopThemeToggle.addEventListener('change', function() {
-            syncThemeToggles(this.checked);
-        });
-
-        // WebGL Animation with Three.js
-        function initWebGL() {
-            const canvas = document.getElementById('webgl-canvas');
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({
-                canvas: canvas,
-                alpha: true,
-                antialias: true
-            });
             
+            renderer.render(scene, camera);
+        };
+        
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
-            
-            const particlesGeometry = new THREE.BufferGeometry();
-            const particlesCount = 1500;
-            
-            const posArray = new Float32Array(particlesCount * 3);
-            
-            for (let i = 0; i < particlesCount * 3; i++) {
-                posArray[i] = (Math.random() - 0.5) * 5;
-            }
-            
-            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-            
-            const getParticleColor = () => {
-                const isDarkTheme = document.body.getAttribute('data-theme') === 'dark';
-                return isDarkTheme ? 0xb388ff : 0x2196F3;
-            };
-            
-            let particlesMaterial = new THREE.PointsMaterial({
-                size: 0.02,
-                color: getParticleColor(),
-                transparent: true,
-                opacity: 0.8
-            });
-            
-            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-            scene.add(particlesMesh);
-            
-            camera.position.z = 2;
-            
-            let mouseX = 0;
-            let mouseY = 0;
-            
-            document.addEventListener('mousemove', (event) => {
-                mouseX = event.clientX / window.innerWidth - 0.5;
-                mouseY = event.clientY / window.innerHeight - 0.5;
-            });
-            
-            function updateParticleColor() {
-                setTimeout(() => {
-                    particlesMaterial.color.setHex(getParticleColor());
-                }, 100);
-            }
-            
-            mobileThemeToggle.addEventListener('change', updateParticleColor);
-            desktopThemeToggle.addEventListener('change', updateParticleColor);
-            
-            const animate = () => {
-                requestAnimationFrame(animate);
-                
-                particlesMesh.rotation.x += 0.001;
-                particlesMesh.rotation.y += 0.001;
-                
-                particlesMesh.rotation.x += mouseY * 0.05;
-                particlesMesh.rotation.y += mouseX * 0.05;
-                
-                renderer.render(scene, camera);
-            };
-            
-            animate();
-            
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-        }
+        });
+    }
 
-        if (window.WebGLRenderingContext) {
-            try {
-                initWebGL();
-            } catch (e) {
-                console.log('WebGL initialization failed:', e);
-            }
+    if (window.WebGLRenderingContext) {
+        try {
+            initWebGL();
+        } catch (e) {
+            console.log('WebGL initialization failed:', e);
         }
+    }
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+    // Custom cursor implementation
+    function initCustomCursor() {
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        
+        const cursorDot = document.createElement('div');
+        cursorDot.classList.add('cursor-dot');
+        
+        cursor.appendChild(cursorDot);
+        document.body.appendChild(cursor);
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Scale effect on clickable elements
+        const clickableElements = document.querySelectorAll('a, button, .category-card, .course-card, .scroll-top, .nav-link, .switch');
+        clickableElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
             });
-        }
-
-        // Header Background on Scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                if (document.body.getAttribute('data-theme') === 'dark') {
-                    header.style.background = 'rgba(10, 10, 10, 0.95)';
-                }
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+            });
+        });
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseout', (e) => {
+            if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+                cursor.style.opacity = '0';
             } else {
-                header.style.background = 'var(--surface)';
+                cursor.style.opacity = '1';
             }
         });
+    }
 
-        // Course URLs mapping
-        const courseUrls = {
-            'HTML Fundamentals': '/HTML IN MY STYLE/index.html',
-            'CSS': '/CSS IN MY STYLE/index.html',
-            'JavaScript': '/JAVASCRIPT IN MY STYLE - BASIC/index.html',
-            'JavaScript INTERMEDIATE': '/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html',
-            'Java': '/JAVA IN MY STYLE/index.html',
-            'Python': '/PYTHON IN MY STYLE/index.html',
-            'Machine Learning': '/ML IN MY STYLE/index.html',
-            'Data Science': '/DSC IN MY STYLE/index.html',
-            'Deep Learning': '/DL IN MY STYLE/index.html',
-            'Artificial Intelligence': '/AI IN MY STYLE/index.html',
-            'C Programming': '/C IN MY STYLE/index.html',
-            'Natural Language Processing': '#' // Coming soon
-        };
+    // Initialize custom cursor only on desktop
+    if (window.innerWidth > 768) {
+        initCustomCursor();
+    }
 
-        // Course Enrollment with Redirect - Updated Logic
-        document.querySelectorAll('.course-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const courseCard = this.closest('.course-card');
-                const courseName = courseCard.querySelector('h3').textContent.trim();
-                
-                // Add ripple effect
-                const ripple = document.createElement('span');
-                ripple.classList.add('ripple');
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-                
-                // Handle coming soon courses
-                if (this.textContent.trim() === 'Coming Soon') {
-                    alert(`${courseName} is coming soon! Stay tuned for updates.`);
-                    return;
-                }
-                
-                // Get the course URL
-                const courseUrl = courseUrls[courseName];
-                
-                // Redirect to course URL
-                if (courseUrl && courseUrl !== '#') {
-                    window.open(courseUrl, '_blank');
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Header Background on Scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            if (document.body.getAttribute('data-theme') === 'dark') {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            }
+        } else {
+            header.style.background = 'var(--surface)';
+        }
+    });
+
+    // Course URLs mapping
+    const courseUrls = {
+        'HTML Fundamentals': '/HTML IN MY STYLE/index.html',
+        'CSS': '/CSS IN MY STYLE/index.html',
+        'JavaScript': '/JAVASCRIPT IN MY STYLE - BASIC/index.html',
+        'JavaScript INTERMEDIATE': '/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html',
+        'Java': '/JAVA IN MY STYLE/index.html',
+        'Python': '/PYTHON IN MY STYLE/index.html',
+        'Machine Learning': '/ML IN MY STYLE/index.html',
+        'Data Science': '/DSC IN MY STYLE/index.html',
+        'Deep Learning': '/DL IN MY STYLE/index.html',
+        'Artificial Intelligence': '/AI IN MY STYLE/index.html',
+        'C Programming': '/C IN MY STYLE/index.html',
+        'Natural Language Processing': '#' // Coming soon
+    };
+
+    // Course Enrollment with Redirect - Updated Logic
+    document.querySelectorAll('.course-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const courseCard = this.closest('.course-card');
+            const courseName = courseCard.querySelector('h3').textContent.trim();
+            
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Handle coming soon courses
+            if (this.textContent.trim() === 'Coming Soon') {
+                alert(`${courseName} is coming soon! Stay tuned for updates.`);
+                return;
+            }
+            
+            // Get the course URL
+            const courseUrl = courseUrls[courseName];
+            
+            // Redirect to course URL
+            if (courseUrl && courseUrl !== '#') {
+                window.open(courseUrl, '_blank');
+            } else {
+                alert(`${courseName} course page is under development. Coming soon!`);
+            }
+        });
+    });
+
+    // Map category cards to course sections
+    const categoryToCourse = {
+        'Frontend': {
+            'HTML': 'HTML Fundamentals',
+            'CSS': 'CSS',
+            'JS': 'JavaScript'
+        },
+        'Compiler Language': {
+            'JAVA': 'Java'
+        },
+        'Python': {
+            'Boost your python confidence': 'Python'
+        },
+        'Additionals': {
+            'ML': 'Machine Learning',
+            'DL': 'Deep Learning',
+            'AI': 'Artificial Intelligence',
+            'Data Science': 'Data Science'
+        }
+    };
+
+    // Add click event listeners to category cards
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function(event) {
+            const categoryTitle = this.querySelector('h3').textContent.trim();
+            const categoryText = this.querySelector('p').textContent.trim();
+            
+            // Determine which course to navigate to based on click target
+            let targetCourseName = null;
+            
+            // Check if a specific technology was clicked
+            const clickedText = event.target.textContent.trim();
+            
+            if (categoryTitle === 'Frontend') {
+                if (clickedText === 'HTML') {
+                    targetCourseName = 'HTML Fundamentals';
+                } else if (clickedText === 'CSS') {
+                    targetCourseName = 'CSS';
+                } else if (clickedText === 'JS') {
+                    targetCourseName = 'JavaScript';
                 } else {
-                    alert(`${courseName} course page is under development. Coming soon!`);
+                    // Default to HTML if they clicked elsewhere on the card
+                    targetCourseName = 'HTML Fundamentals';
                 }
-            });
-        });
-
-        // Map category cards to course sections
-        const categoryToCourse = {
-            'Frontend': {
-                'HTML': 'HTML Fundamentals',
-                'CSS': 'CSS',
-                'JS': 'JavaScript'
-            },
-            'Compiler Language': {
-                'JAVA': 'Java'
-            },
-            'Python': {
-                'Boost your python confidence': 'Python'
-            },
-            'Additionals': {
-                'ML': 'Machine Learning',
-                'DL': 'Deep Learning',
-                'AI': 'Artificial Intelligence',
-                'Data Science': 'Data Science'
+            } else if (categoryTitle === 'Compiler Language') {
+                targetCourseName = 'Java';
+            } else if (categoryTitle === 'Python') {
+                targetCourseName = 'Python';
+            } else if (categoryTitle === 'Additionals') {
+                if (clickedText.includes('ML')) {
+                    targetCourseName = 'Machine Learning';
+                } else if (clickedText.includes('DL')) {
+                    targetCourseName = 'Deep Learning';
+                } else if (clickedText.includes('AI')) {
+                    targetCourseName = 'Artificial Intelligence';
+                } else if (clickedText.includes('Data Science')) {
+                    targetCourseName = 'Data Science';
+                } else {
+                    // Default to ML if they clicked elsewhere on the card
+                    targetCourseName = 'Machine Learning';
+                }
             }
-        };
-
-        // Add click event listeners to category cards
-        document.querySelectorAll('.category-card').forEach(card => {
-            card.addEventListener('click', function(event) {
-                const categoryTitle = this.querySelector('h3').textContent.trim();
-                const categoryText = this.querySelector('p').textContent.trim();
+            
+            // Find the target course card
+            if (targetCourseName) {
+                const allCourseCards = document.querySelectorAll('.course-card');
+                let targetCourse = null;
                 
-                // Determine which course to navigate to based on click target
-                let targetCourseName = null;
-                
-                // Check if a specific technology was clicked
-                const clickedText = event.target.textContent.trim();
-                
-                if (categoryTitle === 'Frontend') {
-                    if (clickedText === 'HTML') {
-                        targetCourseName = 'HTML Fundamentals';
-                    } else if (clickedText === 'CSS') {
-                        targetCourseName = 'CSS';
-                    } else if (clickedText === 'JS') {
-                        targetCourseName = 'JavaScript';
-                    } else {
-                        // Default to HTML if they clicked elsewhere on the card
-                        targetCourseName = 'HTML Fundamentals';
+                allCourseCards.forEach(course => {
+                    const courseTitle = course.querySelector('h3').textContent.trim();
+                    if (courseTitle === targetCourseName) {
+                        targetCourse = course;
                     }
-                } else if (categoryTitle === 'Compiler Language') {
-                    targetCourseName = 'Java';
-                } else if (categoryTitle === 'Python') {
-                    targetCourseName = 'Python';
-                } else if (categoryTitle === 'Additionals') {
-                    if (clickedText.includes('ML')) {
-                        targetCourseName = 'Machine Learning';
-                    } else if (clickedText.includes('DL')) {
-                        targetCourseName = 'Deep Learning';
-                    } else if (clickedText.includes('AI')) {
-                        targetCourseName = 'Artificial Intelligence';
-                    } else if (clickedText.includes('Data Science')) {
-                        targetCourseName = 'Data Science';
-                    } else {
-                        // Default to ML if they clicked elsewhere on the card
-                        targetCourseName = 'Machine Learning';
-                    }
-                }
+                });
                 
-                // Find the target course card
-                if (targetCourseName) {
-                    const allCourseCards = document.querySelectorAll('.course-card');
-                    let targetCourse = null;
-                    
-                    allCourseCards.forEach(course => {
-                        const courseTitle = course.querySelector('h3').textContent.trim();
-                        if (courseTitle === targetCourseName) {
-                            targetCourse = course;
-                        }
-                    });
-                    
-                    // Scroll to the target course if found
-                    if (targetCourse) {
-                        // Scroll to the courses section first
-                        document.getElementById('allCourses').scrollIntoView({behavior: 'smooth'});
+                // Scroll to the target course if found
+if (targetCourse) {
+// Scroll to the courses section first
+document.getElementById('allCourses').scrollIntoView({behavior: 'smooth'});
+                    // Then after a short delay, scroll to the specific course
+                    setTimeout(() => {
+                        targetCourse.scrollIntoView({behavior: 'smooth', block: 'center'});
                         
-                        // Then after a short delay, scroll to the specific course
+                        // Add a highlight effect
+                        targetCourse.classList.add('highlight-course');
                         setTimeout(() => {
-                            targetCourse.scrollIntoView({behavior: 'smooth', block: 'center'});
-                            
-                            // Add a highlight effect
-                            targetCourse.classList.add('highlight-course');
-                            setTimeout(() => {
-                                targetCourse.classList.remove('highlight-course');
-                            }, 2000);
-                        }, 500);
-                    }
+                            targetCourse.classList.remove('highlight-course');
+                        }, 2000);
+                    }, 500);
                 }
-            });
-        });
-
-        // Immediate load for visible sections
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load hero section immediately
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                heroSection.style.opacity = '1';
-                heroSection.style.transform = 'translateY(0)';
-            }
-
-            // Load course categories immediately
-            const categoriesSection = document.querySelector('.course-categories');
-            if (categoriesSection) {
-                categoriesSection.style.opacity = '1';
-                categoriesSection.style.transform = 'translateY(0)';
-            }
-
-            // Prevent horizontal scroll
-            document.body.style.overflowX = 'hidden';
-            document.documentElement.style.overflowX = 'hidden';
-        });
-
-        // Faster intersection observer for remaining sections
-        const observerOptions = {
-            threshold: 0.05,
-            rootMargin: '0px 0px -10px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Apply to remaining sections
-        document.querySelectorAll('.all-courses, .learning-path').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'all 0.4s ease';
-            observer.observe(section);
-        });
-
-        // Handle window resize for mobile optimization
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                navLinks.classList.remove('active');
-                menuIcon.className = 'fas fa-bars';
-                document.body.style.overflow = '';
             }
         });
+    });
 
-        console.log(`
-        🎓 COURSES PAGE - Mobile Footer Optimized!
-           
-           ✅ Enhanced Footer with Better Mobile Layout
-           ✅ Organized Sections with Background Cards
-           ✅ Improved Visual Separation & Typography
-           ✅ Better Touch Targets for Mobile
-           ✅ Consistent with Main Page Footer
-           ✅ Added Navigation from Category Cards to Courses
-           
-           Course URLs Active & Working! ⚡
-        `);
-    </script>
+    // Immediate load for visible sections
+    document.addEventListener('DOMContentLoaded', function() {
+        // Load hero section immediately
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) {
+            heroSection.style.opacity = '1';
+            heroSection.style.transform = 'translateY(0)';
+        }
+
+        // Load course categories immediately
+        const categoriesSection = document.querySelector('.course-categories');
+        if (categoriesSection) {
+            categoriesSection.style.opacity = '1';
+            categoriesSection.style.transform = 'translateY(0)';
+        }
+
+        // Prevent horizontal scroll
+        document.body.style.overflowX = 'hidden';
+        document.documentElement.style.overflowX = 'hidden';
+    });
+
+    // Faster intersection observer for remaining sections
+    const observerOptions = {
+        threshold: 0.05,
+        rootMargin: '0px 0px -10px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    // Apply to remaining sections
+    document.querySelectorAll('.all-courses, .learning-path').forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.4s ease';
+        observer.observe(section);
+    });
+
+    // Handle window resize for mobile optimization
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove('active');
+            menuIcon.className = 'fas fa-bars';
+            document.body.style.overflow = '';
+        }
+    });
+
+    console.log(`
+    🎓 COURSES PAGE - Mobile Footer Optimized!
+       
+       ✅ Enhanced Footer with Better Mobile Layout
+       ✅ Organized Sections with Background Cards
+       ✅ Improved Visual Separation & Typography
+       ✅ Better Touch Targets for Mobile
+       ✅ Consistent with Main Page Footer
+       ✅ Added Navigation from Category Cards to Courses
+       
+       Course URLs Active & Working! ⚡
+    `);
+</script>
 </body>
 </html>
+
+            
