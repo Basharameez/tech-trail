@@ -85,6 +85,48 @@
           transition: all 0.3s ease;
           width: 100%;
           max-width: 100vw;
+          cursor: none; /* Hide the default cursor */
+        }
+
+        /* Custom cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.2s, height 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        a, button, .contact-card, .social-card, .scroll-top, .nav-link, .switch {
+            cursor: none;
+        }
+
+        @media (max-width: 768px) {
+            .custom-cursor {
+                display: none;
+            }
+            
+            body {
+                cursor: auto;
+            }
+            
+            a, button, .contact-card, .social-card, .scroll-top, .nav-link, .switch {
+                cursor: pointer;
+            }
         }
 
         .container {
@@ -394,12 +436,12 @@
 
         .contact-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Increased min-width */
           gap: var(--spacing-xl);
         }
 
         .contact-card {
-          background: var(--surface);
+          background: #fff;
           backdrop-filter: blur(20px);
           border-radius: var(--radius-lg);
           padding: var(--spacing-xl);
@@ -408,6 +450,17 @@
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
+          color: #333;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* Dark theme for contact cards */
+        [data-theme="dark"] .contact-card {
+          background: #1a1a2e;
+          color: #f0f0f0;
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-card::before {
@@ -444,12 +497,15 @@
           font-size: 1.5rem;
           font-weight: 600;
           margin-bottom: var(--spacing-md);
+          color: inherit;
         }
 
         .contact-card p {
-          color: var(--text-secondary);
+          color: inherit;
           margin-bottom: var(--spacing-lg);
           line-height: 1.8;
+          word-break: break-word; /* Ensure text breaks to fit */
+          flex-grow: 1; /* Allow paragraph to grow and fill space */
         }
 
         .btn {
@@ -523,18 +579,26 @@
 
         .social-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Increased min-width */
           gap: var(--spacing-xl);
         }
 
         .social-card {
-          background: var(--bg);
+          background: #fff;
           border-radius: var(--radius-lg);
           padding: var(--spacing-xl);
           border: 1px solid rgba(255, 255, 255, 0.1);
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
+          color: #333;
+        }
+
+        /* Dark theme for social cards */
+        [data-theme="dark"] .social-card {
+          background: #1a1a2e;
+          color: #f0f0f0;
+          border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-card::before {
@@ -581,37 +645,46 @@
           font-size: 1.3rem;
           font-weight: 600;
           margin-bottom: var(--spacing-xs);
+          color: inherit;
         }
 
         .social-info p {
-          color: var(--text-secondary);
+          color: inherit;
           font-size: 0.9rem;
+          text-align: left;
+          margin-bottom: 0;
         }
 
         .social-content p {
-          color: var(--text-secondary);
+          color: inherit;
           margin-bottom: var(--spacing-md);
           line-height: 1.6;
+          text-align: left;
         }
 
         .recent-posts {
-          background: var(--surface);
+          background: rgba(0, 0, 0, 0.05);
           padding: var(--spacing-sm);
           border-radius: var(--radius-sm);
           margin-bottom: var(--spacing-lg);
         }
 
+        [data-theme="dark"] .recent-posts {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
         .post-preview {
           font-size: 0.9rem;
-          color: var(--text-secondary);
+          color: inherit;
           font-style: italic;
+          word-break: break-word;
         }
 
         .social-btn {
           width: 100%;
           background: transparent;
           border: 2px solid;
-          color: var(--text);
+          color: inherit;
           transition: all 0.3s ease;
         }
 
@@ -897,7 +970,6 @@
                     <a href="certifications.html" class="nav-link">Certifications</a>
                     <a href="about-us.html" class="nav-link">About Us</a>
                     <a href="stay-connected.html" class="nav-link active">Stay Connected</a>
-                    <a class='nav-link' href='leaderboard.html'>Leaderboard</a>
                 </div>
                 <div class="theme-toggle">
                     <i class="fas fa-sun"></i>
@@ -994,86 +1066,87 @@
                         <div class="social-info">
                             <h3>YouTube</h3>
                             <p>Tech In My Style</p>
-</div>
-</div>
-<div class="social-content">
-<p>Free tutorials, course previews, and live coding sessions</p>
-<div class="recent-posts">
-<div class="post-preview">"Click the [🔔 Subscribe] button if you like this website"</div>
-</div>
-</div>
-<button class="btn social-btn">Subscribe Now</button>
-</div>
-            <div class="social-card linkedin" data-aos="fade-up" data-aos-delay="300">
-                <div class="social-header">
-                    <i class="fab fa-linkedin"></i>
-                    <div class="social-info">
-                        <h3>LinkedIn</h3>
-                        <p>Tech In My Style</p>
+                        </div>
                     </div>
-                </div>
-                <div class="social-content">
-                    <p>Industry insights, career advice, and professional networking</p>
-                    <div class="recent-posts">
-                        <div class="post-preview">Latest: "Top Tech Skills for 2024"</div>
+                    <div class="social-content">
+                        <p>Free tutorials, course previews, and live coding sessions</p>
+                        <div class="recent-posts">
+                            <div class="post-preview">"Click the [🔔 Subscribe] button if you like this website"</div>
+                        </div>
                     </div>
+                    <button class="btn social-btn">Subscribe Now</button>
                 </div>
-                <button class="btn social-btn">Connect on LinkedIn</button>
-            </div>
+                
+                <div class="social-card linkedin" data-aos="fade-up" data-aos-delay="300">
+                    <div class="social-header">
+                        <i class="fab fa-linkedin"></i>
+                        <div class="social-info">
+                            <h3>LinkedIn</h3>
+                            <p>Tech In My Style</p>
+                        </div>
+                    </div>
+                    <div class="social-content">
+                        <p>Industry insights, career advice, and professional networking</p>
+                        <div class="recent-posts">
+                            <div class="post-preview">Latest: "Top Tech Skills for 2024"</div>
+                        </div>
+                    </div>
+                    <button class="btn social-btn">Connect on LinkedIn</button>
+                </div>
 
-            <div class="social-card twitter" data-aos="fade-up" data-aos-delay="400">
-                <div class="social-header">
-                    <i class="fab fa-twitter"></i>
-                    <div class="social-info">
-                        <h3>Twitter</h3>
-                        <p>@techinmystyle</p>
+                <div class="social-card twitter" data-aos="fade-up" data-aos-delay="400">
+                    <div class="social-header">
+                        <i class="fab fa-twitter"></i>
+                        <div class="social-info">
+                            <h3>Twitter</h3>
+                            <p>@techinmystyle</p>
+                        </div>
                     </div>
-                </div>
-                <div class="social-content">
-                    <p>Quick tips, tech news, and real-time updates</p>
-                    <div class="recent-posts">
-                        <div class="post-preview">Latest: "JavaScript ES2024 features you need to know"</div>
+                    <div class="social-content">
+                        <p>Quick tips, tech news, and real-time updates</p>
+                        <div class="recent-posts">
+                            <div class="post-preview">Latest: "JavaScript ES2024 features you need to know"</div>
+                        </div>
                     </div>
+                    <button class="btn social-btn">Follow on Twitter</button>
                 </div>
-                <button class="btn social-btn">Follow on Twitter</button>
-            </div>
 
-            <div class="social-card telegram" data-aos="fade-up" data-aos-delay="500">
-                <div class="social-header">
-                    <i class="fab fa-telegram"></i>
-                    <div class="social-info">
-                        <h3>Telegram</h3>
-                        <p>Tech In My Style</p>
+                <div class="social-card telegram" data-aos="fade-up" data-aos-delay="500">
+                    <div class="social-header">
+                        <i class="fab fa-telegram"></i>
+                        <div class="social-info">
+                            <h3>Telegram</h3>
+                            <p>Tech In My Style</p>
+                        </div>
                     </div>
-                </div>
-                <div class="social-content">
-                    <p>Exclusive content, early access to courses, and community discussions</p>
-                    <div class="recent-posts">
-                        <div class="post-preview">Latest: "Free JavaScript Cheat Sheet PDF"</div>
+                    <div class="social-content">
+                        <p>Exclusive content, early access to courses, and community discussions</p>
+                        <div class="recent-posts">
+                            <div class="post-preview">Latest: "Free JavaScript Cheat Sheet PDF"</div>
+                        </div>
                     </div>
+                    <button class="btn social-btn">Join Telegram</button>
                 </div>
-                <button class="btn social-btn">Join Telegram</button>
-            </div>
 
-            <div class="social-card whatsapp" data-aos="fade-up" data-aos-delay="600">
-                <div class="social-header">
-                    <i class="fab fa-whatsapp"></i>
-                    <div class="social-info">
-                        <h3>WhatsApp</h3>
-                        <p>Study Groups</p>
+                <div class="social-card whatsapp" data-aos="fade-up" data-aos-delay="600">
+                    <div class="social-header">
+                        <i class="fab fa-whatsapp"></i>
+                        <div class="social-info">
+                            <h3>WhatsApp</h3>
+                            <p>Study Groups</p>
+                        </div>
                     </div>
-                </div>
-                <div class="social-content">
-                    <p>Join study groups, get instant support, and connect with peers</p>
-                    <div class="recent-posts">
-                        <div class="post-preview">Active groups: Frontend, Backend, UI/UX</div>
+                    <div class="social-content">
+                        <p>Join study groups, get instant support, and connect with peers</p>
+                        <div class="recent-posts">
+                            <div class="post-preview">Active groups: Frontend, Backend, UI/UX</div>
+                        </div>
                     </div>
+                    <button class="btn social-btn">Join WhatsApp</button>
                 </div>
-                <button class="btn social-btn">Join WhatsApp</button>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer">
@@ -1247,10 +1320,32 @@
         
         let mouseX = 0;
         let mouseY = 0;
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let currentRotationX = 0;
+        let currentRotationY = 0;
+        let isMoving = false;
+        let moveTimeout;
         
         document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
+            // Calculate mouse position
+            mouseX = (event.clientX / window.innerWidth - 0.5) * 0.05;
+            mouseY = (event.clientY / window.innerHeight - 0.5) * 0.05;
+            
+            // Set target rotation based on mouse position
+            targetRotationX = mouseY;
+            targetRotationY = mouseX;
+            
+            // Set moving flag
+            isMoving = true;
+            
+            // Clear previous timeout
+            clearTimeout(moveTimeout);
+            
+            // Set timeout to reset moving flag
+            moveTimeout = setTimeout(() => {
+                isMoving = false;
+            }, 1000);
         });
         
         function updateParticleColor() {
@@ -1265,11 +1360,28 @@
         const animate = () => {
             requestAnimationFrame(animate);
             
-            particlesMesh.rotation.x += 0.001;
-            particlesMesh.rotation.y += 0.001;
+            // Very slow constant rotation when not moving
+            particlesMesh.rotation.x += 0.0002;
+            particlesMesh.rotation.y += 0.0002;
             
-            particlesMesh.rotation.x += mouseY * 0.05;
-            particlesMesh.rotation.y += mouseX * 0.05;
+            // Smooth transition to target rotation when mouse moves
+            if (isMoving) {
+                // Move towards target rotation
+                currentRotationX += (targetRotationX - currentRotationX) * 0.1;
+                currentRotationY += (targetRotationY - currentRotationY) * 0.1;
+                
+                // Apply the rotation
+                particlesMesh.rotation.x += currentRotationX;
+                particlesMesh.rotation.y += currentRotationY;
+            } else {
+                // Gradually return to static position
+                currentRotationX *= 0.95;
+                currentRotationY *= 0.95;
+                
+                // Apply diminishing rotation
+                particlesMesh.rotation.x += currentRotationX;
+                particlesMesh.rotation.y += currentRotationY;
+            }
             
             renderer.render(scene, camera);
         };
@@ -1289,6 +1401,51 @@
         } catch (e) {
             console.log('WebGL initialization failed:', e);
         }
+    }
+
+    // Custom cursor implementation
+    function initCustomCursor() {
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        
+        const cursorDot = document.createElement('div');
+        cursorDot.classList.add('cursor-dot');
+        
+        cursor.appendChild(cursorDot);
+        document.body.appendChild(cursor);
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        
+        // Scale effect on clickable elements
+        const clickableElements = document.querySelectorAll('a, button, .contact-card, .social-card, .scroll-top, .nav-link, .switch');
+        clickableElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.style.width = '40px';
+                cursor.style.height = '40px';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.style.width = '30px';
+                cursor.style.height = '30px';
+            });
+        });
+        
+        // Hide cursor when it leaves the window
+        document.addEventListener('mouseout', (e) => {
+            if (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight) {
+                cursor.style.opacity = '0';
+            } else {
+                cursor.style.opacity = '1';
+            }
+        });
+    }
+
+    // Initialize custom cursor only on desktop
+    if (window.innerWidth > 768) {
+        initCustomCursor();
     }
 
     function scrollToTop() {
@@ -1407,4 +1564,5 @@
        Stay Connected! 🌐
     `);
 </script>
-
+</body>
+</html>
