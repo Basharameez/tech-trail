@@ -1,78 +1,80 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Quiz functionality
-  const quizContainers = document.querySelectorAll('.quiz-container');
-  
-  quizContainers.forEach(container => {
-    const submitButton = container.querySelector('.quiz-submit');
-    const resultDisplay = container.querySelector('.quiz-result');
-    const quizId = container.dataset.quizId;
-    
-    if (submitButton && resultDisplay) {
-      submitButton.addEventListener('click', function() {
-        // Collect all answers
-        const answers = {};
-        const questions = container.querySelectorAll('.quiz-question');
-        
-        questions.forEach((question, index) => {
-          const questionNumber = index + 1;
-          const selectedOption = question.querySelector(`input[name="q${questionNumber}"]:checked`);
-          
-          if (selectedOption) {
-            answers[`q${questionNumber}`] = selectedOption.value;
+
+    // main.js (optimized for menu, scrolling, animations)
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu toggle
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      const body = document.body;
+
+      if (mobileMenuBtn && nav) {
+        mobileMenuBtn.addEventListener('click', (event) => {
+          event.stopPropagation(); // Prevent immediate close from outside click
+          mobileMenuBtn.classList.toggle('active');
+          nav.classList.toggle('nav-open');
+          body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+          if (nav.classList.contains('nav-open') && !nav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+            mobileMenuBtn.classList.remove('active');
+            nav.classList.remove('nav-open');
+            body.style.overflow = '';
           }
         });
-        
-        // Check if all questions are answered
-        const totalQuestions = questions.length;
-        const answeredQuestions = Object.keys(answers).length;
-        
-        if (answeredQuestions < totalQuestions) {
-          resultDisplay.textContent = `Please answer all questions. (${answeredQuestions}/${totalQuestions} answered)`;
-          resultDisplay.className = 'quiz-result incorrect';
-          resultDisplay.style.display = 'block';
-          return;
-        }
-        
-        // Evaluate answers (this is where you'd check against correct answers)
-        // For demonstration, we'll use these correct answers
-        const correctAnswers = {
-          'python-overview': {
-            q1: 'b', // 1991
-            q2: 'b', // Statically typed (which is NOT a characteristic of Python)
-            q3: 'a'  // Guido van Rossum
-          }
-        };
-        
-        // Calculate score
-        let score = 0;
-        
-        if (correctAnswers[quizId]) {
-          const quizAnswers = correctAnswers[quizId];
-          
-          for (const question in answers) {
-            if (answers[question] === quizAnswers[question]) {
-              score++;
+
+        // Close menu when clicking a nav link
+        nav.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenuBtn.classList.remove('active');
+            nav.classList.remove('nav-open');
+            body.style.overflow = '';
+          });
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          const href = anchor.getAttribute('href');
+          if (href !== '#') {
+            e.preventDefault();
+            const targetElement = document.querySelector(href);
+            if (targetElement) {
+              const yOffset = -80; // Adjust for header height
+              const y = targetElement.getBoundingClientRect().top + window.scrollY + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
             }
           }
-          
-          const percentage = Math.round((score / totalQuestions) * 100);
-          
-          // Display result
-          if (percentage >= 70) {
-            resultDisplay.textContent = `Great job! You scored ${score}/${totalQuestions} (${percentage}%).`;
-            resultDisplay.className = 'quiz-result correct';
-          } else {
-            resultDisplay.textContent = `You scored ${score}/${totalQuestions} (${percentage}%). Try again!`;
-            resultDisplay.className = 'quiz-result incorrect';
-          }
-          
-          resultDisplay.style.display = 'block';
-        } else {
-          resultDisplay.textContent = 'Quiz evaluation not available.';
-          resultDisplay.className = 'quiz-result';
-          resultDisplay.style.display = 'block';
-        }
+        });
       });
-    }
-  });
-});
+
+      // Animate elements when they come into view
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('.topic-card, .feature, .content-section');
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          if (elementPosition < windowHeight - 50) {
+            element.classList.add('visible');
+          }
+        });
+      };
+
+      // Initial check and scroll listener
+      animateOnScroll();
+      window.addEventListener('scroll', animateOnScroll);
+    });
+
+    // quiz.js (placeholder - replace with your actual quiz logic if available)
+    document.addEventListener('DOMContentLoaded', () => {
+      // Example quiz functionality for #interview-questions section
+      const questions = document.querySelectorAll('#interview-questions p');
+      questions.forEach((q, index) => {
+        q.style.cursor = 'pointer';
+        q.addEventListener('click', () => {
+          alert(`Question ${index + 1}: ${q.textContent}\n(Click to reveal answer or implement full quiz here)`);
+        });
+      });
+    });
+  
