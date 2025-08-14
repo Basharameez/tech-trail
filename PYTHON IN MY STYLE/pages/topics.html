@@ -612,35 +612,36 @@
       const nav = document.querySelector('.nav');
       const body = document.body;
 
-      if (menuBtn && nav) {
-        // Toggle menu on button click
-        menuBtn.addEventListener('click', () => {
-          menuBtn.classList.toggle('active');
-          nav.classList.toggle('nav-open');
-          // Prevent body scrolling when menu is open
-          body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-          const isClickInsideNav = nav.contains(event.target);
-          const isClickOnBtn = menuBtn.contains(event.target);
-          if (nav.classList.contains('nav-open') && !isClickInsideNav && !isClickOnBtn) {
-            menuBtn.classList.remove('active');
-            nav.classList.remove('nav-open');
-            body.style.overflow = '';
-          }
-        });
-
-        // Close menu when clicking a nav link
-        nav.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            menuBtn.classList.remove('active');
-            nav.classList.remove('nav-open');
-            body.style.overflow = '';
-          });
-        });
+      if (!menuBtn || !nav) {
+        console.warn('Menu elements not found - check class names.');
+        return;
       }
+
+      // Toggle menu on button click
+      menuBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent immediate close from outside click
+        menuBtn.classList.toggle('active');
+        nav.classList.toggle('nav-open');
+        body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        if (nav.classList.contains('nav-open') && !nav.contains(event.target) && !menuBtn.contains(event.target)) {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu when clicking a nav link
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        });
+      });
     });
   </script>
 </body>
