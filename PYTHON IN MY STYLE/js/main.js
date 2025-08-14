@@ -1,117 +1,65 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
   const nav = document.querySelector('.nav');
-  
-  if (mobileMenuBtn && nav) {
-    mobileMenuBtn.addEventListener('click', function() {
-      this.classList.toggle('active');
-      nav.classList.toggle('active');
-    });
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-  // Mobile menu toggle
-  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  const nav = document.querySelector('.nav');
+  const body = document.body;
 
   if (mobileMenuBtn && nav) {
-    mobileMenuBtn.addEventListener('click', function () {
-      this.classList.toggle('active');
-      nav.classList.toggle('active');
+    mobileMenuBtn.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent immediate close from outside click
+      mobileMenuBtn.classList.toggle('active');
+      nav.classList.toggle('nav-open');
+      body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
     });
-  }
 
-  // Close menu when clicking outside
-  document.addEventListener('click', function (event) {
-    if (
-      nav && nav.classList.contains('active') &&
-      !event.target.closest('.nav') &&
-      !event.target.closest('.mobile-menu-btn')
-    ) {
-      nav.classList.remove('active');
-      mobileMenuBtn.classList.remove('active');
-    }
-  });
-
-  // Smooth scrolling
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href !== '#' && document.querySelector(href)) {
-        e.preventDefault();
-        const yOffset = -80;
-        const y = document.querySelector(href).getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Scroll animations
-  const animateOnScroll = function () {
-    const elements = document.querySelectorAll('.topic-card, .feature, .content-section');
-    elements.forEach(element => {
-      const elementPosition = element.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (elementPosition < windowHeight - 50) {
-        element.classList.add('visible');
-      }
-    });
-  };
-
-  animateOnScroll(); // on load
-  window.addEventListener('scroll', animateOnScroll); // on scroll
-});
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-    if (nav && nav.classList.contains('active') && 
-        !event.target.closest('.nav') && 
-        !event.target.closest('.mobile-menu-btn')) {
-      nav.classList.remove('active');
-      if (mobileMenuBtn) {
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (nav.classList.contains('nav-open') && !nav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
         mobileMenuBtn.classList.remove('active');
+        nav.classList.remove('nav-open');
+        body.style.overflow = '';
       }
-    }
-  });
-  
+    });
+
+    // Close menu when clicking a nav link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuBtn.classList.remove('active');
+        nav.classList.remove('nav-open');
+        body.style.overflow = '';
+      });
+    });
+  }
+
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
       if (href !== '#') {
         e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
+        const targetElement = document.querySelector(href);
         if (targetElement) {
-          window.scrollTo({
-            top: targetElement.offsetTop - 80,
-            behavior: 'smooth'
-          });
+          const yOffset = -80; // Adjust for header height
+          const y = targetElement.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
         }
       }
     });
   });
-  
+
   // Animate elements when they come into view
-  const animateOnScroll = function() {
+  const animateOnScroll = () => {
     const elements = document.querySelectorAll('.topic-card, .feature, .content-section');
-    
     elements.forEach(element => {
       const elementPosition = element.getBoundingClientRect().top;
       const windowHeight = window.innerHeight;
-      
       if (elementPosition < windowHeight - 50) {
         element.classList.add('visible');
       }
     });
   };
-  
-  // Initial check for elements in view
+
+  // Initial check and scroll listener
   animateOnScroll();
-  
-  // Check for elements on scroll
   window.addEventListener('scroll', animateOnScroll);
 });
