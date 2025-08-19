@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from pymongo import MongoClient
 import os
@@ -194,6 +195,43 @@ Tech In My Style Team
     except Exception as e:
         print("Error sending email:", e)
         return generic_error
+
+
+# --- Frontend protection route ---
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    html_content = """
+    <html>
+    <head>
+        <title>Tech In My Style</title>
+    </head>
+    <body>
+        <h1>Welcome to Tech In My Style 🚀</h1>
+        <p>Your learning platform is running successfully!</p>
+
+        <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // Disable common inspect shortcuts
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) { return false; } // F12
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) ||
+                                            e.keyCode == 'C'.charCodeAt(0) ||
+                                            e.keyCode == 'J'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && (e.keyCode == 'U'.charCodeAt(0) ||
+                              e.keyCode == 'S'.charCodeAt(0))) {
+                return false;
+            }
+        };
+        </script>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
+
 
 # --- Uvicorn entry point for local/dev ---
 if __name__ == "__main__":
