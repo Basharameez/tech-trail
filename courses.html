@@ -1756,6 +1756,32 @@ document.getElementById('allCourses').scrollIntoView({behavior: 'smooth'});
        
        Course URLs Active & Working! ⚡
     `);
+      document.addEventListener("contextmenu", (e) => e.preventDefault()); // Disable right click
+
+  document.onkeydown = function(e) {
+    // Disable F12
+    if (e.keyCode === 123) return false;
+
+    // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+    if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+      return false;
+    }
+
+    // Disable Ctrl+U (View Source)
+    if (e.ctrlKey && e.keyCode === 85) return false;
+
+    // Disable Ctrl+S (Save Page)
+    if (e.ctrlKey && e.keyCode === 83) return false;
+
+    // Disable Ctrl+A, Ctrl+C, Ctrl+V, Ctrl+P
+    if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 80)) {
+      return false;
+    }
+
+    // Disable Ctrl+Shift+K (Firefox)
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 75) return false;
+  };
+
 </script>
 </body>
 </html>
