@@ -7,11 +7,13 @@ import os
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from dotenv import load_dotenv
+load_dotenv()
 
 # --- MongoDB Connection ---
-client = MongoClient(
-    "mongodb+srv://shaikbasharam20:basharam@cluster0.lwcietu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-)
+MONGO_URL = os.getenv("MONGO_URL")
+if not MONGO_URL:
+    raise Exception("MONGO_URL is missing. Please set it in Railway Environment Variables.")
 db = client["tech_in_my_style"]
 users_collection = db["users"]
 
