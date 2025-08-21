@@ -241,7 +241,7 @@ function register() {
   status.textContent = "Registering...";
   registerBtn.disabled = true;
 
-  fetch("https://tech-trail-w2ap.onrender.com/register", {
+  fetch("web-production-db224.up.railway.app/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, email, password })
@@ -342,7 +342,7 @@ function retrievePassword() {
   status.textContent = "Checking...";
   retrieveBtn.disabled = true;
 
-  fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
+  fetch("web-production-db224.up.railway.app/forgot-password", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({ email })
