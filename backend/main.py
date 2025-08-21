@@ -14,6 +14,7 @@ load_dotenv()
 MONGO_URL = os.getenv("MONGO_URL")
 if not MONGO_URL:
     raise Exception("MONGO_URL is missing. Please set it in Railway Environment Variables.")
+client = MongoClient(MONGO_URL)
 db = client["tech_in_my_style"]
 users_collection = db["users"]
 
