@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regularization: L1 (Lasso), L2 (Ridge) | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Regularization: L1 (Lasso), L2 (Ridge)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Regularization: L1 (Lasso), L2 (Ridge)</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Regularization is a technique used to reduce overfitting in machine learning models by adding a penalty term to the loss function. This discourages complex models by shrinking the model coefficients, helping to improve generalization on unseen data.</p>
+    
+    <div class="glass-card">
+        <h3>L1 Regularization (Lasso)</h3>
+        <p>L1 regularization adds the absolute value of the coefficients as a penalty term to the loss function.</p>
+        <ul>
+            <li>Encourages sparsity in the model (many coefficients become exactly zero)</li>
+            <li>Can be used for feature selection</li>
+            <li>Loss function: <code>Loss + λ * Σ|weights|</code></li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>L2 Regularization (Ridge)</h3>
+        <p>L2 regularization adds the squared value of the coefficients as a penalty term to the loss function.</p>
+        <ul>
+            <li>Encourages small but non-zero coefficients</li>
+            <li>Does not set coefficients to zero</li>
+            <li>Helps reduce model complexity and multicollinearity</li>
+            <li>Loss function: <code>Loss + λ * Σ(weights²)</code></li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Using Lasso and Ridge Regression</h3>
+        <pre><code>from sklearn.linear_model import Lasso, Ridge
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_boston
+from sklearn.metrics import mean_squared_error
+
+# Load dataset
+data = load_boston()
+X, y = data.data, data.target
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Lasso Regression (L1)
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train, y_train)
+y_pred_lasso = lasso.predict(X_test)
+mse_lasso = mean_squared_error(y_test, y_pred_lasso)
+
+# Ridge Regression (L2)
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_train, y_train)
+y_pred_ridge = ridge.predict(X_test)
+mse_ridge = mean_squared_error(y_test, y_pred_ridge)
+
+print(f"Lasso MSE: {mse_lasso:.2f}")
+print(f"Ridge MSE: {mse_ridge:.2f}")
+print(f"Lasso Coefficients: {lasso.coef_}")
+print(f"Ridge Coefficients: {ridge.coef_}")</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Regularization Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Finance:</strong> Predicting credit risk with reduced overfitting on complex datasets.</li>
+                    <li><strong>Healthcare:</strong> Selecting relevant biomarkers in genomic data using Lasso for interpretability.</li>
+                    <li><strong>Marketing:</strong> Building robust customer segmentation models while avoiding noise overfitting.</li>
+                    <li><strong>Natural Language Processing:</strong> Reducing feature space dimensionality in text classification.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3861955/pexels-photo-3861955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data scientist working with data" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/CgbbvozFgXo?si=t6CMlgban39_Ja4s">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1tgZlDLT73ZPl-6XCG1XyzR9BS4SDOB7n/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the difference between L1 and L2 regularization?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>L1 regularization adds the absolute values of coefficients as penalty and encourages sparsity, often setting some coefficients to zero. L2 regularization adds squared coefficients as penalty, shrinking coefficients but keeping them non-zero.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. When would you prefer Lasso over Ridge regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>You would prefer Lasso when you want feature selection to identify important variables, especially in high-dimensional data with many irrelevant features.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How does regularization help prevent overfitting?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Regularization adds a penalty to large coefficients, discouraging overly complex models that fit noise in training data, thus improving generalization on new data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What does the regularization parameter alpha control?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Alpha controls the strength of the penalty term. A higher alpha means more regularization (more shrinkage), while a lower alpha means less regularization.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstraction - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+  </head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+             <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#oop">Object-Oriented Programming (OOP)</a> &gt;
+                <span>Abstraction</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Abstraction</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Abstraction is a key Object-Oriented Programming concept that focuses on hiding complex implementation details and exposing only the essential features.</p>
+    <p>It allows developers to create simple interfaces while keeping the internal workings hidden, making code easier to maintain and extend.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p><strong>Abstraction</strong> in Java is achieved mainly using <code>abstract classes</code> and <code>interfaces</code>.</p>
+    <ul>
+      <li><strong>Abstract Classes:</strong> Classes that cannot be instantiated and can contain abstract methods (without body) that must be implemented by subclasses.</li>
+      <li><strong>Interfaces:</strong> Define a contract with abstract methods that implementing classes must override. Since Java 8, interfaces can also have default and static methods.</li>
+      <li>Abstraction hides the complex logic from the user and exposes only what is necessary.</li>
+    </ul>
+    <p>This allows separation of what an object does from how it does it, promoting modularity and flexibility.</p>
+  </div>
+</section>
+
+
+                <!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=vqV22AszAdw" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+                <h3>Java Abstraction Tutorial</h3>
+      <p>Clear explanation of abstract classes and interfaces with examples.</p>
+    </div>
+    </div>
+    <div class="video-card">
+  <a href="https://drive.google.com/file/d/1pzS1iorcsrFwXshxHbHiQL723S2VMpPl/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+
+  </div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Abstract Class Example</h3>
+  <pre><code class="language-java">
+// Abstract class example
+abstract class Animal {
+    // Abstract method (does not have a body)
+    abstract void sound();
+
+    // Regular method
+    void sleep() {
+        System.out.println("Sleeping...");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Output: Bark
+        dog.sleep();  // Output: Sleeping...
+    }
+}
+  </code></pre>
+
+  <h3>Interface Example</h3>
+  <pre><code class="language-java">
+// Interface example
+interface Vehicle {
+    void move();
+}
+
+class Car implements Vehicle {
+    public void move() {
+        System.out.println("Car is moving");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.move();  // Output: Car is moving
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-cogs"></i> API Design</h3>
+      <p>Abstraction is used to design APIs that hide complex logic and expose simple interfaces.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-project-diagram"></i> Modular Programming</h3>
+      <p>Helps in dividing programs into independent, interchangeable modules.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-lock"></i> Security</h3>
+      <p>Hides sensitive implementation details to protect internal data and logic.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is abstraction in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Abstraction is the process of hiding complex implementation details and showing only the essential features of an object.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: How do abstract classes differ from interfaces?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Abstract classes can have implemented methods and instance variables; interfaces primarily declare abstract methods (though Java 8+ supports default and static methods).</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: Can you instantiate an abstract class or interface?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>No, you cannot instantiate abstract classes or interfaces directly; you must extend or implement them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

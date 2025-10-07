@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in Health Care</title> | AI Topics</title>
+    <link rel="icon" type="image/svg+xml" href="../../img/Ai.svg">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <h1><span class="gradient-text">Artificial Intelligence</span> In My Style</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../topics.html">Topics</a></li>
+                    <li><a href="../../about.html">About</a></li>
+                
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../topics.html">Topics</a></li>
+                <li><a href="../../topics.html">Applications</a></li>
+                <li>Artificial Intelligence in Healthcare</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Subtopic Content -->
+    <section class="subtopic-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="topic-nav glass">
+                        <h3>Applications</h3>
+                        <ul>
+                            <li class="active"><a href="healthcare.html">AI in Healthcare</a></li>
+                            <li ><a href="finance.html">AI in Finance</a></li>
+                            <li><a href="retail.html">AI in Retail</a></li>
+                            <li><a href="education.html">Ai in Education</a></li>
+                            <li><a href="transportation.html">AI in Transportation</a></li>
+                            <li><a href="gaming.html"> AI in Gaming </a></li>
+                        </ul>
+                        <h3>Related Topics</h3>
+                        <ul>
+                            <li><a href="../types/narrow-ai.html">Types of AI</a></li>
+                            <li><a href="../agents/agent-types.html">AI agents</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                
+                <main class="main-content glass">
+                    <h1>Artificial Intelligence in Healthcare</h1>
+                    
+                    <section class="content-section">
+                        <h2>Description</h2>
+                        <p>Artificial Intelligence is transforming healthcare by enabling machines to perform tasks that traditionally require human intelligence. AI systems can assist in diagnosing diseases, personalizing treatment plans, predicting patient outcomes, and managing administrative workflows. AI models trained on vast amounts of medical data help improve accuracy, speed, and efficiency in medical services.
+</p>
+                        
+                        
+                        
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Examples (Code)</h2>
+                        <p>Below is the sample code</p>
+                        
+                        <pre><code class="language-python"># Simulated disease prediction using a simple logistic regression
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import make_classification
+
+# Generate sample patient data
+X, y = make_classification(n_samples=500, n_features=5, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# Train a model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predict a new patient’s diagnosis
+prediction = model.predict([X_test[0]])
+print("Disease Prediction:", "Positive" if prediction[0] else "Negative")
+
+</code></pre>
+                        
+                        
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Real-World Applications</h2>
+                        <div class="applications-grid">
+                            <div class="application-card">
+                                <i class="fas fa-x-ray"></i>
+                                <h3>Medical Imaging</h3>
+                                <p>AI detects tumors, fractures, or anomalies in X-rays, CT scans, and MRIs.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-stethoscope"></i>
+                                <h3>Disease Prediction</h3>
+                                <p>Predicts chronic diseases like diabetes, heart attacks from historical data.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-prescription-bottle-alt"></i>
+                                <h3>Drug Discovery</h3>
+                                <p> Accelerates drug design using biological simulations.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-user-md"></i>
+                                <h3>Virtual Health Assistants</h3>
+                                <p>Offer 24/7 patient support, symptom checking, and appointment scheduling.</p>
+                            </div>
+                            <div class="application-card">
+                                <i class="fas fa-hospital-user"></i>
+                                <h3>Patient Risk Scoring</h3>
+                                <p>Identifies high-risk patients for early intervention.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Where topic Is Applied</h2>
+                        <p>Artificial Intelligence has made significant inroads across numerous industries and domains:</p>
+                        
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Use Case</th>
+                                        <th>AI Technique</th>
+                                        <th>Impact</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+    <tr>
+      <td>Disease Diagnosis</td>
+      <td>Machine Learning, Deep Learning</td>
+      <td>Faster and more accurate diagnosis</td>
+    </tr>
+    <tr>
+      <td>Medical Imaging</td>
+      <td>Convolutional Neural Networks (CNNs)</td>
+      <td>Improved image analysis and interpretation</td>
+    </tr>
+    <tr>
+      <td>Drug Development</td>
+      <td>Predictive Modeling, Simulation</td>
+      <td>Reduced time and cost of discovery</td>
+    </tr>
+    <tr>
+      <td>Patient Monitoring</td>
+      <td>IoT + AI</td>
+      <td>Real-time vitals tracking and alerts</td>
+    </tr>
+    <tr>
+      <td>Administrative Tasks</td>
+      <td>NLP, Automation</td>
+      <td>Streamlined hospital operations</td>
+    </tr>
+  </tbody>
+</table>
+</table>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Resources</h2>
+                        <div class="resources-box">
+                            <p>Additional resources </p>
+                            <ul>
+                                <a href="https://www.youtube.com/watch?v=IY64S88pVAs"><li>YouTube video tutorials </li></a>
+                              <a href="https://drive.google.com/file/d/1vsUIroHK4oy61vKMc95SKPO-jqy_qCYx/view?usp=drive_link">  <li>PDF/DOC files via Drive links</li></a>
+                            
+                            </ul>
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Interview Questions with Answers</h2>
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>How is AI used in diagnosing diseases?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>AI models analyze medical data like X-rays or symptoms and compare them with historical cases to detect diseases.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>Which AI algorithms are popular in healthcare?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Logistic Regression, Random Forest, CNNs for images, and NLP for records processing.</p>
+                                   
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>What is the benefit of AI in drug discovery?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p> It significantly reduces the time and cost by simulating drug responses using models.</p>
+                               
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>How does AI assist doctors?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>AI provides decision support by highlighting possible diagnoses, flagging abnormalities, and suggesting treatments.</p>
+                                    
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <h3>What challenges does AI face in healthcare?</h3>
+                                    <span class="icon"><i class="fas fa-chevron-down"></i></span>
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Data privacy, ethical use, explainability of models, and the need for large high-quality datasets.</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+      <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                   <h2><span class="gradient-text">Artificial Intelligence</span> In My Style</h2>
+                    <p>Your comprehensive resource for learning Artificial Intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="topics.html">Topics</a></li>
+                        <li><a href="about.html">About</a></li>
+                    
+                    </ul>
+                </div>
+                 <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                 <p>&copy; 2025 Artificial Intelligence In My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

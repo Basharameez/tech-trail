@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Overfitting & Underfitting - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+           
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Overfitting & Underfitting</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>Overfitting and underfitting are common problems encountered during training deep learning models that affect their ability to generalize well to unseen data.</p>
+        <ul>
+            <li><strong>Overfitting:</strong> Occurs when a model learns the training data too well, including noise and outliers. It performs excellently on training data but poorly on new, unseen data.</li>
+            <li><strong>Underfitting:</strong> Happens when a model is too simple to capture the underlying patterns of the data, resulting in poor performance on both training and test datasets.</li>
+        </ul>
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Tip</div>
+            <p>Balancing model complexity and training duration, along with proper regularization, helps avoid both overfitting and underfitting.</p>
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Overfitting_and_underfitting_diagram.svg/600px-Overfitting_and_underfitting_diagram.svg.png" alt="Overfitting vs Underfitting" style="max-width:100%; margin-top:15px;">
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Python example showing underfitting and overfitting with polynomial regression:</p>
+        <div class="code-container">
+            <pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import make_pipeline
+
+# Generate synthetic data
+np.random.seed(0)
+X = np.sort(np.random.rand(30) * 10).reshape(-1, 1)
+y = np.sin(X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+# Underfitting model (degree 1)
+model_underfit = make_pipeline(PolynomialFeatures(degree=1), LinearRegression())
+model_underfit.fit(X, y)
+
+# Overfitting model (degree 15)
+model_overfit = make_pipeline(PolynomialFeatures(degree=15), LinearRegression())
+model_overfit.fit(X, y)
+
+# Plot results
+X_plot = np.linspace(0, 10, 100).reshape(-1, 1)
+plt.scatter(X, y, color='black', label='Data')
+plt.plot(X_plot, model_underfit.predict(X_plot), label='Underfitting (Degree 1)', color='blue')
+plt.plot(X_plot, model_overfit.predict(X_plot), label='Overfitting (Degree 15)', color='red')
+plt.legend()
+plt.title("Underfitting vs Overfitting Example")
+plt.show()</code></pre>
+        </div>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Image Recognition</h3>
+                <p>Properly tuned models avoid overfitting on training images to generalize well on unseen images.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-comments"></i></div>
+                <h3>Natural Language Processing</h3>
+                <p>Balancing model complexity prevents underfitting simple language tasks or overfitting to training text corpora.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Medical Diagnosis</h3>
+                <p>Models must generalize well on new patient data, avoiding overfitting to specific cases in training.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Financial Forecasting</h3>
+                <p>Avoiding overfitting ensures predictions stay reliable on volatile market data.</p>
+            </div>
+        </div>
+    </div>
+</section>
+ <section id="resources" class="content-section">
+     <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/1eDp0wU3Vkw?si=EZyfYv4m9nKkHVUT'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1rGd8dJYcIRGwAL5BbtguznpViGf3d4YL/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                    <li><a href="https://cs231n.github.io/neural-networks-2/#overfitting" target="_blank">CS231n: Overfitting & Regularization</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+ <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is overfitting and how can it be prevented?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Overfitting occurs when a model learns noise or details from training data that don't generalize to new data. It can be prevented by techniques like regularization, dropout, early stopping, and using more training data.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do you detect underfitting in a model?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Underfitting is detected when the model performs poorly on both training and validation data, indicating it is too simple to capture the data patterns.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What methods help in balancing between underfitting and overfitting?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Using techniques like cross-validation, adjusting model complexity, regularization, early stopping, and data augmentation help balance underfitting and overfitting.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enum - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+              <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#string-enum-annotations">Strings, Enum, Annotations, File Handling, Wrapper Classes</a> &gt;
+                <span>Wrapper Classes</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Wrapper Classes</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+        <!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Imagine a situation where you need to store a primitive value in a data structure like an ArrayList — it can only store objects, not primitive types. Java solves this using <strong>Wrapper Classes</strong>, which wrap primitives into objects.</p>
+    <p>Understanding wrapper classes helps bridge the gap between object-oriented programming and primitive types, enabling flexibility and utility in real-world Java applications.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p><strong>Wrapper Classes</strong> in Java are used to convert primitive data types into objects. Each primitive has a corresponding wrapper class in the <code>java.lang</code> package.</p>
+
+    <h4>Primitive Types and Their Wrappers:</h4>
+    <ul>
+      <li><code>byte</code> → <code>Byte</code></li>
+      <li><code>short</code> → <code>Short</code></li>
+      <li><code>int</code> → <code>Integer</code></li>
+      <li><code>long</code> → <code>Long</code></li>
+      <li><code>float</code> → <code>Float</code></li>
+      <li><code>double</code> → <code>Double</code></li>
+      <li><code>char</code> → <code>Character</code></li>
+      <li><code>boolean</code> → <code>Boolean</code></li>
+    </ul>
+
+    <div class="info-box">
+      <strong>Note:</strong>
+      <p>Wrapper classes are immutable and provide utility methods for parsing and conversions. Java supports <strong>autoboxing</strong> (primitive to object) and <strong>unboxing</strong> (object to primitive).</p>
+    </div>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=5bt07czziV4" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info"> 
+<h3>Wrapper Classes in Java</h3>
+      <p>Detailed explanation of wrapper classes, autoboxing, and utility methods.</p>
+    </div>
+  </div>
+  <div class="video-card">
+  <a href="https://drive.google.com/file/d/11qN6BiqS2wP5Qi3okpirtYQA_ABqrDB2/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Basic Wrapper Class Usage</h3>
+  <pre><code class="language-java">
+public class WrapperExample {
+    public static void main(String[] args) {
+        int primitiveInt = 42;
+
+        // Autoboxing: primitive to object
+        Integer wrappedInt = primitiveInt;
+
+        // Unboxing: object to primitive
+        int unwrappedInt = wrappedInt;
+
+        System.out.println("Wrapped: " + wrappedInt);
+        System.out.println("Unwrapped: " + unwrappedInt);
+    }
+}
+  </code></pre>
+
+  <h3>Using Wrapper Classes in Collections</h3>
+  <pre><code class="language-java">
+import java.util.ArrayList;
+
+public class WrapperList {
+    public static void main(String[] args) {
+        ArrayList&lt;Integer&gt; numbers = new ArrayList&lt;&gt;();
+
+        numbers.add(10);  // Autoboxing
+        numbers.add(20);
+        numbers.add(30);
+
+        for (int num : numbers) {
+            System.out.println(num); // Unboxing
+        }
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-list"></i> Collection Framework</h3>
+      <p>Storing primitive values in collections like ArrayList or HashMap requires wrapper classes.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-sync-alt"></i> Parsing and Conversion</h3>
+      <p>Convert strings to primitives using wrapper methods like <code>Integer.parseInt()</code>.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-cogs"></i> Reflection & Utilities</h3>
+      <p>Wrapper classes are used in reflection, type conversion, and generic utility functions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the difference between a primitive type and a wrapper class?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p>Primitive types are basic data types (like int, char) with no methods, while wrapper classes are object representations of these types that provide utility methods.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q2: What are autoboxing and unboxing in Java?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p>Autoboxing is the automatic conversion of a primitive type to its wrapper object. Unboxing is the reverse process. Java does this automatically when needed.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q3: Why are wrapper classes immutable?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p>Immutability ensures thread-safety and consistent behavior, especially when used in collections and caching mechanisms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+                <!-- Navigation Section -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

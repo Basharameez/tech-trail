@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Use-case: Image generation, super-resolution - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+         
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Use-case: Image generation, super-resolution</h1>
+                <div class="header-divider"></div>
+            </div>
+
+           <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>
+            Generative Adversarial Networks (GANs) have revolutionized image generation and super-resolution by enabling models to create high-quality, realistic images from random noise or low-resolution inputs.
+        </p>
+        <p>
+            In image generation, GANs learn to produce entirely new images that mimic the training data distribution, making them useful for creative tasks like art, gaming, and virtual environments.
+        </p>
+        <p>
+            In super-resolution, GANs enhance low-resolution images by generating detailed high-resolution versions, improving clarity and sharpness beyond traditional interpolation methods.
+        </p>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example: Using a GAN-based model for image  Super-Resolution Code ESRGAN (Using torch.hub)</p>
+        <pre><code class="language-python">
+import torch
+from torchvision.transforms import ToTensor, ToPILImage
+from PIL import Image
+
+# Load the pre-trained ESRGAN model from torch.hub
+model = torch.hub.load('xinntao/ESRGAN', 'esrgan', pretrained=True)
+model.eval()  # Set model to evaluation mode
+
+# Load low-resolution image
+lr_image = Image.open("low_res_image.jpg").convert("RGB")
+
+# Transform image to tensor and add batch dimension
+lr_tensor = ToTensor()(lr_image).unsqueeze(0)
+
+# Run the model to get high-resolution output
+with torch.no_grad():
+    sr_tensor = model(lr_tensor)
+
+# Remove batch dimension and convert tensor back to image
+sr_image = ToPILImage()(sr_tensor.squeeze(0).clamp(0, 1))
+
+# Save super-resolved image
+sr_image.save("super_res_image.jpg")
+
+print("Super-resolution completed. Image saved as super_res_image.jpg")
+
+        </code></pre>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Creative Arts</h3>
+                <p>Generating novel images, artwork, and design concepts for creative industries.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-camera-retro"></i></div>
+                <h3>Photography & Restoration</h3>
+                <p>Improving old or low-quality photos by enhancing resolution and restoring details.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Streaming</h3>
+                <p>Enhancing streaming video quality in real-time by upscaling resolution.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+          
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1bZQ2dQYFnymkujpQKJ1dNgMMQBhlPdSW/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://arxiv.org/abs/1809.00219" target="_blank">ESRGAN: Enhanced Super-Resolution Generative Adversarial Networks (Wang et al.)</a></li>
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</li>
+                    <li><a href="https://www.manning.com/books/generative-deep-learning" target="_blank">Generative Deep Learning</a> by David Foster</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do GANs improve image super-resolution compared to traditional methods?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        GANs generate realistic high-frequency details, making super-resolved images sharper and more natural than interpolation-based approaches.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What challenges exist in training GANs for image generation?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Challenges include mode collapse, training instability, and difficulty balancing the generator and discriminator networks.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is ESRGAN and how is it used in super-resolution?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        ESRGAN (Enhanced Super-Resolution GAN) is an advanced GAN architecture that improves detail restoration and perceptual quality in super-resolution tasks.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+             
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

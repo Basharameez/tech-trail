@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+ONNX / TensorFlow Lite for edge deployment - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+             
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+ONNX / TensorFlow Lite for edge deployment</h1>
+                <div class="header-divider"></div>
+            </div>
+
+           <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p><strong>Edge deployment</strong> refers to deploying machine learning models on edge devices such as mobile phones, IoT devices, microcontrollers, and embedded systems — enabling inference without relying on cloud connectivity.</p>
+        
+        <p><strong>ONNX (Open Neural Network Exchange)</strong> and <strong>TensorFlow Lite</strong> are two popular formats that allow trained models to be optimized and deployed on edge devices efficiently:</p>
+        
+        <ul>
+            <li><strong>ONNX</strong> is an open-source format supported by PyTorch, scikit-learn, Keras, and others. It enables interoperability across frameworks and supports edge deployment through runtimes like ONNX Runtime.</li>
+            <li><strong>TensorFlow Lite</strong> is a lightweight version of TensorFlow designed specifically for mobile and embedded devices. It supports model quantization and hardware acceleration.</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-microchip"></i> Key Insight</div>
+            <p>Edge deployment using ONNX or TensorFlow Lite reduces latency, saves bandwidth, and enables real-time AI inference — ideal for offline, real-time, and privacy-sensitive applications.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://tensorflow.org/images/tflite/tflite-flow.svg" alt="Edge deployment architecture with TensorFlow Lite">
+            <p class="caption">Workflow of model conversion and deployment with TensorFlow Lite</p>
+        </div>
+    </div>
+</section>
+
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>This example demonstrates how to <strong>build a simple image classifier</strong>, convert it to <strong>TensorFlow Lite</strong> and <strong>ONNX</strong> formats, and then load it for inference on an edge device.</p>
+
+        <h3><i class="fas fa-robot"></i> TensorFlow Lite Workflow</h3>
+        <div class="code-container">
+            <pre><code class="language-python"># Step 1: Build and train a simple Keras model
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Flatten
+from tensorflow.keras.datasets import mnist
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = Sequential([
+    Flatten(input_shape=(28, 28)),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=3)
+model.save("mnist_model.h5")</code></pre>
+        </div>
+
+        <div class="code-container">
+            <pre><code class="language-python"># Step 2: Convert to TensorFlow Lite
+converter = tf.lite.TFLiteConverter.from_keras_model(model)
+tflite_model = converter.convert()
+
+with open('mnist_model.tflite', 'wb') as f:
+    f.write(tflite_model)</code></pre>
+        </div>
+
+        <div class="code-container">
+            <pre><code class="language-python"># Step 3: Load and run inference with TFLite Interpreter
+import numpy as np
+interpreter = tf.lite.Interpreter(model_path="mnist_model.tflite")
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+input_data = np.expand_dims(x_test[0], axis=0).astype(np.float32)
+interpreter.set_tensor(input_details[0]['index'], input_data)
+interpreter.invoke()
+
+output_data = interpreter.get_tensor(output_details[0]['index'])
+predicted_label = np.argmax(output_data)
+print("Predicted digit:", predicted_label)</code></pre>
+        </div>
+
+        <h3><i class="fas fa-network-wired"></i> PyTorch to ONNX Workflow</h3>
+        <div class="code-container">
+            <pre><code class="language-python"># Step 1: Build and train a simple PyTorch model
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torchvision import datasets, transforms
+from torch.utils.data import DataLoader
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(28*28, 128)
+        self.fc2 = nn.Linear(128, 10)
+
+    def forward(self, x):
+        x = x.view(-1, 28*28)
+        x = F.relu(self.fc1(x))
+        return F.log_softmax(self.fc2(x), dim=1)
+
+transform = transforms.Compose([transforms.ToTensor()])
+train_loader = DataLoader(datasets.MNIST('.', train=True, download=True, transform=transform), batch_size=32)
+
+model = Net()
+optimizer = torch.optim.Adam(model.parameters())
+loss_fn = nn.NLLLoss()
+
+for epoch in range(1):
+    for data, target in train_loader:
+        optimizer.zero_grad()
+        output = model(data)
+        loss = loss_fn(output, target)
+        loss.backward()
+        optimizer.step()
+
+torch.save(model.state_dict(), "mnist_model.pt")</code></pre>
+        </div>
+
+        <div class="code-container">
+            <pre><code class="language-python"># Step 2: Convert to ONNX
+dummy_input = torch.randn(1, 1, 28, 28)
+model.eval()
+torch.onnx.export(model, dummy_input, "mnist_model.onnx",
+                  input_names=['input'], output_names=['output'],
+                  dynamic_axes={'input': {0: 'batch_size'}, 'output': {0: 'batch_size'}})</code></pre>
+        </div>
+
+        <div class="code-container">
+            <pre><code class="language-python"># Step 3: Load and run inference using ONNX Runtime
+import onnxruntime as ort
+import numpy as np
+
+session = ort.InferenceSession("mnist_model.onnx")
+input_name = session.get_inputs()[0].name
+output_name = session.get_outputs()[0].name
+
+# Simulate a test image
+test_image = x_test[0].astype(np.float32)
+test_image = np.expand_dims(test_image, axis=0)  # batch
+test_image = np.expand_dims(test_image, axis=1)  # channel
+
+output = session.run([output_name], {input_name: test_image})
+predicted = np.argmax(output[0])
+print("Predicted digit (ONNX):", predicted)</code></pre>
+        </div>
+    </div>
+</section>
+
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-camera"></i></div>
+                <h3>Mobile Image Classification</h3>
+                <p>Using TensorFlow Lite, mobile apps can classify images locally (e.g., plant disease identification).</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-traffic-light"></i></div>
+                <h3>Smart Traffic Systems</h3>
+                <p>Edge AI models detect traffic patterns in real-time using ONNX for surveillance and congestion control.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Wearable Health Monitoring</h3>
+                <p>TensorFlow Lite powers real-time ECG or activity monitoring on fitness bands and medical wearables.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-wifi"></i></div>
+                <h3>IoT Devices</h3>
+                <p>ONNX or TFLite models run directly on microcontrollers to enable smart detection (e.g., leak sensors).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1xKJc2CbQ83S1rWOnRb_yBWiojLDw1wqJ/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.packtpub.com/product/tensorflow-lite-for-mobile-and-edge-devices/9781800209471" target="_blank">TensorFlow Lite for Mobile and Edge Devices</a> by Bhavani Rao</li>
+                    <li><a href="https://www.oreilly.com/library/view/edge-computing/9781492050179/" target="_blank">Edge Computing</a> by Perry Lea</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the difference between ONNX and TensorFlow Lite?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>ONNX</strong> is a framework-agnostic open standard that allows models trained in different frameworks (e.g., PyTorch, Scikit-learn) to be exported and run across platforms. <strong>TensorFlow Lite</strong> is a specialized version of TensorFlow designed for mobile and edge deployment, offering size and performance optimizations specifically for TensorFlow models.</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is model quantization important for edge deployment?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Quantization reduces model size and increases inference speed by converting weights and activations from 32-bit floats to lower precision (e.g., 8-bit integers), with minimal loss in accuracy. It is essential for constrained environments like mobile and IoT devices.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What are the benefits of edge deployment?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Low latency: Faster response times as no cloud round-trip is needed.</li>
+                        <li>Offline capability: Works without internet access.</li>
+                        <li>Improved privacy: Data stays on-device.</li>
+                        <li>Reduced bandwidth: No need to send data to a server.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do you run an ONNX model on a mobile device?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>You can use ONNX Runtime Mobile or integrate with third-party frameworks like Microsoft ML.NET or OpenCV. ONNX provides APIs for Android and iOS, and supports hardware acceleration through backends like NNAPI or CoreML.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

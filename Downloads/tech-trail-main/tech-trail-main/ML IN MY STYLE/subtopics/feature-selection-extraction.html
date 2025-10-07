@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feature Selection vs Feature Extraction | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Feature Selection vs Feature Extraction</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Feature Selection vs Feature Extraction</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Feature Selection and Feature Extraction are two crucial techniques in the feature engineering process aimed at improving the performance of machine learning models by reducing dimensionality and removing irrelevant or redundant data.</p>
+    
+    <div class="glass-card">
+        <h3>Feature Selection</h3>
+        <p>Feature Selection involves selecting a subset of the original features from the dataset without transforming them. The goal is to keep the most relevant features that contribute the most to the predictive model.</p>
+        <ul>
+            <li>Works by choosing important features and discarding irrelevant or redundant ones</li>
+            <li>Does not alter the original features</li>
+            <li>Helps reduce overfitting, improve model interpretability, and decrease training time</li>
+            <li>Common methods include filter, wrapper, and embedded techniques</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Feature Extraction</h3>
+        <p>Feature Extraction transforms the original features into a new space, creating new features by combining or projecting the original data. The aim is to capture the most important information in fewer dimensions.</p>
+        <ul>
+            <li>Creates new features from the original ones via transformations</li>
+            <li>Reduces dimensionality by mapping data into a lower-dimensional space</li>
+            <li>Helps with data compression, noise reduction, and improving model accuracy</li>
+            <li>Common techniques include Principal Component Analysis (PCA), t-SNE, and autoencoders</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Feature Selection Example: Using SelectKBest in Python</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.feature_selection import SelectKBest, f_classif
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Select top 2 features based on ANOVA F-test
+selector = SelectKBest(score_func=f_classif, k=2)
+X_new = selector.fit_transform(X, y)
+
+print("Original shape:", X.shape)
+print("Reduced shape:", X_new.shape)</code></pre>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Feature Extraction Example: Using PCA in Python</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.decomposition import PCA
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+
+# Reduce to 2 principal components
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+print("Original shape:", X.shape)
+print("Reduced shape:", X_pca.shape)</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Feature Selection Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Healthcare:</strong> Selecting relevant biomarkers for disease diagnosis</li>
+                    <li><strong>Finance:</strong> Choosing key financial indicators for credit scoring</li>
+                    <li><strong>Marketing:</strong> Identifying important customer attributes for churn prediction</li>
+                    <li><strong>Text Classification:</strong> Selecting important words/features for spam detection</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Feature selection" class="app-image">
+            </div>
+        </div>
+    </div>
+    
+    <div class="glass-card application-card">
+        <h3>Feature Extraction Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Image Processing:</strong> Extracting features like edges or shapes for image recognition</li>
+                    <li><strong>Speech Recognition:</strong> Transforming audio signals into meaningful feature vectors</li>
+                    <li><strong>Text Analysis:</strong> Embedding words into vectors for NLP tasks</li>
+                    <li><strong>Sensor Data:</strong> Reducing dimensionality for IoT device data</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/256381/pexels-photo-256381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Feature extraction" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/AU_hBML2H1c?si=umJ7FidZ-ttgEsmo">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1ZdH_ywB51nTg3Mn-5Arj4moUKKAjVTIw/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the main difference between feature selection and feature extraction?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Feature selection chooses a subset of the original features without changing them, while feature extraction transforms the original features into a new, lower-dimensional space.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. When would you prefer feature selection over feature extraction?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Feature selection is preferred when interpretability of the model is important and when you want to retain original features, especially with smaller datasets.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. Can feature extraction improve model performance?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, feature extraction can reduce noise and redundancy, capture important patterns, and help improve accuracy and training speed.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. Name some common feature extraction techniques.</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Common techniques include Principal Component Analysis (PCA), t-SNE, Linear Discriminant Analysis (LDA), and autoencoders.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                    
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

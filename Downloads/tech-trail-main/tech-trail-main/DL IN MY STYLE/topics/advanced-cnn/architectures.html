@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+VGG, ResNet, Inception, MobileNet - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+VGG, ResNet, Inception, MobileNet
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>Advanced CNN architectures have revolutionized computer vision tasks by introducing deeper, more efficient, and more accurate models. Here's a quick overview:</p>
+
+        <ul>
+            <li><strong>VGG:</strong> Known for its simplicity, it uses small (3x3) filters and deep networks. VGG-16 and VGG-19 are popular variants.</li>
+            <li><strong>ResNet:</strong> Introduced residual connections or "skip connections" to train very deep networks by solving vanishing gradient problems.</li>
+            <li><strong>Inception:</strong> Introduced the concept of parallel convolutions of different sizes within the same layer, optimizing computation.</li>
+            <li><strong>MobileNet:</strong> Designed for mobile and embedded devices, it uses depthwise separable convolutions to reduce computation and memory usage.</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Insight</div>
+            <p>Each architecture offers a trade-off between accuracy, speed, and resource usage. The choice depends on your application and deployment environment.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/1*d3MXG0aZMPUe6z0wOskH5A.png" alt="CNN Architectures Comparison">
+            <p class="caption">Comparison of popular CNN architectures: VGG, ResNet, Inception, and MobileNet</p>
+        </div>
+
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's how to load and use pretrained models from Keras applications:</p>
+
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.applications import VGG16, ResNet50, InceptionV3, MobileNet
+from tensorflow.keras.models import Model
+
+# Load pretrained models with ImageNet weights
+vgg_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+resnet_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+inception_model = InceptionV3(weights='imagenet', include_top=False, input_shape=(299, 299, 3))
+mobilenet_model = MobileNet(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+
+# Display model architecture
+vgg_model.summary()</code></pre>
+        </div>
+
+        <p>These models can be used as feature extractors or fine-tuned for custom image classification tasks.</p>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-camera-retro"></i></div>
+                <h3>Facial Recognition</h3>
+                <p>ResNet and VGG are commonly used in facial recognition applications due to their accuracy and depth.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-car"></i></div>
+                <h3>Autonomous Vehicles</h3>
+                <p>Inception and ResNet are used in self-driving car vision systems for real-time scene understanding.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile Apps</h3>
+                <p>MobileNet is ideal for mobile and edge devices due to its lightweight architecture and efficiency.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-stethoscope"></i></div>
+                <h3>Medical Imaging</h3>
+                <p>Inception and ResNet are used in detecting anomalies in X-rays, MRIs, and CT scans.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href="https://youtu.be/UfLPGzNc1Z8?feature=shared">YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1W0bWvn40vXbwj6SvkzbM3-r5szl8B-xh/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow et al.</li>
+                    <li><a href="https://cs231n.github.io/convolutional-networks/" target="_blank">CS231n: Convolutional Networks</a> (Online Resource)</li>
+                    <li><a href="https://arxiv.org/abs/1512.03385" target="_blank">ResNet Original Paper</a> on arXiv</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What makes ResNet different from traditional CNNs?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>ResNet uses skip connections that allow the gradient to flow directly through the network, mitigating the vanishing gradient problem in very deep networks.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is MobileNet suitable for mobile devices?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>MobileNet uses depthwise separable convolutions, reducing the number of parameters and computations, making it efficient for mobile and embedded systems.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does the Inception architecture improve efficiency?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Inception uses parallel convolutional layers with multiple filter sizes, allowing the model to capture details at different scales while keeping computational cost manageable.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Compare VGG and ResNet in terms of depth and performance.</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>VGG is deep (up to 19 layers) but lacks mechanisms to combat vanishing gradients, whereas ResNet allows training of networks with hundreds of layers due to residual connections, offering better performance and ease of training.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

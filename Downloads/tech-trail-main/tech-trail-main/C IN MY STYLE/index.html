@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming In My Style - Learn C from Basics to Advanced</title>
+    <link rel="icon" type="image/svg+xml" href="img/c.svg">
+
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/glassmorphism.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code nav-icon"></i>
+                <span class="logo-text">C In My<span class="logo-accent"> Style</span></span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#topics" class="nav-link">Topics</a>
+                <a href="#resources" class="nav-link">Resources</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="tasks/task.html" class="nav-link">task</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-star"></i>
+                    <span></span> 
+                        <span>Master C Programming</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Learn <span class="text-gradient">C Programming</span><br>
+                        From Basics to Advanced
+                    </h1>
+                    <p class="hero-description">
+                        Master the fundamentals of C programming with our comprehensive curriculum. 
+                        From syntax basics to advanced concepts like pointers, memory management, 
+                        and system programming.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="scrollToTopics()">
+                            <i class="fas fa-rocket"></i>
+                            Start Learning
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToResources()">
+                            <i class="fas fa-book"></i>
+                            Browse Resources
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-buttons">
+                                <span class="code-btn red"></span>
+                                <span class="code-btn yellow"></span>
+                                <span class="code-btn green"></span>
+                            </div>
+                            <span class="code-title">hello.c</span>
+                        </div>
+                        <div class="code-content">
+                            <pre><code><span class="code-include">#include <stdio.h></span>
+
+<span class="code-keyword">int</span> <span class="code-function">main</span>() {
+    <span class="code-function">printf</span>(<span class="code-string">"Hello, World!"</span>);
+    <span class="code-keyword">return</span> <span class="code-number">0</span>;
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="topics" class="topics-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Complete Learning Path</h2>
+                    <p class="section-description">
+                        Comprehensive curriculum with 17 modules designed to take you from beginner to expert
+                    </p>
+                </div>
+                <div class="topics-grid">
+                    <!-- Module 1: Introduction -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('introduction')">
+                        <div class="topic-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3 class="topic-title">1. Introduction</h3>
+                        <p class="topic-description">
+                            What is C, history, features, applications, and setting up your development environment
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">5 lessons</span>
+                            <span class="topic-difficulty beginner">Beginner</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 2: C Basics -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('basics')">
+                        <div class="topic-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="topic-title">2. C Basics</h3>
+                        <p class="topic-description">
+                            Program structure, data types, variables, constants, and input/output operations
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">6 lessons</span>
+                            <span class="topic-difficulty beginner">Beginner</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 3: Operators & Expressions -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('operators')">
+                        <div class="topic-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3 class="topic-title">3. Operators & Expressions</h3>
+                        <p class="topic-description">
+                            Arithmetic, logical, bitwise operators, precedence, and type casting
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">4 lessons</span>
+                            <span class="topic-difficulty beginner">Beginner</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 4: Control Flow -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('control-flow')">
+                        <div class="topic-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h3 class="topic-title">4. Control Flow</h3>
+                        <p class="topic-description">
+                            Conditional statements, loops, switch-case, and program flow control
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">4 lessons</span>
+                            <span class="topic-difficulty intermediate">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 5: Functions -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('functions')">
+                        <div class="topic-icon">
+                            <i class="fas fa-function"></i>
+                        </div>
+                        <h3 class="topic-title">5. Functions</h3>
+                        <p class="topic-description">
+                            Function definition, calling, recursion, and storage classes
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">5 lessons</span>
+                            <span class="topic-difficulty intermediate">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 6: Arrays -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('arrays')">
+                        <div class="topic-icon">
+                            <i class="fas fa-list"></i>
+                        </div>
+                        <h3 class="topic-title">6. Arrays</h3>
+                        <p class="topic-description">
+                            1D, 2D, and multi-dimensional arrays with operations and traversal
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">3 lessons</span>
+                            <span class="topic-difficulty intermediate">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 7: Strings -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('strings')">
+                        <div class="topic-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <h3 class="topic-title">7. Strings</h3>
+                        <p class="topic-description">
+                            String operations, functions, and character array manipulation
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">3 lessons</span>
+                            <span class="topic-difficulty intermediate">Intermediate</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 8: Pointers -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('pointers')">
+                        <div class="topic-icon">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                        <h3 class="topic-title">8. Pointers</h3>
+                        <p class="topic-description">
+                            Memory addresses, pointer operations, and advanced pointer concepts
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">6 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 9: Structures & Unions -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('structures')">
+                        <div class="topic-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="topic-title">9. Structures & Unions</h3>
+                        <p class="topic-description">
+                            User-defined data types, nested structures, and unions
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">5 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 10: File Handling -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('file-handling')">
+                        <div class="topic-icon">
+                            <i class="fas fa-file-code"></i>
+                        </div>
+                        <h3 class="topic-title">10. File Handling</h3>
+                        <p class="topic-description">
+                            File operations, modes, and file pointer manipulation
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">4 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 11: Preprocessing -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('preprocessing')">
+                        <div class="topic-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3 class="topic-title">11. Preprocessing</h3>
+                        <p class="topic-description">
+                            Macros, file inclusion, and conditional compilation
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">5 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 12: Command Line Arguments -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('command-line')">
+                        <div class="topic-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h3 class="topic-title">12. Command Line Arguments</h3>
+                        <p class="topic-description">
+                            argc and argv, parsing command line arguments
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">2 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 13: Dynamic Memory Allocation -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('memory-management')">
+                        <div class="topic-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <h3 class="topic-title">13. Dynamic Memory Allocation</h3>
+                        <p class="topic-description">
+                            malloc, calloc, realloc, and free functions
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">4 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 14: Error Handling -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('error-handling')">
+                        <div class="topic-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="topic-title">14. Error Handling</h3>
+                        <p class="topic-description">
+                            errno, perror, and exception-like mechanisms in C
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">3 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                    <!-- Module 15: Bitfields, Volatile, Restrict -->
+                    <div class="topic-card glass-card" onclick="navigateToTopic('advanced-keywords')">
+                        <div class="topic-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3 class="topic-title">15. Advanced Keywords</h3>
+                        <p class="topic-description">
+                            Bitfields, volatile, and restrict keywords (C99)
+                        </p>
+                        <div class="topic-meta">
+                            <span class="topic-lessons">3 lessons</span>
+                            <span class="topic-difficulty advanced">Advanced</span>
+                        </div>
+                    </div>
+
+                   
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose C Mastery?</h2>
+                    <p class="section-description">
+                        Everything you need to master C programming
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="feature-title">Structured Learning</h3>
+                        <p class="feature-description">
+                            Follow our carefully designed curriculum that takes you from basics to advanced concepts
+                        </p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="feature-title">Code Examples</h3>
+                        <p class="feature-description">
+                            Learn with practical code examples and real-world applications for every concept
+                        </p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h3 class="feature-title">Interview Prep</h3>
+                        <p class="feature-description">
+                            Practice with curated interview questions to ace your technical interviews
+                        </p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Responsive Design</h3>
+                        <p class="feature-description">
+                            Learn anywhere, anytime with our fully responsive platform that works on all devices
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Learning Resources</h2>
+                    <p class="section-description">
+                        Additional materials to enhance your C programming journey
+                    </p>
+                </div>
+                <div class="resources-grid">
+                    <div class="resource-card glass-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="resource-title">Books</h3>
+                        <p class="resource-description">
+                            Curated list of essential C programming books
+                        </p>
+                        <ul class="resource-list">
+                            <li>The C Programming Language (K&R)</li>
+                            <li>C Programming: A Modern Approach</li>
+                            <li>Expert C Programming</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card glass-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="resource-title">Tools</h3>
+                        <p class="resource-description">
+                            Development tools and compilers for C programming
+                        </p>
+                        <ul class="resource-list">
+                            <li>GCC Compiler</li>
+                            <li>Code::Blocks IDE</li>
+                            <li>Visual Studio Code</li>
+                        </ul>
+                    </div>
+                    <div class="resource-card glass-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="resource-title">Online Resources</h3>
+                        <p class="resource-description">
+                            Websites and platforms for additional learning
+                        </p>
+                        <ul class="resource-list">
+                            <li>C Reference Documentation</li>
+                            <li>Online C Compilers</li>
+                            <li>Programming Forums</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">About C Mastery</h2>
+                        <p class="about-description">
+                            C Mastery is a comprehensive learning platform designed to teach C programming 
+                            from the ground up. Our structured approach ensures that you build a solid 
+                            foundation before moving to advanced topics.
+                        </p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">15</div>
+                                <div class="stat-label">Modules</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">70+</div>
+                                <div class="stat-label">Lessons</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100+</div>
+                                <div class="stat-label">Code Examples</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual">
+                        <div class="about-card glass-card">
+                            <h4>Learn by Doing</h4>
+                            <p>Every concept is reinforced with practical examples and real-world applications.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                        <span>C Programming<span class="logo-accent"> In My Style</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Master C programming with our comprehensive learning platform
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topics">Topics</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+          
+                <li><a href="/HTML IN MY STYLE/index.html">HTML IN MY STYLE</a></li>
+            <li><a href="/CSS IN MY STYLE/index.html">CSS IN MY STYLE</a></li>
+            <li><a href="/JAVASCRIPT IN MY STYLE - BASIC/index.html">JAVASCRIPT IN MY STYLE (BASIC)</a></li>
+            <li><a href="/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html">JAVASCRIPT IN MY STYLE (INTERMEDIATE)</a></li>
+            <li><a href="/C IN MY STYLE/index.html">C IN MY STYLE</a></li>
+            <li><a href="/JAVA IN MY STYLE/index.html">JAVA IN MY STYLE</a></li>
+            <li><a href="/PYTHON IN MY STYLE/index.html">PYTHON IN MY STYLE</a></li>
+            <li><a href="/ML IN MY STYLE/index.html">MACHINE LEARNING IN MY STYLE</a></li>
+            <li><a href="/DL IN MY STYLE/index.html">DEEP LEARNING IN MY STYLE</a></li>
+            <li><a href="/DSC IN MY STYLE/">DATA SCIENCE IN MY STYLE</a></li>
+            <li><a href="/AI IN MY STYLE/index.html">ARTIFICIAL INTELLIGENCE IN MY STYLE</a></li>
+          
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                     <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+               <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+               <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 C Programming In My Style. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

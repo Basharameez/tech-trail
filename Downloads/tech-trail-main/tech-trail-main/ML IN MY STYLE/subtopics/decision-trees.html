@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decision Trees | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Decision Trees</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Decision Trees</h1>
+            
+         <section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Decision Trees are supervised learning models used for classification and regression tasks. They work by splitting the dataset into branches based on feature values, ultimately leading to a prediction outcome at the leaves.</p>
+
+    <div class="glass-card">
+        <h3>How Decision Trees Work</h3>
+        <p>The tree is built by choosing the best features and thresholds to split the data in a way that improves prediction purity (e.g., reducing entropy or Gini impurity). This process continues recursively until a stopping criterion is met (like maximum depth or minimum samples).</p>
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Simple to understand and visualize</li>
+            <li>Can handle both categorical and numerical data</li>
+            <li>Prone to overfitting, often mitigated using pruning techniques</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Code for Decision Tree Classifier</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load data
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+clf = DecisionTreeClassifier(criterion='gini', max_depth=3)
+clf.fit(X_train, y_train)
+
+# Predict and evaluate
+y_pred = clf.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+
+    <div class="glass-card application-card">
+        <h3>Decision Tree Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Healthcare:</strong> Diagnosing diseases based on patient symptoms</li>
+                    <li><strong>Finance:</strong> Credit scoring, loan approval decision-making</li>
+                    <li><strong>Marketing:</strong> Customer segmentation, targeted promotions</li>
+                    <li><strong>Manufacturing:</strong> Quality control and fault detection</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Business decision making using trees" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/JcI5E2Ng6r4?si=RTZAjyR4h6m21uGW">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/10TmRJzG2Bis22lt2IMBsTW-B8dCIRB-j/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is a Decision Tree?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>A decision tree is a tree-like model used to make decisions based on input features. Each internal node represents a decision on a feature, each branch represents an outcome, and each leaf represents a class label or value.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How does a decision tree decide where to split?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It uses criteria such as Gini impurity, entropy (information gain), or mean squared error to choose the best split that improves the homogeneity of the resulting subsets.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What are the advantages and disadvantages of decision trees?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>Advantages:</strong> Easy to interpret, no need for feature scaling, handles both numerical and categorical data.</p>
+            <p><strong>Disadvantages:</strong> Prone to overfitting, can be biased with imbalanced data, small changes in data can lead to different trees.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What is pruning in decision trees?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Pruning is the process of removing nodes from a tree to reduce its complexity and avoid overfitting. It can be done using pre-pruning (setting limits like max depth) or post-pruning (removing nodes after tree construction).</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. How are decision trees different from random forests?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Decision trees are single models that can overfit easily. Random forests are ensembles of decision trees that reduce overfitting by averaging predictions from multiple trees trained on random subsets of data and features.</p>
+        </div>
+    </div>
+</section>
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

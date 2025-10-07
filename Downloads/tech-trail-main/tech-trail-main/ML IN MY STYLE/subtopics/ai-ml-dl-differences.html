@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differences between AI, ML, DL | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Differences between AI, ML, DL</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Differences between AI, ML, DL</h1>
+            
+           <section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL) are interconnected fields that deal with enabling machines to perform tasks that typically require human intelligence. However, they differ in scope, methods, and complexity.</p>
+
+    <div class="glass-card">
+        <h3>Artificial Intelligence (AI)</h3>
+        <p>AI is the broadest concept of machines being able to carry out tasks in a way that we would consider “smart.” It encompasses any technique that enables computers to mimic human intelligence.</p>
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Encompasses all techniques enabling machines to simulate human intelligence</li>
+            <li>Includes rule-based systems, expert systems, and more</li>
+            <li>Focuses on reasoning, problem-solving, natural language processing, and perception</li>
+        </ul>
+    </div>
+
+    <div class="glass-card">
+        <h3>Machine Learning (ML)</h3>
+        <p>ML is a subset of AI that focuses on algorithms that allow machines to learn patterns from data and improve their performance over time without being explicitly programmed for every task.</p>
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Uses statistical techniques to learn from data</li>
+            <li>Requires training data to build predictive models</li>
+            <li>Includes supervised, unsupervised, and reinforcement learning</li>
+        </ul>
+    </div>
+
+    <div class="glass-card">
+        <h3>Deep Learning (DL)</h3>
+        <p>DL is a specialized subset of ML that uses neural networks with many layers (deep neural networks) to model complex patterns in large amounts of data.</p>
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Relies on multi-layered neural networks</li>
+            <li>Excels in tasks such as image and speech recognition</li>
+            <li>Requires large datasets and significant computational power</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>AI Example (Rule-Based System)</h3>
+        <pre><code>// Simple AI rule-based decision
+function aiDecision(input) {
+    if (input === 'rainy') return 'Take an umbrella';
+    else if (input === 'sunny') return 'Wear sunglasses';
+    else return 'Check weather forecast';
+}
+console.log(aiDecision('rainy')); // Output: Take an umbrella
+</code></pre>
+    </div>
+
+    <div class="glass-card">
+        <h3>ML Example (Supervised Learning with Scikit-learn)</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+
+data = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.3, random_state=42)
+
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+print("Accuracy:", model.score(X_test, y_test))
+</code></pre>
+    </div>
+
+    <div class="glass-card">
+        <h3>DL Example (Simple Neural Network with TensorFlow/Keras)</h3>
+        <pre><code>import tensorflow as tf
+from tensorflow.keras import layers, models
+
+model = models.Sequential([
+    layers.Dense(64, activation='relu', input_shape=(100,)),
+    layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# model.fit(X_train, y_train, epochs=10)  # Assuming data is preprocessed
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Artificial Intelligence Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Virtual Assistants:</strong> Siri, Alexa, Google Assistant</li>
+                    <li><strong>Expert Systems:</strong> Medical diagnosis, troubleshooting systems</li>
+                    <li><strong>Robotics:</strong> Industrial robots, automation</li>
+                    <li><strong>Natural Language Processing:</strong> Chatbots, translation</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="AI Virtual Assistant" class="app-image">
+            </div>
+        </div>
+    </div>
+    
+    <div class="glass-card application-card">
+        <h3>Machine Learning Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Spam Detection:</strong> Email filtering</li>
+                    <li><strong>Recommendation Systems:</strong> Netflix, Amazon</li>
+                    <li><strong>Fraud Detection:</strong> Banking and finance</li>
+                    <li><strong>Image Classification:</strong> Identifying objects in images</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Machine Learning" class="app-image">
+            </div>
+        </div>
+    </div>
+    
+    <div class="glass-card application-card">
+        <h3>Deep Learning Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Image and Speech Recognition:</strong> Face ID, voice assistants</li>
+                    <li><strong>Autonomous Vehicles:</strong> Self-driving cars</li>
+                    <li><strong>Natural Language Processing:</strong> Language translation, text generation</li>
+                    <li><strong>Healthcare:</strong> Medical image analysis, drug discovery</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Deep Learning AI" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/k2P_pHQDlp0?si=Y5lOordWrEgLnYpQ">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1klSC8CtoEiMYvloYYuBRzuB7BTIwGSKE/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the main difference between Artificial Intelligence, Machine Learning, and Deep Learning?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>AI</strong> is the broad concept of machines performing tasks smartly. <strong>ML</strong> is a subset of AI focusing on learning from data. <strong>DL</strong> is a specialized subset of ML using deep neural networks.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. Can you give examples of each: AI, ML, and DL?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>AI:</strong> Rule-based expert systems, chatbots.</p>
+            <p><strong>ML:</strong> Spam filters, recommendation engines.</p>
+            <p><strong>DL:</strong> Image recognition systems, speech-to-text converters.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. Why does Deep Learning require more data and computational power than traditional Machine Learning?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Deep Learning models have many layers and parameters, requiring large datasets to train effectively and powerful GPUs or TPUs to process computations efficiently.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How does Machine Learning differ from traditional programming?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Traditional programming uses explicit instructions to perform tasks. ML learns patterns from data and makes decisions without being explicitly programmed for every scenario.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. What types of problems are best suited for Deep Learning?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Problems involving large amounts of complex data such as image recognition, natural language processing, and speech recognition are ideal for Deep Learning.</p>
+        </div>
+    </div>
+</section>
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

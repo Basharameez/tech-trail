@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> User-defined packages in Java  - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+              <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#multi-threading">Packages in Java</a> &gt;
+                <span> User-defined packages </span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1> User-defined packages </h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-lightbulb"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Imagine you are building a large Java application with multiple teams working on different modules. Without proper organization, managing code would be chaotic. Just like departments in a company, user-defined packages allow you to logically separate and manage your code.</p>
+    <p>This organization not only brings clarity but also enhances modularity, reusability, and scalability—key principles in software engineering.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p><strong>User-defined packages</strong> in Java are packages that developers create to logically group related classes, interfaces, and sub-packages.</p>
+    
+    <h3>How to Create a User-defined Package:</h3>
+    <ol>
+      <li>Use the <code>package</code> keyword as the first statement in your Java file.</li>
+      <li>Compile the file using the <code>-d</code> option to specify the destination directory.</li>
+      <li>Import the package where it’s needed using the <code>import</code> statement.</li>
+    </ol>
+
+    <div class="info-box">
+      <p><strong>Best Practice:</strong> Use your organization’s reversed domain name for naming packages (e.g., <code>com.example.utils</code>) to avoid name conflicts in collaborative environments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=yLDbmTbyTEc" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1SGAprVC6cgWV0oZ1MyI1y3lK_VZtOIVo/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Creating and Using a User-defined Package</h3>
+  <pre><code class="language-java">
+// File: mypack/Message.java
+package mypack;
+
+public class Message {
+    public void greet() {
+        System.out.println("Hello from my user-defined package!");
+    }
+}
+
+// File: Main.java
+import mypack.Message;
+
+public class Main {
+    public static void main(String[] args) {
+        Message m = new Message();
+        m.greet();
+    }
+}
+  </code></pre>
+  <p><strong>To compile and run:</strong></p>
+  <pre><code class="language-bash">javac -d . mypack/Message.java
+javac Main.java
+java Main</code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-code-branch"></i> Modular Codebases</h3>
+      <p>Divide functionality into different packages like <code>utils</code>, <code>services</code>, <code>models</code>, etc., in enterprise software.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-puzzle-piece"></i> API Libraries</h3>
+      <p>Create custom libraries with grouped classes and share them across multiple projects or teams.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-shield-alt"></i> Access Restriction</h3>
+      <p>Use packages with default access modifiers to restrict class usage within specific boundaries.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: How do you create a user-defined package in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Use the <code>package</code> keyword at the top of the class file, compile using <code>javac -d</code>, and import it where needed.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q2: What is the purpose of the <code>-d</code> option during compilation?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>The <code>-d</code> option specifies the destination directory where the package folders and class files should be created.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q3: Can a Java class belong to multiple packages?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>No, a Java class can belong to only one package declared at the top of the file using the <code>package</code> keyword.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q4: How does packaging help in collaborative development?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>It allows teams to work on different packages independently, avoids class name collisions, and enables controlled access between modules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

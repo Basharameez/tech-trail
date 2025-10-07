@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Use-case: Noise removal, compression, outlier detection - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Use-case: Noise removal, compression, outlier detection</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>
+            Autoencoders are neural networks designed to learn efficient data codings in an unsupervised manner. 
+            In this use-case, autoencoders are employed for noise removal, data compression, and outlier detection:
+        </p>
+        <ul>
+            <li><strong>Noise removal:</strong> Denoising autoencoders learn to reconstruct clean inputs from noisy versions, improving data quality.</li>
+            <li><strong>Compression:</strong> Autoencoders compress data into a lower-dimensional latent space, enabling efficient storage and transmission.</li>
+            <li><strong>Outlier detection:</strong> By learning typical data patterns, autoencoders can identify anomalies as inputs with high reconstruction error.</li>
+        </ul>
+        <p>
+            These applications have wide relevance in image processing, signal enhancement, fraud detection, and more.
+        </p>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example of a simple denoising autoencoder implemented in TensorFlow/Keras:</p>
+        <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras import layers, models
+
+# Encoder
+input_img = tf.keras.Input(shape=(28, 28, 1))
+x = layers.Flatten()(input_img)
+encoded = layers.Dense(64, activation='relu')(x)
+
+# Decoder
+decoded = layers.Dense(28 * 28, activation='sigmoid')(encoded)
+decoded = layers.Reshape((28, 28, 1))(decoded)
+
+# Autoencoder Model
+autoencoder = models.Model(input_img, decoded)
+autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
+
+# Assume (x_train_noisy, x_train) are prepared noisy and clean datasets
+autoencoder.fit(x_train_noisy, x_train, epochs=50, batch_size=256, validation_split=0.2)
+        </code></pre>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-image"></i></div>
+                <h3>Noise Removal</h3>
+                <p>Improving image and audio quality by removing background noise or distortions using denoising autoencoders.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-compress"></i></div>
+                <h3>Data Compression</h3>
+                <p>Compressing high-dimensional data into smaller latent representations to save storage and speed transmission.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <h3>Outlier Detection</h3>
+                <p>Detecting anomalies in financial transactions, manufacturing defects, or network security by reconstruction error analysis.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtube.com/shorts/iHeNTP1CKiY?feature=shared'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1KzF2vckuKGR0xBSFOgv3oIhFlL3pAlGL/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</li>
+                    <li><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow</a> by Aurélien Géron</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+     <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is an autoencoder and how does it work?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        An autoencoder is a type of neural network designed to encode input data into a compressed latent representation and then decode it back to reconstruct the original input.
+                        It works by minimizing the reconstruction error between input and output.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do denoising autoencoders help in noise removal?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Denoising autoencoders are trained to reconstruct the original clean input from a corrupted or noisy version, thus learning to filter out noise and preserve important features.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How can autoencoders be used for outlier detection?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Autoencoders learn to reconstruct typical patterns of normal data. When presented with outliers or anomalies, reconstruction error is high, which helps identify those abnormal inputs.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructors - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+               <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#oop">Object-Oriented Programming (OOP)</a> &gt;
+                <span>Constructors</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Constructors</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Constructors are special methods used to initialize objects when they are created.</p>
+    <p>Understanding how default and parameterized constructors work helps in setting up object state properly at the time of creation.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>A <strong>constructor</strong> is a special method in a class that is called automatically when an object is instantiated.</p>
+    <p>Key points about constructors:</p>
+    <ul>
+      <li>The constructor name must match the class name.</li>
+      <li>Constructors do not have a return type, not even void.</li>
+      <li><strong>Default Constructor:</strong> Provided by Java if no constructor is defined; it initializes objects with default values.</li>
+      <li><strong>Parameterized Constructor:</strong> Allows passing arguments to initialize objects with specific values.</li>
+      <li>Constructors can be overloaded by defining multiple constructors with different parameters.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=Nyt6Csd_9g8" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+      <h3>Java Constructors</h3>
+      <p>Comprehensive tutorial on constructors and their use in Java.</p>
+    </div>
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1cSsOGiNXh8gY7bR5SSc_SfFLw_SbsdoB/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Default Constructor Example</h3>
+  <pre><code class="language-java">
+class Person {
+    String name;
+    int age;
+
+    // Default constructor
+    Person() {
+        name = "Unknown";
+        age = 0;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person();
+        p1.display();
+    }
+}
+  </code></pre>
+
+  <h3>Parameterized Constructor Example</h3>
+  <pre><code class="language-java">
+class Person {
+    String name;
+    int age;
+
+    // Parameterized constructor
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p2 = new Person("Alice", 25);
+        p2.display();
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-user"></i> User Account Creation</h3>
+      <p>Constructors initialize user profiles with default or provided details.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-shopping-cart"></i> E-commerce Orders</h3>
+      <p>Order objects are created with parameterized constructors to hold order info.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-robot"></i> Robotics Control</h3>
+      <p>Robots initialized with different parameters using constructors for flexibility.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is a constructor in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>A constructor is a special method used to initialize objects when they are created. It has the same name as the class and no return type.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: What is the difference between default and parameterized constructors?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>The default constructor has no parameters and initializes default values, while parameterized constructors accept arguments to initialize the object with specific values.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: Can constructors be overloaded in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Yes, constructors can be overloaded by defining multiple constructors with different parameter lists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+                <!-- Navigation Section -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

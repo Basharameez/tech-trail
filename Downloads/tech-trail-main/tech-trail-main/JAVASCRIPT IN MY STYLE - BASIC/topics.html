@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topics - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+  <style>
+    :root {
+      /* JavaScript Colors */
+      --js-yellow: #f7df1e;
+      --js-black: #323330;
+      
+      /* Theme Colors */
+      --primary-color: var(--js-yellow);
+      --secondary-color: var(--js-black);
+      --text-color: #333;
+      --bg-color: #ffffff;
+      --card-bg: #f8f8f8;
+      --card-border: #e0e0e0;
+      --card-hover: #f0f0f0;
+      --navbar-bg: var(--js-black);
+      --navbar-text: #ffffff;
+      --footer-bg: var(--js-black);
+      --footer-text: #ffffff;
+      --btn-primary-bg: var(--js-yellow);
+      --btn-primary-text: var(--js-black);
+      
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 1rem;
+      --space-4: 1.5rem;
+      --space-5: 3rem;
+      
+      /* Transitions */
+      --transition-speed: 0.3s;
+    }
+
+    .dark-theme {
+      --text-color: #f0f0f0;
+      --bg-color: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --card-border: #3a3a3a;
+      --card-hover: #3f3f3f;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-3);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      background-color: var(--navbar-bg);
+      color: var(--navbar-text);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-2) 0;
+      position: relative;
+    }
+    
+    /* Back Button Styles */
+    .back-button {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--navbar-text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: var(--space-2);
+      border-radius: 4px;
+      transition: background-color var(--transition-speed), color var(--transition-speed);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--primary-color);
+    }
+    
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-left: 60px; /* Space for back button */
+    }
+    
+    .navbar-logo img {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .navbar-menu {
+      display: flex;
+      list-style: none;
+      gap: var(--space-4);
+    }
+    
+    .navbar-menu a {
+      color: var(--navbar-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition-speed);
+    }
+    
+    .navbar-menu a:hover {
+      color: var(--primary-color);
+    }
+    
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--navbar-text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background-color: var(--secondary-color);
+      color: #fff;
+      padding: var(--space-5) 0;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-3);
+      color: var(--primary-color);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Topics Grid */
+    .topics-container {
+      padding: var(--space-5) 0;
+    }
+    
+    .topic-category {
+      margin-bottom: var(--space-5);
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: var(--space-4);
+      color: var(--primary-color);
+      border-bottom: 3px solid var(--primary-color);
+      padding-bottom: var(--space-2);
+      display: inline-block;
+    }
+    
+    .topics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--space-4);
+    }
+    
+    .topic-item {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    
+    .topic-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .topic-header {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      padding: var(--space-3);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    
+    .topic-number {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .topic-body {
+      padding: var(--space-3);
+    }
+    
+    .topic-body p {
+      margin-bottom: var(--space-3);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: var(--space-2) var(--space-3);
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color var(--transition-speed);
+    }
+    
+    .btn-primary {
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: var(--space-4) 0;
+    }
+    
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-3);
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    
+    .footer-logo img {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: var(--space-3);
+    }
+    
+    .social-links a {
+      color: var(--footer-text);
+      font-size: 1.5rem;
+      transition: color var(--transition-speed);
+    }
+    
+    .social-links a:hover {
+      color: var(--primary-color);
+    }
+    
+    .footer-text {
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: transform var(--transition-speed);
+      z-index: 99;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Animations */
+    .logo-spin {
+      animation: logoSpin 10s linear infinite;
+    }
+    
+    @keyframes logoSpin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .fade-in-element {
+      animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Page Transition */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-color);
+      z-index: 9999;
+      transform: translateY(100%);
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .page-transition.active {
+      transform: translateY(0);
+    }
+    
+    /* Theme Toggle Animation */
+    .theme-transition {
+      animation: themeTransition 0.5s ease-in-out;
+    }
+    
+    @keyframes themeTransition {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .navbar-logo {
+        margin-left: 50px; /* Adjust for smaller back button on mobile */
+      }
+      
+      .back-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+      
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--navbar-bg);
+        flex-direction: column;
+        padding: var(--space-3);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .navbar-menu.active {
+        display: flex;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      .footer-container {
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+     <button class="back-button" onclick="window.location.href='index.html'" title="Go Back"></button>
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Topics Header -->
+  <section class="hero" style="padding: var(--space-5) 0;">
+    <div class="container">
+      <h1 class="fade-in-element">Learning Roadmap</h1>
+      <p class="fade-in-element">Follow our suggested learning path to master JavaScript from the ground up.</p>
+      
+      <!-- Progress Bar -->
+    </div>
+  </section>
+
+  <!-- Topics Sections -->
+  <main class="topics-container container">
+    <!-- Fundamentals Section -->
+    <section id="fundamentals" class="topic-category">
+      <h2 class="section-title">🧱 Fundamentals</h2>
+      <div class="topics-grid">
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">1</span>
+            <h3>Introduction to JavaScript</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn the basics of JavaScript, its history, and how it's used in web development.</p>
+            <a href="subtopics/fundamentals/introduction.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">2</span>
+            <h3>Variables</h3>
+          </div>
+          <div class="topic-body">
+            <p>Understand var, let, and const variables and their scope in JavaScript.</p>
+            <a href="subtopics/fundamentals/variables.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">3</span>
+            <h3>Data Types</h3>
+          </div>
+          <div class="topic-body">
+            <p>Explore strings, numbers, booleans, and other primitive and reference types.</p>
+            <a href="subtopics/fundamentals/data-types.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">4</span>
+            <h3>Operators</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn about arithmetic, comparison, logical, and other operators in JavaScript.</p>
+            <a href="subtopics/fundamentals/operators.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">5</span>
+            <h3>Conditionals</h3>
+          </div>
+          <div class="topic-body">
+            <p>Master if, else, else if, and switch statements for decision making.</p>
+            <a href="subtopics/fundamentals/conditionals.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">6</span>
+            <h3>Loops</h3>
+          </div>
+          <div class="topic-body">
+            <p>Discover for, while, and do-while loops for repeating code execution.</p>
+            <a href="subtopics/fundamentals/loops.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">7</span>
+            <h3>Functions</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn about function declarations, expressions, and arrow functions.</p>
+            <a href="subtopics/fundamentals/functions.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">8</span>
+            <h3>Scope</h3>
+          </div>
+          <div class="topic-body">
+            <p>Understand global vs local scope, hoisting, and closures.</p>
+            <a href="subtopics/fundamentals/scope.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">9</span>
+            <h3>Events & DOM Manipulation</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn how to interact with HTML elements and respond to user actions.</p>
+            <a href="subtopics/fundamentals/events-dom.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Intermediate Section -->
+    <section id="intermediate" class="topic-category">
+      <h2 class="section-title">🛠 Intermediate Concepts</h2>
+      <div class="topics-grid">
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">10</span>
+            <h3>Arrays & Methods</h3>
+          </div>
+          <div class="topic-body">
+            <p>Master working with arrays and their powerful built-in methods.</p>
+            <a href="subtopics/intermediate/arrays.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">11</span>
+            <h3>Objects & JSON</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn about JavaScript objects, JSON data format, and object methods.</p>
+            <a href="subtopics/intermediate/objects.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">12</span>
+            <h3>ES6 Features</h3>
+          </div>
+          <div class="topic-body">
+            <p>Explore destructuring, spread operator, template literals, and more modern JavaScript features.</p>
+            <a href="subtopics/intermediate/es6-features.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">13</span>
+            <h3>DOM</h3>
+          </div>
+          <div class="topic-body">
+            <p>Deep dive into the Document Object Model structure and manipulation.</p>
+            <a href="subtopics/intermediate/dom.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">14</span>
+            <h3>Event Listeners</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn advanced event handling techniques and event propagation.</p>
+            <a href="subtopics/intermediate/event-listeners.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">15</span>
+            <h3>Timing Functions</h3>
+          </div>
+          <div class="topic-body">
+            <p>Use setTimeout and setInterval for timing operations and animations.</p>
+            <a href="subtopics/intermediate/timing-functions.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">16</span>
+            <h3>Error Handling</h3>
+          </div>
+          <div class="topic-body">
+            <p>Implement try...catch blocks and handle errors effectively in your code.</p>
+            <a href="subtopics/intermediate/error-handling.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Advanced Section -->
+    <section id="advanced" class="topic-category">
+      <h2 class="section-title">🚀 Advanced Topics</h2>
+      <div class="topics-grid">
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">17</span>
+            <h3>Classes and Inheritance</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn object-oriented programming with JavaScript classes and inheritance patterns.</p>
+            <a href="subtopics/advanced/classes.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">18</span>
+            <h3>Promises and Async/Await</h3>
+          </div>
+          <div class="topic-body">
+            <p>Master asynchronous programming with Promises and async/await syntax.</p>
+            <a href="subtopics/advanced/promises.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">19</span>
+            <h3>Fetch API and AJAX</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn how to make HTTP requests and handle responses using modern web APIs.</p>
+            <a href="subtopics/advanced/fetch-ajax.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">20</span>
+            <h3>Modules</h3>
+          </div>
+          <div class="topic-body">
+            <p>Organize your code with ES modules and understand import/export syntax.</p>
+            <a href="subtopics/advanced/modules.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">21</span>
+            <h3>Closures & Callback Functions</h3>
+          </div>
+          <div class="topic-body">
+            <p>Understand advanced functional programming concepts in JavaScript.</p>
+            <a href="subtopics/advanced/closures.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">22</span>
+            <h3>Local Storage & Session Storage</h3>
+          </div>
+          <div class="topic-body">
+            <p>Learn client-side data storage options for web applications.</p>
+            <a href="subtopics/advanced/storage.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+        
+        <div class="topic-item">
+          <div class="topic-header">
+            <span class="topic-number">23</span>
+            <h3>Web APIs</h3>
+          </div>
+          <div class="topic-body">
+            <p>Explore modern browser APIs like Geolocation, Web Workers, and more.</p>
+            <a href="subtopics/advanced/web-apis.html" class="btn btn-primary">Start Learning</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>&copy; 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    
+    menuToggle.addEventListener('click', () => {
+      navbarMenu.classList.toggle('active');
+    });
+    
+    // Dark Mode Toggle
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    const body = document.body;
+    const icon = darkModeToggle.querySelector('i');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark-theme');
+      icon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    darkModeToggle.addEventListener('click', () => {
+      // Add transition class
+      body.classList.add('theme-transition');
+      
+      // Toggle dark theme
+      if (body.classList.contains('dark-theme')) {
+        body.classList.remove('dark-theme');
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+      } else {
+        body.classList.add('dark-theme');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+      }
+      
+      // Remove transition class after animation completes
+      setTimeout(() => {
+        body.classList.remove('theme-transition');
+      }, 500);
+    });
+    
+    // Page Transitions
+    const links = document.querySelectorAll('a:not([target="_blank"])');
+    const pageTransition = document.querySelector('.page-transition');
+    
+    links.forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href && href !== '#' && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+          e.preventDefault();
+          pageTransition.classList.add('active');
+          
+          setTimeout(() => {
+            window.location.href = href;
+          }, 500);
+        }
+      });
+    });
+    
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-element');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      document.querySelectorAll('.topic-item').forEach(item => {
+        observer.observe(item);
+      });
+    });
+  </script>
+</body>
+</html>
+
+​

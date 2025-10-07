@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naive Bayes | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Naive Bayes</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Naive Bayes</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Naive Bayes is a family of simple probabilistic classifiers based on Bayes’ Theorem with the “naive” assumption of conditional independence between features. Despite its simplicity, Naive Bayes is known for its efficiency and performance, especially in text classification problems.</p>
+
+    <div class="glass-card">
+        <h3>How Naive Bayes Works</h3>
+        <p>Naive Bayes calculates the posterior probability for each class using Bayes’ Theorem:</p>
+        <p><code>P(Class|Features) = (P(Features|Class) * P(Class)) / P(Features)</code></p>
+        <p>Key characteristics:</p>
+        <ul>
+            <li>Assumes independence between predictors/features</li>
+            <li>Works well with high-dimensional data (e.g., text)</li>
+            <li>Fast to train and predict</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Code for Naive Bayes Classifier</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Train Naive Bayes model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Predict
+y_pred = model.predict(X_test)
+
+# Evaluate
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.2f}")
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+
+    <div class="glass-card application-card">
+        <h3>Naive Bayes Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Email Filtering:</strong> Spam detection using text classification</li>
+                    <li><strong>Sentiment Analysis:</strong> Classifying user reviews or tweets as positive or negative</li>
+                    <li><strong>Medical Diagnosis:</strong> Predicting diseases based on symptoms and patient history</li>
+                    <li><strong>Document Categorization:</strong> News article classification into topics</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Email classification" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/GBMMtXRiQX0?si=n8bFoA-sctoDsftO">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1gp-HFe4cQwMyN2lorB0TmzBwjzVLDtZG/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the Naive Bayes algorithm?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Naive Bayes is a classification algorithm based on Bayes' Theorem that assumes independence between features. It calculates the posterior probability of classes and assigns the class with the highest probability to the input data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. Why is it called “Naive” Bayes?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It is called “Naive” because it makes a strong assumption that all features are conditionally independent of each other given the class label, which is often not the case in real-world data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What are the types of Naive Bayes algorithms?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>
+                <ul>
+                    <li><strong>Gaussian Naive Bayes:</strong> Assumes features follow a normal distribution</li>
+                    <li><strong>Multinomial Naive Bayes:</strong> Suitable for discrete features like word counts</li>
+                    <li><strong>Bernoulli Naive Bayes:</strong> Suitable for binary/boolean features</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What are the advantages of Naive Bayes?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Advantages include:
+                <ul>
+                    <li>Simple and fast to train</li>
+                    <li>Performs well with high-dimensional data</li>
+                    <li>Works well with text classification problems</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. What are the limitations of Naive Bayes?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>
+                <ul>
+                    <li>Strong assumption of feature independence, which rarely holds in practice</li>
+                    <li>May not perform well on complex problems where features are highly correlated</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

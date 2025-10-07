@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Loss Functions - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Loss Functions</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>In deep learning, a <strong>loss function</strong> measures how well a model’s predictions align with the actual labels. It quantifies the difference between predicted outputs and true values, guiding the optimization process through gradient descent.</p>
+
+        <p>Loss functions are crucial for training because they provide the signal used to update model weights during <strong>backpropagation</strong>. Choosing the right loss function depends on the task—classification, regression, etc.</p>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Insight</div>
+            <p>A smaller loss indicates a better-performing model. The training goal is to minimize this value to improve accuracy and generalization.</p>
+        </div>
+
+        <p>Common types of loss functions:</p>
+        <ul>
+            <li><strong>Mean Squared Error (MSE):</strong> For regression problems</li>
+            <li><strong>Binary Cross-Entropy:</strong> For binary classification</li>
+            <li><strong>Categorical Cross-Entropy:</strong> For multi-class classification</li>
+            <li><strong>Hinge Loss:</strong> For Support Vector Machines (SVMs)</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Squared_loss_function.svg/512px-Squared_loss_function.svg.png" alt="Loss Function Visualization">
+            <p class="caption">A graph illustrating squared loss in regression</p>
+        </div>
+    </div>
+</section>
+
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's how to define and use different loss functions in Keras:</p>
+
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.losses import MeanSquaredError, BinaryCrossentropy, CategoricalCrossentropy
+
+# Regression model with MSE
+reg_model = Sequential([
+    Dense(64, activation='relu', input_shape=(10,)),
+    Dense(1)
+])
+reg_model.compile(optimizer='adam', loss=MeanSquaredError())
+
+# Binary classification model
+bin_model = Sequential([
+    Dense(32, activation='relu', input_shape=(10,)),
+    Dense(1, activation='sigmoid')
+])
+bin_model.compile(optimizer='adam', loss=BinaryCrossentropy())
+
+# Multi-class classification model
+multi_model = Sequential([
+    Dense(128, activation='relu', input_shape=(10,)),
+    Dense(3, activation='softmax')
+])
+multi_model.compile(optimizer='adam', loss=CategoricalCrossentropy())
+</code></pre>
+        </div>
+
+        <p>Each loss function serves a specific purpose depending on the type of prediction task involved.</p>
+        
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-info-circle"></i> Note</div>
+            <p>Always ensure your output layer and target labels match the expected input for the selected loss function. For example, use one-hot encoding with categorical cross-entropy.</p>
+        </div>
+    </div>
+</section>
+
+           <section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>Model Training</h3>
+                <p>Loss functions are the backbone of all training routines in deep learning, helping optimize models to improve performance.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Autonomous Vehicles</h3>
+                <p>Object detection models use classification losses (e.g., cross-entropy) and regression losses (e.g., smooth L1) to locate and classify objects.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Medical Diagnostics</h3>
+                <p>Deep learning models in healthcare use loss functions to improve diagnostic accuracy in detecting diseases from images or data.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-comments"></i></div>
+                <h3>Natural Language Processing</h3>
+                <p>Loss functions guide models like BERT or GPT during training to minimize prediction errors in language tasks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/gb5nm_3jBIo?si=IqdUl71pk-pdh2LB'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1nCucEtWTz7CIcYNo2ED04ZNo2aKqxMOv/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On ML with Scikit-Learn, Keras, and TensorFlow</a> by Aurélien Géron</li>
+                    <li><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+            <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is a loss function in deep learning?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>A loss function measures how far the predicted output is from the actual output. It is used to compute the error and guide model optimization.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the difference between loss function and cost function?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>The loss function refers to the error for a single data point, whereas the cost function is the average loss across the entire training dataset.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>When would you use categorical cross-entropy?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Categorical cross-entropy is used for multi-class classification problems when the labels are one-hot encoded and the output layer uses a softmax activation function.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is Mean Squared Error not ideal for classification?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>MSE doesn't perform well for classification tasks because it treats the problem as regression, failing to handle probabilities and classes effectively like cross-entropy does.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

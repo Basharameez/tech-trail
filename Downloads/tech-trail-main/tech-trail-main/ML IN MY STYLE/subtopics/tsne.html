@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>t-SNE | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>t-SNE</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>t-SNE</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>t-SNE (t-Distributed Stochastic Neighbor Embedding) is a powerful non-linear dimensionality reduction technique primarily used for data visualization. It converts high-dimensional data into a low-dimensional space (usually 2D or 3D) while preserving the local structure and relationships between data points.</p>
+    
+    <div class="glass-card">
+        <h3>How t-SNE Works</h3>
+        <p>t-SNE models the probability distributions of pairs of points in high-dimensional and low-dimensional spaces, minimizing the difference between these distributions using a cost function called Kullback-Leibler divergence. This helps t-SNE to keep similar points close together while separating dissimilar points in the visualization.</p>
+        <ul>
+            <li>Focuses on preserving local neighborhoods</li>
+            <li>Uses a probabilistic approach to model similarities</li>
+            <li>Produces visually meaningful 2D or 3D representations of complex data</li>
+            <li>Effective for clustering and exploratory data analysis</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: t-SNE with scikit-learn</h3>
+        <pre><code>from sklearn.manifold import TSNE
+from sklearn.datasets import load_digits
+import matplotlib.pyplot as plt
+
+# Load Digits dataset
+digits = load_digits()
+X = digits.data
+y = digits.target
+
+# Apply t-SNE to reduce dimensions to 2
+tsne = TSNE(n_components=2, random_state=42)
+X_tsne = tsne.fit_transform(X)
+
+# Plotting the t-SNE result
+plt.scatter(X_tsne[:, 0], X_tsne[:, 1], c=y, cmap='tab10', edgecolor='k', s=50)
+plt.xlabel('t-SNE Dimension 1')
+plt.ylabel('t-SNE Dimension 2')
+plt.title('t-SNE on Digits Dataset')
+plt.colorbar()
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>t-SNE Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Image Processing:</strong> Visualizing complex image datasets to identify patterns or clusters</li>
+                    <li><strong>Genomics and Bioinformatics:</strong> Exploring gene expression data and identifying cell types</li>
+                    <li><strong>Natural Language Processing:</strong> Visualizing word embeddings and document clusters</li>
+                    <li><strong>Anomaly Detection:</strong> Identifying outliers in high-dimensional datasets</li>
+                    <li><strong>Exploratory Data Analysis:</strong> Understanding data structure before applying other algorithms</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/590021/pexels-photo-590021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/NEaUSP4YerM?si=yrXHiImky5FR2hlY">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1KIgI6D4NEWx4JRWR2ErhOHZwG3t9p98W/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the primary goal of t-SNE?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>The primary goal of t-SNE is to reduce high-dimensional data to a lower-dimensional space (2D or 3D) for visualization, preserving local similarities between points.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How does t-SNE differ from PCA?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Unlike PCA, which is a linear technique focused on maximizing variance globally, t-SNE is a non-linear technique that preserves local neighborhood structures and is mainly used for visualization.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What are some limitations of t-SNE?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>t-SNE is computationally expensive, sensitive to hyperparameters like perplexity, and does not preserve global data structure well. It is mainly for visualization, not general-purpose dimensionality reduction.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What is the role of perplexity in t-SNE?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Perplexity controls the balance between local and global aspects of the data by defining the effective number of neighbors considered during the embedding. It affects how clusters are formed.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

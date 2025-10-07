@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Generator vs Discriminator - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Generator vs Discriminator</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>
+            Generative Adversarial Networks (GANs) consist of two neural networks competing against each other:
+        </p>
+        <ul>
+            <li><strong>Generator:</strong> Creates fake data samples aiming to mimic the real data distribution as closely as possible.</li>
+            <li><strong>Discriminator:</strong> Evaluates data samples and tries to distinguish between real and fake (generated) data.</li>
+        </ul>
+        <p>
+            The two networks are trained simultaneously in a zero-sum game, where the generator improves to produce more realistic samples and the discriminator improves to better detect fakes.
+        </p>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example of a simple GAN architecture using TensorFlow/Keras:</p>
+        <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras import layers
+
+# Generator Model
+def build_generator():
+    model = tf.keras.Sequential([
+        layers.Dense(128, activation='relu', input_shape=(100,)),
+        layers.Dense(784, activation='sigmoid'),
+        layers.Reshape((28, 28, 1))
+    ])
+    return model
+
+# Discriminator Model
+def build_discriminator():
+    model = tf.keras.Sequential([
+        layers.Flatten(input_shape=(28, 28, 1)),
+        layers.Dense(128, activation='relu'),
+        layers.Dense(1, activation='sigmoid')
+    ])
+    return model
+        </code></pre>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Image Generation</h3>
+                <p>Creating realistic images, artworks, and photorealistic faces from noise inputs.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Synthesis</h3>
+                <p>Generating or enhancing video frames, including deepfakes and video super-resolution.</p>
+            </div>
+            
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-microscope"></i></div>
+                <h3>Medical Imaging</h3>
+                <p>Generating synthetic medical images to augment training data and improve diagnostic models.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/iiaBChVqqxs?feature=shared'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1oSnPbT1Fp6BGPF1CEuQ6nQgVB0_wbqwh/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</li>
+                    <li><a href="https://www.manning.com/books/generative-deep-learning" target="_blank">Generative Deep Learning</a> by David Foster</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-generative-adversarial/9781788621755/" target="_blank">Hands-On Generative Adversarial Networks</a> by John Hany</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the role of the generator in a GAN?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        The generator creates synthetic data samples from random noise, aiming to fool the discriminator into classifying them as real data.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does the discriminator function in a GAN?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        The discriminator evaluates inputs and predicts whether they come from the real data distribution or are generated (fake), helping the generator improve.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why do GANs train the generator and discriminator simultaneously?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Because they compete in a minimax game where the generator tries to produce realistic data to fool the discriminator, and the discriminator tries to correctly classify real vs fake data, improving both models.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

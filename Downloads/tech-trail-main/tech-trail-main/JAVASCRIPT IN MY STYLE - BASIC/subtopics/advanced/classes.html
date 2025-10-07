@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes and Inheritance - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Classes and Inheritance</span>
+      </div>
+      <h1>Classes and Inheritance</h1>
+      <p>Learn object-oriented programming with JavaScript classes and inheritance patterns.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript supports object-oriented programming through the use of classes introduced in ES6. Classes provide a cleaner and more intuitive syntax to create objects and deal with inheritance. They act as syntactic sugar over JavaScript's prototype-based inheritance model, making it easier to build complex and reusable object-oriented structures.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Here’s an example demonstrating class creation and inheritance:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Class and Inheritance Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound.`);
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const dog = new Dog("Buddy");
+dog.speak(); // Output: Buddy barks.
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Creating a base class <code>Animal</code>.</li>
+          <li>Extending the base class with <code>Dog</code>.</li>
+          <li>Overriding methods using inheritance.</li>
+          <li>Using <code>super</code> to refer to the parent class constructor or methods.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>JavaScript classes are templates for creating objects. They encapsulate data with code to work on that data.</p>
+        <ul>
+          <li><strong>Class:</strong> Defined using the <code>class</code> keyword. Contains a constructor and methods.</li>
+          <li><strong>Constructor:</strong> A special method for initializing new instances.</li>
+          <li><strong>Inheritance:</strong> Achieved using the <code>extends</code> keyword to create a subclass.</li>
+          <li><strong>super():</strong> Used to call the parent class's constructor or methods.</li>
+        </ul>
+        <p>This approach simplifies the use of object-oriented programming in JavaScript by abstracting prototype chains and improving code readability and reusability.</p>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Modeling real-world entities using objects and classes.</li>
+          <li>Building scalable front-end architecture in frameworks like React.</li>
+          <li>Developing reusable UI components and patterns.</li>
+          <li>Creating modular game engines or simulations.</li>
+          <li>Enhancing code organization and readability in large applications.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What does the <code>extends</code> keyword do in JavaScript?</p>
+            <ul>
+              <li>A. Creates a new object</li>
+              <li>B. Binds methods to a class</li>
+              <li>C. Allows a class to inherit from another class</li>
+              <li>D. Overrides the constructor</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Allows a class to inherit from another class</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> How do you call the parent class’s constructor from a subclass?</p>
+            <ul>
+              <li>A. this.parent()</li>
+              <li>B. super()</li>
+              <li>C. base()</li>
+              <li>D. constructor()</li>
+            </ul>
+            <p><strong>Answer:</strong> B. super()</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which of the following statements about JavaScript classes is true?</p>
+            <ul>
+              <li>A. They completely replace prototypes.</li>
+              <li>B. They are purely syntactic sugar over prototypes.</li>
+              <li>C. They disable inheritance.</li>
+              <li>D. They must be used in ES5 code.</li>
+            </ul>
+            <p><strong>Answer:</strong> B. They are purely syntactic sugar over prototypes.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which method is automatically called when an object is created from a class?</p>
+            <ul>
+              <li>A. init()</li>
+              <li>B. setup()</li>
+              <li>C. constructor()</li>
+              <li>D. new()</li>
+            </ul>
+            <p><strong>Answer:</strong> C. constructor()</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
+ 
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

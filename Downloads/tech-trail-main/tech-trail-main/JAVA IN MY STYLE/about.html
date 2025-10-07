@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Java Programming in My Style</title>
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --dark-color: #1a1a1a;
+            --light-color: #ffffff;
+            --gray-color: #f8f9fa;
+            --dark-gray: #333333;
+            --text-color: #333333;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            --gradient-accent: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        /* Enhanced Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .primary-btn {
+            background: var(--gradient-primary);
+            color: var(--light-color);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+            color: var(--light-color);
+        }
+
+        /* Enhanced Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 24px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo img {
+            height: 45px;
+            margin-right: 12px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 80%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary-color);
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--primary-color);
+            padding: 8px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .menu-btn:hover {
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        /* Enhanced Page Header */
+        .page-header {
+            background: var(--gradient-primary);
+            color: var(--light-color);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(255,255,255,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Enhanced Content Section */
+        .content-section {
+            padding: 100px 0;
+            background: var(--light-color);
+            position: relative;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .content-text h2 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .content-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .content-text h3 {
+            font-size: 26px;
+            color: var(--primary-color);
+            margin: 40px 0 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            background: rgba(52, 152, 219, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            margin-top: 5px;
+            font-size: 20px;
+        }
+
+        .feature-content strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .content-image {
+            position: relative;
+        }
+
+        .content-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .content-image:hover img {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Enhanced CTA Section */
+        .cta {
+            background: var(--gradient-accent);
+            color: var(--light-color);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-content h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--light-color);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+            color: var(--light-color);
+            padding: 80px 0 30px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 45px;
+            margin-right: 12px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo span {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: var(--light-color);
+        }
+
+        .footer-links h3,
+        .footer-social h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: var(--light-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-links h3::after,
+        .footer-social h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            transition: var(--transition);
+            padding: 5px 0;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            transform: translateX(8px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            border-radius: 50%;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: var(--secondary-color);
+            color: var(--light-color);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .content-text h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 85px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 85px);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 40px;
+                transition: var(--transition);
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                padding: 15px 20px;
+                width: 100%;
+                text-align: center;
+                border-radius: var(--border-radius);
+            }
+
+            .page-header {
+                padding: 60px 0;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .page-header p {
+                font-size: 16px;
+            }
+
+            .content-section {
+                padding: 60px 0;
+            }
+
+            .cta-content h2 {
+                font-size: 28px;
+            }
+
+            .feature-item:hover {
+                transform: none;
+            }
+
+            .footer-links a:hover {
+                transform: none;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .page-header h1 {
+                font-size: 24px;
+            }
+
+            .content-text h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java Logo" width="40" height="40">
+                <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>About Us</h1>
+            <p>Learn more about our mission to make Java programming accessible to everyone</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text">
+                    <h2>Our Mission</h2>
+                    <p>Java Programming in My Style was created with a simple mission: to make learning Java programming accessible, engaging, and effective for everyone. We believe that programming should be approachable and that anyone with determination can master Java.</p>
+                    <p>Our comprehensive curriculum is designed to take you from complete beginner to professional Java developer through structured, practical learning experiences.</p>
+                    
+                    <h3>What Makes Us Different</h3>
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-content">
+                                <strong>Comprehensive Coverage:</strong> From basic syntax to advanced concepts like multi-threading and collections.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-content">
+                                <strong>Practical Examples:</strong> Real-world code examples that demonstrate how Java is used in production.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-content">
+                                <strong>Interview Preparation:</strong> MCQs and common interview questions to help you land your dream job.
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-content">
+                                <strong>Thinking Process:</strong> We explain not just what to code, but why and how to think about programming problems.
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-image">
+                    <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Programming">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Learning Java?</h2>
+                <p>Explore our comprehensive curriculum and master Java programming today.</p>
+                <a href="topics.html" class="btn primary-btn">Explore Topics</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Navigation Toggle
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuBtn) {
+                menuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    // Toggle icon between bars and times
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-bars')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add active class to current nav link
+            const currentLocation = window.location.pathname;
+            const navLinks2 = document.querySelectorAll('.nav-links a');
+            
+            navLinks2.forEach(link => {
+                const linkPath = link.getAttribute('href');
+                if (currentLocation.includes(linkPath) && linkPath !== '/') {
+                    link.classList.add('active');
+                } else if (currentLocation === '/' && linkPath === 'index.html') {
+                    link.classList.add('active');
+                }
+            });
+
+            // Intersection Observer for scroll animations
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                // Observe elements that should animate on scroll
+                document.querySelectorAll('.feature-item, .content-image').forEach(el => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(30px)';
+                    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    observer.observe(el);
+                });
+            }
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!menuBtn.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

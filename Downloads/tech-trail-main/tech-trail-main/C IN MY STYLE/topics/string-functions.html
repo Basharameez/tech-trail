@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Functions in C - C In My Style</title>
+<link rel="icon" type="image/svg+xml" href="../img/c.svg">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/glassmorphism.css">
+    <link rel="stylesheet" href="../styles/topic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-code nav-icon"></i>
+                      <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#topics" class="nav-link">Topics</a>
+                <a href="../index.html#resources" class="nav-link">Resources</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="topic-main">
+        <div class="topic-container">
+            <aside class="topic-sidebar glass-card">
+                <div class="sidebar-header">
+                    <h3>strings</h3>
+                    
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="strings.html" class="sidebar-link ">
+                        <i class="fas fa-question-circle"></i>
+                        strings intro
+                    </a>
+                    <a href="string-vs-char.html" class="sidebar-link">
+                        <i class="fas fa-history"></i>
+                        strings vs char
+                    </a>
+                    <a href="string-functions.html" class="sidebar-link active">
+                        <i class="fas fa-star"></i>
+                       string-functions
+                    </a>
+                
+                   
+                </nav>
+            </aside>
+
+            <div class="topic-content">
+                <header class="content-header">
+                    <nav class="breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../index.html#topics">Topics</a>
+                        <i class="fas fa-chevron-right"></i>
+                       <span>Strings</span>
+                        <i class="fas fa-chevron-right"></i>
+                 <span>String Functions in C</span>
+</nav>
+<h1 class="content-title">Standard Library String Functions in C</h1>
+</header>
+
+<article class="content-article">
+
+  <section class="content-section">
+    <h2>Overview</h2>
+    <p>
+      C provides a set of standard library functions under <code>&lt;string.h&gt;</code> for efficient string manipulation. These functions perform tasks such as copying, concatenation, comparison, searching, and length measurement of strings.
+    </p>
+
+    <div class="highlight-box">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <h4>Pro Tip</h4>
+        <p>Always include <code>#include &lt;string.h&gt;</code> at the top of your C file when working with string functions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Commonly Used String Functions</h2>
+    <div class="feature-grid">
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-ruler-horizontal"></i></div>
+        <h4>strlen(str)</h4>
+        <p>Returns the length of the string (excluding the null character).</p>
+      </div>
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-copy"></i></div>
+        <h4>strcpy(dest, src)</h4>
+        <p>Copies <code>src</code> string into <code>dest</code>.</p>
+      </div>
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-link"></i></div>
+        <h4>strcat(dest, src)</h4>
+        <p>Appends <code>src</code> string to the end of <code>dest</code>.</p>
+      </div>
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+        <h4>strcmp(s1, s2)</h4>
+        <p>Compares two strings and returns 0 if equal, &gt;0 or &lt;0 otherwise.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>More String Functions</h2>
+    <ul>
+      <li><code>strncpy(dest, src, n)</code> – Copies first <code>n</code> characters of <code>src</code> into <code>dest</code>.</li>
+      <li><code>strncmp(s1, s2, n)</code> – Compares first <code>n</code> characters of two strings.</li>
+      <li><code>strchr(str, ch)</code> – Returns a pointer to the first occurrence of <code>ch</code>.</li>
+      <li><code>strrchr(str, ch)</code> – Finds the last occurrence of a character.</li>
+      <li><code>strstr(str1, str2)</code> – Finds the first occurrence of <code>str2</code> in <code>str1</code>.</li>
+      <li><code>strtok(str, delim)</code> – Tokenizes a string using the given delimiter.</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Example Code</h2>
+    <div class="code-example glass-code">
+      <div class="code-header">
+        <div class="code-title"><i class="fas fa-file-code"></i> string_functions.c</div>
+        <button class="copy-btn" onclick="copyCode(this)">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char a[50] = "Hello";
+    char b[] = "World";
+
+    printf("Length of a: %lu\\n", strlen(a));
+    strcat(a, b);
+    printf("Concatenated: %s\\n", a);
+    
+    strcpy(a, b);
+    printf("Copied: %s\\n", a);
+    
+    int cmp = strcmp("abc", "abd");
+    printf("Comparison result: %d\\n", cmp);
+
+    return 0;
+}</code></pre>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Real-World Applications</h2>
+    <div class="applications-grid">
+      <div class="app-card glass-card">
+        <div class="app-icon"><i class="fas fa-search"></i></div>
+        <h4>Search Engines</h4>
+        <p>Used in text matching, parsing, and indexing.</p>
+      </div>
+      <div class="app-card glass-card">
+        <div class="app-icon"><i class="fas fa-shield-alt"></i></div>
+        <h4>Validation</h4>
+        <p>Validating email, passwords, usernames using <code>strlen</code> and <code>strcmp</code>.</p>
+      </div>
+      <div class="app-card glass-card">
+        <div class="app-icon"><i class="fas fa-database"></i></div>
+        <h4>Database Parsing</h4>
+        <p>Parsing SQL-like queries and fields using <code>strtok</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Interview Questions</h2>
+    <div class="interview-questions">
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>What is the difference between strcpy and strncpy?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p><code>strcpy</code> copies entire string including <code>'\0'</code>, while <code>strncpy</code> copies only up to <code>n</code> characters. Use <code>strncpy</code> for safer buffer handling.</p>
+        </div>
+      </div>
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>How does strtok work?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p><code>strtok</code> splits a string into tokens based on a delimiter and uses internal state to continue across calls. It modifies the original string.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Resources</h2>
+    <div class="resources-list">
+      <div class="resource-item">
+        <div class="resource-icon"><i class="fas fa-book"></i></div>
+        <div class="resource-content">
+          <h4>Topic pdf</h4>
+          
+          <a href="https://drive.google.com/file/d/1WEvwq-5ZRoFvm2MLKo6iIOajqjHgPtPN/view?usp=drive_link" target="_blank" class="resource-link">
+            Read More <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      
+  </section>
+
+</article>
+   
+   <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                       <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Master C programming with our comprehensive learning platform
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topics">Topics</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="topics/introduction.html">Introduction</a></li>
+                        <li><a href="topics/basics.html">C Basics</a></li>
+                        <li><a href="topics/pointers.html">Pointers</a></li>
+                        <li><a href="topics/memory-management.html">Memory Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                     <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+               <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+               <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 C Programming In My Style. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+     
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/topic.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DBSCAN | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>DBSCAN</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>DBSCAN</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is an unsupervised clustering algorithm that groups together closely packed points (points with many nearby neighbors), while marking points that lie alone in low-density regions as outliers. Unlike K-Means, it does not require the number of clusters to be specified in advance and can find arbitrarily shaped clusters.</p>
+    
+    <div class="glass-card">
+        <h3>How It Works</h3>
+        <ul>
+            <li><strong>Core Point:</strong> A point with at least a minimum number of neighboring points (MinPts) within a given radius (ε).</li>
+            <li><strong>Border Point:</strong> A point within ε of a core point, but with fewer than MinPts neighbors.</li>
+            <li><strong>Noise Point:</strong> A point that is neither a core point nor a border point.</li>
+            <li>The algorithm expands clusters from core points by including density-reachable points.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example of DBSCAN</h3>
+        <pre><code>from sklearn.datasets import make_moons
+from sklearn.cluster import DBSCAN
+import matplotlib.pyplot as plt
+
+# Generate sample data
+X, _ = make_moons(n_samples=300, noise=0.05, random_state=0)
+
+# Apply DBSCAN
+db = DBSCAN(eps=0.2, min_samples=5)
+labels = db.fit_predict(X)
+
+# Plot the clusters
+plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='plasma')
+plt.title("DBSCAN Clustering")
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+
+    <div class="glass-card application-card">
+        <h3>DBSCAN Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Geospatial Data:</strong> Identifying geographical clusters such as hotspots or cities</li>
+                    <li><strong>Anomaly Detection:</strong> Identifying outliers in transaction records or sensor data</li>
+                    <li><strong>Astronomy:</strong> Detecting celestial bodies in space images based on density</li>
+                    <li><strong>Social Media Analysis:</strong> Grouping users based on behavior without predefining groups</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/4353813/pexels-photo-4353813.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Density-based clusters in space data" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/RDZUdRSDOok?si=lLdEx7JfE7dWD3Vx">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1FrvK7LshjJp7Nqh6_4-I4CKrENDdxGat/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What makes DBSCAN different from K-Means?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Unlike K-Means, DBSCAN does not require the number of clusters to be specified beforehand and can find clusters of arbitrary shapes. It also handles outliers naturally by labeling them as noise.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. What are the parameters of DBSCAN and how do they affect clustering?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>eps (ε):</strong> Radius to consider neighbors around a point. Too small may result in more noise; too large may merge clusters.</p>
+            <p><strong>min_samples:</strong> Minimum number of points to form a dense region. Affects sensitivity to noise and size of clusters.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What are the limitations of DBSCAN?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>DBSCAN struggles with clusters of varying densities and can be sensitive to the choice of ε and MinPts. It also does not scale well to high-dimensional data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How does DBSCAN classify noise?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Any point that is not a core point and not reachable from any other core point is classified as noise and assigned a label of -1.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Is DBSCAN deterministic?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, DBSCAN is deterministic as long as the input data and parameters remain the same. It does not involve random initialization like K-Means.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                 
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

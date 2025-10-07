@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DL vs ML vs AI - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>DL vs ML vs AI – Key differences</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+                <h2><i class="fas fa-book"></i> Description</h2>
+                <div class="section-content">
+                    <p>Artificial Intelligence (AI), Machine Learning (ML), and Deep Learning (DL) are related but distinct fields that are often confused or used interchangeably. Understanding their differences is crucial for anyone entering the field of data science or AI research.</p>
+                    
+                    <div class="info-box">
+                        <div class="info-title"><i class="fas fa-lightbulb"></i> Relationship Analogy</div>
+                        <p>Think of these fields as concentric circles: AI is the largest circle, ML is a subset of AI, and DL is a specialized subset of ML.</p>
+                    </div>
+                    
+                    <h3>Artificial Intelligence (AI)</h3>
+                    <p>AI is the broadest concept that refers to machines or computer systems designed to mimic human intelligence and perform tasks that typically require human intelligence such as visual perception, speech recognition, decision-making, and language translation.</p>
+                    <ul>
+                        <li><strong>Goal:</strong> Create systems that can function intelligently and independently</li>
+                        <li><strong>Scope:</strong> Encompasses everything from rule-based expert systems to advanced neural networks</li>
+                        <li><strong>Examples:</strong> Voice assistants (Siri, Alexa), game-playing AI (AlphaGo), autonomous vehicles</li>
+                    </ul>
+                    
+                    <h3>Machine Learning (ML)</h3>
+                    <p>ML is a subset of AI that focuses on developing algorithms that can learn from and make predictions or decisions based on data, without being explicitly programmed to perform specific tasks.</p>
+                    <ul>
+                        <li><strong>Goal:</strong> Develop algorithms that can learn patterns from data and improve with experience</li>
+                        <li><strong>Approach:</strong> Uses statistical techniques to enable computers to "learn" from data</li>
+                        <li><strong>Types:</strong> Supervised learning, unsupervised learning, reinforcement learning</li>
+                        <li><strong>Examples:</strong> Recommendation systems, spam filters, credit scoring models</li>
+                    </ul>
+                    
+                    <h3>Deep Learning (DL)</h3>
+                    <p>DL is a specialized subset of ML that uses neural networks with many layers (deep neural networks) to analyze various factors of data.</p>
+                    <ul>
+                        <li><strong>Goal:</strong> Model complex patterns and representations with multiple levels of abstraction</li>
+                        <li><strong>Approach:</strong> Uses artificial neural networks with multiple hidden layers</li>
+                        <li><strong>Distinctive features:</strong> Automatic feature extraction, ability to work with unstructured data</li>
+                        <li><strong>Examples:</strong> Image and facial recognition, natural language processing, self-driving cars</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="AI ML DL Relationship">
+                        <p class="caption">Visual representation of the relationship between AI, ML, and DL</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="examples" class="content-section">
+                <h2><i class="fas fa-code"></i> Examples</h2>
+                <div class="section-content">
+                    <p>Let's look at some code examples that illustrate the differences between traditional ML and DL approaches:</p>
+                    
+                    <h3>Machine Learning Example: Decision Tree</h3>
+                    <div class="code-container">
+                        <pre><code class="language-python"># Machine Learning example using scikit-learn
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train model
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+
+# Make predictions
+predictions = model.predict(X_test)
+
+# Evaluate model
+accuracy = accuracy_score(y_test, predictions)
+print(f"Accuracy: {accuracy:.2f}")</code></pre>
+                    </div>
+                    
+                    <p>Key characteristics of this ML example:</p>
+                    <ul>
+                        <li>Features are predefined (the iris dataset features like sepal length, width, etc.)</li>
+                        <li>The algorithm is relatively simple and interpretable</li>
+                        <li>Works well with structured, tabular data</li>
+                        <li>Requires less computational resources</li>
+                    </ul>
+                    
+                    <h3>Deep Learning Example: Neural Network</h3>
+                    <div class="code-container">
+                        <pre><code class="language-python"># Deep Learning example using TensorFlow/Keras
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.utils import to_categorical
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Preprocess data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+# Convert labels to one-hot encoding
+y_train = to_categorical(y_train)
+y_test = to_categorical(y_test)
+
+# Create neural network
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(4,)),
+    Dropout(0.2),
+    Dense(32, activation='relu'),
+    Dropout(0.2),
+    Dense(3, activation='softmax')
+])
+
+# Compile model
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Train model
+model.fit(X_train, y_train, epochs=100, batch_size=10, verbose=0)
+
+# Evaluate model
+loss, accuracy = model.evaluate(X_test, y_test)
+print(f"Accuracy: {accuracy:.2f}")</code></pre>
+                    </div>
+                    
+                    <p>Key characteristics of this DL example:</p>
+                    <ul>
+                        <li>Uses a neural network with multiple layers (including hidden layers)</li>
+                        <li>Applies dropout regularization to prevent overfitting</li>
+                        <li>More complex architecture with more parameters</li>
+                        <li>Requires more computational resources</li>
+                        <li>More suitable for complex patterns and larger datasets</li>
+                    </ul>
+                    
+                    <div class="info-box">
+                        <div class="info-title"><i class="fas fa-info-circle"></i> Note</div>
+                        <p>For this simple Iris dataset example, the traditional ML approach might perform similarly to the DL approach. The true power of deep learning becomes apparent with complex, high-dimensional data like images, text, or audio.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="real-world" class="content-section">
+                <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+                <div class="section-content">
+                    <p>Understanding when to use each approach is critical for practical applications. Here's how AI, ML, and DL are applied in different scenarios:</p>
+                    
+                    <div class="applications-grid">
+                        <div class="application-card">
+                            <div class="app-icon"><i class="fas fa-robot"></i></div>
+                            <h3>Traditional AI</h3>
+                            <p>Chess engines using minimax algorithms, expert systems in healthcare for diagnosis, rule-based chatbots for customer service.</p>
+                        </div>
+                        
+                        <div class="application-card">
+                            <div class="app-icon"><i class="fas fa-chart-line"></i></div>
+                            <h3>Machine Learning</h3>
+                            <p>Credit scoring, fraud detection systems, email spam filters, product recommendation engines, predictive maintenance.</p>
+                        </div>
+                        
+                        <div class="application-card">
+                            <div class="app-icon"><i class="fas fa-brain"></i></div>
+                            <h3>Deep Learning</h3>
+                            <p>Facial recognition, advanced speech recognition, medical image analysis, autonomous vehicles, real-time language translation.</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Comparative Case Study: Image Classification</h3>
+                    <ul>
+                        <li><strong>Traditional AI approach:</strong> Manually define features (edges, corners, colors) and create rule-based systems to identify objects.</li>
+                        <li><strong>Machine Learning approach:</strong> Extract features using techniques like HOG (Histogram of Oriented Gradients) or SIFT (Scale-Invariant Feature Transform), then apply algorithms like SVM (Support Vector Machines) or Random Forests to classify images.</li>
+                        <li><strong>Deep Learning approach:</strong> Use CNNs (Convolutional Neural Networks) that automatically learn hierarchical features from raw pixel data, eliminating the need for manual feature extraction.</li>
+                    </ul>
+                    
+                    <h3>When to Use Each Approach</h3>
+                    <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                        <tr style="background-color: #f8f9fa; border-bottom: 1px solid #ddd;">
+                            <th style="padding: 10px; text-align: left;">Approach</th>
+                            <th style="padding: 10px; text-align: left;">Best For</th>
+                            <th style="padding: 10px; text-align: left;">Limitations</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px;"><strong>Traditional AI</strong></td>
+                            <td style="padding: 10px;">Well-defined problems with clear rules, situations where explainability is crucial</td>
+                            <td style="padding: 10px;">Cannot handle uncertainty well, doesn't learn from new data</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 10px;"><strong>Machine Learning</strong></td>
+                            <td style="padding: 10px;">Structured data problems, situations with limited data, when interpretability matters</td>
+                            <td style="padding: 10px;">Requires feature engineering, may plateau in performance with complex data</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;"><strong>Deep Learning</strong></td>
+                            <td style="padding: 10px;">Complex unstructured data (images, text, audio), problems requiring feature learning, large datasets</td>
+                            <td style="padding: 10px;">Requires large amounts of data, computationally intensive, often black-box models</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="resources" class="content-section">
+             <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/gHXENP57beg?si=bpMeBpiW-R0f-iGy'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1FU6vT-CjamUTTSQd6H3ejSFgX1TxrjXN/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+                        
+                        <div class="resource-group">
+                            <h3><i class="fas fa-link"></i> External Links</h3>
+                            <ul class="resource-list">
+                                <li><a href="https://www.ibm.com/cloud/learn/ai-vs-machine-learning-vs-deep-learning" target="_blank">IBM: AI vs Machine Learning vs Deep Learning</a></li>
+                                <li><a href="https://towardsdatascience.com/understanding-the-difference-between-ai-ml-and-dl-cceb63252a6c" target="_blank">Towards Data Science: Understanding the Difference Between AI, ML, and DL</a></li>
+                                <li><a href="https://www.nvidia.com/en-us/deep-learning-ai/ai-vs-machine-learning-vs-deep-learning/" target="_blank">NVIDIA: What's the Difference Between AI, Machine Learning, and Deep Learning?</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="interview-questions" class="content-section">
+                <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+                <div class="section-content">
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>What is the fundamental difference between AI, ML, and DL?</h3>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>The fundamental differences are in scope and approach:</p>
+                                <ul>
+                                    <li><strong>AI (Artificial Intelligence)</strong> is the broadest concept that aims to create machines capable of mimicking human intelligence to perform tasks. It includes everything from rule-based systems to advanced learning algorithms.</li>
+                                    <li><strong>ML (Machine Learning)</strong> is a subset of AI that focuses on developing algorithms that can learn from data and make predictions without being explicitly programmed for specific tasks. It requires feature engineering by humans.</li>
+                                    <li><strong>DL (Deep Learning)</strong> is a specialized subset of ML that uses artificial neural networks with multiple layers to learn representations of data with multiple levels of abstraction. It automates feature extraction, eliminating the need for manual feature engineering.</li>
+                                </ul>
+                                <p>Think of it as nested categories: All DL is ML, and all ML is AI, but not all AI is ML, and not all ML is DL.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>When would you choose traditional ML over DL?</h3>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>You might choose traditional ML over DL in several scenarios:</p>
+                                <ol>
+                                    <li><strong>Limited data availability:</strong> Deep learning typically requires large datasets to perform well, while many ML algorithms can work effectively with smaller datasets.</li>
+                                    <li><strong>Computational constraints:</strong> DL models are computationally intensive and may require specialized hardware (GPUs/TPUs), while many ML algorithms can run on standard hardware.</li>
+                                    <li><strong>Need for interpretability:</strong> ML algorithms like decision trees or linear regression provide more transparent decision-making processes, which is crucial in fields like healthcare or finance where explanations are required.</li>
+                                    <li><strong>Structured, tabular data:</strong> For well-structured data with clear features, traditional ML often performs comparably to DL with much less complexity.</li>
+                                    <li><strong>Time constraints:</strong> Training ML models is generally faster than training deep neural networks.</li>
+                                    <li><strong>When the problem is well-understood:</strong> If you know which features are important, traditional ML with feature engineering might be more efficient.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>How has the relationship between AI, ML, and DL evolved over time?</h3>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>The relationship between AI, ML, and DL has evolved significantly:</p>
+                                <ul>
+                                    <li><strong>1950s-1960s:</strong> Early AI focused on symbolic approaches and rule-based systems, attempting to encode human knowledge directly.</li>
+                                    <li><strong>1970s-1980s:</strong> Machine learning began to emerge as a distinct field, focusing on algorithms that could learn from data rather than following explicit instructions.</li>
+                                    <li><strong>1980s-1990s:</strong> Neural networks gained initial popularity but faced limitations in training deep architectures.</li>
+                                    <li><strong>2000s:</strong> ML flourished with algorithms like SVMs, Random Forests, and boosting methods, while neural networks remained relatively niche.</li>
+                                    <li><strong>2010s:</strong> Deep learning exploded in popularity due to:
+                                        <ul>
+                                            <li>Breakthrough algorithms for training deep networks</li>
+                                            <li>Availability of massive datasets</li>
+                                            <li>Increased computational power (especially GPUs)</li>
+                                            <li>Success in competitions like ImageNet</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Present:</strong> Deep learning has become the dominant approach for many AI tasks, especially in unstructured data domains like computer vision and NLP, while traditional ML remains important for many structured data problems.</li>
+                                </ul>
+                                <p>The boundaries between these fields continue to blur as researchers integrate different approaches and techniques.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>What are the key technical differences between ML and DL algorithms?</h3>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Key technical differences include:</p>
+                                <table style="width:100%; border-collapse: collapse; margin: 10px 0;">
+                                    <tr style="background-color: #f8f9fa; border-bottom: 1px solid #ddd;">
+                                        <th style="padding: 8px; text-align: left;">Aspect</th>
+                                        <th style="padding: 8px; text-align: left;">Machine Learning</th>
+                                        <th style="padding: 8px; text-align: left;">Deep Learning</th>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Feature extraction</strong></td>
+                                        <td style="padding: 8px;">Manual feature engineering required</td>
+                                        <td style="padding: 8px;">Automatic feature learning</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Architecture</strong></td>
+                                        <td style="padding: 8px;">Relatively simple algorithms (e.g., decision trees, SVMs)</td>
+                                        <td style="padding: 8px;">Complex neural networks with multiple layers</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Data requirements</strong></td>
+                                        <td style="padding: 8px;">Can work with smaller datasets</td>
+                                        <td style="padding: 8px;">Typically requires large amounts of data</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Computation</strong></td>
+                                        <td style="padding: 8px;">Less computationally intensive</td>
+                                        <td style="padding: 8px;">Highly computationally intensive (often requires GPUs)</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Training time</strong></td>
+                                        <td style="padding: 8px;">Typically faster to train</td>
+                                        <td style="padding: 8px;">Usually requires longer training times</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Interpretability</strong></td>
+                                        <td style="padding: 8px;">Many algorithms are interpretable (e.g., decision trees)</td>
+                                        <td style="padding: 8px;">Often considered "black box" models</td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid #eee;">
+                                        <td style="padding: 8px;"><strong>Problem types</strong></td>
+                                        <td style="padding: 8px;">Works well with structured, tabular data</td>
+                                        <td style="padding: 8px;">Excels with unstructured data (images, text, audio)</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 8px;"><strong>Incremental learning</strong></td>
+                                        <td style="padding: 8px;">Many algorithms support online/incremental learning</td>
+                                        <td style="padding: 8px;">More challenging to implement incremental learning</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <h3>How do you decide which approach (AI, ML, or DL) to use for a specific business problem?</h3>
+                                <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Deciding which approach to use involves considering several factors:</p>
+                                <ol>
+                                    <li><strong>Problem nature:</strong>
+                                        <ul>
+                                            <li>If the problem has clear rules and logic that can be explicitly defined, traditional AI (rule-based systems) might be sufficient.</li>
+                                            <li>If it involves finding patterns in structured data with known important features, traditional ML is likely appropriate.</li>
+                                            <li>If it involves complex patterns in unstructured data (images, text, audio), DL is probably best.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Data availability:</strong>
+                                        <ul>
+                                            <li>Limited data (hundreds or few thousands of samples): Traditional ML</li>
+                                            <li>Abundant data (tens of thousands to millions of samples): Consider DL</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Resources:</strong>
+                                        <ul>
+                                            <li>Limited computational resources: Traditional ML</li>
+                                            <li>Access to powerful computing (GPUs/TPUs): DL is feasible</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Expertise:</strong>
+                                        <ul>
+                                            <li>Team skill set should match the selected approach</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Explainability requirements:</strong>
+                                        <ul>
+                                            <li>High explainability needs (e.g., healthcare, finance): Traditional ML or rule-based AI</li>
+                                            <li>Performance is priority over explainability: DL might be acceptable</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Time constraints:</strong>
+                                        <ul>
+                                            <li>Quick deployment needed: Traditional ML</li>
+                                            <li>Long-term project with time for complex model development: DL can be considered</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                <p>A practical approach is often to start simple (traditional ML) and only move to more complex solutions (DL) if the simpler approach doesn't yield satisfactory results.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

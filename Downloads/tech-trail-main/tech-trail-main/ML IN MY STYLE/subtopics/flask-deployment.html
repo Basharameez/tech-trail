@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Flask web app to deploy a model | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Simple Flask web app to deploy a model</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Simple Flask web app to deploy a model</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>A simple Flask web application can be used to deploy machine learning models, making them accessible via web APIs. Flask is a lightweight Python web framework that allows you to create RESTful endpoints. You can train a model, save it using pickle or joblib, then load it in a Flask app to serve predictions via HTTP requests.</p>
+    
+    <div class="glass-card">
+        <h3>Key Concepts</h3>
+        <ul>
+            <li>Train and save machine learning models (pickle/joblib)</li>
+            <li>Load the saved model inside Flask to avoid reloading on each request</li>
+            <li>Flask routes handle requests and responses</li>
+            <li>Input validation and JSON-based prediction responses</li>
+            <li>Extendable for production use with Gunicorn, Docker, etc.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Example Code</h2>
+
+    <div class="glass-card">
+        <h3>1. Train and Save Model (Python Script)</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+
+# Load example dataset
+data = load_iris()
+X, y = data.data, data.target
+
+# Train a simple RandomForest model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X, y)
+
+# Save the trained model to disk
+with open('model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+print("Model saved successfully.")</code></pre>
+    </div>
+
+    <div class="glass-card">
+        <h3>2. Flask App to Load & Serve the Saved Model</h3>
+        <pre><code>from flask import Flask, request, jsonify
+import pickle
+import numpy as np
+
+app = Flask(__name__)
+
+# Load the saved model once when app starts
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+@app.route('/')
+def home():
+    return "Welcome to the Iris Classifier API!"
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    try:
+        # Parse JSON input
+        data = request.get_json(force=True)
+        features = data['features']
+
+        # Convert to numpy array and reshape for prediction
+        input_data = np.array(features).reshape(1, -1)
+
+        # Predict class
+        prediction = model.predict(input_data)
+
+        # Return predicted class label and probabilities
+        prediction_proba = model.predict_proba(input_data)
+        return jsonify({
+            'prediction': int(prediction[0]),
+            'probabilities': prediction_proba[0].tolist()
+        })
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Model Deployment with Flask</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Rapid Prototyping:</strong> Quickly deploy models for demos or proof-of-concept APIs.</li>
+                    <li><strong>Microservices:</strong> Serve models as standalone services in production environments.</li>
+                    <li><strong>Integration:</strong> Connect ML models with web or mobile apps via REST APIs.</li>
+                    <li><strong>Scalability:</strong> Use Gunicorn, Docker, and cloud platforms to scale deployments.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Flask web app deployment" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/UbCWoMf80PY?si=wqrUPGfl34s5Nol8">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1PUlQL5QExuROwUoCVVfJBUe7Hm3otvSP/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. Why use Flask for deploying machine learning models?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Flask is lightweight, easy to use, and allows quick creation of REST APIs to serve ML models. It’s ideal for prototyping and small to medium-scale deployments.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How do you handle input validation in a Flask prediction API?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Validate JSON payloads, check for required keys, verify data types and shapes, and handle exceptions gracefully to prevent server errors.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How can you improve the performance of a Flask ML API in production?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Use production-grade servers like Gunicorn, enable concurrency with multiple workers, use caching, containerize with Docker, and deploy behind reverse proxies like Nginx.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How do you load a machine learning model in a Flask app?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Load the serialized model file (pickle/joblib) once when the Flask app starts to avoid loading overhead on each prediction request.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. How do you test a Flask prediction API?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Use Postman or curl to send POST requests with JSON input, verify prediction responses, and write automated tests using pytest with Flask's test client.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

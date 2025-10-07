@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Optimizers – SGD, Adam, RMSprop - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Optimizers – SGD, Adam, RMSprop</h1>
+                <div class="header-divider"></div>
+            </div>
+
+           <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>Optimizers are algorithms used to adjust the weights of a neural network to minimize the loss function. They play a critical role in training deep learning models by guiding the learning process.</p>
+        <ul>
+            <li><strong>SGD (Stochastic Gradient Descent)</strong>: Updates weights using a single sample or mini-batch. It's simple and efficient but may struggle with noisy gradients and local minima.</li>
+            <li><strong>Adam (Adaptive Moment Estimation)</strong>: Combines the advantages of AdaGrad and RMSprop by using momentum and adaptive learning rates. It's widely used for its robustness and speed.</li>
+            <li><strong>RMSprop</strong>: Adapts the learning rate for each parameter by dividing by a moving average of recent gradient magnitudes. Good for recurrent networks and non-stationary objectives.</li>
+        </ul>
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Tip</div>
+            <p>Adam is often the default choice for many deep learning models due to its fast convergence and minimal tuning requirements.</p>
+        </div>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's how to use different optimizers in TensorFlow/Keras and PyTorch:</p>
+
+        <h3>TensorFlow/Keras</h3>
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.optimizers import SGD, Adam, RMSprop
+
+# SGD
+model.compile(optimizer=SGD(learning_rate=0.01), loss='mse')
+
+# Adam
+model.compile(optimizer=Adam(learning_rate=0.001), loss='mse')
+
+# RMSprop
+model.compile(optimizer=RMSprop(learning_rate=0.001), loss='mse')</code></pre>
+        </div>
+
+        <h3>PyTorch</h3>
+        <div class="code-container">
+            <pre><code class="language-python">import torch.optim as optim
+
+# SGD
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+
+# Adam
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# RMSprop
+optimizer = optim.RMSprop(model.parameters(), lr=0.001)</code></pre>
+        </div>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-car"></i></div>
+                <h3>Autonomous Vehicles</h3>
+                <p>Adam is frequently used to train vision-based driving models for better convergence and stability.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>Brain-Computer Interfaces</h3>
+                <p>RMSprop helps in training recurrent networks that process EEG signals over time.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Financial Forecasting</h3>
+                <p>SGD is still used in simple linear models for high-frequency trading and market predictions.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-microphone"></i></div>
+                <h3>Speech Recognition</h3>
+                <p>Adam is popular in deep speech recognition models for its fast learning and low memory usage.</p>
+            </div>
+        </div>
+    </div>
+</section>
+            <section id="resources" class="content-section">
+     <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/mdKjMPmcWjY?si=_zQ8-xvlEKLVi-xB'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1hCYje9DTdkUBh-YYw4qWqRvTtt7hc-Qw/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>        
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                    <li><a href="https://cs231n.github.io/neural-networks-3/" target="_blank">CS231n Lecture Notes on Optimization</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the difference between SGD and Adam?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>SGD uses a fixed learning rate and updates based on the current mini-batch, which may result in noisy updates. Adam adapts the learning rate for each parameter and incorporates momentum, resulting in faster and more stable convergence.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>When should RMSprop be preferred?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>RMSprop is well-suited for non-stationary problems and works particularly well with recurrent neural networks (RNNs), where gradient magnitudes may vary significantly.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What are the main hyperparameters of Adam?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Adam has several key hyperparameters: <code>learning_rate</code>, <code>beta1</code> (exponential decay rate for the first moment), and <code>beta2</code> (decay rate for the second moment). Default values typically work well in most cases.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

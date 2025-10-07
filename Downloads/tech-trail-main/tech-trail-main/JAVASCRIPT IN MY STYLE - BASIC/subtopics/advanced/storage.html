@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Storage & Session Storage - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+      
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Local Storage & Session Storage</span>
+      </div>
+      <h1>Local Storage & Session Storage</h1>
+      <p>Learn client-side data storage options for web applications.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Local Storage and Session Storage are part of the Web Storage API, providing a simple and efficient way to store key-value data on the client side. Local Storage retains data with no expiration date, while Session Storage keeps data only for the duration of the page session.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating Local Storage and Session Storage usage:</p>
+
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Local Storage & Session Storage Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Save data to Local Storage
+localStorage.setItem('username', 'BashaRam');
+
+// Retrieve data from Local Storage
+const user = localStorage.getItem('username');
+console.log('Local Storage username:', user);
+
+// Remove data from Local Storage
+localStorage.removeItem('username');
+
+// Save data to Session Storage
+sessionStorage.setItem('sessionID', 'abc123');
+
+// Retrieve data from Session Storage
+const session = sessionStorage.getItem('sessionID');
+console.log('Session Storage sessionID:', session);
+
+// Clear all Session Storage data
+sessionStorage.clear();
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>How to store, retrieve, and remove data in Local Storage.</li>
+          <li>How to store, retrieve, and clear data in Session Storage.</li>
+          <li>The difference in data persistence between Local and Session Storage.</li>
+          <li>Simple API usage for client-side storage without server interaction.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>Local Storage:</strong> Stores data with no expiration time. Data persists even after the browser is closed and reopened. It is useful for saving user preferences or app state between sessions.</p>
+        <p><strong>Session Storage:</strong> Stores data only for the duration of the page session. Data is cleared when the page session ends (e.g., tab or browser is closed). Suitable for temporary data needed during a browsing session.</p>
+        <p>Both use key-value pairs and store data as strings. They offer a synchronous API, making them easy to use but not suitable for large amounts of data or complex data structures without serialization.</p>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Persisting user preferences like theme, language, or layout settings.</li>
+          <li>Storing temporary form data during a session to prevent data loss.</li>
+          <li>Keeping session identifiers or tokens on the client side.</li>
+          <li>Building offline-capable web apps by caching data locally.</li>
+          <li>Enhancing user experience by reducing server calls for repeated data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which of the following statements about Local Storage is true?</p>
+            <ul>
+              <li>A. Data is cleared when the browser or tab is closed.</li>
+              <li>B. Data persists even after the browser is closed and reopened.</li>
+              <li>C. It can store complex JavaScript objects without serialization.</li>
+              <li>D. It is only accessible on the server side.</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Data persists even after the browser is closed and reopened.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> When does Session Storage data get cleared?</p>
+            <ul>
+              <li>A. When the user refreshes the page</li>
+              <li>B. When the user closes the tab or browser window</li>
+              <li>C. After 24 hours automatically</li>
+              <li>D. Never, unless manually cleared</li>
+            </ul>
+            <p><strong>Answer:</strong> B. When the user closes the tab or browser window</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> How is data stored in Local and Session Storage?</p>
+            <ul>
+              <li>A. As raw binary data</li>
+              <li>B. As JSON objects</li>
+              <li>C. As string key-value pairs</li>
+              <li>D. As XML</li>
+            </ul>
+            <p><strong>Answer:</strong> C. As string key-value pairs</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which Web Storage API would you use to store user preferences that should remain after the browser is closed?</p>
+            <ul>
+              <li>A. Session Storage</li>
+              <li>B. Local Storage</li>
+              <li>C. Cookies</li>
+              <li>D. IndexedDB</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Local Storage</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

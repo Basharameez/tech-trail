@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation (Clustering)  | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Customer Segmentation (Clustering)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Customer Segmentation (Clustering)</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Customer Segmentation is the process of grouping customers into distinct segments based on their characteristics and behavior, enabling personalized marketing strategies, better customer service, and increased business efficiency. Machine learning clustering algorithms identify natural groupings without predefined labels.</p>
+    
+    <div class="glass-card">
+        <h3>Key Aspects of Customer Segmentation</h3>
+        <ul>
+            <li>Uses unsupervised learning techniques like K-Means, hierarchical clustering, and DBSCAN.</li>
+            <li>Segments customers based on features such as age, income, spending score, and purchasing behavior.</li>
+            <li>Helps businesses in targeted marketing, product recommendations, and customer retention.</li>
+            <li>Enables discovery of hidden patterns and customer personas for strategic decisions.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Customer Segmentation using Mall Customer Dataset and K-Means</h3>
+        <pre><code>import pandas as pd
+from sklearn.cluster import KMeans
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset (Mall Customer Segmentation Data)
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/mall_customers.csv"
+data = pd.read_csv(url)
+
+# Display first few rows
+print(data.head())
+
+# Select features for clustering: Annual Income and Spending Score
+X = data[['annual_income', 'spending_score']]
+
+# Apply KMeans clustering
+kmeans = KMeans(n_clusters=5, random_state=42)
+data['Cluster'] = kmeans.fit_predict(X)
+
+# Visualize the clusters
+plt.figure(figsize=(8,6))
+sns.scatterplot(data=data, x='annual_income', y='spending_score', hue='Cluster', palette='Set1', s=100)
+plt.title('Customer Segmentation with K-Means Clustering')
+plt.xlabel('Annual Income (k$)')
+plt.ylabel('Spending Score (1-100)')
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Customer Segmentation Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Marketing:</strong> Tailoring campaigns, personalizing promotions, and improving ROI.</li>
+                    <li><strong>Retail:</strong> Understanding shopper behavior, optimizing product placement and offers.</li>
+                    <li><strong>Finance:</strong> Credit scoring, fraud detection, customer risk profiling.</li>
+                    <li><strong>Telecommunications:</strong> Reducing customer churn by targeting retention strategies.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Customer segmentation visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/zPJtDohab-g?si=b1H4vOoH8FgbxI2-">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is customer segmentation and why is it important?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Customer segmentation divides customers into groups with similar traits to enable personalized marketing, improve customer experience, and increase profitability.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. Which features from the Mall Customer dataset are commonly used for segmentation?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Annual Income and Spending Score are common features used to segment customers based on their purchasing power and behavior.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How do you determine the optimal number of clusters?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Techniques like the Elbow Method and Silhouette Score are used to find the optimal cluster count by measuring within-cluster variance and cluster separation.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What challenges might arise during customer segmentation?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Challenges include selecting relevant features, dealing with noisy or incomplete data, choosing the right clustering algorithm, and interpreting clusters meaningfully.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. How does customer segmentation benefit business strategy?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It enables targeted marketing, product development tailored to customer needs, optimized resource allocation, and improved customer retention and satisfaction.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

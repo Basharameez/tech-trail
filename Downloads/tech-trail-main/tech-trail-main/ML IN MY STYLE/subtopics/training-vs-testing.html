@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept of training vs testing | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Concept of training vs testing</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Concept of training vs testing</h1>
+            
+         <section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>In machine learning, the concepts of training and testing refer to how data is used to build and evaluate models. Proper separation of these datasets ensures that the model generalizes well to unseen data and avoids overfitting.</p>
+    
+    <div class="glass-card">
+        <h3>Training Data</h3>
+        <p>Training data is the portion of the dataset used to teach the machine learning model. The model learns patterns, relationships, and structures from this data by adjusting its parameters.</p>
+        <ul>
+            <li>Used to fit the model</li>
+            <li>Contains input-output pairs (features and labels in supervised learning)</li>
+            <li>Directly influences how well the model learns</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Testing Data</h3>
+        <p>Testing data is a separate portion of the dataset used to evaluate the model’s performance on unseen data. It checks how well the model generalizes beyond the training data.</p>
+        <ul>
+            <li>Not used during model training</li>
+            <li>Used to estimate real-world performance</li>
+            <li>Helps detect overfitting or underfitting</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Importance of Train-Test Split</h3>
+        <p>Dividing data into training and testing sets is essential to validate that the model can perform well on new data and not just memorize the training examples.</p>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example of Train-Test Split and Model Evaluation</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Split into train and test sets (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train the model
+model = DecisionTreeClassifier()
+model.fit(X_train, y_train)
+
+# Predict on test data
+y_pred = model.predict(X_test)
+
+# Evaluate accuracy
+print("Test Accuracy:", accuracy_score(y_test, y_pred))
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Training vs Testing Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Medical Diagnosis:</strong> Models trained on historical patient data, tested on unseen patient records to validate accuracy before clinical deployment.</li>
+                    <li><strong>Spam Detection:</strong> Email classifiers trained on labeled emails and tested on new emails to filter spam effectively.</li>
+                    <li><strong>Autonomous Vehicles:</strong> Training on driving data under various conditions, testing on new scenarios to ensure safety and reliability.</li>
+                    <li><strong>Speech Recognition:</strong> Training on voice samples from multiple speakers, testing on new voices to ensure system robustness.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Training and testing data" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/1f61P_TQvbk?si=eFJa9dgX9vqP80Ok">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. Why is it important to split data into training and testing sets?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Splitting data helps evaluate how well the model generalizes to unseen data, preventing overfitting by testing the model on data it hasn't seen during training.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. What is overfitting and how does it relate to training and testing data?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Overfitting happens when a model learns noise or details from training data too well, causing poor performance on testing or new data because it doesn't generalize.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How can you ensure that the train-test split is representative of the whole dataset?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>By using techniques like stratified sampling, random shuffling, and ensuring the split maintains the distribution of classes or features in both sets.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What is the difference between training error and testing error?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Training error measures performance on the training set, while testing error measures performance on unseen data. A big gap often indicates overfitting.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Can you train and test a model on the same data?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It is not recommended because it causes overfitting and does not provide a realistic estimate of how the model will perform on new data.</p>
+        </div>
+    </div>
+</section>
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+               
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

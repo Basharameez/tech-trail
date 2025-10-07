@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Closures & Callback Functions - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>JS Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+     
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Closures & Callback Functions</span>
+      </div>
+      <h1>Closures & Callback Functions</h1>
+      <p>Understand advanced functional programming concepts in JavaScript.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Closures and callback functions are foundational concepts in JavaScript's functional programming paradigm. Closures enable functions to remember the scope in which they were created, while callbacks allow asynchronous or deferred execution of code, facilitating event handling, APIs, and more complex flow control.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating closures and callback functions:</p>
+
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Closure & Callback Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Closure example: function retains access to outer scope variables
+function createCounter() {
+  let count = 0;
+  return function() {
+    count++;
+    return count;
+  };
+}
+const counter = createCounter();
+
+console.log(counter()); // 1
+console.log(counter()); // 2
+
+// Callback function example: executed after a delay
+function greet(name, callback) {
+  console.log('Hello, ' + name + '!');
+  callback();
+}
+
+greet('Basha Ram', function() {
+  console.log('This is a callback function executing after greeting.');
+});
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>How closures preserve access to variables from the outer scope even after the outer function has finished execution.</li>
+          <li>Using functions as arguments (callbacks) to enable deferred or asynchronous code execution.</li>
+          <li>Practical use of callbacks for sequencing code operations.</li>
+          <li>Creating private state using closures for data encapsulation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>Closures:</strong> A closure occurs when a function retains access to its lexical scope even when executed outside of that scope. This allows functions to maintain private variables and state.</p>
+        <p><strong>Callback Functions:</strong> These are functions passed as arguments to other functions, which are then invoked (called back) at a certain point in time, often after an asynchronous operation or event.</p>
+        <ul>
+          <li>Closures enable data privacy and function factories.</li>
+          <li>Callbacks are essential for asynchronous programming, event handling, and custom control flows.</li>
+          <li>Improves modularity and flexibility in code design.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Creating private variables and encapsulation in modules.</li>
+          <li>Handling asynchronous operations like API calls and timers.</li>
+          <li>Building event-driven architectures with callbacks and closures.</li>
+          <li>Implementing higher-order functions and function factories.</li>
+          <li>Managing state in UI components and frameworks.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What does a closure allow a function to do?</p>
+            <ul>
+              <li>A. Execute asynchronously</li>
+              <li>B. Access variables from its lexical scope even after the outer function has returned</li>
+              <li>C. Create global variables automatically</li>
+              <li>D. Pass functions as arguments</li>
+            </ul>
+            <p><strong>Answer:</strong> B. Access variables from its lexical scope even after the outer function has returned</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> A callback function is:</p>
+            <ul>
+              <li>A. A function that returns another function</li>
+              <li>B. A function passed as an argument to be executed later</li>
+              <li>C. A function that cannot access outer scope</li>
+              <li>D. A function that runs immediately</li>
+            </ul>
+            <p><strong>Answer:</strong> B. A function passed as an argument to be executed later</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which of the following best describes a use case for closures?</p>
+            <ul>
+              <li>A. Creating private variables</li>
+              <li>B. Making HTTP requests</li>
+              <li>C. Adding event listeners</li>
+              <li>D. Manipulating DOM elements</li>
+            </ul>
+            <p><strong>Answer:</strong> A. Creating private variables</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> In the callback example, when is the callback function executed?</p>
+            <ul>
+              <li>A. Before greeting the user</li>
+              <li>B. After greeting the user</li>
+              <li>C. At the start of the program</li>
+              <li>D. It is never executed</li>
+            </ul>
+            <p><strong>Answer:</strong> B. After greeting the user</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+   
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>
