@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+             <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+            
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#java-basics">Java Basics</a> &gt;
+                <span>Control Flow</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Control Flow</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+                <!-- Thinking Section -->
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Control flow structures form the backbone of decision-making in programming. They allow code to execute conditionally or repeatedly, adapting to various input and logic scenarios.</p>
+    <p>In Java, mastering `if`, `if-else`, and `switch` statements helps you write dynamic programs that respond intelligently to different data and user inputs.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>Java provides several control flow mechanisms to determine the direction in which a program proceeds based on certain conditions. The primary conditional constructs include:</p>
+    <ul>
+      <li><strong>if statement:</strong> Executes a block of code only if a specified condition is true.</li>
+      <li><strong>if-else statement:</strong> Executes one block if the condition is true, another if it's false.</li>
+      <li><strong>if-else-if ladder:</strong> Tests multiple conditions sequentially.</li>
+      <li><strong>switch statement:</strong> Selects one of many code blocks to execute based on the value of a variable.</li>
+    </ul>
+    <p>Using these effectively allows developers to build intelligent logic flows, making applications responsive and flexible.</p>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=nBj2nJup8xU&t=2s" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+      <h3>Switch Statements</h3>
+      <p>Mastering the switch-case logic in Java with examples.</p>
+    </div>
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1o61biMt1azqQ8KeJjUbeyW41UTrLPF3K/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+  <h3>Using if-else</h3>
+  <pre><code class="language-java">
+public class IfElseExample {
+    public static void main(String[] args) {
+        int score = 85;
+
+        if(score >= 90) {
+            System.out.println("Grade A");
+        } else if(score >= 75) {
+            System.out.println("Grade B");
+        } else {
+            System.out.println("Grade C");
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Using switch-case</h3>
+  <pre><code class="language-java">
+public class SwitchExample {
+    public static void main(String[] args) {
+        int day = 3;
+
+        switch(day) {
+            case 1:
+                System.out.println("Monday");
+                break;
+            case 2:
+                System.out.println("Tuesday");
+                break;
+            case 3:
+                System.out.println("Wednesday");
+                break;
+            default:
+                System.out.println("Another Day");
+        }
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-user-shield"></i> Authentication Systems</h3>
+      <p>Decide access levels and user permissions using control flow logic.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-traffic-light"></i> Traffic Signal Controllers</h3>
+      <p>Switch statements help control light transitions based on timers or sensor input.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+      <p>Use nested if-else conditions for player actions, scoring, and game states.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the difference between if-else and switch?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>If-else allows complex conditional expressions, whereas switch is more readable and efficient for equality checks on a single variable.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: Can we use strings in switch statements?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Yes, from Java 7 onwards, switch statements support String as the control expression.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: What happens if we forget the break in a switch case?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>If the break statement is omitted, Java will execute all subsequent cases until it encounters a break or the switch ends (known as fall-through).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

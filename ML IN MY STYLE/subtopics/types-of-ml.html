@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Machine Learning | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+             
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Types of Machine Learning</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Types of Machine Learning: Supervised, Unsupervised, and Reinforcement Learning</h1>
+            
+            <section class="subtopic-section" id="description">
+                <h2>Description</h2>
+                <p>Machine learning can be broadly categorized into three main types based on how the algorithms learn and make predictions. Each type has its unique characteristics, applications, and challenges.</p>
+                
+                <div class="glass-card">
+                    <h3>Supervised Learning</h3>
+                    <p>In supervised learning, algorithms learn from labeled training data. The algorithm is "supervised" because it's given the correct answers during training. The goal is to learn a mapping function that can predict the output for new, unseen inputs.</p>
+                    <p>Key characteristics:</p>
+                    <ul>
+                        <li>Uses labeled data with input-output pairs</li>
+                        <li>Learns a mapping function from inputs to outputs</li>
+                        <li>Can perform regression (predicting continuous values) or classification (predicting categories)</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card">
+                    <h3>Unsupervised Learning</h3>
+                    <p>In unsupervised learning, algorithms work with unlabeled data. The goal is to model the underlying structure or distribution of the data to learn more about it.</p>
+                    <p>Key characteristics:</p>
+                    <ul>
+                        <li>Works with unlabeled data</li>
+                        <li>Focuses on finding patterns, structures, or relationships</li>
+                        <li>Common tasks include clustering, dimensionality reduction, and association</li>
+                    </ul>
+                </div>
+                
+                <div class="glass-card">
+                    <h3>Reinforcement Learning</h3>
+                    <p>Reinforcement learning involves an agent that learns to make decisions by performing actions in an environment to maximize some notion of cumulative reward.</p>
+                    <p>Key characteristics:</p>
+                    <ul>
+                        <li>Involves an agent, actions, environment, states, and rewards</li>
+                        <li>The agent learns by trial and error</li>
+                        <li>Uses a reward signal to determine the best actions</li>
+                        <li>Balances exploration (trying new things) and exploitation (using known information)</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section class="subtopic-section" id="examples">
+                <h2>Examples</h2>
+                
+                <div class="glass-card example-card">
+                    <h3>Supervised Learning Examples</h3>
+                    <ul>
+                        <li><strong>Classification:</strong> Email spam detection, image recognition, sentiment analysis</li>
+                        <li><strong>Regression:</strong> House price prediction, stock price forecasting, temperature prediction</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code># Simple supervised learning example (Python with scikit-learn)
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+# Assuming X contains features and y contains labels
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a logistic regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+predictions = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, predictions)
+print(f"Accuracy: {accuracy * 100:.2f}%")</code></pre>
+                    </div>
+                </div>
+                
+                <div class="glass-card example-card">
+                    <h3>Unsupervised Learning Examples</h3>
+                    <ul>
+                        <li><strong>Clustering:</strong> Customer segmentation, document clustering, anomaly detection</li>
+                        <li><strong>Dimensionality Reduction:</strong> Feature extraction, data compression, visualization</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code># Simple unsupervised learning example (Python with scikit-learn)
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Assuming X contains features
+# Create K-means model with 3 clusters
+kmeans = KMeans(n_clusters=3, random_state=42)
+
+# Fit the model to the data
+kmeans.fit(X)
+
+# Get cluster assignments
+clusters = kmeans.predict(X)
+
+# Get cluster centers
+centers = kmeans.cluster_centers_
+
+print(f"Cluster centers:\n{centers}")</code></pre>
+                    </div>
+                </div>
+                
+                <div class="glass-card example-card">
+                    <h3>Reinforcement Learning Examples</h3>
+                    <ul>
+                        <li>Game playing (Chess, Go, Atari games)</li>
+                        <li>Robotics and autonomous systems</li>
+                        <li>Resource management and optimization</li>
+                    </ul>
+                    <div class="code-block">
+                        <pre><code># Simple conceptual reinforcement learning example
+# Q-learning pseudocode
+
+# Initialize Q-table with zeros
+Q = np.zeros([state_space, action_space])
+learning_rate = 0.8
+discount_factor = 0.95
+
+# Learning process
+for episode in range(1000):
+    state = environment.reset()
+    done = False
+    
+    while not done:
+        # Choose action (with exploration-exploitation strategy)
+        action = choose_action(state, Q)
+        
+        # Take action and observe result
+        next_state, reward, done = environment.step(action)
+        
+        # Update Q-table
+        Q[state, action] = Q[state, action] + learning_rate * (
+            reward + discount_factor * np.max(Q[next_state]) - Q[state, action]
+        )
+        
+        state = next_state</code></pre>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="subtopic-section" id="applications">
+                <h2>Real-World Applications</h2>
+                
+                <div class="glass-card application-card">
+                    <h3>Supervised Learning Applications</h3>
+                    <div class="application-content">
+                        <div class="application-text">
+                            <ul>
+                                <li><strong>Healthcare:</strong> Disease diagnosis, patient outcome prediction, medical image analysis</li>
+                                <li><strong>Finance:</strong> Credit scoring, fraud detection, stock price prediction</li>
+                                <li><strong>Marketing:</strong> Customer churn prediction, targeted advertising, customer lifetime value prediction</li>
+                                <li><strong>Natural Language Processing:</strong> Sentiment analysis, language translation, text classification</li>
+                            </ul>
+                        </div>
+                        <div class="application-image">
+                            <img src="https://images.pexels.com/photos/7947541/pexels-photo-7947541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Medical scan analysis" class="app-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card application-card">
+                    <h3>Unsupervised Learning Applications</h3>
+                    <div class="application-content">
+                        <div class="application-text">
+                            <ul>
+                                <li><strong>Marketing:</strong> Customer segmentation, market basket analysis</li>
+                                <li><strong>Anomaly Detection:</strong> Fraud detection, network intrusion detection, manufacturing defect identification</li>
+                                <li><strong>Recommendation Systems:</strong> Product recommendations, content recommendations</li>
+                                <li><strong>Image and Sound Processing:</strong> Feature extraction, pattern recognition</li>
+                            </ul>
+                        </div>
+                        <div class="application-image">
+                            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Customer segmentation visualization" class="app-image">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card application-card">
+                    <h3>Reinforcement Learning Applications</h3>
+                    <div class="application-content">
+                        <div class="application-text">
+                            <ul>
+                                <li><strong>Autonomous Vehicles:</strong> Self-driving cars, drones, robotics</li>
+                                <li><strong>Game AI:</strong> Chess, Go, video games</li>
+                                <li><strong>Resource Management:</strong> Data center optimization, traffic light control</li>
+                                <li><strong>Finance:</strong> Automated trading, portfolio management</li>
+                            </ul>
+                        </div>
+                        <div class="application-image">
+                            <img src="https://images.pexels.com/photos/8294609/pexels-photo-8294609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Autonomous drone" class="app-image">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/olFxW7kdtP8?si=5gj64sVzspKP5IuA">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1yyEwvrnvBq8-l5HNGGmoQC0iLNeLlzp0/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+           
+            <section class="subtopic-section" id="interview-questions">
+                <h2>Interview Questions</h2>
+                
+                <div class="glass-card question-card">
+                    <div class="question">
+                        <h3>1. What are the main differences between supervised and unsupervised learning?</h3>
+                        <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="answer">
+                        <p><strong>Supervised learning:</strong> Uses labeled data, has a clear target variable, and aims to learn a mapping function to predict outcomes for new data.</p>
+                        <p><strong>Unsupervised learning:</strong> Uses unlabeled data, has no target variable, and focuses on finding patterns, structures, or relationships in the data.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card question-card">
+                    <div class="question">
+                        <h3>2. What is the difference between classification and regression in supervised learning?</h3>
+                        <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="answer">
+                        <p><strong>Classification:</strong> Predicts a categorical target variable (discrete, class labels).</p>
+                        <p><strong>Regression:</strong> Predicts a continuous target variable (numerical values).</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card question-card">
+                    <div class="question">
+                        <h3>3. Explain the exploration-exploitation tradeoff in reinforcement learning.</h3>
+                        <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="answer">
+                        <p><strong>Exploration:</strong> Trying new actions to discover better strategies and gather more information about the environment.</p>
+                        <p><strong>Exploitation:</strong> Using the current knowledge to choose actions that maximize rewards based on known information.</p>
+                        <p>The tradeoff involves balancing between exploring new possibilities (which may lead to better long-term rewards) and exploiting known information (which maximizes immediate rewards).</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card question-card">
+                    <div class="question">
+                        <h3>4. What are some common clustering algorithms in unsupervised learning?</h3>
+                        <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="answer">
+                        <p><strong>K-Means Clustering:</strong> Partitions data into K clusters where each observation belongs to the cluster with the nearest mean.</p>
+                        <p><strong>Hierarchical Clustering:</strong> Builds a hierarchy of clusters, either using a bottom-up (agglomerative) or top-down (divisive) approach.</p>
+                        <p><strong>DBSCAN:</strong> Density-based clustering that groups together points that are closely packed together, while marking points in low-density regions as outliers.</p>
+                        <p><strong>Gaussian Mixture Models (GMM):</strong> Assumes data points are generated from a mixture of several Gaussian distributions.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card question-card">
+                    <div class="question">
+                        <h3>5. How do you choose between different types of machine learning for a given problem?</h3>
+                        <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="answer">
+                        <p>The choice depends on several factors:</p>
+                        <ul>
+                            <li><strong>Data availability:</strong> If labeled data is available, supervised learning might be appropriate. If only unlabeled data is available, unsupervised learning would be used.</li>
+                            <li><strong>Problem type:</strong> For prediction tasks with clear targets, use supervised learning. For discovering patterns or structure in data, use unsupervised learning. For decision-making problems where feedback is available, use reinforcement learning.</li>
+                            <li><strong>Complexity:</strong> Consider the complexity of the problem and the amount of data available.</li>
+                            <li><strong>Time and resources:</strong> Supervised learning typically requires more labeled data, which can be expensive and time-consuming to collect.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

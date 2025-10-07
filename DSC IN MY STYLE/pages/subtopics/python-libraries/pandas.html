@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pandas - Data Science in my style</title>
+  <link rel="icon" type="image/x-icon" href="../../../img/dsc.svg">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/subtopic.css">
+  <script src="../../../js/main.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Data Science in my style</h1>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../topics.html" class="active">Topics</a></li>
+        
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main class="subtopic-container">
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../../index.html">Home</a>
+        <span class="separator">›</span>
+        <a href="../../topics.html">Topics</a>
+        <span class="separator">›</span>
+        <a href="../../topics.html#introduction">Python Libraries for Data Science</a>
+        <span class="separator">›</span>
+        <span>Pandas</span>
+      </div>
+      
+      <h1 class="subtopic-title">Pandas</h1>
+      <div class="subtopic-meta">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Introduction
+        </span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Reading Time: 12 min
+        </span>
+      </div>
+    </div>
+
+    <div class="table-of-contents">
+      <h3>Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#description">Description</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#real-world">Real-World Applications</a></li>
+        <li><a href="#applications">Where Data Science Is Applied</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#interview-questions">Interview Questions</a></li>
+      </ul>
+    </div>
+
+    <div class="subtopic-content">
+      <section id="description" class="content-section section-description">
+        <h2>Description</h2>
+        <p>Pandas is a fast, powerful, and flexible open-source data analysis and manipulation library for Python. It provides two primary data structures:<br>
+
+Series: 1D labeled array.<br>
+
+DataFrame: 2D labeled, tabular structure.<br>
+Pandas makes it easy to perform indexing, filtering, grouping, merging, and cleaning on structured data.
+
+       </p>
+      </section>
+
+      <section id="prerequisites" class="content-section">
+        <h2>Prerequisites</h2>
+        <ul class="prerequisites-list">
+          <li>Understanding of basic Python</li>
+          <li>Familiarity with NumPy</li>
+          <li>Concept of rows and columns in tables</li>
+         </ul>
+      </section>
+
+      <section id="examples" class="content-section">
+        <h2>Examples</h2>
+        <p>Here's a simple example of a data science task using Python:</p>
+        <div class="code-example">
+          <pre><code>
+import pandas as pd
+
+# Creating a Series
+s = pd.Series([10, 20, 30], index=['a', 'b', 'c'])
+print("Series:\n", s)
+
+# Creating a DataFrame
+data = {'Name': ['Alice', 'Bob', 'Charlie'], 'Age': [25, 30, 35]}
+df = pd.DataFrame(data)
+print("DataFrame:\n", df)
+
+# Indexing
+print("First row:\n", df.loc[0])
+print("Name column:\n", df['Name'])
+
+# Filtering
+print("Age > 25:\n", df[df['Age'] > 25])
+
+# Grouping
+grouped = df.groupby('Age')
+for age, group in grouped:
+    print(f"\nGroup: Age = {age}\n", group)
+          </code></pre>
+        </div>
+        
+              </section>
+
+      <section id="real-world" class="content-section section-real-world">
+        <h2>Real-World Applications</h2>
+        <div class="application-cards">
+          <div class="application-card">
+            <h3>Data Analysis</h3>
+            <p>Load, clean, and analyze structured data from CSV, Excel, databases<br>
+
+Perform descriptive stats, trends, and summarizations</p> </div>
+          
+          <div class="application-card">
+            <h3>Image & Signal Processing</h3>
+            <p>Representing pixel data as arrays<br>
+
+Applying filters via convolution
+</p>
+          </div>
+          
+          <div class="application-card">
+            <h3>Finance</h3>
+            <p>Time-series stock data analysis<br>
+
+Portfolio performance calculations</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="applications" class="content-section section-applications">
+        <h2>Where topic Is Applied</h2>
+        <div class="industry-grid">
+          <div class="industry-item">
+            <h3>Healthcare</h3>
+            <ul>
+              <li>Analyzing patient records and lab test results</li>
+              <li>Grouping patients by age, disease, or treatment plans</li>
+                    </ul>
+          </div>
+          
+          <div class="industry-item">
+            <h3>E-commerce</h3>
+            <ul>
+              <li>User purchase behavior</li>
+              <li>Grouping orders by product/category</li>
+               </ul>
+          </div>
+          
+          
+          <div class="industry-item">
+            <h3>Machine Learning</h3>
+            <ul>
+              <li>Underlying numerical operations in models like linear regression, PCA</li>
+              <li>Data preprocessing and augmentation</li>
+              </ul>
+          </div>
+          
+          <div class="industry-item">
+            <h3>Robotics</h3>
+            <ul>
+              <li>Coordinate transformations and movement control using arrays</li>
+              <li>Sensor data processing with broadcasting</li>
+              </ul>
+          </div>
+          
+          </div>
+      </section>
+
+     <section id="resources" class="content-section section-resources">
+        <h2>Resources</h2>
+        
+        
+        <div class="resource-item">
+          <div class="resource-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+          </div>
+          <div class="resource-details">
+            <h4>Data Science topic PDF</h4>
+           
+          </div>
+          <a href="https://drive.google.com/file/d/1d77pxaPF71N3s-PKuJa3yuN5gveWzptS/view?usp=drive_link" class="resource-link">Download</a>
+        </div>
+        
+        <div class="resource-item">
+          <div class="resource-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+          </div>
+          <div class="resource-details">
+            <h4>Harvard Data Science Course</h4>
+            <p>Free online course from Harvard covering data science foundations</p>
+          </div>
+          <a href="https://online-learning.harvard.edu/course/data-science-r-basics" target="_blank" class="resource-link">Visit</a>
+        </div>
+      </section>
+      <section id="interview-questions" class="content-section">
+        <h2>Interview Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What is Pandas?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ Pandas is a Python library that provides data structures like Series and DataFrame for efficient manipulation and analysis of structured data.</p> </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Differentiate between Series and DataFrame.</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ A Series is a 1-dimensional labeled array, whereas a DataFrame is a 2-dimensional table of data with rows and columns.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>How do you filter rows in a DataFrame?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ You can use boolean indexing:<br>
+df[df['Age'] > 30] returns rows where Age > 30.</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What is the use of groupby() in Pandas?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ groupby() is used to split data into groups based on a column and then apply functions like sum, mean, or count to each group.
+</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>How is .loc[] different from .iloc[]?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ .loc[] uses labels (names), while .iloc[] uses integer-based indexing.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Data Science in my style</h2>
+        <p>Learn data science your way</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../../index.html">Home</a></li>
+          <li><a href="../../topics.html">Topics</a></li>
+          <li><a href="../../about.html">About</a></li>
+         
+        </ul>
+      </div>
+     <div class="footer-social">
+  <h3>Connect With Us</h3>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-instagram">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+      </svg>
+    </a>
+    <a href="https://t.me/Tech_in_my_style_bot" class="social-icon" aria-label="Telegram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-send">
+        <path d="m22 2-7 20-4-9-9-4Z"></path>
+        <path d="M22 2 11 13"></path>
+      </svg>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-message-circle">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon" aria-label="YouTube">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-youtube">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"></path>
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+      </svg>
+    </a>
+  </div>
+</div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Data Science in my style. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

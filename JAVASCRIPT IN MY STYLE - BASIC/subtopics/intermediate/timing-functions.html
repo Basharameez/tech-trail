@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timing Functions - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#intermediate">Intermediate</a> >
+        <span>Timing Functions</span>
+      </div>
+      <h1>Timing Functions</h1>
+      <p>Use <code>setTimeout</code> and <code>setInterval</code> for timing operations and animations.</p>
+    </div>
+        <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header> 
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Timing functions in JavaScript allow execution of code after a delay or at regular intervals. The two most commonly used functions are <code>setTimeout()</code>, which runs code once after a delay, and <code>setInterval()</code>, which runs code repeatedly at specified intervals. These functions are essential for animations, polling data, or scheduling tasks in web applications.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Examples of using <code>setTimeout</code> and <code>setInterval</code>:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>setTimeout and setInterval</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// setTimeout - runs once after 2 seconds
+setTimeout(() => {
+  console.log("Executed after 2 seconds");
+}, 2000);
+
+// setInterval - runs every 1 second
+const intervalId = setInterval(() => {
+  console.log("Runs every second");
+}, 1000);
+
+// Clear the interval after 5 seconds
+setTimeout(() => {
+  clearInterval(intervalId);
+  console.log("Interval cleared");
+}, 5000);
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Using <code>setTimeout</code> to delay code execution.</li>
+          <li>Using <code>setInterval</code> for repeated execution.</li>
+          <li>Using <code>clearInterval</code> to stop repeated execution.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><code>setTimeout()</code> and <code>setInterval()</code> are asynchronous functions that control timing in JavaScript.</p>
+        <ul>
+          <li><strong>setTimeout(callback, delay)</strong>: Executes the <code>callback</code> function once after <code>delay</code> milliseconds.</li>
+          <li><strong>setInterval(callback, delay)</strong>: Repeatedly executes the <code>callback</code> every <code>delay</code> milliseconds.</li>
+          <li><strong>clearTimeout(timeoutId)</strong>: Cancels a timeout set by <code>setTimeout</code>.</li>
+          <li><strong>clearInterval(intervalId)</strong>: Stops an interval set by <code>setInterval</code>.</li>
+        </ul>
+        <p>These timing methods are commonly used in creating animations, scheduling API requests, or deferring execution of heavy computations.</p>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Creating simple animations and transition effects.</li>
+          <li>Implementing countdown timers.</li>
+          <li>Polling APIs for real-time updates.</li>
+          <li>Delaying execution for UX improvements (e.g., loading spinners).</li>
+          <li>Scheduling periodic background tasks in JavaScript apps.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which function is used to execute a task after a delay?</p>
+            <ul>
+              <li>A. setInterval</li>
+              <li>B. delay</li>
+              <li>C. wait</li>
+              <li>D. setTimeout</li>
+            </ul>
+            <p><strong>Answer:</strong> D. setTimeout</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What does <code>clearInterval</code> do?</p>
+            <ul>
+              <li>A. Delays a function call</li>
+              <li>B. Clears a delayed task</li>
+              <li>C. Stops a repeating interval</li>
+              <li>D. Restarts an interval</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Stops a repeating interval</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What is returned by <code>setTimeout</code> and <code>setInterval</code>?</p>
+            <ul>
+              <li>A. A timer name</li>
+              <li>B. A delay value</li>
+              <li>C. A callback reference</li>
+              <li>D. A unique ID</li>
+            </ul>
+            <p><strong>Answer:</strong> D. A unique ID</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> How can you stop a <code>setTimeout</code> before it runs?</p>
+            <ul>
+              <li>A. clearTimeout(id)</li>
+              <li>B. stopTimeout()</li>
+              <li>C. clearDelay()</li>
+              <li>D. cancelTimeout()</li>
+            </ul>
+            <p><strong>Answer:</strong> A. clearTimeout(id)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+   
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

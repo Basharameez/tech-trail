@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Explorer</title>
+  <meta name="description" content="A comprehensive reference guide for all JavaScript concepts organized by category and alphabetically">
+  <meta name="author" content="JavaScript Explorer">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="JavaScript Explorer">
+  <meta property="og:description" content="A comprehensive reference guide for all JavaScript concepts organized by category and alphabetically">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://placehold.co/1200x630/E8B895/000000?text=JavaScript+Explorer">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JavaScript Explorer">
+  <meta name="twitter:description" content="A comprehensive reference guide for all JavaScript concepts organized by category and alphabetically">
+  <meta name="twitter:image" content="https://placehold.co/1200x630/E8B895/000000?text=JavaScript+Explorer">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟨</text></svg>" type="image/svg+xml">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="javascript_index.css">
+</head>
+<body>
+  <!-- Theme Toggle Button -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2"/>
+    </svg>
+    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </button>
+
+  <!-- Header with Back Button, Logo, and Search -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="back-button" title="Go Back">← Back</a>
+        <div class="logo-container">
+          <div class="logo">
+            <span class="logo-text">JS</span>
+          </div>
+          <div class="site-title">
+            <h1>JavaScript Explorer</h1>
+            <p>A comprehensive reference for web developers</p>
+          </div>
+        </div>
+        <div class="search-container">
+          <div class="search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <input id="search-input" type="text" placeholder="Search JavaScript concepts...">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Introduction Section -->
+    <section class="intro-section fade-in">
+      <div class="intro-card">
+        <h2>Welcome to the JavaScript Explorer</h2>
+        <p>This reference guide organizes all JavaScript concepts by their purpose and provides an alphabetical listing. Click on any concept to learn more about it.</p>
+        <div class="intro-actions">
+          <a href="#categories" class="btn btn-primary">Explore by Category</a>
+          <a href="#alphabetical" class="btn btn-secondary">View Alphabetical List</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="categories-section fade-in">
+      <h2 class="section-title">JavaScript Concepts by Category</h2>
+      <p class="section-description">Concepts are grouped by their primary function and purpose in JavaScript development.</p>
+      
+      <div class="categories-grid" id="categories-container">
+        <!-- Categories will be inserted by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Alphabetical Section -->
+    <section id="alphabetical" class="alphabetical-section fade-in">
+      <h2 class="section-title">JavaScript Concepts (Alphabetical)</h2>
+      <p class="section-description">Complete list of all JavaScript concepts arranged alphabetically.</p>
+      
+      <div class="alphabetical-container">
+        <ul class="tag-list" id="alphabetical-container">
+          <!-- Alphabetical tags will be inserted by JavaScript -->
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="copyright">
+          <p>© 2025 JavaScript Explorer, All rights reserved | Powered by Tech In My Style | Made with ❤️ by Tech In My Style |</p>
+        </div>
+        <div class="footer-links">
+          <a href="#">Back to Top</a>
+          <a href="#categories">Categories</a>
+          <a href="#alphabetical">Alphabetical</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="javascripttagData.js"></script>
+  <script src="js-app.js"></script>
+</body>
+</html>

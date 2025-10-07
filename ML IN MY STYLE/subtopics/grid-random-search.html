@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Search & Random Search | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Grid Search & Random Search</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Grid Search & Random Search</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Grid Search and Random Search are two popular hyperparameter tuning techniques used to optimize machine learning models. Hyperparameters are the settings that control the learning process and model complexity but are not learned from the data directly. Tuning these correctly can significantly improve model performance.</p>
+    
+    <div class="glass-card">
+        <h3>Grid Search</h3>
+        <p>Grid Search exhaustively searches through a manually specified subset of the hyperparameter space. It tries every possible combination of the provided hyperparameters to find the best performing model based on a given evaluation metric.</p>
+        <ul>
+            <li>Systematic and comprehensive</li>
+            <li>Computationally expensive, especially with many hyperparameters</li>
+            <li>Easy to implement and interpret</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Random Search</h3>
+        <p>Random Search samples hyperparameter combinations randomly from a predefined distribution or range. Instead of trying every combination, it explores a wide variety of combinations, often finding good hyperparameters more efficiently.</p>
+        <ul>
+            <li>More efficient when the hyperparameter space is large</li>
+            <li>Can discover better parameters in less time compared to Grid Search</li>
+            <li>Does not guarantee finding the absolute best combination</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Grid Search Example (Python, scikit-learn)</h3>
+        <pre><code>from sklearn.model_selection import GridSearchCV
+from sklearn.svm import SVC
+from sklearn.datasets import load_iris
+
+# Load data
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Model and parameters
+model = SVC()
+param_grid = {
+    'C': [0.1, 1, 10],
+    'kernel': ['linear', 'rbf'],
+    'gamma': ['scale', 'auto']
+}
+
+# Grid Search setup
+grid_search = GridSearchCV(model, param_grid, cv=5)
+grid_search.fit(X, y)
+
+print("Best parameters:", grid_search.best_params_)
+print("Best cross-validation score:", grid_search.best_score_)</code></pre>
+    </div>
+
+    <div class="glass-card">
+        <h3>Random Search Example (Python, scikit-learn)</h3>
+        <pre><code>from sklearn.model_selection import RandomizedSearchCV
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+from scipy.stats import randint
+
+# Load data
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Model and parameter distribution
+model = RandomForestClassifier()
+param_dist = {
+    'n_estimators': randint(10, 200),
+    'max_depth': randint(1, 20),
+    'min_samples_split': randint(2, 20)
+}
+
+# Random Search setup
+random_search = RandomizedSearchCV(model, param_dist, n_iter=10, cv=5, random_state=42)
+random_search.fit(X, y)
+
+print("Best parameters:", random_search.best_params_)
+print("Best cross-validation score:", random_search.best_score_)</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Hyperparameter Tuning Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Image Recognition:</strong> Optimizing deep learning models for better accuracy and faster training</li>
+                    <li><strong>Natural Language Processing:</strong> Fine-tuning transformers and other models for text classification and generation</li>
+                    <li><strong>Finance:</strong> Improving predictive models for credit scoring and fraud detection</li>
+                    <li><strong>Healthcare:</strong> Enhancing diagnostic models through optimal hyperparameter selection</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Machine learning tuning" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/G-fXV-o9QV8?si=LKPbtB4bUxc4ON8z">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1DL1p4Pvj7_v9OeMzGZhnpuN7-3lM5f-u/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the main difference between Grid Search and Random Search?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Grid Search tries every possible combination of specified hyperparameters systematically, while Random Search samples hyperparameter combinations randomly from a defined distribution.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. When is Random Search preferred over Grid Search?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Random Search is preferred when the hyperparameter space is large and exhaustive search is computationally expensive. It can find good parameters more efficiently in such cases.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. Can Grid Search guarantee finding the best hyperparameters?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, Grid Search guarantees finding the best hyperparameters within the specified grid, but it can be very expensive for large grids and might miss better parameters outside the grid.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How does cross-validation integrate with Grid Search or Random Search?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Both Grid Search and Random Search typically use cross-validation to evaluate each hyperparameter combination's performance, ensuring more reliable and generalized results.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

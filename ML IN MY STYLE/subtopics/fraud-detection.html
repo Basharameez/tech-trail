@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Card Fraud Detection | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+            
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Credit Card Fraud Detection</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Credit Card Fraud Detection</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Credit Card Fraud Detection involves identifying unauthorized or fraudulent transactions to prevent financial loss and protect customers. It typically uses machine learning models that analyze transaction data to distinguish between legitimate and fraudulent activities based on patterns, anomalies, and historical data.</p>
+    
+    <div class="glass-card">
+        <h3>Key Characteristics of Credit Card Fraud Detection</h3>
+        <ul>
+            <li>Often formulated as a classification problem: fraud or no fraud.</li>
+            <li>Highly imbalanced datasets, with very few fraudulent transactions compared to legitimate ones.</li>
+            <li>Requires feature engineering, anomaly detection, and robust evaluation metrics to handle imbalance.</li>
+            <li>Models include supervised learning (e.g., logistic regression, random forest) and unsupervised approaches (e.g., anomaly detection).</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Credit Card Fraud Detection using Logistic Regression</h3>
+        <pre><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report, confusion_matrix, roc_auc_score
+
+# Load dataset (Credit Card Fraud Detection Dataset)
+url = "https://storage.googleapis.com/download.tensorflow.org/data/creditcard.csv"
+data = pd.read_csv(url)
+
+# Check class distribution
+print(data['Class'].value_counts())
+
+# Features and target
+X = data.drop('Class', axis=1)
+y = data['Class']
+
+# Scale features (important for many models)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Split data into train and test sets (stratify to maintain class distribution)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.3, random_state=42, stratify=y)
+
+# Train logistic regression model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+# Predict on test data
+y_pred = model.predict(X_test)
+y_prob = model.predict_proba(X_test)[:, 1]
+
+# Evaluation
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+print(f"\nROC AUC Score: {roc_auc_score(y_test, y_prob):.4f}")
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Credit Card Fraud Detection Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Banking & Finance:</strong> Real-time monitoring of credit card transactions to flag fraudulent activities and block suspicious transactions.</li>
+                    <li><strong>Payment Gateways:</strong> Secure online payment processing by identifying fraudulent attempts.</li>
+                    <li><strong>Insurance:</strong> Detecting fraudulent claims and reducing financial losses.</li>
+                    <li><strong>E-commerce:</strong> Protecting customers and merchants from payment fraud and chargebacks.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/4145081/pexels-photo-4145081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Credit card fraud detection" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/NCgjcHLFNDg?si=05iZ2xrMIHWs1Q2u">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1jqFydKpcBjxqJmob91UiccvDbGyxoRXU/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. Why is credit card fraud detection considered a challenging problem?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Because the dataset is highly imbalanced with very few fraud cases compared to legitimate transactions, making it difficult for models to detect fraud without many false positives or false negatives.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. What techniques are commonly used to handle imbalanced data in fraud detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Techniques include oversampling methods like SMOTE, undersampling majority class, adjusting class weights in models, and using anomaly detection algorithms.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. Which evaluation metrics are most suitable for fraud detection problems?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Metrics such as Precision, Recall, F1-Score, and ROC AUC are more suitable than accuracy because they better capture the model's performance on the minority (fraud) class.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How does logistic regression help in fraud detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Logistic regression predicts the probability that a transaction is fraudulent by modeling the relationship between the input features and the binary outcome (fraud or not).</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. What role does feature engineering play in fraud detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Feature engineering is critical to extract meaningful patterns from raw transaction data, such as transaction time, amount, location, or user behavior trends, which improve model accuracy.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

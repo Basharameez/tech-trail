@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polynomial Regression | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Polynomial Regression</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Polynomial Regression</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Polynomial Regression is an extension of linear regression that models the relationship between the independent variable(s) and the dependent variable as an nth degree polynomial. It is useful when the data shows a nonlinear relationship but can still be fitted with a polynomial curve.</p>
+    
+    <div class="glass-card">
+        <h3>Polynomial Regression</h3>
+        <p>The model fits a polynomial equation to the data:</p>
+        <p><em>Y = β₀ + β₁X + β₂X² + β₃X³ + ... + βₙXⁿ + ε</em></p>
+        <ul>
+            <li>β₀, β₁, ..., βₙ are the polynomial coefficients.</li>
+            <li>Xⁿ represents the independent variable raised to the nth power.</li>
+            <li>Can capture curves and nonlinear trends in data.</li>
+            <li>Higher degree polynomials can lead to overfitting.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Polynomial Regression Example in Python</h3>
+        <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import PolynomialFeatures
+
+# Sample data
+X = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)
+y = np.array([1, 4, 9, 16, 25, 36, 49, 64, 81])  # y = x^2
+
+# Transform features to polynomial features degree=2
+poly = PolynomialFeatures(degree=2)
+X_poly = poly.fit_transform(X)
+
+# Create and train model
+model = LinearRegression()
+model.fit(X_poly, y)
+
+# Predictions
+y_pred = model.predict(X_poly)
+
+# Plot
+plt.scatter(X, y, color='blue')
+plt.plot(X, y_pred, color='red')
+plt.title('Polynomial Regression (Degree=2)')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Polynomial Regression Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Economics:</strong> Modeling complex relationships like GDP growth over time with nonlinear trends.</li>
+                    <li><strong>Engineering:</strong> Curve fitting for stress-strain data, signal processing.</li>
+                    <li><strong>Environmental Science:</strong> Modeling temperature changes or pollution levels over time.</li>
+                    <li><strong>Biology:</strong> Growth rates of organisms that follow nonlinear patterns.</li>
+                    <li><strong>Finance:</strong> Modeling nonlinear price trends in stocks and commodities.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/414519/pexels-photo-414519.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Curve fitting graph" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/QptI-vDle8Y?si=Ze_4z6gDyN280UTf">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1luDPMsd6dlg9aw2tAlpfk-tKp68CvwQm/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is polynomial regression and how does it differ from linear regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Polynomial regression fits a polynomial equation to the data allowing for curvature, while linear regression fits a straight line. Polynomial regression models nonlinear relationships by including powers of the independent variable.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How do you choose the degree of the polynomial in polynomial regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>The degree is usually chosen based on domain knowledge, visualizing the data, or using techniques like cross-validation to avoid overfitting or underfitting.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What are the risks of using high-degree polynomials in regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>High-degree polynomials can cause overfitting, where the model fits noise instead of the underlying trend, leading to poor generalization on new data.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How do you transform features for polynomial regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Features are transformed by creating additional features that are powers of the original features (e.g., X², X³). Libraries like sklearn's PolynomialFeatures automate this process.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Can polynomial regression be used with multiple features?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, polynomial regression can be extended to multiple features by including interaction terms and polynomial terms for each feature.</p>
+        </div>
+    </div>
+</section>
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

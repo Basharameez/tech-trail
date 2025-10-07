@@ -1,0 +1,275 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Flask / Streamlit for web deployment - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Flask / Streamlit for web deployment</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>
+            Flask and Streamlit are popular Python-based frameworks used to deploy machine learning models to the web.
+        </p>
+        <p>
+            <strong>Flask</strong> is a lightweight and flexible web framework that allows for building custom web servers and APIs. It is suitable for integrating ML models with fully customizable front-ends or third-party services.
+        </p>
+        <p>
+            <strong>Streamlit</strong> is a more high-level framework tailored for data scientists and ML developers. It simplifies creating interactive and visually appealing apps for model demos with minimal code.
+        </p>
+    </div>
+</section>
+          <section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example: Deploying a model using Flask</p>
+        <pre><code class="language-python">
+# filename: iris_streamlit_app.py
+
+import streamlit as st
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+
+# ---------------------------------------
+# MODEL BUILDING
+# ---------------------------------------
+
+@st.cache_data
+def load_data():
+    data = load_iris()
+    df = pd.DataFrame(data.data, columns=data.feature_names)
+    df['target'] = data.target
+    return df, data
+
+@st.cache_resource
+def train_model(df):
+    X = df.drop('target', axis=1)
+    y = df['target']
+    model = RandomForestClassifier()
+    model.fit(X, y)
+    return model
+
+# ---------------------------------------
+# WEB INTERFACE WITH STREAMLIT
+# ---------------------------------------
+
+st.set_page_config(page_title="Iris Flower Classifier", layout="centered")
+
+st.title("🌸 Iris Flower Classification App")
+st.markdown("This app uses a **Random Forest Classifier** to predict the type of Iris flower.")
+
+# Load data and train model
+df, iris_data = load_data()
+model = train_model(df)
+
+# Input sliders
+st.sidebar.header("Input Features")
+
+sepal_length = st.sidebar.slider("Sepal Length (cm)", 4.3, 7.9, 5.4)
+sepal_width  = st.sidebar.slider("Sepal Width (cm)", 2.0, 4.4, 3.4)
+petal_length = st.sidebar.slider("Petal Length (cm)", 1.0, 6.9, 1.3)
+petal_width  = st.sidebar.slider("Petal Width (cm)", 0.1, 2.5, 0.2)
+
+input_features = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]],
+                              columns=iris_data.feature_names)
+
+# Prediction
+if st.button("Predict Flower Type"):
+    prediction = model.predict(input_features)[0]
+    predicted_class = iris_data.target_names[prediction]
+    st.success(f"🌼 Predicted Iris type: **{predicted_class}**")
+
+# Show raw data (optional)
+with st.expander("Show Iris Dataset"):
+    st.dataframe(df)
+        </code></pre>
+    </div>
+    <p>Save the code above to a file named iris_streamlit_app.py.<br>
+
+Run the app with:<br>
+streamlit run iris_streamlit_app.py
+<br><img src="https://i.pinimg.com/736x/d8/f1/81/d8f181b35823b1ca97fa0a7b81d251d1.jpg" alt="output of the above code">
+</p>
+</section>
+          <section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Prototyping ML Apps</h3>
+                <p>Use Streamlit for quick model demos and UI-based experiments without web development overhead.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-server"></i></div>
+                <h3>Model APIs</h3>
+                <p>Flask is ideal for serving models as RESTful APIs used by frontend apps or mobile devices.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-chart-bar"></i></div>
+                <h3>Interactive Dashboards</h3>
+                <p>Streamlit helps build interactive data visualization and model explanation dashboards.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-tools"></i></div>
+                <h3>Custom Deployments</h3>
+                <p>Flask gives full control for deploying ML systems with custom routes, logic, and integrations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+          <section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1LdC_Yab3rXRKrmOucDdlCpVNXeYiiOE1/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.oreilly.com/library/view/flask-web-development/9781491991725/" target="_blank">Flask Web Development</a> by Miguel Grinberg</li>
+                    <li><a href="https://streamlit.io/" target="_blank">Streamlit Documentation</a> (Official)</li>
+                    <li><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+          <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What are the key differences between Flask and Streamlit for ML deployment?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Flask offers full control for building APIs and is suited for production systems, 
+                        while Streamlit is tailored for creating quick and interactive model demos without writing HTML/CSS.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Can Streamlit be used in production environments?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Streamlit is excellent for demos and internal tools but may lack flexibility and scalability for large-scale production deployments, which Flask better supports.
+                    </p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do you handle model loading in web apps?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>
+                        Load the model once at the start of the app using libraries like <code>joblib</code> or <code>torch</code>. Ensure thread safety if serving multiple requests simultaneously.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

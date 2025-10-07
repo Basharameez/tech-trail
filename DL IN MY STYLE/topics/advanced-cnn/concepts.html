@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Concept: Skip connections, depth, bottlenecks - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Concept: Skip connections, depth, bottlenecks</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>Advanced Convolutional Neural Network (CNN) architectures often incorporate mechanisms such as <strong>skip connections</strong>, increased <strong>depth</strong>, and <strong>bottleneck layers</strong> to improve training stability and performance. These concepts are key to understanding powerful models like ResNet and Inception-ResNet.</p>
+        
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Concepts</div>
+            <p><strong>Skip Connections</strong> allow gradients to bypass one or more layers, <strong>depth</strong> enables learning of complex features, and <strong>bottlenecks</strong> reduce computation by compressing features before expanding again.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/basha7777/dl-website/main/assets/images/skip-connection-bottleneck.png" alt="Skip connections and bottlenecks diagram">
+            <p class="caption">Illustration of skip connections and bottleneck blocks in deep CNNs</p>
+        </div>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here is a simple implementation of a residual block with a bottleneck design using TensorFlow/Keras:</p>
+        
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras import layers, Model
+
+def residual_bottleneck_block(inputs, filters):
+    x = layers.Conv2D(filters // 4, (1, 1), activation='relu')(inputs)
+    x = layers.Conv2D(filters // 4, (3, 3), padding='same', activation='relu')(x)
+    x = layers.Conv2D(filters, (1, 1))(x)
+
+    shortcut = layers.Conv2D(filters, (1, 1))(inputs)  # Match dimensions
+    output = layers.Add()([x, shortcut])
+    output = layers.Activation('relu')(output)
+    return output</code></pre>
+        </div>
+
+        <p>This block first reduces the feature dimensions (bottleneck), processes them, then restores the dimensions and adds the input back via a skip connection.</p>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>Medical Imaging</h3>
+                <p>Skip connections in deep networks like ResNet improve the detection of anomalies in CT and MRI scans.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>Security Systems</h3>
+                <p>Bottlenecks help reduce latency in facial recognition pipelines used in surveillance.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Financial Data Analysis</h3>
+                <p>Deep networks with skip connections are applied in time-series forecasting where deeper features improve accuracy.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Autonomous Navigation</h3>
+                <p>Efficient CNNs with bottlenecks enable real-time image classification on self-driving cars.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/Q1JCrG1bJ-A?feature=shared'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1lHdSXqfSCAUWQgAomC8lBxZqh_E3YHVw/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow et al.</li>
+                    <li><a href="https://arxiv.org/abs/1512.03385" target="_blank">Deep Residual Learning for Image Recognition (ResNet paper)</a> by He et al.</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why are skip connections important in deep networks?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>They allow gradients to flow more easily during backpropagation, mitigating vanishing gradient problems and enabling the training of very deep networks.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the purpose of bottleneck layers?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Bottleneck layers reduce the number of computations by compressing feature maps temporarily, improving model efficiency while maintaining performance.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does network depth impact model performance?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Greater depth allows models to learn more complex representations, but without techniques like skip connections, deeper networks may suffer from training difficulties.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

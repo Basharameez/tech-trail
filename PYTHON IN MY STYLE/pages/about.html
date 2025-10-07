@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Python in my style</title>
+  <link rel="icon" type="image/x-icon" href="../img/py.svg">
+  <style>
+    :root {
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --color-primary: #306998;
+      --color-primary-dark: #264969;
+      --color-bg: #fff;
+      --color-bg-alt: #f6f8fa;
+      --color-text-main: #223b55;
+      --color-text-secondary: #46628a;
+      --color-gray-100: #f8f9fa;
+      --color-gray-200: #e9ecef;
+      --color-gray-600: #6c757d;
+      --shadow-md: 0 4px 16px rgba(38, 70, 105, 0.11);
+      --shadow-lg: 0 8px 26px rgba(38, 70, 105, 0.15);
+      --transition-normal: 0.3s;
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: 'Poppins', Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      min-height: 100vh;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: var(--color-primary-dark);
+    }
+    .header {
+      background: linear-gradient(90deg, var(--color-primary) 70%, var(--color-primary-dark) 100%);
+      color: #fff;
+      padding: var(--space-4) var(--space-6);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(38,105,152,0.12);
+      letter-spacing: 1.5px;
+      margin: 0;
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--space-6);
+      margin: 0;
+      padding: 0;
+    }
+    .nav a {
+      font-weight: 600;
+      color: #fff;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding: var(--space-2) 0;
+    }
+    .nav a.active,
+    .nav a:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      padding: var(--space-2);
+    }
+    .mobile-menu-btn span {
+      width: 28px;
+      height: 4px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-btn.active span:nth-child(1) { 
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .mobile-menu-btn.active span:nth-child(2) { 
+      opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) { 
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-4);
+    }
+    .about-header {
+      text-align: center;
+      margin-bottom: var(--space-12);
+    }
+    .about-header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+    }
+    .about-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--color-gray-600);
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-8);
+    }
+    .about-section {
+      background-color: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-6);
+      box-shadow: var(--shadow-md);
+    }
+    .about-section h2 {
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+    .mission-section {
+      grid-column: 1/-1;
+      text-align: center;
+      background: linear-gradient(120deg, rgba(107, 70, 193, 0.05) 0%, rgba(56, 178, 172, 0.05) 100%);
+    }
+    .mission-section h2 {
+      display: inline-block;
+      border-bottom: 2px solid var(--color-primary);
+    }
+    .mission-section p {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .team-section {
+      grid-column: 1/-1;
+    }
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-6);
+      margin-top: var(--space-6);
+    }
+    .team-member {
+      text-align: center;
+      padding: var(--space-4);
+      background-color: var(--color-gray-100);
+      border-radius: var(--radius-lg);
+      transition: transform var(--transition-normal);
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: var(--space-4);
+      border: 3px solid var(--color-primary);
+    }
+    .team-member h3 {
+      margin-bottom: var(--space-1);
+    }
+    .team-member p {
+      color: var(--color-gray-600);
+      font-size: 0.9rem;
+    }
+    .footer {
+      background: var(--color-primary-dark);
+      color: #dde6f3;
+      padding: 3rem 2rem;
+      font-size: 0.96rem;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+    .footer-logo h2 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo p {
+      color: #b7c4d3;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .footer-links h3,
+    .footer-social h3 {
+      color: #fff;
+      margin-bottom: var(--space-3);
+      font-weight: 600;
+    }
+    .footer-links ul {
+      list-style: none;
+      margin: 0; 
+      padding: 0;
+    }
+    .footer-links li { 
+      margin: 0.3rem 0; 
+    }
+    .footer-links a {
+      color: #dde6f3;
+      transition: color 0.18s;
+      padding: var(--space-1) 0;
+      display: inline-block;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .social-icons {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: 0.5rem;
+    }
+    .social-icon {
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-icon svg {
+      stroke: #dde6f3;
+      transition: stroke 0.21s;
+      width: 24px; 
+      height: 24px;
+    }
+    .social-icon:hover svg {
+      stroke: #fff;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: var(--space-6);
+      border-top: 1px solid #1a283c;
+      padding-top: var(--space-3);
+      color: #b7c4d3;
+      line-height: 1.5;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .mobile-menu-btn { 
+        display: flex; 
+      }
+      .header {
+        padding: var(--space-3) var(--space-4);
+      }
+      .logo h1 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+      }
+      .nav { 
+        position: fixed;
+        top: 0; 
+        right: 0;
+        background: var(--color-primary);
+        height: 100vh;
+        width: 85vw;
+        max-width: 300px;
+        flex-direction: column;
+        padding: 5rem 1rem 1rem;
+        transform: translateX(100%);
+        transition: transform 0.33s;
+        opacity: 0; 
+        visibility: hidden; 
+        z-index: 100;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      }
+      .nav.nav-open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav ul { 
+        flex-direction: column; 
+        gap: var(--space-4);
+        width: 100%;
+      }
+      .nav a { 
+        font-size: 1.2rem; 
+        color: #fff;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-md);
+        width: 100%;
+        text-align: left;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .nav a:hover {
+        background: rgba(255,255,255,0.1);
+      }
+      .about-header h1 {
+        font-size: 2rem;
+      }
+      .about-section {
+        padding: var(--space-4);
+      }
+    }
+    @media (max-width: 480px) {
+      .header {
+        padding: var(--space-2) var(--space-3);
+      }
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+      .nav {
+        width: 90vw;
+        padding: 4rem 0.5rem 1rem;
+      }
+      .nav a {
+        font-size: 1.1rem;
+        padding: var(--space-2) var(--space-3);
+      }
+      .footer {
+        padding: 1.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+    /* Touch-friendly improvements */
+    @media (max-width: 768px) {
+      /* Disable hover effects on touch devices */
+      .team-member:hover {
+        transform: none;
+      }
+      /* Add active states for better touch feedback */
+      .team-member:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Python in my style</h1>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="topics.html">Topics</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  <main class="about-container">
+    <div class="about-header">
+      <h1>About Python in my style</h1>
+      <p>Learn about our mission, our story, and the team behind this educational platform.</p>
+    </div>
+    <div class="about-content">
+      <section class="about-section mission-section">
+        <h2>Our Mission</h2>
+        <p>At Python in my style, we're dedicated to making Python learning accessible, engaging, and personalized. We believe that programming education should adapt to different learning styles, not the other way around. Our goal is to provide comprehensive resources that help beginners and experienced developers alike master Python and apply it to real-world problems.</p>
+      </section>
+      <section class="about-section">
+        <h2>Our Story</h2>
+        <p>Python in my style began in 2025 when a group of Python enthusiasts recognized the need for a more personalized approach to Python education. Frustrated with one-size-fits-all tutorials, we set out to create a platform that adapts to different learning styles.</p>
+        <p>What started as a small collection of tutorials has grown into a comprehensive learning platform,to serve thousands of students worldwide. Throughout our journey, we've remained committed to our core values of accessibility, quality, and community.</p>
+      </section>
+      <section class="about-section">
+        <h2>Our Approach</h2>
+        <p>We believe in learning by doing. Our content is designed to be hands-on, with plenty of examples, exercises, and real-world applications. We cover Python from the ground up, assuming no prior programming knowledge, but also dive deep into advanced topics for seasoned developers.</p>
+        <p>Our curriculum is constantly updated to reflect the latest Python developments and best practices. We also incorporate feedback from our community to ensure our content meets the needs of our users.</p>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Python in my style</h2>
+        <p>Learn Python your way</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-instagram">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://t.me/Tech_in_my_style_bot" class="social-icon" aria-label="Telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-send">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </a>
+          <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-message-circle">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-youtube">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"></path>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Python in my style. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      const body = document.body;
+
+      if (!menuBtn || !nav) {
+        console.warn('Menu elements not found - check class names.');
+        return;
+      }
+
+      // Toggle menu on button click
+      menuBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent immediate close from outside click
+        menuBtn.classList.toggle('active');
+        nav.classList.toggle('nav-open');
+        body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        if (nav.classList.contains('nav-open') && !nav.contains(event.target) && !menuBtn.contains(event.target)) {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu when clicking a nav link
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

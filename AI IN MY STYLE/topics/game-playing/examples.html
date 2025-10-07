@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example: Tic-Tac-Toe, Chess bots | AI Topics</title>
+    <link rel="icon" type="image/svg+xml" href="../../img/Ai.svg">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                    <h1><span class="gradient-text">Artificial Intelligence</span> In My Style</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../topics.html">Topics</a></li>
+                    <li><a href="../../about.html">About</a></li>
+                   
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../topics.html">Topics</a></li>
+                <li><a href="../../topics.html">AI in Game playing</a></li>
+                <li>Example: Tic-Tac-Toe, Chess bots</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Subtopic Content -->
+    <section class="subtopic-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="topic-nav glass">
+                        <h3>AI in Game playing</h3>
+                        <ul>
+                            <li ><a href="minimax.html">Minimax Algorithm</a></li>
+                            <li ><a href="alpha-beta.html">Alpha-beta pruning</a></li>
+                            <li class="active"><a href="examples.html">Example: Tic-Tac-Toe, Chess bots</a></li>
+                        </ul>
+                        <h3>Related Topics</h3>
+                        <ul>
+                            <li><a href="../types/narrow-ai.html">Types of AI</a></li>
+                            <li><a href="../ai-ml-dl/differences.html">AI vs ML vs DL</a></li>
+                        </ul>
+                    </div>
+                </aside>
+                
+                <main class="main-content glass">
+                    <h1>Example: Tic-Tac-Toe, Chess bots</h1>
+                    
+                    <section class="content-section">
+                        <h2>Description</h2>
+                        <p>AI in game playing refers to developing intelligent agents that can make decisions in games. Two common examples that demonstrate the evolution of AI in games are Tic-Tac-Toe (simple, deterministic) and Chess Bots (complex, strategic).
+<li>
+Tic-Tac-Toe: A beginner-friendly game where an AI can use Minimax to always win or draw.</li>
+<li>
+Chess Bots: Use complex algorithms like Minimax with Alpha-Beta pruning, evaluation functions, and neural networks to play like humans or even better.</li>
+</p>
+                        
+                       
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Examples (Code)</h2>
+                        <p>Below is a Tic-Tac-Toe using Minimax (Simplified) </p>
+                        
+                        <pre><code class="language-python">def minimax(board, depth, is_maximizing):
+    if check_winner(board) == 'X':
+        return 1
+    elif check_winner(board) == 'O':
+        return -1
+    elif is_board_full(board):
+        return 0
+
+    if is_maximizing:
+        best_score = -float('inf')
+        for move in available_moves(board):
+            make_move(board, move, 'X')
+            score = minimax(board, depth + 1, False)
+            undo_move(board, move)
+            best_score = max(score, best_score)
+        return best_score
+    else:
+        best_score = float('inf')
+        for move in available_moves(board):
+            make_move(board, move, 'O')
+            score = minimax(board, depth + 1, True)
+            undo_move(board, move)
+            best_score = min(score, best_score)
+        return best_score
+
+</code></pre>
+                        
+                        
+                    </section>
+                    
+                   <section class="content-section">
+<h2>Real-World Applications</h2> <div class="applications-grid"> <div class="application-card"> <i class="fas fa-chess"></i> <h3>Chess AI (Stockfish, AlphaZero)</h3> <p>Plays at or above grandmaster level using deep learning and tree search algorithms.</p> </div> <div class="application-card"> <i class="fas fa-gamepad"></i> <h3>Tic-Tac-Toe Bots</h3> <p>Basic AI implementation to understand game theory and strategy evaluation.</p> </div> <div class="application-card"> <i class="fas fa-brain"></i> <h3>Reinforcement Learning in Games</h3> <p>Used in games like Dota 2 and Go to learn from self-play and achieve superhuman performance.</p> </div> <div class="application-card"> <i class="fas fa-robot"></i> <h3>Board Game Simulators</h3> <p>Enable AI to mimic human gameplay or train with human users.</p> </div> </div> </section>
+                    
+                    <section class="content-section">
+<h2>Where the Topic Is Applied</h2> <table> <tr> <th>Domain</th> <th>Application</th> </tr> <tr> <td>Game Development</td> <td>AI agents that can challenge human players</td> </tr> <tr> <td>AI Research</td> <td>Testing algorithms like Minimax, Alpha-Beta, RL</td> </tr> <tr> <td>Education</td> <td>Teaching AI concepts through simple games</td> </tr> <tr> <td>Entertainment</td> <td>Interactive and intelligent gameplay experiences</td> </tr> </table> </section>
+                    <section class="content-section">
+                        <h2>Resources</h2>
+                        <div class="resources-box">
+                            <p>Additional resources </p>
+                            <ul>
+                                <a href="https://youtu.be/CWuVgJ9_Y58?si=8I9KMvZL4QMJ_MPj"><li>YouTube video tutorials </li></a>
+                              <a href="https://drive.google.com/file/d/1W_vWQqk9WE4IRz5QfZcZXixhDSMFqbyb/view?usp=drive_link">  <li>PDF/DOC files via Drive links</li></a>
+                          
+                            </ul>
+                        </div>
+                    </section>
+                    
+                   <section class="content-section">
+<h2>Interview Questions with Answers</h2> <div class="accordion"> <div class="accordion-item"> <div class="accordion-header"> <h3>What AI algorithm is commonly used in Tic-Tac-Toe?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Minimax algorithm is typically used, allowing the AI to always win or draw by exploring all possible moves.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>How does a Chess AI like Stockfish make decisions?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>It uses Minimax with Alpha-Beta pruning, evaluation functions, and sometimes neural networks to predict optimal moves.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>What makes chess harder for AI compared to Tic-Tac-Toe?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Chess has a much larger state space and branching factor, requiring more advanced search and evaluation strategies.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>Can neural networks be used in game-playing AI?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Yes. Neural networks, especially in reinforcement learning (like AlphaZero), are used to learn strategies from scratch by self-play.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>Why is game playing a good testbed for AI?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Games provide a controlled environment with clear rules and goals, making them ideal for developing and evaluating intelligent behavior.</p> </div> </div> </div> </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                   <h2><span class="gradient-text">Artificial Intelligence</span> In My Style</h2>
+                    <p>Your comprehensive resource for learning Artificial Intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="topics.html">Topics</a></li>
+                        <li><a href="about.html">About</a></li>
+                    
+                    </ul>
+                </div>
+                 <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                 <p>&copy; 2025 Artificial Intelligence In My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

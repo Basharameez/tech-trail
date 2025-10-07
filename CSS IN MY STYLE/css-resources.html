@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Learning Resources</title>
+    <meta name="description" content="Complete HTML learning resources including tutorials, videos, notes, and roadmaps for web developers">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --css-blue: #264de4;
+            --css-blue-dark: #1e40af;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .resource-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(38, 77, 228, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--css-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .search-input {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(38, 77, 228, 0.2);
+        }
+
+        .section-content {
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        .section-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .css-tags-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .css-tags-bg::before {
+            content: '.class {';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 6rem;
+            color: rgba(38, 77, 228, 0.1);
+            font-family: monospace;
+        }
+
+        .css-tags-bg::after {
+            content: '}';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 6rem;
+            color: rgba(38, 77, 228, 0.1);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="text-gray-700 hover:text-[#264de4] transition-colors duration-300">
+                        <i class="fas fa-arrow-left text-xl"></i>
+                    </a>
+                    <h1 class="text-2xl font-bold">CSS<span class="text-[#264de4]">Hub</span></h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-[#264de4]">Home</a>
+                    <a href="#resources" class="nav-link text-gray-700 hover:text-[#264de4]">Resources</a>
+                    <a href="https://roadmap.sh" target="_blank" class="nav-link text-gray-700 hover:text-[#264de4]">Roadmap</a>
+                </div>
+                <button class="md:hidden text-gray-700" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-4 py-3 space-y-3">
+                <a href="index.html" class="block text-gray-700 hover:text-[#264de4]">Home</a>
+                <a href="#resources" class="block text-gray-700 hover:text-[#264de4]">Resources</a>
+                <a href="https://roadmap.sh/frontend" target="_blank" class="block text-gray-700 hover:text-[#264de4]">Roadmap</a>
+                <button class="w-full bg-[#264de4] text-white px-6 py-2 rounded-full hover:bg-[#1e40af] transition-colors duration-300">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="css-tags-bg bg-gradient-to-r from-gray-900 to-black pt-32 pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Master <span class="text-[#264de4]">CSS</span> and Web Development
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10">
+                Your complete resource hub for learning HTML, CSS, and web development. 
+                From beginner tutorials to advanced techniques, we've got everything you need.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#resources" class="bg-[#264de4] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#1e40af] transition-all duration-300 transform hover:scale-105">
+                    Explore Resources
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12" id="resources">
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto mb-12">
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search resources..." 
+                    class="search-input w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-full focus:outline-none focus:border-[#264de4]">
+                <i class="fas fa-search absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Resources Sections -->
+        <div class="space-y-8">
+            <!-- Notes Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[#264de4] p-6 flex justify-between items-center cursor-pointer" data-section="notes">
+                    <h2 class="text-2xl font-bold text-white flex items-center">
+                        <i class="fas fa-book-open mr-3"></i>
+                        Notes
+                    </h2>
+                    <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                </div>
+                <div class="section-content p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[#264de4]">
+                        <h3 class="text-xl font-semibold text-[#264de4] mb-3">Learning Web Design</h3>
+                        <p class="text-gray-600 mb-4"> CSS FULL NOTES - TECH IN MY STYLE</p>
+                        <a href="https://drive.google.com/drive/folders/1qEKP0ZgWdisCwI_6bHCU8l_1Ma8VtVbl?usp=drive_link" 
+                           class="block text-center bg-[#264de4] text-white py-2 px-4 rounded-lg hover:bg-[#1e40af] transition-colors duration-300"
+                           target="_blank">
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[#264de4]">
+                        <h3 class="text-xl font-semibold text-[#264de4] mb-3">CSS Short Notes</h3>
+                        <p class="text-gray-600 mb-4"> HTML & CSS SHORT NOTES</p>
+                        <a href="https://drive.google.com/file/d/1VEWR7VmwrErEVGezaM5_UgWqVTVwSsW2/view?usp=drive_link" 
+                           class="block text-center bg-[#264de4] text-white py-2 px-4 rounded-lg hover:bg-[#1e40af] transition-colors duration-300"
+                           target="_blank">
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                
+                </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[#264de4] p-6 flex justify-between items-center cursor-pointer" data-section="videos">
+                    <h2 class="text-2xl font-bold text-white flex items-center">
+                        <i class="fas fa-video mr-3"></i>
+                        Video Tutorials
+                    </h2>
+                    <i class="fas fa-chevron-down text-white transition-transform duration-300"></i>
+                </div>
+                <div class="section-content p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[#264de4]">
+                        <h3 class="text-xl font-semibold text-[#264de4] mb-3">CSS Basics -Dave Gray</h3>
+                        <p class="text-gray-600 mb-4">Fundamental concepts of CSS for beginners</p>
+                        <a href="https://youtu.be/n4R2E7O-Ngo?si=LeSM57OWziaZg_ST" 
+                           class="block text-center bg-[#264de4] text-white py-2 px-4 rounded-lg hover:bg-[#1e40af] transition-colors duration-300"
+                           target="_blank">
+                            Watch Video
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[#264de4]">
+                        <h3 class="text-xl font-semibold text-[#264de4] mb-3">CSS  -Future full stack</h3>
+                        <p class="text-gray-600 mb-4">Advanced CSS techniques and best practices</p>
+                        <a href="https://youtu.be/-G-zic_LS0A?si=EpT68ztRUm3CbN6A" 
+                           class="block text-center bg-[#264de4] text-white py-2 px-4 rounded-lg hover:bg-[#1e40af] transition-colors duration-300"
+                           target="_blank">
+                            Watch Video
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[#264de4] p-6">
+                    <h2 class="text-2xl font-bold text-white flex items-center">
+                        <i class="fas fa-map mr-3"></i>
+                        Developer Roadmaps
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-6">
+                        Follow structured learning paths created by experienced developers. These roadmaps will guide you through your web development journey.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="https://roadmap.sh/frontend" target="_blank" 
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[#264de4]">
+                            <h3 class="text-xl font-semibold text-[#264de4] mb-3">Frontend Development</h3>
+                            <p class="text-gray-600">Master HTML, CSS, JavaScript, and modern frontend frameworks</p>
+                        </a>
+                        <a href="https://roadmap.sh/backend" target="_blank"
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[#264de4]">
+                            <h3 class="text-xl font-semibold text-[#264de4] mb-3">Backend Development</h3>
+                            <p class="text-gray-600">Learn server-side programming and database management</p>
+                        </a>
+                        <a href="https://roadmap.sh/full-stack" target="_blank"
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[#264de4]">
+                            <h3 class="text-xl font-semibold text-[#264de4] mb-3">Full Stack Development</h3>
+                            <p class="text-gray-600">Combine frontend and backend skills to build complete applications</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4">CSS<span class="text-[#264de4]">Hub</span></h3>
+                    <p class="text-gray-400 mb-4">
+                        Your complete resource for learning web development and mastering HTML, CSS, and related technologies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="bg-gray-800 hover:bg-[#264de4] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/Tech_in_my_style_bot" class="bg-gray-800 hover:bg-[#264de4] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://www.instagram.com/tech_in_my_style?igsh=MWVpb2dzcmhwZ2NicQ==" class="bg-gray-800 hover:bg-[#264de4] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com/@tech-in-my-style?si=G48ugz-d8oO7-4Dw" class="bg-gray-800 hover:bg-[#264de4] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#notes" class="text-gray-400 hover:text-white transition-colors duration-300">Notes</a></li>
+                        <li><a href="#videos" class="text-gray-400 hover:text-white transition-colors duration-300">Video Tutorials</a></li>
+                        <li><a href="#certifications" class="text-gray-400 hover:text-white transition-colors duration-300">Certifications</a></li>
+                        <li><a href="https://roadmap.sh" class="text-gray-400 hover:text-white transition-colors duration-300">Roadmaps</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Learn</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">HTML</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">CSS</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">JavaScript</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Java</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Python</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://youtube.com/@tech-in-my-style?si=G48ugz-d8oO7-4Dw" class="text-gray-400 hover:text-white transition-colors duration-300">youtube</a></li>
+                        <li><a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="text-gray-400 hover:text-white transition-colors duration-300">whatsapp</a></li>
+                        <li><a href="https://www.instagram.com/tech_in_my_style?igsh=MWVpb2dzcmhwZ2NicQ==" class="text-gray-400 hover:text-white transition-colors duration-300">instagram</a></li>
+                        <li><a href="https://t.me/Tech_in_my_style_bot" class="text-gray-400 hover:text-white transition-colors duration-300">telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2025 CSSHub. All rights reserved.</p>
+                <p class="text-gray-400 flex items-center mt-4 md:mt-0">
+                    Made With <i class="fas fa-heart text-[#264de4] mx-1"></i> For All Users
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Section toggle functionality
+        document.querySelectorAll('[data-section]').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                const content = section.querySelector('.section-content');
+                const icon = header.querySelector('.fa-chevron-down');
+                
+                content.classList.toggle('collapsed');
+                icon.style.transform = content.classList.contains('collapsed') 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0)';
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.resource-card').forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93d87c7cdec4bf81',t:'MTc0Njg3MDE0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

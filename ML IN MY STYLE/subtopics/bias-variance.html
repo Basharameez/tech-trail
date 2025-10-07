@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bias-Variance Tradeoff | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Bias-Variance Tradeoff</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Bias-Variance Tradeoff</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>The Bias-Variance Tradeoff is a fundamental concept in machine learning that describes the balance between two types of errors that affect model performance: bias and variance.</p>
+    
+    <div class="glass-card">
+        <h3>Bias</h3>
+        <p>Bias refers to the error introduced by approximating a real-world problem, which may be complex, by a simplified model. High bias can cause the model to miss relevant relations between features and target outputs, leading to underfitting.</p>
+        <ul>
+            <li>Occurs when the model is too simple</li>
+            <li>Leads to systematic errors and poor performance on both training and test data</li>
+            <li>Example: Linear regression on a nonlinear dataset</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Variance</h3>
+        <p>Variance refers to the error introduced by the model's sensitivity to small fluctuations in the training set. High variance models can capture noise as if it were signal, leading to overfitting.</p>
+        <ul>
+            <li>Occurs when the model is too complex</li>
+            <li>Leads to good performance on training data but poor generalization to new data</li>
+            <li>Example: Deep decision trees that perfectly classify training data but fail on unseen data</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>The Tradeoff</h3>
+        <p>The goal is to find a balance where both bias and variance are minimized, achieving good generalization on unseen data. Adjusting model complexity and training data size are common ways to manage this tradeoff.</p>
+        <ul>
+            <li>Low bias + low variance = ideal model</li>
+            <li>High bias + low variance = underfitting</li>
+            <li>Low bias + high variance = overfitting</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Bias-Variance Visualization with Polynomial Regression</h3>
+        <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Generate data
+np.random.seed(0)
+X = np.sort(np.random.rand(100, 1) * 6 - 3, axis=0)
+y = np.sin(X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+# Function to fit and plot polynomial regression of different degrees
+degrees = [1, 3, 9]
+plt.figure(figsize=(15, 5))
+
+for i, degree in enumerate(degrees, 1):
+    poly = PolynomialFeatures(degree)
+    X_poly = poly.fit_transform(X)
+    
+    model = LinearRegression()
+    model.fit(X_poly, y)
+    y_pred = model.predict(X_poly)
+    
+    mse = mean_squared_error(y, y_pred)
+    plt.subplot(1, 3, i)
+    plt.scatter(X, y, color='blue', label='Data')
+    plt.plot(X, y_pred, color='red', label=f'Degree {degree}')
+    plt.title(f'Degree {degree} Polynomial\nMSE: {mse:.2f}')
+    plt.legend()
+
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Bias-Variance Tradeoff Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Model Selection:</strong> Choosing the right model complexity to avoid underfitting or overfitting</li>
+                    <li><strong>Regularization:</strong> Techniques like Lasso and Ridge help control variance by adding penalties</li>
+                    <li><strong>Ensemble Methods:</strong> Reduce variance by combining multiple models (e.g., Random Forests)</li>
+                    <li><strong>Data Collection:</strong> Increasing training data size to reduce variance and improve generalization</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Bias-Variance Tradeoff Illustration" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/EuBBz3bI-aA?si=VAt_7reze-E4m7gK">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1bPsvKlhck3sQvFaNtGTxen4IGv5b50Oj/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+          
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the bias-variance tradeoff?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>The bias-variance tradeoff is the balance between bias (error from overly simplistic models) and variance (error from overly complex models) that affects the model’s ability to generalize to new data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How can you reduce high variance in a model?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>To reduce high variance, you can use techniques like regularization, pruning (in decision trees), or increasing the size of the training data. Ensemble methods also help reduce variance.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What causes high bias and how can it be fixed?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>High bias occurs when the model is too simple to capture the data’s underlying pattern (underfitting). It can be fixed by increasing model complexity or using more relevant features.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. How does increasing training data affect bias and variance?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Increasing training data generally helps reduce variance because the model gets more representative examples but has little effect on bias.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+              
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

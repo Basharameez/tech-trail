@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Storage Classes in C - C In My Style</title>
+<link rel="icon" type="image/svg+xml" href="../img/c.svg">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/glassmorphism.css">
+    <link rel="stylesheet" href="../styles/topic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-code nav-icon"></i>
+                     <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#topics" class="nav-link">Topics</a>
+                <a href="../index.html#resources" class="nav-link">Resources</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+<main class="topic-main">
+        <div class="topic-container">
+            <aside class="topic-sidebar glass-card">
+                <div class="sidebar-header">
+                    <h3>Basics</h3>
+                    
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="functions.html" class="sidebar-link ">
+                        <i class="fas fa-question-circle"></i>
+                        Functions intro
+                    </a>
+                    <a href="functions-call.html" class="sidebar-link">
+                        <i class="fas fa-star"></i>
+                         Function call
+                    </a>
+                    <a href="functions-recursion.html" class="sidebar-link">
+                        <i class="fas fa-history"></i>
+                         Function Recuresion
+                    </a>
+                    <a href="functions-storage.html" class="sidebar-link active">
+                        <i class="fas fa-star"></i>
+                         Function storage 
+                    </a>
+                    <a href="functions-types.html" class="sidebar-link ">
+                        <i class="fas fa-star"></i>
+                         Function Types
+                    </a>
+                    
+                   
+                  
+                </nav>
+            </aside>
+ 
+    <main class="topic-main">
+        
+           
+            <div class="topic-content">
+                <header class="content-header">
+                    <nav class="breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../index.html#topics">Topics</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Functions</span>
+                        <i class="fas fa-chevron-right"></i>
+               <span>Function Storage</span>
+</nav>
+<h1 class="content-title">Function Storage Classes in C</h1>
+</header>
+
+<article class="content-article">
+
+  <section class="content-section">
+    <h2>Overview</h2>
+    <p>
+      In C, a <strong>storage class</strong> defines the scope (visibility), lifetime, and linkage of variables and functions. For functions, the primary concern is how the storage class affects linkage—whether the function is visible outside the file it is declared in.
+    </p>
+
+    <div class="highlight-box">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <h4>Quick Fact</h4>
+        <p>Unlike variables, functions can only have two storage classes: <code>extern</code> and <code>static</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Function Storage Classes</h2>
+    <div class="feature-grid">
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-link"></i></div>
+        <h4>extern</h4>
+        <p>This is the default. A function declared without a storage class is assumed to have external linkage, meaning it can be used across multiple files.</p>
+      </div>
+      <div class="feature-item glass-card">
+        <div class="feature-icon"><i class="fas fa-user-lock"></i></div>
+        <h4>static</h4>
+        <p>Limits the function's visibility to the file it is defined in. Useful for encapsulation and avoiding naming conflicts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Examples</h2>
+
+    <h4>1. External Function (default)</h4>
+    <div class="code-example glass-code">
+<pre><code class="language-c">// file1.c
+#include &lt;stdio.h&gt;
+
+void display() {
+    printf("Hello from file1.c\\n");
+}</code></pre>
+    </div>
+
+    <div class="code-example glass-code">
+<pre><code class="language-c">// file2.c
+void display();  // extern by default
+
+int main() {
+    display();  // Calls function from file1.c
+    return 0;
+}</code></pre>
+    </div>
+
+    <h4>2. Static Function</h4>
+    <div class="code-example glass-code">
+<pre><code class="language-c">// file1.c
+#include &lt;stdio.h&gt;
+
+static void greet() {
+    printf("Hello from static function\\n");
+}
+
+int main() {
+    greet();
+    return 0;
+}</code></pre>
+    </div>
+    <p>This function <code>greet()</code> cannot be called from another file.</p>
+  </section>
+
+  <section class="content-section">
+    <h2>Real-World Applications</h2>
+    <div class="applications-grid">
+      <div class="app-card glass-card">
+        <div class="app-icon"><i class="fas fa-cogs"></i></div>
+        <h4>Library Development</h4>
+        <p>Use <code>static</code> for helper functions that should not be exposed to users of the library.</p>
+      </div>
+      <div class="app-card glass-card">
+        <div class="app-icon"><i class="fas fa-code-branch"></i></div>
+        <h4>Modular Programming</h4>
+        <p>Use <code>extern</code> to allow functions to be shared across modules.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Interview Questions</h2>
+    <div class="interview-questions">
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>What is the default storage class of a function?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p>Functions are <code>extern</code> by default, meaning they can be called from other files.</p>
+        </div>
+      </div>
+
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>What is the purpose of declaring a function as <code>static</code>?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p>Declaring a function <code>static</code> limits its scope to the file it is defined in, preventing conflicts and ensuring encapsulation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Resources</h2>
+    <div class="resources-list">
+      <div class="resource-item">
+        <div class="resource-icon"><i class="fas fa-book"></i></div>
+        <div class="resource-content">
+          <h4>Topic pdf</h4>
+          
+          <a href="https://drive.google.com/file/d/1e8JbcgMtmnmVTJFoigDI73m_2iWMJ1go/view?usp=drive_link" target="_blank" class="resource-link">
+            Read More <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      
+  </section>
+</article>
+
+
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                       <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Master C programming with our comprehensive learning platform
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topics">Topics</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="topics/introduction.html">Introduction</a></li>
+                        <li><a href="topics/basics.html">C Basics</a></li>
+                        <li><a href="topics/pointers.html">Pointers</a></li>
+                        <li><a href="topics/memory-management.html">Memory Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                     <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+               <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+               <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 C Programming In My Style. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/topic.js"></script>
+</body>
+</html>

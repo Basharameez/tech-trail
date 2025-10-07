@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input and Output - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+              <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#java-basics">Java Basics</a> &gt;
+                <span>Input and Output</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Input and Output</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+    <!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Handling user input and displaying output is fundamental in creating interactive programs. Java provides flexible mechanisms for reading input from users and printing output to the console or files.</p>
+    <p>Understanding how to use classes like <code>Scanner</code> and <code>BufferedReader</code> helps you build applications that interact dynamically with users or data sources.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>Java provides two common ways to perform input:</p>
+    <ul>
+      <li><strong>Scanner:</strong> Part of <code>java.util</code>, easy to use for reading input from the keyboard. Methods like <code>nextLine()</code>, <code>nextInt()</code>, and <code>nextDouble()</code> are used.</li>
+      <li><strong>BufferedReader:</strong> Part of <code>java.io</code>, suitable for reading larger inputs. It works with <code>InputStreamReader</code> and requires exception handling.</li>
+    </ul>
+    <p>For output, <code>System.out.print</code> and <code>System.out.println</code> are used to display information on the console.</p>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+<section class="content-section" id="videos">
+  <div class="section-header">
+    <h2><i class="fas fa-video"></i> Video Resources</h2>
+  </div>
+  <div class="section-content video-cards">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/watch?v=e3dFoA4-tqs&t=1s" title="Java Scanner Tutorial" frameborder="0" allowfullscreen></iframe>
+      <h3>Java Scanner Tutorial</h3>
+      <p>Learn how to use Scanner for console input in Java.</p>
+    </div>
+    </div>
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1JCh-tKhWWcCdk6Qh13zLP2DbCgI-X8gr/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div></section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+  <h3>Using Scanner for Input</h3>
+  <pre><code class="language-java">
+import java.util.Scanner;
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = input.nextLine();
+        System.out.println("Hello, " + name + "!");
+        input.close();
+    }
+}
+  </code></pre>
+
+  <h3>Using BufferedReader for Input</h3>
+  <pre><code class="language-java">
+import java.io.*;
+
+public class BufferedReaderExample {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Enter your age: ");
+        String age = reader.readLine();
+        System.out.println("You are " + age + " years old.");
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-user-edit"></i> Form Handling</h3>
+      <p>Used in user registration forms and data input interfaces in console applications.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-database"></i> Data Entry Systems</h3>
+      <p>Reading values from users for storing in files or databases.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-terminal"></i> CLI Applications</h3>
+      <p>Command-line tools that require user commands and arguments use input classes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the difference between Scanner and BufferedReader?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Scanner is easier to use for parsing primitives and strings with built-in methods, while BufferedReader is faster and suitable for reading lines or large chunks of text.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: Why should you close Scanner or BufferedReader?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Closing releases the underlying system resources (like input streams) to prevent memory leaks or locking issues.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: Can Scanner read input from files?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Yes, Scanner can read from files using <code>new Scanner(new File("filename"))</code> by importing <code>java.io.File</code> and handling exceptions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

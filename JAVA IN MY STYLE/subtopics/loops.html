@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+               <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+              
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#java-basics">Java Basics</a> &gt;
+                <span>Loops</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Loops</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Loops are a core part of programming logic. They allow a block of code to run repeatedly, reducing redundancy and improving efficiency.</p>
+    <p>Understanding how and when to use <code>for</code>, <code>while</code>, and <code>do-while</code> loops is essential for performing repetitive tasks such as iterating through arrays or executing a task until a condition is met.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>Java supports several types of loops to execute code repeatedly based on conditions:</p>
+    <ul>
+      <li><strong>for loop:</strong> Ideal when the number of iterations is known beforehand. It includes initialization, condition checking, and increment/decrement in one line.</li>
+      <li><strong>while loop:</strong> Executes the loop body as long as the specified condition is true. Useful when the number of iterations is not known in advance.</li>
+      <li><strong>do-while loop:</strong> Similar to the while loop but guarantees at least one execution, as the condition is evaluated after the loop body.</li>
+    </ul>
+    <p>Loops improve program efficiency and are widely used in automation, data handling, and system processes.</p>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+<section class="content-section" id="videos">
+  <div class="section-header">
+    <h2><i class="fas fa-video"></i> Video Resources</h2>
+  </div>
+  <div class="section-content video-cards">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/8jLOx1hD3_o" title="Java Loops Tutorial" frameborder="0" allowfullscreen></iframe>
+      <h3>Java Loops Tutorial</h3>
+      <p>Learn the difference and usage of for, while, and do-while loops in Java.</p>
+    </div>
+    <div class="video-card">
+
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1B2ZLcy9pX__egOU_h08aIA5oXAF30X67/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+  <h3>Using a for loop</h3>
+  <pre><code class="language-java">
+public class ForLoopExample {
+    public static void main(String[] args) {
+        for(int i = 1; i <= 5; i++) {
+            System.out.println("Count: " + i);
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Using a while loop</h3>
+  <pre><code class="language-java">
+public class WhileLoopExample {
+    public static void main(String[] args) {
+        int i = 1;
+        while(i <= 5) {
+            System.out.println("Count: " + i);
+            i++;
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Using a do-while loop</h3>
+  <pre><code class="language-java">
+public class DoWhileLoopExample {
+    public static void main(String[] args) {
+        int i = 1;
+        do {
+            System.out.println("Count: " + i);
+            i++;
+        } while(i <= 5);
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-database"></i> Data Processing</h3>
+      <p>Loops are used to process records in databases and perform repetitive calculations.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-chart-line"></i> Statistical Analysis</h3>
+      <p>Repeated data aggregation or computation through arrays or lists using loops.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-cogs"></i> Automation Scripts</h3>
+      <p>Automate tasks like sending emails or generating reports through looping mechanisms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the difference between a while and do-while loop?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>A <code>while</code> loop checks the condition before executing the block, while a <code>do-while</code> loop executes the block once before checking the condition.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: Can a for loop be infinite? How?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Yes, by omitting all conditions: <code>for(;;)</code> will create an infinite loop.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: What are enhanced for-loops in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Enhanced for-loops are used to iterate over arrays and collections: <code>for (int num : numbers)</code>. They simplify iteration without managing index counters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+  <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

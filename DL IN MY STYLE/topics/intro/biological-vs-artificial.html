@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio vs Artificial neuron - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+              
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+            
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>Bio vs Artificial neuron</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>Understanding the fundamental difference between <strong>biological neurons</strong> (inspired by the brain) and <strong>artificial neurons</strong> (used in deep learning) is crucial to grasp how neural networks operate.</p>
+
+        <p>A biological neuron is a cell in the human nervous system that transmits information through electrical and chemical signals. In contrast, an artificial neuron is a mathematical model designed to mimic the behavior of its biological counterpart but in a simplified manner.</p>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Insight</div>
+            <p>Artificial neurons use weighted sums and activation functions to simulate the decision-making process of biological neurons in a computational context.</p>
+        </div>
+
+        <p>Here's how they compare:</p>
+        <ul>
+            <li><strong>Biological Neuron:</strong> Receives input via dendrites, processes it in the soma, and sends output through the axon.</li>
+            <li><strong>Artificial Neuron:</strong> Receives input values, applies weights, sums them, passes the result through an activation function, and outputs a value.</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Neuron.svg/1024px-Neuron.svg.png" alt="Biological Neuron Diagram">
+            <p class="caption">A diagram of a biological neuron</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*K9YOw3QoTu3zNDz9gzS3ug.png" alt="Artificial Neuron Model">
+            <p class="caption">An abstract representation of an artificial neuron</p>
+        </div>
+    </div>
+</section>
+
+           <section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>This example demonstrates how an artificial neuron processes input using weights, bias, and an activation function:</p>
+        
+        <div class="code-container">
+            <pre><code class="language-python">import numpy as np
+
+# Sigmoid activation function
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+# Artificial neuron computation
+def artificial_neuron(inputs, weights, bias):
+    weighted_sum = np.dot(inputs, weights) + bias
+    return sigmoid(weighted_sum)
+
+# Example inputs
+inputs = np.array([0.7, 0.3])
+weights = np.array([0.6, 0.4])
+bias = 0.1
+
+output = artificial_neuron(inputs, weights, bias)
+print("Neuron Output:", output)</code></pre>
+        </div>
+
+        <p>This code performs the following:</p>
+        <ul>
+            <li>Computes a weighted sum of the input features</li>
+            <li>Adds a bias term</li>
+            <li>Applies a sigmoid activation function</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-info-circle"></i> Note</div>
+            <p>This simplified artificial neuron is the foundation of deeper layers in neural networks.</p>
+        </div>
+    </div>
+</section>
+
+          <section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>Brain-Inspired Computing</h3>
+                <p>Understanding biological neurons has inspired developments in neuromorphic chips and brain-computer interfaces.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Neural Networks in AI</h3>
+                <p>Artificial neurons are the core units of deep learning models used in speech recognition, computer vision, and NLP.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-microscope"></i></div>
+                <h3>Medical Imaging</h3>
+                <p>Artificial neurons help mimic visual cortex behavior to detect anomalies in radiological scans like X-rays and MRIs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section id="resources" class="content-section">
+     <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/g0UZwFj8RDE?si=7zso1bH41AqFHVKk'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1ovE1anDUAD4yaxbW625VKA_qz1rXIsC9/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://neuronaldynamics.epfl.ch/" target="_blank">Neuronal Dynamics</a> by Wulfram Gerstner</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is a biological neuron?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>A biological neuron is a cell in the brain that transmits electrical signals. It consists of dendrites (input), soma (cell body), and axon (output).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is an artificial neuron?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>An artificial neuron is a mathematical model that receives input, applies weights and bias, sums them, and passes the result through an activation function to produce output.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do artificial neurons simulate biological neurons?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>They mimic the signal processing of biological neurons through the use of weighted inputs, non-linear activation, and output signals. The key difference is simplification for computational feasibility.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why are activation functions important in artificial neurons?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Activation functions introduce non-linearity, enabling the network to learn complex mappings between inputs and outputs. Without them, networks would behave like linear regressors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and Hierarchy- Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+          <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#string-enum-annotations">Java Collection Framework</a> &gt;
+                <span>Overview and Hierarchy</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>Overview and Hierarchy</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-sitemap"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Managing data efficiently is a cornerstone of effective software development. Java provides a unified architecture known as the <strong>Collection Framework</strong> that offers ready-to-use data structures and algorithms. But to choose the right tool, one must understand the hierarchy and relationships among interfaces and classes.</p>
+    <p>This foundation allows developers to write flexible and reusable code for a wide variety of data handling needs.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>The <strong>Java Collection Framework</strong> is a unified architecture for representing and manipulating collections. It includes:</p>
+    <ul>
+      <li><strong>Interfaces:</strong> Define abstract data types (e.g., List, Set, Queue, Map)</li>
+      <li><strong>Classes:</strong> Provide concrete implementations (e.g., ArrayList, HashSet, LinkedList, HashMap)</li>
+      <li><strong>Algorithms:</strong> Static methods for sorting, searching, etc. (in <code>Collections</code> class)</li>
+    </ul>
+
+    <h4>Main Hierarchy:</h4>
+    <img src="https://i.imgur.com/QtToZzn.png" alt="Java Collection Framework Hierarchy" style="max-width:100%; border-radius:12px; box-shadow: 0 0 12px rgba(0,0,0,0.1);">
+
+    <h4>Core Interfaces:</h4>
+    <ul>
+      <li><code>Collection</code> (root interface for List, Set, Queue)</li>
+      <li><code>List</code> (ordered collection) → <em>ArrayList, LinkedList</em></li>
+      <li><code>Set</code> (no duplicates) → <em>HashSet, TreeSet</em></li>
+      <li><code>Queue</code> (FIFO) → <em>PriorityQueue, LinkedList</em></li>
+      <li><code>Map</code> (key-value pairs, not a subtype of Collection) → <em>HashMap, TreeMap</em></li>
+    </ul>
+
+    <div class="info-box">
+      <strong>Did You Know?</strong>
+      <p>Java Collections were introduced in JDK 1.2 and have become one of the most used frameworks in enterprise-level software.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=rH0winlka8A" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+      <h3>Java Collection Framework Explained</h3>
+      <p>A beginner-friendly breakdown of Java collections and their hierarchy.</p>
+    </div>
+    <div class="video-card">
+  <a href="https://drive.google.com/file/d/1xhaZ-3nV4IF9vtLJZCqG2Po9rjZFBp7f/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Using a List</h3>
+  <pre><code class="language-java">
+import java.util.*;
+
+public class ListExample {
+    public static void main(String[] args) {
+        List&lt;String&gt; fruits = new ArrayList&lt;&gt;();
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+        }
+    }
+}
+  </code></pre>
+
+  <h3>Using a Map</h3>
+  <pre><code class="language-java">
+import java.util.*;
+
+public class MapExample {
+    public static void main(String[] args) {
+        Map&lt;Integer, String&gt; students = new HashMap&lt;&gt;();
+        students.put(101, "Alice");
+        students.put(102, "Bob");
+
+        for (Map.Entry&lt;Integer, String&gt; entry : students.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-database"></i> Data Storage</h3>
+      <p>Use collections like List and Map to store user input, search results, or configuration values.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-network-wired"></i> Networking</h3>
+      <p>Collections are used to manage requests, packets, and sessions in server applications.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-cogs"></i> Game Development</h3>
+      <p>Collections help manage game states, inventories, leaderboards, and more.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the root interface of the Collection hierarchy?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p>The <code>Collection</code> interface is the root of the hierarchy for List, Set, and Queue. However, <code>Map</code> is part of the collection framework but does not inherit from Collection.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q2: What's the difference between List, Set, and Map?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p><strong>List</strong> allows duplicates and maintains insertion order. <strong>Set</strong> doesn’t allow duplicates. <strong>Map</strong> stores key-value pairs and doesn't allow duplicate keys.</p>
+      </div>
+    </div>
+
+    <div class="interview-question">
+      <h3>Q3: Why is understanding the hierarchy important?</h3>
+      <div class="answer-toggle"><span>Show Answer</span><i class="fas fa-chevron-down"></i></div>
+      <div class="answer-content">
+        <p>It helps in choosing the right data structure for specific use cases and in writing more generic and maintainable code using polymorphism.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

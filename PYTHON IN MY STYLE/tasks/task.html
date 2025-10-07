@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Tasks - HTML In My Style</title>
+  <link rel="stylesheet" href="task.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>💎 PYTHON Tasks</h1>
+    <ul class="task-list" id="taskList"></ul>
+
+    <div class="editor-section" id="editorSection" style="display: none;">
+      <h2 id="taskTitle">Task</h2>
+      <p id="taskInstructions"></p>
+
+      <textarea id="codeEditor" placeholder="Write your python code here..."></textarea>
+
+      <div class="btn-group">
+        <button id="validateBtn">✅ Validate</button>
+        <button id="markCompleteBtn" disabled>🎉 Mark as Complete</button>
+      </div>
+
+      <div id="resultMessage"></div>
+
+      <!-- Live Preview -->
+      <div class="preview-card">
+        <h3>🔍 Live Preview</h3>
+        <iframe id="previewFrame"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script src="task.js"></script>
+</body>
+</html>

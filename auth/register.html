@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Signup - Tech In My Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style>
+:root {
+  --primary-color: #11998e;
+  --secondary-color: #38ef7d;
+  --gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  --input-border: #cfd9df;
+  --error-color: #e63946;
+  --success-color: #2ecc71;
+  --bg-color: #f4fdfc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--gradient);
+  padding: 16px;
+}
+
+/* Form container */
+.form-box, #forgotPasswordSection {
+  background: #fff;
+  padding: 36px 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  max-width: 95%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.form-box h2, #forgotPasswordSection h3 {
+  text-align: center;
+  margin-bottom: 26px;
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* Input groups */
+.input-group {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 14px;
+  border: 2px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: #fefefe;
+}
+
+.input-group input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 6px rgba(17, 153, 142, 0.4);
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #777;
+  background: #fff;
+  padding: 0 5px;
+  transition: 0.2s ease;
+  pointer-events: none;
+}
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -8px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--primary-color);
+}
+
+.input-group .error-msg {
+  color: var(--error-color);
+  font-size: 13px;
+  margin-top: 4px;
+  min-height: 18px;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--gradient);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(56, 239, 125, 0.4);
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(17, 153, 142, 0.5);
+}
+
+button:disabled {
+  background: #aeead9;
+  cursor: not-allowed;
+}
+
+/* Status messages */
+#status, #fpStatus {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 20px;
+}
+
+/* Links */
+a {
+  display: block;
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Forgot password section hidden by default */
+#forgotPasswordSection {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  .form-box, #forgotPasswordSection {
+    padding: 26px 22px;
+    width: 95%;
+  }
+  .form-box h2 {
+    font-size: 1.6rem;
+  }
+}
+</style>
+</head>
+<body>
+<div class="form-box" id="signupFormBox" aria-live="polite" aria-label="Create Account Form">
+  <h2>Create Account</h2>
+  <div class="input-group">
+    <input id="username" placeholder=" " required autocomplete="off" aria-describedby="username-error" />
+    <label for="username">Username</label>
+    <div class="error-msg" id="username-error"></div>
+  </div>
+  <div class="input-group">
+    <input id="email" type="email" placeholder=" " required autocomplete="off" aria-describedby="email-error" />
+    <label for="email">Email</label>
+    <div class="error-msg" id="email-error"></div>
+  </div>
+  <div class="input-group">
+    <input id="password" type="password" placeholder=" " required autocomplete="off" aria-describedby="password-error" />
+    <label for="password">Password</label>
+    <div class="error-msg" id="password-error"></div>
+  </div>
+  <button onclick="register()" id="registerBtn">Sign Up</button>
+  <a id="alreadyHaveAccountLink">Already have an account? Sign In</a>
+  <p id="status" role="alert" aria-live="assertive"></p>
+  <a href="#" id="forgotPwdLink">Forgot Password?</a>
+</div>
+
+<div id="forgotPasswordSection" aria-live="polite" aria-label="Forgot Password Form">
+  <h3>Retrieve Password</h3>
+  <div class="input-group">
+    <input id="fpEmail" type="email" placeholder=" " autocomplete="off" aria-describedby="fpEmail-error" />
+    <label for="fpEmail">Email</label>
+    <div class="error-msg" id="fpEmail-error"></div>
+  </div>
+  <button onclick="retrievePassword()" id="retrieveBtn">Retrieve Password</button>
+  <p id="fpStatus" role="alert" aria-live="assertive"></p>
+  <p><a href="#" id="backToSignup">Back to Signup</a></p>
+</div>
+
+<script>
+const registerBtn = document.getElementById('registerBtn');
+const retrieveBtn = document.getElementById('retrieveBtn');
+const alreadyHaveAccountLink = document.getElementById('alreadyHaveAccountLink');
+
+// Redirect to login.html when clicking Sign In link
+alreadyHaveAccountLink.addEventListener('click', e => {
+  e.preventDefault();
+  window.location.href = 'login.html';
+});
+
+// Validation functions
+function validateUsername(username) {
+  if (!username) return "Username is required.";
+  if (!/^[a-zA-Z0-9]{3,}$/.test(username)) return "At least 3 characters (letters/numbers only).";
+  return "";
+}
+function validateEmail(email) {
+  if (!email) return "Email is required.";
+  if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$/.test(email)) return "Enter a valid email address.";
+  return "";
+}
+function validatePassword(password) {
+  if (!password) return "Password is required.";
+  if (password.length < 8) return "At least 8 characters.";
+  if (!/[a-zA-Z]/.test(password) || !/[0-9]/.test(password)) return "Must include letters and numbers.";
+  return "";
+}
+function showError(inputId, msg) { document.getElementById(inputId + "-error").textContent = msg; }
+function clearErrors() {
+  showError("username", "");
+  showError("email", "");
+  showError("password", "");
+  document.getElementById('status').textContent = '';
+}
+
+// Real-time validation
+["username", "email", "password"].forEach(id => {
+  document.getElementById(id).addEventListener("input", function() {
+    let err = id === "username" ? validateUsername(this.value.trim()) :
+              id === "email" ? validateEmail(this.value.trim()) :
+              validatePassword(this.value);
+    showError(id, err);
+  });
+});
+
+// Register user
+function register() {
+  clearErrors();
+  const username = document.getElementById("username").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const status = document.getElementById("status");
+
+  let isValid = true;
+  const userErr = validateUsername(username);
+  const mailErr = validateEmail(email);
+  const passErr = validatePassword(password);
+
+  if (userErr) { showError("username", userErr); isValid = false; }
+  if (mailErr) { showError("email", mailErr); isValid = false; }
+  if (passErr) { showError("password", passErr); isValid = false; }
+
+  if (!isValid) {
+    status.style.color = "var(--error-color)";
+    status.textContent = "Please fix the errors above.";
+    return;
+  }
+
+  status.style.color = "#333";
+  status.textContent = "Registering...";
+  registerBtn.disabled = true;
+
+  fetch("https://tech-trail-w2ap.onrender.com/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, email, password })
+  })
+  .then(res => res.json())
+  .then(data => {
+    registerBtn.disabled = false;
+    if (data.message === "success") {
+      status.style.color = "var(--success-color)";
+      status.textContent = "Signup successful! Redirecting...";
+      localStorage.setItem("username", username);
+      setTimeout(() => window.location.href = "login.html", 1000);
+    } else {
+      status.style.color = "var(--error-color)";
+      if (data.message.toLowerCase().includes("email")) showError("email", data.message);
+      else if (data.message.toLowerCase().includes("username")) showError("username", data.message);
+      status.textContent = data.message;
+    }
+  })
+  .catch(() => {
+    registerBtn.disabled = false;
+    status.style.color = "var(--error-color)";
+    status.textContent = "Server error. Please try again.";
+  });
+}
+
+// Forgot password logic
+const forgotPwdLink = document.getElementById('forgotPwdLink');
+const backToSignup = document.getElementById('backToSignup');
+const signupFormBox = document.getElementById('signupFormBox');
+const forgotPasswordSection = document.getElementById('forgotPasswordSection');
+
+forgotPwdLink.addEventListener('click', e => {
+  e.preventDefault();
+  signupFormBox.style.display = 'none';
+  forgotPasswordSection.style.display = 'block';
+  clearFPFieldsAndErrors();
+});
+
+backToSignup.addEventListener('click', e => {
+  e.preventDefault();
+  forgotPasswordSection.style.display = 'none';
+  signupFormBox.style.display = 'block';
+  clearErrors();
+  document.getElementById('fpStatus').textContent = '';
+});
+
+function validateFPEmail(email) {
+  if (!email) return "Email is required.";
+  if (!/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,})$/.test(email)) return "Enter a valid email address.";
+  return "";
+}
+function showFPError(id, msg) { document.getElementById(id + "-error").textContent = msg; }
+function clearFPErrors() {
+  showFPError("fpEmail", "");
+  document.getElementById('fpStatus').textContent = '';
+}
+function clearFPFieldsAndErrors() {
+  document.getElementById('fpEmail').value = '';
+  clearFPErrors();
+}
+document.getElementById("fpEmail").addEventListener("input", function() {
+  showFPError("fpEmail", validateFPEmail(this.value.trim()));
+});
+function retrievePassword() {
+  clearFPErrors();
+  const email = document.getElementById('fpEmail').value.trim();
+  const status = document.getElementById('fpStatus');
+  let isValid = true;
+
+  const mailErr = validateFPEmail(email);
+  if (mailErr) {
+    showFPError('fpEmail', mailErr);
+    isValid = false;
+  }
+  if (!isValid) {
+    status.style.color = "var(--error-color)";
+    status.textContent = "Please fix the errors above.";
+    return;
+  }
+
+  status.style.color = "#333";
+  status.textContent = "Checking...";
+  retrieveBtn.disabled = true;
+
+  fetch("https://tech-trail-w2ap.onrender.com/forgot-password", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    retrieveBtn.disabled = false;
+    if (data.message === "success") {
+      status.style.color = "var(--success-color)";
+      status.textContent = "If this email is registered, instructions to reset your password have been sent.";
+    } else {
+      status.style.color = "var(--error-color)";
+      status.textContent = data.message || "Incorrect email address.";
+    }
+  })
+  .catch(() => {
+    retrieveBtn.disabled = false;
+    status.style.color = "var(--error-color)";
+    status.textContent = "Server error. Please try again.";
+  });
+}
+</script>
+</body>
+</html>

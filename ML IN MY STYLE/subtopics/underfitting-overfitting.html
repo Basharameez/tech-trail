@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Underfitting vs Overfitting | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Underfitting vs Overfitting</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Underfitting vs Overfitting</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Underfitting and overfitting are common problems in machine learning that occur when a model fails to generalize well from training data to unseen data.</p>
+    
+    <div class="glass-card">
+        <h3>Underfitting</h3>
+        <p>Underfitting happens when a model is too simple to capture the underlying structure of the data. It performs poorly on both training and test data, indicating that it hasn't learned enough from the data.</p>
+        <ul>
+            <li>Model has high bias and low variance</li>
+            <li>Fails to capture important patterns</li>
+            <li>Leads to poor training and testing performance</li>
+            <li>Example: Using a linear model for highly nonlinear data</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Overfitting</h3>
+        <p>Overfitting occurs when a model learns not only the underlying pattern but also the noise in the training data. This results in excellent training performance but poor generalization to new, unseen data.</p>
+        <ul>
+            <li>Model has low bias and high variance</li>
+            <li>Captures noise as if it were a meaningful pattern</li>
+            <li>Leads to excellent training but poor testing performance</li>
+            <li>Example: Deep decision trees or high-degree polynomial regression on small datasets</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Comparison Summary</h3>
+        <table header="4">
+            <thead>
+                <tr >
+                    <th>Aspect</th>
+                    <th>Underfitting</th>
+                    <th>Overfitting</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Model Complexity</td>
+                    <td>Too simple</td>
+                    <td>Too complex</td>
+                </tr>
+                <tr>
+                    <td>Training Error</td>
+                    <td>High</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>Test Error</td>
+                    <td>High</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Bias</td>
+                    <td>High</td>
+                    <td>Low</td>
+                </tr>
+                <tr>
+                    <td>Variance</td>
+                    <td>Low</td>
+                    <td>High</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Visualizing Underfitting and Overfitting with Polynomial Regression</h3>
+        <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+
+# Generate data
+np.random.seed(42)
+X = np.sort(np.random.rand(30, 1) * 10, axis=0)
+y = np.sin(X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+degrees = [1, 4, 15]  # 1: underfitting, 4: good fit, 15: overfitting
+plt.figure(figsize=(18, 5))
+
+for i, degree in enumerate(degrees, 1):
+    poly = PolynomialFeatures(degree)
+    X_poly = poly.fit_transform(X)
+    
+    model = LinearRegression()
+    model.fit(X_poly, y)
+    y_pred = model.predict(X_poly)
+    
+    mse = mean_squared_error(y, y_pred)
+    plt.subplot(1, 3, i)
+    plt.scatter(X, y, color='blue', label='Data')
+    plt.plot(X, y_pred, color='red', label=f'Degree {degree}')
+    plt.title(f'Polynomial Degree {degree}\nMSE: {mse:.2f}')
+    plt.legend()
+
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Handling Underfitting and Overfitting</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Underfitting Solutions:</strong> Use more complex models, add relevant features, reduce regularization.</li>
+                    <li><strong>Overfitting Solutions:</strong> Use regularization techniques (L1, L2), prune decision trees, gather more training data, use dropout in neural networks.</li>
+                    <li><strong>Model Validation:</strong> Employ cross-validation techniques to detect and avoid both problems.</li>
+                    <li><strong>Early Stopping:</strong> Stop training when validation error starts to increase to prevent overfitting.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/4506262/pexels-photo-4506262.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Underfitting vs Overfitting Concept" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/BqzgUnrNhFM?si=7aWhCoKWb_KSgVnC">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1AOvRLToIcbO-_LANVfdprc2wfbTJB6LA/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the difference between underfitting and overfitting?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Underfitting happens when a model is too simple and fails to capture the data's patterns, resulting in poor performance on both training and test data. Overfitting happens when a model is too complex and captures noise as if it were a pattern, resulting in good training but poor test performance.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How can you detect overfitting?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Overfitting can be detected when the model shows very low error on training data but significantly higher error on validation or test data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What techniques can be used to prevent overfitting?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Techniques include using regularization (L1, L2), early stopping, pruning trees, dropout in neural networks, and increasing training data.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. Why is underfitting problematic?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Underfitting is problematic because the model cannot capture the important patterns in data, resulting in poor predictions and performance even on training data.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+         <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

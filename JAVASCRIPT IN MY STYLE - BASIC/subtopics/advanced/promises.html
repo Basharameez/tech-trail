@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promises and Async/Await - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Promises and Async/Await</span>
+      </div>
+      <h1>Promises and Async/Await</h1>
+      <p>Master asynchronous programming with Promises and async/await syntax.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Asynchronous programming is essential in JavaScript, especially for operations like network requests or timers. Promises provide a cleaner alternative to callbacks, enabling better error handling and chaining of async operations. ES8 introduced <code>async/await</code>, simplifying asynchronous code and making it appear synchronous.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Here's an example showing both Promises and async/await in action:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>Promise vs Async/Await</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Using Promises
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received!");
+    }, 2000);
+  });
+}
+
+fetchData().then(data => {
+  console.log("Promise:", data);
+}).catch(error => {
+  console.error(error);
+});
+
+// Using Async/Await
+async function getData() {
+  try {
+    const result = await fetchData();
+    console.log("Async/Await:", result);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+getData();
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Creating and using Promises.</li>
+          <li>Chaining <code>.then()</code> and handling errors with <code>.catch()</code>.</li>
+          <li>Writing cleaner asynchronous code using <code>async</code> functions.</li>
+          <li>Awaiting asynchronous results with <code>await</code>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>A <strong>Promise</strong> represents a value that may be available now, or in the future, or never. It has three states: <code>pending</code>, <code>fulfilled</code>, and <code>rejected</code>.</p>
+        <ul>
+          <li><code>resolve()</code> is called when the async task succeeds.</li>
+          <li><code>reject()</code> is used when the task fails.</li>
+        </ul>
+        <p><strong>Async/Await</strong> is syntactic sugar over Promises, enabling you to write asynchronous code that looks synchronous.</p>
+        <ul>
+          <li><code>async</code> before a function makes it return a Promise.</li>
+          <li><code>await</code> can only be used inside <code>async</code> functions and waits for the Promise to resolve.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Fetching data from APIs using <code>fetch()</code> or <code>axios</code>.</li>
+          <li>Delaying operations or animations using timeouts.</li>
+          <li>Handling user input events asynchronously.</li>
+          <li>Building real-time applications with WebSockets or Firebase.</li>
+          <li>Executing background tasks or file uploads.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What are the three states of a JavaScript Promise?</p>
+            <ul>
+              <li>A. Start, Run, End</li>
+              <li>B. Begin, Finish, Error</li>
+              <li>C. Pending, Fulfilled, Rejected</li>
+              <li>D. Loading, Complete, Failed</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Pending, Fulfilled, Rejected</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What does the <code>await</code> keyword do?</p>
+            <ul>
+              <li>A. Delays function execution</li>
+              <li>B. Blocks other code execution</li>
+              <li>C. Waits for a Promise to resolve</li>
+              <li>D. Converts sync code to async</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Waits for a Promise to resolve</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which keyword is used to define an async function?</p>
+            <ul>
+              <li>A. wait</li>
+              <li>B. promise</li>
+              <li>C. async</li>
+              <li>D. function*</li>
+            </ul>
+            <p><strong>Answer:</strong> C. async</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which method is used to handle errors in a Promise?</p>
+            <ul>
+              <li>A. .fail()</li>
+              <li>B. .catch()</li>
+              <li>C. .error()</li>
+              <li>D. .reject()</li>
+            </ul>
+            <p><strong>Answer:</strong> B. .catch()</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+    
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>
