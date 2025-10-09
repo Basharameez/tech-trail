@@ -2,5 +2,5 @@
 .env 
 __pycache__/ 
 node_modules/ 
-*.log 
-.vscode/ 
+*.log   ← commented out or removed
+.vscode/  ← commented out or removed
