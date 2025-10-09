@@ -1,0 +1,43 @@
+{
+  "basha": {
+    "password": "basha",
+    "email": "bashah20@gmail.com",
+    "progress": {
+      "ai": [
+        "task1",
+        "task2"
+      ]
+    },
+    "total_completed": 2
+  },
+  "ram": {
+    "password": "ram",
+    "email": "ram@gmail.com",
+    "progress": {},
+    "total_completed": 0
+  },
+  "jayanth": {
+    "password": "jayanth",
+    "email": "jay@gmail.com",
+    "progress": {},
+    "total_completed": 0
+  },
+  "ramakrishna": {
+    "password": "ramakrishna",
+    "email": "ramakrishna@gmail.com",
+    "progress": {},
+    "total_completed": 0
+  },
+  "rama": {
+    "password": "rama",
+    "email": "rama@gmail.com",
+    "progress": {},
+    "total_completed": 0
+  },
+  "littlehearts": {
+    "password": "littlehearts",
+    "email": "littlehearts@gmail.com",
+    "progress": {},
+    "total_completed": 0
+  }
+}
