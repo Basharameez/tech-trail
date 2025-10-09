@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -210,3 +211,11 @@ __marimo__/
 .env
 backend/
 
+=======
+
+.env 
+__pycache__/ 
+node_modules/ 
+*.log   ← commented out or removed
+.vscode/  ← commented out or removed
+>>>>>>> 90f63f52cfee008fcbecca4e6dd9bda2873de1dd
