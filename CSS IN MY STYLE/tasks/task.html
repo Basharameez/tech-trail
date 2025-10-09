@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS in My Style - Learn CSS Interactively</title>
+    <link rel="stylesheet" href="task.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./img/TECH.png" type="image/svg+xml">
+</head>
+
+<body>
+    <div class="app">
+        <!-- Animated Background -->
+        <div class="animated-bg">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+                <div class="shape shape-5"></div>
+                <div class="shape shape-6"></div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <button id="backBtn" class="btn btn-back">
+          <div class="btn-icon-wrapper">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </div>
+          <span>Back</span>
+        </button>
+
+                <h1 class="title">
+                    <span class="title-main">
+            <span class="title-css">CSS</span>
+                    <span class="title-style">IN MY STYLE</span>
+                    </span>
+                    <div class="title-underline"></div>
+                </h1>
+
+                <div class="header-right">
+                    <div class="exp-counter">
+                        <div class="exp-icon">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                </polygon>
+                            </svg>
+                        </div>
+                        <div class="exp-content">
+                            <span class="exp-number" id="expCount">0</span>
+                            <span class="exp-label">EXP</span>
+                        </div>
+                    </div>
+
+                    <button id="themeToggle" class="btn btn-theme">
+            <div class="theme-icon-container">
+              <svg class="icon sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg class="icon moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </div>
+          </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h2 class="hero-title">Master CSS with Interactive Learning</h2>
+                    <p class="hero-subtitle">Complete 30 tasks across 3 levels and earn your certificate</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">30</span>
+                            <span class="stat-label">Tasks</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">600</span>
+                            <span class="stat-label">Total EXP</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Certificate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Levels Section -->
+            <div class="levels-container">
+                <!-- Beginner Level -->
+                <div class="level-section" data-level="beginner">
+                    <div class="level-decoration">
+                        <div class="level-glow"></div>
+                        <div class="level-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+
+                    <div class="level-header">
+                        <div class="level-info">
+                            <div class="level-title-wrapper">
+                                <span class="level-badge beginner">
+                  <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                  Beginner
+                </span>
+                                <h2 class="level-title">CSS Fundamentals</h2>
+                            </div>
+                            <div class="level-progress">
+                                <div class="progress-info">
+                                    <span class="progress-text" id="beginnerProgress">0/10 Completed</span>
+                                    <span class="progress-percentage">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill beginner-fill" id="beginnerProgressBar"></div>
+                                    <div class="progress-shine"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tasks-grid" id="beginnerTasks">
+                        <!-- Beginner tasks will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Intermediate Level -->
+                <div class="level-section" data-level="intermediate">
+                    <div class="level-decoration">
+                        <div class="level-glow"></div>
+                        <div class="level-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+
+                    <div class="level-header">
+                        <div class="level-info">
+                            <div class="level-title-wrapper">
+                                <span class="level-badge intermediate">
+                  <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                  Intermediate
+                </span>
+                                <h2 class="level-title">CSS Styling</h2>
+                            </div>
+                            <div class="level-progress">
+                                <div class="progress-info">
+                                    <span class="progress-text" id="intermediateProgress">0/10 Completed</span>
+                                    <span class="progress-percentage">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill intermediate-fill" id="intermediateProgressBar"></div>
+                                    <div class="progress-shine"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tasks-grid" id="intermediateTasks">
+                        <!-- Intermediate tasks will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Advanced Level -->
+                <div class="level-section" data-level="advanced">
+                    <div class="level-decoration">
+                        <div class="level-glow"></div>
+                        <div class="level-particles">
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                            <div class="particle"></div>
+                        </div>
+                    </div>
+
+                    <div class="level-header">
+                        <div class="level-info">
+                            <div class="level-title-wrapper">
+                                <span class="level-badge advanced">
+                  <svg class="badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.46 9-11V7l-10-5z"></path>
+                  </svg>
+                  Advanced
+                </span>
+                                <h2 class="level-title">CSS Layout & Advanced</h2>
+                            </div>
+                            <div class="level-progress">
+                                <div class="progress-info">
+                                    <span class="progress-text" id="advancedProgress">0/10 Completed</span>
+                                    <span class="progress-percentage">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill advanced-fill" id="advancedProgressBar"></div>
+                                    <div class="progress-shine"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tasks-grid" id="advancedTasks">
+                        <!-- Advanced tasks will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certificate Section -->
+            <div class="certificate-section">
+                <div class="certificate-decoration">
+                    <div class="certificate-glow"></div>
+                    <div class="certificate-sparkles">
+                        <div class="sparkle"></div>
+                        <div class="sparkle"></div>
+                        <div class="sparkle"></div>
+                        <div class="sparkle"></div>
+                    </div>
+                </div>
+
+                <div class="certificate-card">
+                    <div class="certificate-header">
+                        <h2 class="certificate-title">
+                            <div class="title-icon">
+                                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10,9 9,9 8,9"></polyline>
+                                </svg>
+                            </div>
+                            <span>Certificate of Completion</span>
+                        </h2>
+                        <div class="certificate-status" id="certificateStatus">
+                            <svg class="icon lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <circle cx="12" cy="16" r="1"></circle>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <span>0/30 Tasks Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="certificate-preview">
+                        <div class="certificate-overlay" id="certificateOverlay">
+                            <div class="overlay-content">
+                                <div class="lock-animation">
+                                    <svg class="icon lock-icon-large" viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <circle cx="12" cy="16" r="1"></circle>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                </div>
+                                <p>Complete all 30 tasks to unlock your certificate!</p>
+                            </div>
+                        </div>
+                        <img src="3.png" alt="Certificate Preview" class="certificate-image">
+                    </div>
+
+                    <div class="certificate-actions" id="certificateActions">
+                        <div class="name-input-group">
+                            <label for="userName">Enter your name:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="userName" placeholder="Your full name" maxlength="50">
+                                <div class="input-focus-border"></div>
+                            </div>
+                        </div>
+                        <button class="btn btn-certificate" id="downloadCertificate">
+              <div class="btn-content">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Certificate</span>
+              </div>
+              <div class="btn-shine"></div>
+            </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Task Modal -->
+        <div class="modal-overlay" id="taskModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modalTitle">Task Title</h3>
+                    <button class="btn btn-close" id="closeModal">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+                </div>
+
+                <div class="modal-content">
+                    <div class="task-instructions" id="taskInstructions">
+                        <!-- Task instructions will be loaded here -->
+                    </div>
+
+                    <!-- Validation feedback moved to top for better visibility -->
+                    <div class="validation-feedback" id="validationFeedback"></div>
+
+                    <div class="editor-container">
+                        <div class="editor-section">
+                            <div class="editor-header">
+                                <div class="editor-title">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                    <span id="editorTitleText">HTML Editor</span>
+                                </div>
+                                <div class="editor-actions">
+                                    <button class="btn btn-small btn-secondary" id="htmlBtn">HTML</button>
+                                    <button class="btn btn-small btn-secondary" id="cssBtn">CSS</button>
+                                    <button class="btn btn-small btn-validate" id="validateCode">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Validate
+                  </button>
+                                    <button class="btn btn-small btn-success" id="submitCode" disabled>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    Submit
+                  </button>
+                                    <button class="btn btn-small btn-warning" id="showSolution" disabled>
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                      <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Show Solution (-5 EXP)
+                  </button>
+                                </div>
+                            </div>
+                            <textarea id="codeEditor" placeholder="Write your CSS code here..."></textarea>
+                        </div>
+
+                        <div class="preview-section">
+                            <div class="preview-header">
+                                <div class="preview-title">
+                                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                    <span>Live Preview</span>
+                                </div>
+                                <div class="preview-status">
+                                    <div class="status-dot"></div>
+                                    <span>Live</span>
+                                </div>
+                            </div>
+                            <iframe id="livePreview" title="Live Preview"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="task.js"></script>
+</body>
+
+</html>

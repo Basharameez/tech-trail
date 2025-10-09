@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this and super Keywords - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+              <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+               
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#oop">Object-Oriented Programming (OOP)</a> &gt;
+                <span>this and super Keywords</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>this and super Keywords</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>The <code>this</code> and <code>super</code> keywords provide a way to refer to the current class instance and the parent class respectively.</p>
+    <p>Understanding these keywords is essential to manage class inheritance and object references efficiently in Java.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p><code>this</code> is a reference variable in Java that refers to the current object.</p>
+    <p><code>super</code> is a reference variable used to refer to the immediate parent class object.</p>
+    <ul>
+      <li><strong>Usage of <code>this</code> keyword:</strong>
+        <ul>
+          <li>To refer to current class instance variables when they are shadowed by method parameters.</li>
+          <li>To invoke current class methods.</li>
+          <li>To call current class constructors (constructor chaining).</li>
+        </ul>
+      </li>
+      <li><strong>Usage of <code>super</code> keyword:</strong>
+        <ul>
+          <li>To access parent class variables if they are hidden by child class variables.</li>
+          <li>To invoke parent class methods overridden in the child class.</li>
+          <li>To call parent class constructors.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=R1SXNJElXHo&t=1s" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">      <h3>Java this Keyword</h3>
+      <p>Explains how the <code>this</code> keyword works in Java.</p>
+    </div>
+ <div class="video-card">
+  <a href="https://drive.google.com/file/d/1n-NV-UVxb16Oys6Y9xvv0OoNVfpbb8Fr/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Example Using <code>this</code> Keyword</h3>
+  <pre><code class="language-java">
+class Student {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;         // 'this' distinguishes instance variable from parameter
+        this.name = name;
+    }
+
+    void display() {
+        System.out.println("ID: " + this.id + ", Name: " + this.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student(101, "John");
+        s.display();
+    }
+}
+  </code></pre>
+
+  <h3>Example Using <code>super</code> Keyword</h3>
+  <pre><code class="language-java">
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+
+    void parentSound() {
+        super.sound();   // calls Animal's sound method
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound();
+        d.parentSound();
+    }
+}
+  </code></pre>
+
+  <h3>Example Using <code>super</code> Constructor</h3>
+  <pre><code class="language-java">
+class Person {
+    String name;
+
+    Person(String name) {
+        this.name = name;
+    }
+}
+
+class Employee extends Person {
+    int id;
+
+    Employee(String name, int id) {
+        super(name);   // calls Person's constructor
+        this.id = id;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", ID: " + id);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee e = new Employee("Alice", 1001);
+        e.display();
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-user"></i> Object Initialization</h3>
+      <p>Using <code>this</code> to avoid ambiguity during object creation in complex classes.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-code-branch"></i> Inheritance Hierarchy</h3>
+      <p><code>super</code> helps access overridden methods and parent constructors in subclass hierarchies.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-cogs"></i> Framework Development</h3>
+      <p>Frameworks use <code>this</code> and <code>super</code> to manage code reuse and override behavior efficiently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is the purpose of the <code>this</code> keyword in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>The <code>this</code> keyword refers to the current object instance and is commonly used to resolve naming conflicts between instance variables and parameters.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: How is the <code>super</code> keyword used in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p><code>super</code> is used to access parent class members (variables, methods) and to call parent class constructors from a subclass.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: Can you call one constructor from another using <code>this</code>?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Yes, using <code>this()</code> you can call another constructor of the same class to reuse initialization code (constructor chaining).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

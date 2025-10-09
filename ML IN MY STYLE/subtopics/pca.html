@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal Component Analysis (PCA) | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Principal Component Analysis (PCA)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Principal Component Analysis (PCA)</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Principal Component Analysis (PCA) is a popular dimensionality reduction technique used in machine learning and data analysis. It transforms a high-dimensional dataset into a lower-dimensional space by identifying the directions (principal components) that maximize variance in the data.</p>
+    
+    <div class="glass-card">
+        <h3>How PCA Works</h3>
+        <p>PCA finds new, uncorrelated variables called principal components, which are linear combinations of the original features. These components capture the most important information (variance) in the data, enabling simpler visualization, noise reduction, and faster computation.</p>
+        <ul>
+            <li>Identifies directions of maximum variance (principal components)</li>
+            <li>Projects data onto a smaller set of components while preserving variance</li>
+            <li>Helps in visualization and reducing overfitting by removing redundant features</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: PCA with scikit-learn</h3>
+        <pre><code>from sklearn.decomposition import PCA
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+
+# Load Iris dataset
+data = load_iris()
+X = data.data
+y = data.target
+
+# Apply PCA to reduce dimensions to 2
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Plotting the PCA result
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis', edgecolor='k', s=50)
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.title('PCA on Iris Dataset')
+plt.show()
+
+# Explained variance ratio
+print("Explained variance ratio:", pca.explained_variance_ratio_)</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>PCA Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Image Compression:</strong> Reducing image dimensionality for efficient storage and transmission</li>
+                    <li><strong>Finance:</strong> Reducing complexity in financial data for portfolio management and risk assessment</li>
+                    <li><strong>Genomics:</strong> Analyzing gene expression data to find important genetic variations</li>
+                    <li><strong>Visualization:</strong> Simplifying complex datasets for exploratory data analysis and plotting</li>
+                    <li><strong>Noise Reduction:</strong> Removing irrelevant features or noise from datasets</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/590021/pexels-photo-590021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Data visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/GBMMtXRiQX0?si=n8bFoA-sctoDsftO">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1jXn3rEEFh4DyCdETnnaK_GxDf7xfcrqw/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+          
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the main purpose of Principal Component Analysis?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>PCA is used to reduce the dimensionality of a dataset by transforming it into a new set of variables (principal components) that capture the maximum variance.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How does PCA help in reducing overfitting?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>By reducing the number of features to only the most important components, PCA removes noise and redundant features, which can help improve model generalization and reduce overfitting.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What is explained variance ratio in PCA?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It indicates the proportion of the dataset's variance captured by each principal component, helping to understand how much information each component holds.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. Can PCA be applied to non-linear data?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>PCA is a linear technique and may not capture non-linear relationships well. For non-linear data, techniques like Kernel PCA or t-SNE can be used.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                 
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

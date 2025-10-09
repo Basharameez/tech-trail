@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operators - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Operators</span>
+      </div>
+      <h1>Operators</h1>
+      <p>Learn about arithmetic, comparison, logical, assignment, and other types of operators in JavaScript used to perform operations on variables and values.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript offers a rich set of operators that are essential for building logic, performing calculations, comparisons, and manipulating values. These operators include arithmetic, comparison, logical, assignment, bitwise, and more. They are used in almost every line of code to control the behavior of expressions and conditions.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>This code snippet demonstrates various operators in JavaScript:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Operators</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Arithmetic Operators
+let sum = 10 + 5;        // 15
+let difference = 10 - 5; // 5
+let product = 10 * 5;    // 50
+let quotient = 10 / 2;   // 5
+let remainder = 10 % 3;  // 1
+
+// Comparison Operators
+console.log(5 > 3);      // true
+console.log(5 === "5");  // false
+console.log(5 == "5");   // true
+
+// Logical Operators
+let a = true, b = false;
+console.log(a && b);     // false
+console.log(a || b);     // true
+console.log(!a);         // false
+
+// Assignment Operators
+let x = 10;
+x += 5;                  // x = 15
+
+// Ternary Operator
+let age = 20;
+let status = (age >= 18) ? "Adult" : "Minor";
+console.log(status);     // "Adult"
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Basic arithmetic and modulus operations</li>
+          <li>Strict vs loose equality comparison</li>
+          <li>Logical AND, OR, and NOT operations</li>
+          <li>Assignment operator with shorthand</li>
+          <li>Conditional logic using ternary operator</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript operators allow manipulation and evaluation of variables and expressions. They include:
+        <ul>
+          <li><strong>Arithmetic Operators:</strong> <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>**</code></li>
+          <li><strong>Comparison Operators:</strong> <code>==</code>, <code>===</code>, <code>!=</code>, <code>!==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code></li>
+          <li><strong>Logical Operators:</strong> <code>&&</code>, <code>||</code>, <code>!</code></li>
+          <li><strong>Assignment Operators:</strong> <code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code></li>
+          <li><strong>Other Operators:</strong> <code>typeof</code>, <code>instanceof</code>, <code>in</code>, ternary (<code>?</code>:<code></code>)</li>
+        </ul>
+        Understanding how and when to use these operators is key to building logical conditions and expressions in JavaScript.
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li><strong>Form Validation:</strong> Use logical and comparison operators to enforce rules.</li>
+          <li><strong>UI Logic:</strong> Toggle elements or classes using ternary and logical operators.</li>
+          <li><strong>Calculations:</strong> Perform arithmetic in games, dashboards, and financial apps.</li>
+          <li><strong>Loops & Conditions:</strong> Use comparison and logical operators to control flow.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What is the result of <code>5 + '5'</code> in JavaScript?</p>
+            <ul>
+              <li>A. 10</li>
+              <li>B. "55"</li>
+              <li>C. NaN</li>
+              <li>D. Error</li>
+            </ul>
+            <p><strong>Answer:</strong> B. "55"</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which operator checks both value and type?</p>
+            <ul>
+              <li>A. ==</li>
+              <li>B. !=</li>
+              <li>C. ===</li>
+              <li>D. =</li>
+            </ul>
+            <p><strong>Answer:</strong> C. ===</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What does the logical OR (||) operator return?</p>
+            <ul>
+              <li>A. The first truthy value or the last value if none are truthy</li>
+              <li>B. Always true</li>
+              <li>C. The first falsy value</li>
+              <li>D. A Boolean only</li>
+            </ul>
+            <p><strong>Answer:</strong> A. The first truthy value or the last value if none are truthy</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Which of these is a valid use of the ternary operator?</p>
+            <ul>
+              <li>A. <code>let x = if (a > b) then a else b</code></li>
+              <li>B. <code>let x = (a > b) ? a : b</code></li>
+              <li>C. <code>let x = a > b ? : a : b</code></li>
+              <li>D. <code>let x = a > b then a else b</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>let x = (a > b) ? a : b</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+    
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

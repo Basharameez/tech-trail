@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Concurrency  - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+                <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+              
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Subtopic Content -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#multi-threading">Multi-Threading and Concurrency</a> &gt;
+                <span> Concurrency </span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1> Concurrency </h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+<!-- Thinking Section -->
+<section class="content-section" id="thinking">
+  <div class="section-header">
+    <h2><i class="fas fa-brain"></i> Thinking</h2>
+  </div>
+  <div class="section-content">
+    <p>Modern software systems often need to perform many tasks at once—such as responding to user input while processing data. Concurrency enables these tasks to make progress independently, improving responsiveness and efficiency.</p>
+    <p>Rather than completing tasks one after the other, a concurrent system overlaps them, allowing better resource utilization and responsiveness in both single and multi-core environments.</p>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+  <div class="section-header">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+  </div>
+  <div class="section-content">
+    <p>Concurrency in Java refers to the ability of the system to execute multiple tasks simultaneously or in overlapping time periods. Java provides a robust concurrency model using threads, synchronization mechanisms, and high-level concurrent APIs from the <code>java.util.concurrent</code> package.</p>
+    <h3>Key Concepts:</h3>
+    <ul>
+      <li><strong>Thread:</strong> A unit of execution within a program that can run concurrently with other threads.</li>
+      <li><strong>Concurrency vs Parallelism:</strong> Concurrency is about dealing with multiple tasks at once (interleaving), while parallelism is about doing multiple tasks at the same time (simultaneously).</li>
+      <li><strong>Thread Scheduling:</strong> The JVM and OS collaborate to decide which thread runs and for how long.</li>
+      <li><strong>Executors:</strong> A higher-level API to manage thread execution and resource control.</li>
+      <li><strong>Race Conditions and Deadlocks:</strong> Problems that arise in concurrent environments if access to shared resources is not properly controlled.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Video Resources Section -->
+                <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <a href="https://www.youtube.com/watch?v=WldMTtUWqTg" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+      <h3>Java Concurrency Explained</h3>
+      <p>A clear and simple guide to understanding threads, concurrency, and managing multiple tasks in Java.</p>
+    </div>
+  </div>
+  <div class="video-card">
+  <a href="https://drive.google.com/file/d/1sZ97DSijjB1OOsdF9Sg5IVl0DpFPNn-3/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+  <div class="section-header">
+    <h2><i class="fas fa-code"></i> Examples (code)</h2>
+  </div>
+
+  <h3>Simple Concurrent Threads Example</h3>
+  <pre><code class="language-java">
+class PrintTask implements Runnable {
+    private String taskName;
+
+    public PrintTask(String name) {
+        this.taskName = name;
+    }
+
+    public void run() {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(taskName + " - Count: " + i);
+            try {
+                Thread.sleep(500); // Simulate work
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+public class ConcurrencyDemo {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new PrintTask("Task 1"));
+        Thread t2 = new Thread(new PrintTask("Task 2"));
+
+        t1.start();
+        t2.start();
+    }
+}
+  </code></pre>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+  <div class="section-header">
+    <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+  </div>
+  <div class="section-content applications-grid">
+    <div class="application-card">
+      <h3><i class="fas fa-microchip"></i> Operating Systems</h3>
+      <p>Manage multiple running processes and handle input/output concurrently.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-robot"></i> Robotics</h3>
+      <p>Allow robots to perform sensing, movement, and communication simultaneously.</p>
+    </div>
+    <div class="application-card">
+      <h3><i class="fas fa-globe"></i> Web Servers</h3>
+      <p>Serve multiple clients by spawning a thread for each connection or using thread pools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+  <div class="section-header">
+    <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+  </div>
+  <div class="section-content">
+    <div class="interview-question">
+      <h3>Q1: What is concurrency in Java?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Concurrency refers to the ability of a program to perform multiple tasks at the same time by overlapping their execution using multiple threads.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q2: How does Java support concurrency?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Java supports concurrency through the <code>Thread</code> class, <code>Runnable</code> interface, synchronization mechanisms, and the <code>java.util.concurrent</code> package (Executors, Futures, Locks, etc.).</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q3: What is the difference between concurrency and parallelism?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Concurrency is about dealing with multiple tasks at once (interleaving), while parallelism is about performing multiple tasks at exactly the same time on multiple processors.</p>
+      </div>
+    </div>
+    <div class="interview-question">
+      <h3>Q4: What are the challenges of concurrency?</h3>
+      <div class="answer-toggle">
+        <span>Show Answer</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="answer-content">
+        <p>Challenges include thread interference, race conditions, deadlocks, and managing thread lifecycle and resource access correctly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

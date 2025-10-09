@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+CNN Layers: Conv, Pooling, Flatten - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+CNN Layers: Conv, Pooling, Flatten</h1>
+                <div class="header-divider"></div>
+            </div>
+<section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p><strong>Convolutional Neural Networks (CNNs)</strong> are specialized deep learning models designed primarily for processing grid-like data such as images. The key layers in CNNs include:</p>
+        <ul>
+            <li><strong>Convolutional Layer (Conv):</strong> Applies filters (kernels) to the input to extract local features like edges, textures, and shapes by sliding over the input data.</li>
+            <li><strong>Pooling Layer:</strong> Reduces the spatial dimensions (width and height) of the feature maps, retaining important information while reducing computational load. Common types include max pooling and average pooling.</li>
+            <li><strong>Flatten Layer:</strong> Converts the pooled feature maps into a 1D vector to feed into fully connected (dense) layers for classification or regression tasks.</li>
+        </ul>
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Tip</div>
+            <p>Pooling layers help CNNs become invariant to small translations in the input images, improving generalization.</p>
+        </div>
+        <img src="https://via.placeholder.com/700x300?text=Convolutional+Layer+Illustration" alt="Convolutional Layer Illustration" style="max-width:100%; margin-top:15px;">
+        <img src="https://via.placeholder.com/700x300?text=Pooling+Layer+Illustration" alt="Pooling Layer Illustration" style="max-width:100%; margin-top:15px;">
+        <img src="https://via.placeholder.com/700x150?text=Flatten+Layer+Illustration" alt="Flatten Layer Illustration" style="max-width:100%; margin-top:15px;">
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example of CNN layers in Keras:</p>
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+model = Sequential([
+    Conv2D(32, kernel_size=(3,3), activation='relu', input_shape=(28,28,1)),
+    MaxPooling2D(pool_size=(2,2)),
+    Conv2D(64, kernel_size=(3,3), activation='relu'),
+    MaxPooling2D(pool_size=(2,2)),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.summary()</code></pre>
+        </div>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-camera"></i></div>
+                <h3>Image Recognition</h3>
+                <p>Classifying objects in images with high accuracy using CNN architectures.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Analysis</h3>
+                <p>Extracting spatiotemporal features from video frames for action recognition and event detection.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-medkit"></i></div>
+                <h3>Medical Imaging</h3>
+                <p>Detecting diseases like cancer from MRI or X-ray scans with automated CNN models.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Autonomous Vehicles</h3>
+                <p>Processing sensor and camera data to identify obstacles and road signs for navigation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/Y1qxI-Df4Lk?feature=shared'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/18bhi9HRXhoQ9AEv9mlBnKVTkYqg0uMRA/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://cs231n.github.io/convolutional-networks/" target="_blank">CS231n: Convolutional Neural Networks</a></li>
+                    <li><a href="https://www.oreilly.com/library/view/deep-learning/9781491924570/" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the purpose of a convolutional layer in CNNs?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Convolutional layers extract local features by applying filters that scan over the input image, capturing patterns like edges and textures.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is pooling used in CNN architectures?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Pooling reduces spatial dimensions of feature maps, decreases computation, and helps networks become invariant to small input translations.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What does the flatten layer do?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>The flatten layer converts multi-dimensional feature maps into a 1D vector, making it suitable for fully connected layers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

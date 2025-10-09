@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Save/load models - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Save/load models</h1>
+                <div class="header-divider"></div>
+            </div>
+
+           <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>
+            Saving and loading models is a crucial step in deploying deep learning applications. 
+            It allows you to persist a trained model’s architecture and learned parameters to disk 
+            so you can reuse it later for inference or further training without retraining from scratch.
+        </p>
+        <p>
+            Different frameworks provide various methods for model serialization. For example, TensorFlow and Keras use 
+            the <code>save()</code> and <code>load_model()</code> functions, while PyTorch uses <code>torch.save()</code> 
+            and <code>torch.load()</code> for saving model state dictionaries or entire models.
+        </p>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Example: Saving and loading models in TensorFlow/Keras</p>
+        <pre><code class="language-python">
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Define a simple model
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(100,)),
+    Dense(10, activation='softmax')
+])
+
+# Compile and train the model
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+# model.fit(x_train, y_train, epochs=10)  # Assume training happens here
+
+# Save the entire model
+model.save('my_keras_model.h5')
+
+# Load the saved model
+loaded_model = tf.keras.models.load_model('my_keras_model.h5')
+        </code></pre>
+
+        <p>Example: Saving and loading models in PyTorch</p>
+        <pre><code class="language-python">
+import torch
+import torch.nn as nn
+
+class SimpleModel(nn.Module):
+    def __init__(self):
+        super(SimpleModel, self).__init__()
+        self.fc = nn.Linear(100, 10)
+
+    def forward(self, x):
+        return self.fc(x)
+
+model = SimpleModel()
+
+# Save model state_dict
+torch.save(model.state_dict(), 'model_state.pth')
+
+# Load model state_dict into a new model instance
+loaded_model = SimpleModel()
+loaded_model.load_state_dict(torch.load('model_state.pth'))
+loaded_model.eval()
+        </code></pre>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <h3>Model Deployment</h3>
+                <p>Persisting trained models to deploy on cloud services or edge devices.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Model Updates</h3>
+                <p>Loading saved models to continue training or fine-tuning with new data.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile and Edge AI</h3>
+                <p>Loading models on mobile apps or IoT devices for real-time inference.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-database"></i></div>
+                <h3>Model Versioning</h3>
+                <p>Managing multiple saved versions of models for A/B testing and rollback.</p>
+            </div>
+        </div>
+    </div>
+</section>
+            <section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1tiKa1CdWvgPWaaGgxNnyQ6qlfY2-OCkY/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.oreilly.com/library/view/deep-learning/9781492034854/" target="_blank">Deep Learning</a> by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</li>
+                    <li><a href="https://www.manning.com/books/production-ready-machine-learning" target="_blank">Production-Ready Machine Learning</a> by Sujan Perera</li>
+                    <li><a href="https://www.oreilly.com/library/view/deployment-and-maintenance/9781492088646/" target="_blank">Machine Learning Deployment</a> by Emmanuel Ameisen</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+         <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the difference between saving a full model and saving only the state_dict in PyTorch?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Saving the full model saves the entire architecture and weights, making loading easier but less flexible. Saving the <code>state_dict</code> only saves weights, requiring the model architecture code to recreate the model before loading weights.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How do you save and load a Keras model?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Use <code>model.save('path.h5')</code> to save and <code>tf.keras.models.load_model('path.h5')</code> to load the model.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is it important to call <code>model.eval()</code> after loading a PyTorch model for inference?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p><code>model.eval()</code> sets the model to evaluation mode, affecting layers like dropout and batch normalization to behave correctly during inference.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+          
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linear Regression (Simple & Multiple) | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+ <link rel="icon" type="image/x-icon" href="../img/ml.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+             
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Linear Regression (Simple & Multiple)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Linear Regression (Simple & Multiple)</h1>
+            
+          <section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Linear Regression is one of the simplest and most widely used algorithms in supervised machine learning. It models the relationship between a dependent variable (target) and one or more independent variables (features) by fitting a linear equation to observed data.</p>
+    
+    <div class="glass-card">
+        <h3>Simple Linear Regression</h3>
+        <p>Simple linear regression involves modeling the relationship between one independent variable (X) and one dependent variable (Y) using a straight line:</p>
+        <p><em>Y = β₀ + β₁X + ε</em></p>
+        <ul>
+            <li><strong>β₀:</strong> Intercept (value of Y when X=0)</li>
+            <li><strong>β₁:</strong> Slope (change in Y for a one-unit change in X)</li>
+            <li><strong>ε:</strong> Error term (difference between predicted and actual Y)</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Multiple Linear Regression</h3>
+        <p>Multiple linear regression extends simple linear regression by using multiple independent variables to predict the dependent variable:</p>
+        <p><em>Y = β₀ + β₁X₁ + β₂X₂ + ... + βₙXₙ + ε</em></p>
+        <ul>
+            <li>Allows modeling more complex relationships involving multiple features.</li>
+            <li>Each coefficient represents the effect of the corresponding feature on the target variable.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Simple Linear Regression Example in Python</h3>
+        <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+# Sample data
+X = np.array([1, 2, 3, 4, 5]).reshape(-1, 1)
+y = np.array([3, 4, 2, 5, 6])
+
+# Create and train model
+model = LinearRegression()
+model.fit(X, y)
+
+# Predictions
+y_pred = model.predict(X)
+
+# Plot
+plt.scatter(X, y, color='blue')
+plt.plot(X, y_pred, color='red')
+plt.title('Simple Linear Regression')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.show()
+</code></pre>
+    </div>
+
+    <div class="glass-card">
+        <h3>Multiple Linear Regression Example in Python</h3>
+        <pre><code>import numpy as np
+from sklearn.linear_model import LinearRegression
+
+# Sample data (3 features)
+X = np.array([
+    [1, 2, 3],
+    [2, 0, 1],
+    [3, 5, 2],
+    [4, 3, 3],
+    [5, 4, 5]
+])
+y = np.array([14, 8, 19, 18, 25])
+
+# Create and train model
+model = LinearRegression()
+model.fit(X, y)
+
+# Coefficients
+print("Intercept:", model.intercept_)
+print("Coefficients:", model.coef_)
+
+# Predict for new data
+new_data = np.array([[6, 3, 4]])
+prediction = model.predict(new_data)
+print("Prediction for", new_data, "is", prediction)
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Linear Regression Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Economics:</strong> Predicting consumer spending, forecasting sales, or analyzing economic growth.</li>
+                    <li><strong>Healthcare:</strong> Estimating patient risk scores, predicting disease progression.</li>
+                    <li><strong>Real Estate:</strong> Predicting housing prices based on features like size, location, and age.</li>
+                    <li><strong>Marketing:</strong> Analyzing the impact of advertising spend on sales.</li>
+                    <li><strong>Manufacturing:</strong> Predicting equipment failure or maintenance needs based on sensor data.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Linear regression graph" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/zUQr6HAAKp4?si=5R-AvKwHxVZlEyZ5">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1KUgTeXDPQ816tCJYR21EDrmSJ4M8McKu/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the difference between simple and multiple linear regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Simple linear regression involves one independent variable to predict the dependent variable, while multiple linear regression uses two or more independent variables.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. What assumptions does linear regression make?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <ul>
+                <li>Linearity: Relationship between features and target is linear.</li>
+                <li>Independence: Observations are independent.</li>
+                <li>Homoscedasticity: Constant variance of errors.</li>
+                <li>Normality: Residuals are normally distributed.</li>
+                <li>No multicollinearity in multiple regression.</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How do you evaluate the performance of a linear regression model?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Common evaluation metrics include Mean Squared Error (MSE), Root Mean Squared Error (RMSE), Mean Absolute Error (MAE), and R-squared (coefficient of determination).</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What is multicollinearity and why is it a problem in multiple linear regression?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Multicollinearity occurs when independent variables are highly correlated, which can make it difficult to estimate the coefficients accurately and affect model stability.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Can linear regression be used for classification problems?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Linear regression is not suitable for classification because it predicts continuous values. Logistic regression or other classification algorithms are used instead.</p>
+        </div>
+    </div>
+</section>
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

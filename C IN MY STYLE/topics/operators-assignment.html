@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Operators in C - C In My Style</title>
+<link rel="icon" type="image/svg+xml" href="../img/c.svg">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/glassmorphism.css">
+    <link rel="stylesheet" href="../styles/topic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-code nav-icon"></i>
+                       <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#topics" class="nav-link">Topics</a>
+                <a href="../index.html#resources" class="nav-link">Resources</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="topic-main">
+        <div class="topic-container">
+            <aside class="topic-sidebar glass-card">
+                <div class="sidebar-header">
+                    <h3>operation/operators</h3>
+                    
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="operators.html" class="sidebar-link ">
+                        <i class="fas fa-question-circle"></i>
+                        operators intro
+                    </a>
+                    <a href="operators-assignment.html" class="sidebar-link active">
+                        <i class="fas fa-history"></i>
+                        assigment operator
+                    </a>
+                    <a href="operators-precedence.html" class="sidebar-link">
+                        <i class="fas fa-star"></i>
+                       operation precidence
+                    </a>
+                    <a href="operators-typecasting.html" class="sidebar-link">
+                        <i class="fas fa-laptop-code"></i>
+                        typecasting                    </a>
+                   
+                </nav>
+            </aside>
+
+            <div class="topic-content">
+                <header class="content-header">
+                    <nav class="breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../index.html#topics">Topics</a>
+                        <i class="fas fa-chevron-right"></i>
+                       <span>Operations</span>
+                        <i class="fas fa-chevron-right"></i>
+                <span>Assignment Operator</span>
+</nav>
+<h1 class="content-title">Assignment Operators in C</h1>
+</header>
+
+<article class="content-article">
+
+  <section class="content-section">
+    <h2>Introduction</h2>
+    <p>
+      Assignment operators in C are used to assign values to variables. The most commonly used operator is <code>=</code>, which assigns the value on the right to the variable on the left.
+      C also provides compound assignment operators that combine arithmetic or bitwise operations with assignment.
+    </p>
+
+    <div class="highlight-box">
+      <i class="fas fa-lightbulb"></i>
+      <div>
+        <h4>Did You Know?</h4>
+        <p>The expression <code>x += 5;</code> is equivalent to <code>x = x + 5;</code> and is often used for concise and efficient coding.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Types of Assignment Operators</h2>
+    <ul class="styled-list">
+      <li><code>=</code> : Simple assignment</li>
+      <li><code>+=</code> : Add and assign</li>
+      <li><code>-=</code> : Subtract and assign</li>
+      <li><code>*=</code> : Multiply and assign</li>
+      <li><code>/=</code> : Divide and assign</li>
+      <li><code>%=</code> : Modulus and assign</li>
+      <li><code>&=</code> : Bitwise AND and assign</li>
+      <li><code>|=</code> : Bitwise OR and assign</li>
+      <li><code>^=</code> : Bitwise XOR and assign</li>
+      <li><code>&lt;&lt;=</code> : Left shift and assign</li>
+      <li><code>&gt;&gt;=</code> : Right shift and assign</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Example Program</h2>
+    <p>The following C program demonstrates various assignment operators:</p>
+
+    <div class="code-example glass-code">
+      <div class="code-header">
+        <div class="code-title"><i class="fas fa-code"></i> assignment_operators.c</div>
+        <button class="copy-btn" onclick="copyCode(this)">
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    int x = 10;
+    x += 5; // x = 15
+    printf("x += 5: %d\\n", x);
+
+    x -= 3; // x = 12
+    printf("x -= 3: %d\\n", x);
+
+    x *= 2; // x = 24
+    printf("x *= 2: %d\\n", x);
+
+    x /= 4; // x = 6
+    printf("x /= 4: %d\\n", x);
+
+    x %= 4; // x = 2
+    printf("x %%= 4: %d\\n", x);
+
+    return 0;
+}</code></pre>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Common Mistakes</h2>
+    <ul class="styled-list warning">
+      <li>Confusing <code>=</code> (assignment) with <code>==</code> (equality comparison)</li>
+      <li>Using uninitialized variables with assignment operators</li>
+      <li>Using <code>/=</code> with a divisor that could be zero</li>
+    </ul>
+  </section>
+
+  <section class="content-section">
+    <h2>Interview Questions</h2>
+    <div class="interview-questions">
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>What is the difference between = and == in C?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p><code>=</code> is used to assign a value, while <code>==</code> is used to compare two values for equality.</p>
+        </div>
+      </div>
+
+      <div class="question-item glass-card">
+        <div class="question-header" onclick="toggleAnswer(this)">
+          <h4>What is the result of x *= y + 1?</h4>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="question-answer">
+          <p>According to operator precedence, it is evaluated as <code>x = x * (y + 1)</code>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <h2>Resources</h2>
+    <div class="resources-list">
+      <div class="resource-item">
+        <div class="resource-icon"><i class="fas fa-book"></i></div>
+        <div class="resource-content">
+          <h4>Topic pdf</h4>
+          
+          <a href="https://drive.google.com/file/d/1NIsVTAmMXlkvPHwnAWP8Sw8gx283rTgg/view?usp=drive_link" target="_blank" class="resource-link">
+            Read More <i class="fas fa-external-link-alt"></i>
+          </a>
+        </div>
+      </div>
+
+      
+  </section>
+</article>
+     
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                       <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Master C programming with our comprehensive learning platform
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topics">Topics</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="topics/introduction.html">Introduction</a></li>
+                        <li><a href="topics/basics.html">C Basics</a></li>
+                        <li><a href="topics/pointers.html">Pointers</a></li>
+                        <li><a href="topics/memory-management.html">Memory Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                     <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+               <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+               <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 C Programming In My Style. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>     
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/topic.js"></script>
+</body>
+</html>

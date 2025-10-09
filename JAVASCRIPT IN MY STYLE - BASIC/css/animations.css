@@ -1,0 +1,159 @@
+@import 'variables.css';
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-normal);
+}
+
+/* Slide In Animation */
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.slide-in {
+  animation: slideInFromBottom var(--transition-normal);
+}
+
+/* Staggered animation for lists */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.stagger-item:nth-child(1) { animation: slideInFromBottom var(--transition-normal) forwards 0.1s; }
+.stagger-item:nth-child(2) { animation: slideInFromBottom var(--transition-normal) forwards 0.2s; }
+.stagger-item:nth-child(3) { animation: slideInFromBottom var(--transition-normal) forwards 0.3s; }
+.stagger-item:nth-child(4) { animation: slideInFromBottom var(--transition-normal) forwards 0.4s; }
+.stagger-item:nth-child(5) { animation: slideInFromBottom var(--transition-normal) forwards 0.5s; }
+.stagger-item:nth-child(6) { animation: slideInFromBottom var(--transition-normal) forwards 0.6s; }
+.stagger-item:nth-child(7) { animation: slideInFromBottom var(--transition-normal) forwards 0.7s; }
+.stagger-item:nth-child(8) { animation: slideInFromBottom var(--transition-normal) forwards 0.8s; }
+.stagger-item:nth-child(9) { animation: slideInFromBottom var(--transition-normal) forwards 0.9s; }
+.stagger-item:nth-child(10) { animation: slideInFromBottom var(--transition-normal) forwards 1s; }
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+.hover-shadow {
+  transition: box-shadow var(--transition-fast);
+}
+
+.hover-shadow:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Loading spinner */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--js-yellow);
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+/* Code typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end);
+}
+
+/* Page transitions */
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--js-black);
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+}
+
+.page-transition.active {
+  transform: translateY(0%);
+}
+
+/* Button animations */
+.btn-bounce:hover {
+  animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Logo animation */
+@keyframes logoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-spin {
+  animation: logoSpin 5s linear infinite;
+  animation-play-state: paused;
+}
+
+.logo-spin:hover {
+  animation-play-state: running;
+}

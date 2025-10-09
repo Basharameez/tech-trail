@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Detection (Classification) | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+             
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Email Spam Detection (Classification)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Email Spam Detection (Classification)</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Email Spam Detection is a classic classification problem in machine learning where the goal is to automatically identify whether an email is spam (unwanted or malicious) or not (legitimate). The system learns from a labeled dataset of emails tagged as spam or ham (non-spam) to classify new incoming emails accurately.</p>
+    
+    <div class="glass-card">
+        <h3>Key Aspects of Email Spam Detection</h3>
+        <ul>
+            <li>Supervised learning approach using labeled emails (spam vs. ham).</li>
+            <li>Works with textual data, requiring preprocessing like tokenization, vectorization (e.g., TF-IDF), and feature extraction.</li>
+            <li>Common algorithms include Naive Bayes, Logistic Regression, Support Vector Machines, and deep learning models.</li>
+            <li>Evaluation metrics focus on classification accuracy, precision, recall, and F1-score to handle imbalanced data.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example: Email Spam Detection using Naive Bayes</h3>
+        <pre><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report
+
+# Sample dataset loading (e.g., spam dataset)
+data = pd.read_csv('spam.csv', encoding='latin-1')[['v1', 'v2']]
+data.columns = ['label', 'text']
+data['label'] = data['label'].map({'ham': 0, 'spam': 1})
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(data['text'], data['label'], test_size=0.2, random_state=42)
+
+# Text vectorization
+vectorizer = TfidfVectorizer(stop_words='english')
+X_train_vec = vectorizer.fit_transform(X_train)
+X_test_vec = vectorizer.transform(X_test)
+
+# Train Naive Bayes classifier
+model = MultinomialNB()
+model.fit(X_train_vec, y_train)
+
+# Predict and evaluate
+y_pred = model.predict(X_test_vec)
+print(classification_report(y_test, y_pred))</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>Email Spam Detection Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Email Services:</strong> Filtering spam emails in Gmail, Outlook, Yahoo Mail.</li>
+                    <li><strong>Cybersecurity:</strong> Blocking phishing attacks and malicious links in emails.</li>
+                    <li><strong>Enterprise Email Systems:</strong> Protecting corporate networks from spam and malware.</li>
+                    <li><strong>Advertising:</strong> Preventing unwanted marketing and promotional emails.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1591060/pexels-photo-1591060.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Email spam filtering" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/vp87moMmPGI?si=dLf-nZlKlE9Z2g6d">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. Why is Naive Bayes commonly used for spam detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Naive Bayes works well with high-dimensional data such as text, assumes feature independence, is fast to train, and handles spam classification effectively despite this simplifying assumption.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How do you preprocess text data for spam detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Common preprocessing steps include removing punctuation, lowercasing, tokenization, removing stopwords, stemming/lemmatization, and converting text to numerical vectors using methods like TF-IDF or word embeddings.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How do you handle imbalanced datasets in spam detection?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Techniques include resampling (oversampling the minority class or undersampling the majority class), using appropriate evaluation metrics like precision, recall, and F1-score, and employing algorithms robust to imbalance.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What evaluation metrics are important for spam detection models?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Precision, recall, and F1-score are crucial to balance false positives and false negatives, since misclassifying legitimate emails as spam (false positives) can be costly.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Can deep learning be used for spam detection? What are its advantages?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, deep learning models like RNNs and transformers can capture complex patterns and context in emails better than traditional methods. They may improve accuracy but require more data and computational resources.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+          
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

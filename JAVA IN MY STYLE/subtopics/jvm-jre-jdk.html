@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JVM, JRE, and JDK - Java Programming in My Style</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="img/java-original.svg">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+     <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="../img/java-original.svg" alt="Java Logo">
+              <span>Java Programming In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                
+                <a href="../topics.html">Topics</a>
+            </div>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Navbar -->
+    <div class="subtopic-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt;
+                <a href="../topics.html">Topics</a> &gt;
+                <a href="../topics.html#introduction">Introduction</a> &gt;
+                <span>JVM, JRE, and JDK</span>
+            </div>
+
+            <div class="subtopic-header">
+                <h1>JVM, JRE, and JDK</h1>
+                
+            </div>
+
+            <div class="subtopic-content">
+    
+   <!-- Thinking Section -->
+<section class="content-section" id="thinking">
+    <div class="section-header">
+        <h2><i class="fas fa-brain"></i> Thinking</h2>
+    </div>
+    <div class="section-content">
+        <p>Understanding the JVM, JRE, and JDK is fundamental to grasping how Java works from writing code to running applications.</p>
+        <p>Each component plays a distinct role in Java development and execution, and knowing their differences helps in setting up and troubleshooting Java environments effectively.</p>
+    </div>
+</section>
+
+<!-- Description Section -->
+<section class="content-section" id="description">
+    <div class="section-header">
+        <h2><i class="fas fa-info-circle"></i> Description</h2>
+    </div>
+    <div class="section-content">
+        <p>Java is a platform-independent language due to the Java Virtual Machine and its runtime architecture. The key components are:</p>
+        <ul>
+            <li><strong>JVM (Java Virtual Machine):</strong> An abstract machine that runs Java bytecode. It provides a runtime environment to execute compiled Java programs, translating bytecode into machine-specific instructions.</li>
+            <li><strong>JRE (Java Runtime Environment):</strong> Includes the JVM along with core libraries and other components necessary to run Java applications. It does not include development tools.</li>
+            <li><strong>JDK (Java Development Kit):</strong> A superset of the JRE that contains tools required for Java application development like the compiler (javac), debugger, and other utilities.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Video Resources Section -->
+
+ <section class="content-section" id="videos">
+                    <div class="section-header">
+                        <h2><i class="fas fa-video"></i> Video Resources</h2>
+                    </div>
+                    <div class="section-content video-resources">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                
+                                <a href="https://www.youtube.com/watch?v=s7UgQ7_1KQY" target="_blank" class="play-btn">
+                                    <i class="fas fa-play-circle"></i>
+                                </a>
+            <h3>What is JVM?</h3>
+            <p>A simple explanation of the Java Virtual Machine.</p>
+        </div>
+<div class="video-card">
+  <a href="https://drive.google.com/file/d/1FpVssj37efGbNk-2Mu4PWRL9TRBMiyCt/view?usp=drive_link" target="_blank" class="pdf-link">
+    <div class="pdf-preview">
+      <i class="fas fa-file-pdf"></i>
+      <span>View PDF</span>
+    </div>
+  </a>
+  
+</div>
+</section>
+
+<!-- Examples Section -->
+<section class="content-section" id="examples">
+    <div class="section-header">
+        <h2><i class="fas fa-code"></i> Examples (code)</h2>
+    </div>
+    <h3>Example: Compile and Run a Java Program Using JDK</h3>
+    <pre><code class="language-bash">
+// Compile Java program
+javac HelloWorld.java
+
+// Run compiled bytecode on JVM
+java HelloWorld
+    </code></pre>
+    <p>This shows how JDK is used to compile code into bytecode, which the JVM then executes.</p>
+</section>
+
+<!-- Real-World Applications Section -->
+<section class="content-section" id="applications">
+    <div class="section-header">
+        <h2><i class="fas fa-briefcase"></i> Real-World Applications</h2>
+    </div>
+    <div class="section-content applications-grid">
+        <div class="application-card">
+            <h3><i class="fas fa-cogs"></i> JVM</h3>
+            <p>Enables platform independence by allowing Java bytecode to run on any device with a compatible JVM.</p>
+        </div>
+        <div class="application-card">
+            <h3><i class="fas fa-running"></i> JRE</h3>
+            <p>Used by end-users to run Java applications without needing development tools.</p>
+        </div>
+        <div class="application-card">
+            <h3><i class="fas fa-tools"></i> JDK</h3>
+            <p>Used by developers to write, compile, debug, and package Java applications.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Interview Questions Section -->
+<section class="content-section" id="interview-questions">
+    <div class="section-header">
+        <h2><i class="fas fa-user-tie"></i> Interview Questions</h2>
+    </div>
+    <div class="section-content">
+        <div class="interview-question">
+            <h3>Q1: What is the role of the JVM in Java?</h3>
+            <div class="answer-toggle">
+                <span>Show Answer</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="answer-content">
+                <p>The JVM executes Java bytecode, enabling Java to be platform-independent by translating bytecode to machine-specific code at runtime.</p>
+            </div>
+        </div>
+
+        <div class="interview-question">
+            <h3>Q2: How is JRE different from JVM?</h3>
+            <div class="answer-toggle">
+                <span>Show Answer</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="answer-content">
+                <p>JRE includes the JVM along with core libraries and runtime components to run Java applications, whereas JVM is only the engine that executes bytecode.</p>
+            </div>
+        </div>
+
+        <div class="interview-question">
+            <h3>Q3: Why do developers need the JDK?</h3>
+            <div class="answer-toggle">
+                <span>Show Answer</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="answer-content">
+                <p>JDK provides tools such as the compiler and debugger that developers need to write, compile, and debug Java applications, which are not present in the JRE.</p>
+            </div>
+        </div>
+
+        <div class="interview-question">
+            <h3>Q4: Can you run a Java program with just the JVM?</h3>
+            <div class="answer-toggle">
+                <span>Show Answer</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="answer-content">
+                <p>No, JVM alone cannot run Java programs. It requires the JRE, which includes the JVM plus necessary libraries and environment to run the application.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+                <!-- Navigation Section -->
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="../img/java-original.svg" alt="Java Logo">
+                    <span>Java Programming In My Style</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                  
+                    <a href="../topics.html">Topics</a>
+                </div>
+                <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Java Programming in My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

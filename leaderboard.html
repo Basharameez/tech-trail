@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Leaderboard - Tech In My Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Chart.js and Data Labels plugin -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+:root {
+  --primary: #2e375c;
+  --primary-accent: #3574e6;
+  --bg: #f7faff;
+  --card: #fff;
+  --text: #23263a;
+  --header-bg: #3950a1;
+  --header-text: #fff;
+  --shadow: 0 8px 24px rgba(45,68,136,0.09);
+  --gold: #FFD700; --silver: #C0C0C0; --bronze: #CD7F32;
+}
+body.dark {
+  --bg: #15172b; --card: #23263a; --text: #edf0ff;
+  --header-bg: #23263a; --header-text: #fff;
+  --shadow: 0 8px 32px rgba(12,20,60,0.28);
+}
+html, body { height:100%; background:var(--bg); color:var(--text); margin:0; padding:0; font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;}
+body { min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding-top:40px;}
+.container { max-width:980px; width:100%; background:var(--card); border-radius:18px;
+box-shadow:var(--shadow); overflow:hidden; padding-bottom:24px;}
+.leaderboard-header { background:var(--header-bg); padding:32px 24px 20px 24px; text-align:center; }
+.leaderboard-header h1 { color:var(--header-text); font-size:2.3rem; margin:0 0 6px; font-weight:bold; letter-spacing:1px;}
+.leaderboard-header p { color:var(--header-text); font-size:1rem; opacity:0.73; margin:0; }
+.controls { display:flex; align-items:center; gap:14px; padding:18px 26px; background:var(--card);
+box-shadow:0 2px 10px rgba(44,86,178,0.02);}
+input[type="text"], select { padding:9px 14px; border-radius:7px; border:1px solid #e3e8f3; font-size:15px; min-width:152px;
+outline:none; transition:border 0.15s; background:var(--bg); color:var(--text); }
+select { min-width:124px;}
+.spacer { flex:1; }
+button.theme-toggle { background:var(--primary-accent); color:white; border:none; padding:8px 16px; border-radius:6px;
+cursor:pointer; font-size:16px; font-weight:500; box-shadow:0 2px 6px rgba(53,116,230,0.10);
+transition:background 0.14s;}
+button.theme-toggle:hover { background:#2a62d4;}
+.leaderboard-table-wrap { overflow-x: auto; margin: 0 24px 24px 24px; }
+table { width:100%; border-collapse:collapse; margin-bottom:8px; background:transparent; font-size:16px;}
+th { background:#f3f6fc; color:#496ae1; padding:14px 6px; text-transform:uppercase; letter-spacing:.5px; font-size:14px;
+font-weight:700; border-bottom:1.5px solid #e8ebf3; user-select:none;}
+td { text-align:center; padding:13px 6px; font-weight:500; border-bottom:1px solid #eef1f8; background:transparent; }
+td.user-cell { display:flex; align-items:center; gap:14px; justify-content:flex-start; text-align:left;}
+.rank-medal { font-size:1.23rem; user-select:none;}
+.gold { color:var(--gold); } .silver { color:var(--silver); } .bronze { color:var(--bronze);}
+tr.top-row { font-weight:700; background:#f8f5e8 !important; border-left:4px solid #e3c062; }
+tr:hover td { background: #e7f0ff; cursor: pointer; }
+body.dark tr:hover td { background: #23263a; }
+a.user-link { color: #3574e6; text-decoration: none; font-weight:600; border-bottom:1.5px dashed #3574e6;
+transition: text-decoration .18s; cursor:pointer;}
+a.user-link:hover { text-decoration: underline;}
+.avatar { width:38px; height:38px; background:#dbdef8; border-radius:50%; display:flex; align-items:center; justify-content:center;
+font-weight:bold; color:#4665cc; font-size:1.17rem; user-select:none; border:2px solid #edf0ff; box-shadow:0 1px 3px #bac4e642;}
+body.dark .avatar { background:#232945; color:#b2c2f7; border:1.5px solid #23263a;}
+.back-btn { margin:18px 24px 24px 24px; display:block; width:auto; padding:13px 24px; font-size:15px;
+border-radius:9px; background:linear-gradient(135deg,#2e375c,#5a75be); color:white; font-weight:500; border:none;
+cursor:pointer; letter-spacing:.2px; transition:background .18s; user-select: none;}
+.back-btn:hover { background:linear-gradient(135deg,#233165,#3e60b9);}
+canvas { max-width:99%; margin-top:24px;}
+.chart-card, .modal-table-wrap, .modal-chart-wrap {
+background:var(--card); border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.06); padding:18px 12px; margin-bottom:18px;
+}
+#progressModal { display:none; position:fixed; z-index:10000; top:0; left:0; width:100vw; height:100vh;
+background:rgba(0,0,0,0.32); align-items:center; justify-content:center; padding:12px; overflow-y:auto; }
+#progressModal > div { background:var(--card); border-radius:12px; padding:28px 24px 24px 24px; max-width:950px; width:100%;
+max-height:85vh; box-shadow:0 8px 32px #0002; display:flex; gap:40px; color:var(--text);
+position:relative; flex-direction:column; align-items:stretch;}
+#modalUser { font-weight:600; font-size:1.3rem; color:var(--primary-accent); margin-bottom:20px; text-align:center;}
+.closeModalBtn { position:absolute; top:10px; right:15px; font-size:22px; background:none; border:none; cursor:pointer; color:var(--text); z-index:10; user-select:none;}
+.modal-content-bottom { display:flex; flex-wrap:wrap; gap:30px; justify-content:center;}
+.modal-table-wrap, .modal-chart-wrap, .chart-card {
+flex:1 1 320px; min-width:300px; max-width:420px;
+}
+.modal-summary { flex:1 1 340px; min-width:300px; max-width:420px; display:flex; flex-direction:column; align-items:stretch;}
+#progressTable, #courseSummaryTable { width:100%;
+border-collapse:separate; border-spacing:0 8px; font-size:15px; background:var(--card); border-radius:12px;
+box-shadow:0 3px 10px rgba(0,0,0,0.06); overflow:hidden; margin-bottom:12px;}
+#progressTable th, #progressTable td, #courseSummaryTable th, #courseSummaryTable td { padding:12px 16px; text-align:center; background-color: #f7f9fc;
+border-bottom:none; font-weight:600; color: var(--text);}
+#progressTable th, #courseSummaryTable th { background-color:var(--primary-accent);
+color:white; user-select:none;}
+body.dark #progressTable th, body.dark #courseSummaryTable th { background-color:#1842a1;}
+#courseSummarySelect { font-size:15px; border-radius:6px; border:1px solid #ddd; appearance:none; cursor:pointer;
+margin-bottom:15px; padding:8px 10px; width:100%; user-select:none;}
+#courseSummaryTable th, #courseSummaryTable td { background:#f7f9fc; color:var(--text); font-weight:600;}
+body.dark #courseSummaryTable th { background:#1842a1; color:#fff;}
+#courseSummaryTable { margin-top:8px;}
+.chart-card canvas { width:100% !important; background:transparent !important;}
+@media (max-width:900px) { #progressModal>div { max-height:90vh;} }
+</style>
+</head>
+<body>
+<div class="container" role="main">
+<section class="leaderboard-header">
+<h1>🏆 Leaderboard</h1>
+<p>Click a username for full course progress details.</p>
+</section>
+<section class="controls" aria-label="Search and filter leaderboard">
+<input type="text" id="searchInput" aria-label="Search user" placeholder="🔍 Search user..." />
+<select id="sortSelect" aria-label="Sort leaderboard">
+<option value="rank">Sort by Rank</option>
+<option value="score">Sort by Score</option>
+<option value="user">Sort by Username</option>
+</select>
+<span class="spacer" aria-hidden="true"></span>
+<button class="theme-toggle" aria-pressed="false" aria-label="Toggle dark/light theme" onclick="toggleTheme()">🌙 Toggle Theme</button>
+</section>
+<section class="leaderboard-table-wrap" aria-label="Leaderboard table">
+<table>
+<thead>
+<tr>
+<th scope="col">Rank</th>
+<th scope="col">User</th>
+<th scope="col">Total Tasks</th>
+</tr>
+</thead>
+<tbody id="board" role="rowgroup"></tbody>
+</table>
+</section>
+<canvas id="scoreChart" height="90" role="img" aria-label="Bar chart of total tasks completed by users"></canvas>
+<button class="back-btn" onclick="goHome()">⬅ Back to Dashboard</button>
+</div>
+<!-- Modal for user progress, with summary -->
+<div id="progressModal" role="dialog" aria-modal="true" aria-labelledby="modalUser" tabindex="-1">
+<div>
+<button class="closeModalBtn" onclick="closeModal()" aria-label="Close modal">&times;</button>
+<div id="modalUser" aria-live="polite">User Progress</div>
+<div class="modal-content-bottom">
+<div class="modal-table-wrap chart-card">
+<table id="progressTable" aria-label="Course-wise progress table" hidden>
+<thead><tr><th>Course Name</th><th>Tasks Completed</th></tr></thead>
+<tbody id="progressTableBody"></tbody>
+</table>
+</div>
+<div class="modal-chart-wrap chart-card">
+<canvas id="userProgressChart" width="360" height="300"></canvas>
+</div>
+<!-- Removed userCourseProgressTable and userCoursePieChart -->
+<div class="modal-summary chart-card">
+<select id="courseSummarySelect" aria-label="Select course for summary"></select>
+<table id="courseSummaryTable" style="display: none;">
+<thead>
+<tr>
+<th>Course</th>
+<th>Completed</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td id="summaryCourse">&ndash;</td>
+<td id="summaryCompleted">0</td>
+<td id="summaryTotal">0</td>
+</tr>
+</tbody>
+</table>
+<canvas id="courseSummaryPie" width="280" height="250"></canvas>
+</div>
+</div>
+</div>
+</div>
+<script>
+Chart.register({
+  id: 'customBgCard',
+  beforeDraw: (chart) => {
+    const ctx = chart.canvas.getContext('2d');
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--card') || '#fff';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  }
+});
+let leaderboardData = [];
+let courseTotals = {};
+let currentUserProgress = null;
+let progressChartInstance = null;
+let courseSummaryPieInstance = null;
+const medals = [
+  '<span class="rank-medal gold">🥇</span>',
+  '<span class="rank-medal silver">🥈</span>',
+  '<span class="rank-medal bronze">🥉</span>'
+];
+const chartCtx = document.getElementById('scoreChart').getContext('2d');
+let scoreChart;
+Chart.register(ChartDataLabels);
+// Helper: get user's initials
+function getInitials(name) {
+  if (!name) return "U";
+  const parts = name.split(/[ ._]/).filter(Boolean);
+  return parts.length === 1 ? parts[0][0].toUpperCase() : (parts[0][0] + parts[1][0]).toUpperCase();
+}
+function renderTable(data) {
+  const tbody = document.getElementById("board");
+  tbody.innerHTML = "";
+  data.forEach((userData, i) => {
+    tbody.innerHTML += `
+    <tr class="${i < 3 ? 'top-row' : ''}">
+      <td>${i < 3 ? medals[i] : (i + 1)}</td>
+      <td class="user-cell">
+        <span class="avatar">${getInitials(userData.user)}</span>
+        <a href="#" class="user-link" data-username="${userData.user}" tabindex="0">${userData.user}</a>
+      </td>
+      <td>${userData.score}</td>
+    </tr>
+    `;
+  });
+}
+function updateChart(data) {
+  const labels = data.map(u => u.user);
+  const scores = data.map(u => u.score);
+  if(scoreChart) { scoreChart.destroy(); scoreChart = null; }
+  scoreChart = new Chart(chartCtx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'Total Tasks Completed',
+        data: scores,
+        backgroundColor: '#3574e6'
+      }],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {display: false},
+        datalabels: {
+          color: 'white',
+          anchor: 'end',
+          align: 'top',
+          formatter: v => v
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 1 }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+}
+function applySearchAndSort() {
+  const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+  const sortValue = document.getElementById('sortSelect').value;
+  let filtered = leaderboardData.filter(u => u.user.toLowerCase().includes(searchTerm));
+  if(sortValue === "user") {
+    filtered.sort((a,b) => a.user.localeCompare(b.user));
+  } else if(sortValue === "score") {
+    filtered.sort((a,b) => b.score - a.score);
+  } else { //rank
+    filtered.sort((a,b) => b.score - a.score);
+  }
+  renderTable(filtered);
+  updateChart(filtered);
+}
+async function loadCourseTotals() {
+  try {
+    const res = await fetch('https://tech-trail-w2ap.onrender.com/courses/meta');
+    if(!res.ok) throw new Error("Failed to fetch course totals");
+    courseTotals = await res.json();
+  } catch {
+    courseTotals = {
+      "ai": 30,"ml":30,"dl":30,"java":30,"c":30,"html":30,
+      "css":30,"js":30,"js-intermediate":30,"python":30,"dsc":30
+    };
+  }
+}
+async function loadBoard() {
+  await loadCourseTotals();
+  try {
+    const res = await fetch('https://tech-trail-w2ap.onrender.com/leaderboard');
+    if (!res.ok) throw new Error("Failed to fetch leaderboard");
+    leaderboardData = await res.json();
+    applySearchAndSort();
+  } catch(e) {
+    document.getElementById("board").innerHTML = `<tr><td colspan="3">⚠ Failed to load leaderboard.</td></tr>`;
+    console.error(e);
+  }
+}
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  const themeBtn = document.querySelector('.theme-toggle');
+  themeBtn.setAttribute('aria-pressed', document.body.classList.contains('dark') ? "true" : "false");
+}
+function goHome() {
+  window.location.href = "../index.html";
+}
+function closeModal() {
+  if(progressChartInstance) { progressChartInstance.destroy(); progressChartInstance=null;}
+  if(courseSummaryPieInstance) { courseSummaryPieInstance.destroy(); courseSummaryPieInstance=null;}
+  const modal = document.getElementById('progressModal');
+  if(modal) modal.style.display = 'none';
+}
+function renderProgressChart() {
+  if (!currentUserProgress) return;
+  const ctx = document.getElementById('userProgressChart').getContext('2d');
+  if(progressChartInstance){ progressChartInstance.destroy(); progressChartInstance=null;}
+  const labels = Object.keys(currentUserProgress);
+  const data = labels.map(c => currentUserProgress[c]?.length || 0);
+  const bgColors = [
+    '#3574e6','#56b881','#ef476f','#ffd166',
+    '#06d6a0','#118ab2','#b388eb','#f78fb3'
+  ];
+  progressChartInstance = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: labels.length ? labels : ['No Progress'],
+      datasets: [{
+        data: data.length ? data : [1],
+        backgroundColor: bgColors.slice(0, labels.length),
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {display: true, position: 'bottom'},
+        datalabels: {
+          color: '#fff',
+          font: {weight: 'bold', size: 14},
+          formatter: (value, context) => {
+            const {dataset} = context;
+            const total = dataset.data.reduce((a,b) => a+b, 0) || 1;
+            return ((value/total)*100).toFixed(1) + '%';
+          }
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+}
+function updateCourseSummaryDropdown() {
+  const select = document.getElementById('courseSummarySelect');
+  select.innerHTML = '';
+  Object.keys(courseTotals).forEach(course => {
+    const opt = document.createElement('option');
+    opt.value = course;
+    opt.textContent = course;
+    select.appendChild(opt);
+  });
+  if(Object.keys(courseTotals).length > 0) select.value = Object.keys(courseTotals)[0];
+}
+function updateCourseSummary(course) {
+  if(!currentUserProgress||!courseTotals[course]){
+    document.getElementById('courseSummaryTable').style.display = 'none';
+    if(courseSummaryPieInstance){ courseSummaryPieInstance.destroy(); courseSummaryPieInstance = null; }
+    return;
+  }
+  document.getElementById('courseSummaryTable').style.display = '';
+  const total = courseTotals[course] ?? 0;
+  const completed = (currentUserProgress && currentUserProgress[course]) ? currentUserProgress[course].length : 0;
+  document.getElementById('summaryCourse').textContent = course;
+  document.getElementById('summaryTotal').textContent = total;
+  document.getElementById('summaryCompleted').textContent = completed;
+  const ctx = document.getElementById('courseSummaryPie').getContext('2d');
+  if(courseSummaryPieInstance) courseSummaryPieInstance.destroy();
+  courseSummaryPieInstance = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Completed', 'Remaining'],
+      datasets: [{
+        data: [completed, Math.max(total-completed,0)],
+        backgroundColor: ['#56b881', '#dbdef8']
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {display: true, position: 'bottom'},
+        datalabels: {
+          color: '#23263a',
+          font: {weight: 'bold'},
+          formatter: v => v,
+        }
+      }
+    },
+    plugins: [ChartDataLabels]
+  });
+}
+async function loadUserProgress(username){
+  const modal = document.getElementById('progressModal');
+  if(!modal) return alert("Modal element not found.");
+  const modalUser = document.getElementById('modalUser');
+  modalUser.textContent = `Course Progress for ${username}`;
+  modal.style.display = 'flex';
+  currentUserProgress = null;
+  const progressTable = document.getElementById('progressTable');
+  const progressTableBody = document.getElementById('progressTableBody');
+  progressTable.hidden = true;
+  progressTableBody.innerHTML = '';
+  if(progressChartInstance){ progressChartInstance.destroy(); progressChartInstance=null;}
+  if(courseSummaryPieInstance){ courseSummaryPieInstance.destroy(); courseSummaryPieInstance = null;}
+  document.getElementById('courseSummarySelect').innerHTML='';
+  document.getElementById('courseSummaryTable').style.display = 'none';
+  try {
+    const res = await fetch(`https://tech-trail-w2ap.onrender.com/progress/${encodeURIComponent(username)}`);
+    if(!res.ok) throw new Error("Failed to fetch user progress");
+    const prog = await res.json();
+    currentUserProgress = prog;
+    const courses = Object.keys(prog);
+    if(courses.length === 0) {
+      progressTableBody.innerHTML = `<tr><td colspan="2">No task progress found for this user.</td></tr>`;
+    } else {
+      progressTableBody.innerHTML = courses.map(course => {
+        const taskCount = prog[course].length;
+        return `<tr><td>${course}</td><td>${taskCount}</td></tr>`;
+      }).join('');
+    }
+    progressTable.hidden = false;
+    renderProgressChart();
+    updateCourseSummaryDropdown();
+    const dropdown = document.getElementById('courseSummarySelect');
+    dropdown.onchange = (e)=>updateCourseSummary(e.target.value);
+    if(dropdown.value) updateCourseSummary(dropdown.value);
+  } catch(e) {
+    progressTableBody.innerHTML = `<tr><td colspan="2" style="color:#ea5252;">Failed to load progress data.</td></tr>`;
+    progressTable.hidden = false;
+    console.error(e);
+  }
+}
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('user-link')){
+    e.preventDefault();
+    loadUserProgress(e.target.getAttribute('data-username'));
+  }
+});
+document.getElementById("searchInput").addEventListener("input", applySearchAndSort);
+document.getElementById("sortSelect").addEventListener("change", applySearchAndSort);
+document.addEventListener("keydown", function(e){
+  if(document.getElementById('progressModal').style.display === 'flex'){
+    if(e.key === "Escape"){ closeModal(); }
+  }
+});
+loadBoard();
+</script>
+</body>
+</html>

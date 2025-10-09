@@ -1,0 +1,232 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Use-case: Efficient image classification - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+                
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Use-case: Efficient image classification</h1>
+                <div class="header-divider"></div>
+            </div>
+
+           <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>Advanced CNN architectures like <strong>ResNet</strong>, <strong>Inception</strong>, and <strong>MobileNet</strong> are pivotal for efficient image classification. These models are designed to enhance accuracy, reduce training time, and optimize resource usage for deployment across various platforms including mobile, cloud, and embedded systems.</p>
+        
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Why Advanced Architectures?</div>
+            <p>They solve limitations of basic CNNs such as overfitting, vanishing gradients, and high computational costs, making them suitable for real-time applications and large-scale image datasets.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="https://raw.githubusercontent.com/basha7777/dl-website/main/assets/images/cnn-architecture-usecase.png" alt="Efficient CNN Architectures in Use">
+            <p class="caption">Diagram illustrating how advanced CNN architectures improve classification efficiency</p>
+        </div>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>This example demonstrates using MobileNetV2 for efficient image classification on resource-constrained devices:</p>
+        
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.preprocessing.image import img_to_array, load_img
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_predictions
+import numpy as np
+
+# Load MobileNetV2 pretrained on ImageNet
+model = MobileNetV2(weights="imagenet")
+
+# Load and preprocess image
+image = load_img("dog.jpg", target_size=(224, 224))
+image = img_to_array(image)
+image = np.expand_dims(image, axis=0)
+image = preprocess_input(image)
+
+# Predict and decode results
+predictions = model.predict(image)
+decoded = decode_predictions(predictions)
+print("Prediction:", decoded[0][0][1], "with probability", decoded[0][0][2])</code></pre>
+        </div>
+
+        <p>This example efficiently classifies an image while maintaining high accuracy using a lightweight model.</p>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Smartphone Apps</h3>
+                <p>MobileNet enables real-time image classification in mobile apps like Google Lens and Snapchat filters.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-camera"></i></div>
+                <h3>Surveillance Systems</h3>
+                <p>ResNet and Inception are used for accurate object detection and scene understanding in smart cameras.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Autonomous Drones</h3>
+                <p>Efficient CNNs are crucial for quick object recognition and decision making in real-time drone navigation.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-eye"></i></div>
+                <h3>Medical Diagnostics</h3>
+                <p>Used in early diagnosis by classifying medical scans quickly and accurately, even on lower-end devices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/CLHk6DniYg0?feature=shared'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1awelXw8L2dFDJDYs2HR66oWmPFqpPABX/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow et al.</li>
+                    <li><a href="https://www.oreilly.com/library/view/practical-deep-learning/9781492034858/" target="_blank">Practical Deep Learning for Cloud, Mobile, and Edge</a> by Anirudh Koul et al.</li>
+                    <li><a href="https://arxiv.org/abs/1704.04861" target="_blank">MobileNetV2 Research Paper</a> on arXiv</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What makes MobileNet suitable for mobile applications?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>MobileNet uses depthwise separable convolutions to drastically reduce the number of parameters and computational cost, making it ideal for real-time applications on mobile and embedded devices.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does ResNet enable deep learning of very deep networks?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>By using skip connections or residual blocks, ResNet allows gradients to flow directly through the network, overcoming the vanishing gradient problem and enabling training of networks with hundreds of layers.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is Inception architecture considered efficient?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Inception layers combine multiple kernel sizes and pooling operations in parallel, enabling the model to capture complex features while reducing computational load with dimensionality reduction layers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

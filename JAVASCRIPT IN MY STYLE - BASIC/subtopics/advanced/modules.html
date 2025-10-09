@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modules - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#advanced">Advanced</a> >
+        <span>Modules</span>
+      </div>
+      <h1>Modules</h1>
+      <p>Organize your code with ES modules and understand import/export syntax.</p>
+    </div>
+     <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        ES Modules (ESM) have become the standard for structuring JavaScript code into reusable, maintainable components. Unlike older script-based approaches, modules enable clean separation of concerns by allowing explicit import and export of functionality. Modern browsers and Node.js natively support ES modules, promoting better code organization and reuse.
+      </div>
+    </div>
+
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example of defining and using ES modules with import and export:</p>
+
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>ES Modules: Export and Import</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// file: mathUtils.js
+export function add(a, b) {
+  return a + b;
+}
+
+export const PI = 3.14159;
+
+// file: app.js
+import { add, PI } from './mathUtils.js';
+
+console.log('Add:', add(2, 3)); // 5
+console.log('PI:', PI);         // 3.14159
+          </code></pre>
+        </div>
+
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>How to export functions and constants using <code>export</code>.</li>
+          <li>How to import specific exports using <code>import { ... } from</code>.</li>
+          <li>Modular code organization improving maintainability and reuse.</li>
+          <li>The use of relative paths and the <code>.js</code> extension in imports.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>JavaScript ES Modules provide a standard way to structure and share code across files.</p>
+        <ul>
+          <li><strong>Export:</strong> Marks functions, variables, or classes as available for use in other files.</li>
+          <li><strong>Import:</strong> Brings in exported code from other modules.</li>
+          <li>Supports named exports (multiple exports) and default exports (single export per file).</li>
+          <li>Helps avoid polluting the global namespace.</li>
+          <li>Supported natively in browsers with <code>type="module"</code> in script tags, and in Node.js with <code>.mjs</code> files or proper configuration.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Building scalable web applications by separating concerns.</li>
+          <li>Sharing utilities and helper functions across projects.</li>
+          <li>Using third-party libraries and frameworks that use modules.</li>
+          <li>Enabling tree shaking for optimized bundling.</li>
+          <li>Facilitating code maintenance and collaboration in teams.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which keyword is used to export a function in ES modules?</p>
+            <ul>
+              <li>A. <code>import</code></li>
+              <li>B. <code>export</code></li>
+              <li>C. <code>require</code></li>
+              <li>D. <code>module.exports</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>export</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> How do you import a named export called <code>foo</code> from <code>utils.js</code>?</p>
+            <ul>
+              <li>A. <code>import foo from './utils.js'</code></li>
+              <li>B. <code>import { foo } from './utils.js'</code></li>
+              <li>C. <code>require('foo')</code></li>
+              <li>D. <code>export { foo }</code></li>
+            </ul>
+            <p><strong>Answer:</strong> B. <code>import { foo } from './utils.js'</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What is the correct way to import a default export?</p>
+            <ul>
+              <li>A. <code>import foo from './module.js'</code></li>
+              <li>B. <code>import { default as foo } from './module.js'</code></li>
+              <li>C. Both A and B</li>
+              <li>D. <code>export default foo</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. Both A and B</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> What attribute must be added to a &lt;script&gt; tag to use ES modules in browsers?</p>
+            <ul>
+              <li>A. <code>async</code></li>
+              <li>B. <code>defer</code></li>
+              <li>C. <code>type="module"</code></li>
+              <li>D. <code>src</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>type="module"</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+   
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

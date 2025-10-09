@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bayes theorem - Data Science in my style</title>
+  <link rel="icon" type="image/x-icon" href="../../../img/dsc.svg">
+  <link rel="stylesheet" href="../../../css/styles.css">
+  <link rel="stylesheet" href="../../../css/subtopic.css">
+  <script src="../../../js/main.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Data Science in my style</h1>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../topics.html" class="active">Topics</a></li>
+       
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main class="subtopic-container">
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../../index.html">Home</a>
+        <span class="separator">›</span>
+        <a href="../../topics.html">Topics</a>
+        <span class="separator">›</span>
+        <a href="../../topics.html#statistics">Basic Statistics & Probability</a>
+        <span class="separator">›</span>
+        <span>Bayes-theorem</span>
+      </div>
+      
+      <h1 class="subtopic-title">Bayes Theorem</h1>
+      <div class="subtopic-meta">
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Introduction
+        </span>
+        <span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Reading Time: 12 min
+        </span>
+      </div>
+    </div>
+
+    <div class="table-of-contents">
+      <h3>Table of Contents</h3>
+      <ul class="toc-list">
+        <li><a href="#description">Description</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#real-world">Real-World Applications</a></li>
+        <li><a href="#applications">Where  topic Is Applied</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#interview-questions">Interview Questions</a></li>
+      </ul>
+    </div>
+
+    <div class="subtopic-content">
+      <section id="description" class="content-section section-description">
+        <h2>Description</h2>
+        <p> Bayes' Theorem describes the probability of an event, based on prior knowledge of conditions that might be related to the event. It updates the probability as more evidence or information becomes available.<br>
+
+Formula:<br>
+
+P(A∣B)=( P(B∣A)⋅P(A))/P(B)<br>
+​Where:<br>
+
+𝑃(𝐴∣𝐵)<br>
+P(A∣B): Posterior (probability of A given B)<br>
+𝑃(𝐵∣𝐴)<br>
+P(B∣A): Likelihood<br>
+𝑃(𝐴)<br>
+P(A): Prior probability of A<br>
+𝑃(𝐵)<br>
+P(B): Marginal probability of B
+
+ </p>
+      </section>
+
+      <section id="prerequisites" class="content-section">
+        <h2>Prerequisites</h2>
+        <ul class="prerequisites-list">
+          <li>Basic probability
+</li>
+          <li>Conditional probability
+</li>
+          <li>Concept of prior and posterior
+
+
+</li><li>Python basics (for implementation)
+
+</li>
+         </ul>
+      </section>
+
+      <section id="examples" class="content-section">
+        <h2>Examples</h2>
+        <p>Here's a simple example of a data science task using Python:</p>
+        <div class="code-example">
+          <pre><code>
+# Basic Example (Email Spam Detection)
+# P(Spam) = 0.2, P(Having 'buy now' | Spam) = 0.8, P(Having 'buy now') = 0.32
+
+P_spam = 0.2
+P_word_given_spam = 0.8
+P_word = 0.32
+
+# Bayes Theorem
+P_spam_given_word = (P_word_given_spam * P_spam) / P_word
+print(f"Probability the email is spam: {P_spam_given_word:.2f}")
+
+#Advanced Example (Using Scikit-learn for Naive Bayes Classifier)
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+
+# Load dataset
+X, y = load_iris(return_X_y=True)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+
+# Create model
+model = GaussianNB()
+model.fit(X_train, y_train)
+
+# Predict
+y_pred = model.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred) * 100:.2f}%")
+
+          </code></pre>
+
+        </div>
+       
+              </section>
+
+      <section id="real-world" class="content-section section-real-world">
+        <h2>Real-World Applications</h2>
+        <div class="application-cards">
+          <div class="application-card">
+            <h3>Email Filtering</h3>
+<p>Classifying spam emails using word likelihoods</p>
+
+            </div>
+          
+          <div class="application-card">
+            <h3>Healthcare</h3>
+<p>Diagnosing diseases from symptoms (medical tests)</p>
+                      </div>
+          
+          <div class="application-card">
+            <h3>Finance</h3>
+<p>Credit scoring and loan risk evaluation</p> </div>
+        </div>
+       </section>
+
+      <section id="applications" class="content-section section-applications">
+        <h2>Where topic Is Applied</h2>
+        <div class="industry-grid">
+          <div class="industry-item">
+            <ul>
+              <li>Machine Learning: Naive Bayes classifier
+</li>
+                    </ul>
+          </div>
+          
+          <div class="industry-item">
+            <ul>
+              <li>AI Decision-Making: Bayesian Networks
+</li>
+               </ul>
+          </div>
+          
+          
+          <div class="industry-item">
+            <ul>
+              <li>Medical Testing: Diagnostic test accuracy
+
+</li>
+              </ul>
+          </div>
+          
+          
+          </div>
+      </section>
+
+    <section id="resources" class="content-section section-resources">
+        <h2>Resources</h2>
+        
+        
+        <div class="resource-item">
+          <div class="resource-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><line x1="10" x2="8" y1="9" y2="9"></line></svg>
+          </div>
+          <div class="resource-details">
+            <h4>Data Science topic PDF</h4>
+           
+          </div>
+          <a href="https://drive.google.com/file/d/1als6xP7a09N1rp2tdRQKAG0v1YRZwWl6/view?usp=drive_link" class="resource-link">Download</a>
+        </div>
+        
+        <div class="resource-item">
+          <div class="resource-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+          </div>
+          <div class="resource-details">
+            <h4>Harvard Data Science Course</h4>
+            <p>Free online course from Harvard covering data science foundations</p>
+          </div>
+          <a href="https://online-learning.harvard.edu/course/data-science-r-basics" target="_blank" class="resource-link">Visit</a>
+        </div>
+      </section>
+
+      <section id="interview-questions" class="content-section">
+        <h2>Interview Questions</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What is Bayes’ Theorem used for?
+</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ It updates the probability of a hypothesis as more evidence is available.
+
+
+
+
+</p> </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What’s the difference between prior and posterior?
+</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ Prior is the initial belief before seeing evidence; posterior is the updated belief after seeing evidence.
+
+
+</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>What is a Naive Bayes classifier?
+</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ A classification algorithm based on Bayes' Theorem assuming independence between features.
+</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>Why is it called "Naive"?
+</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ Because it assumes all features are independent, which is rarely true in real data.
+</p>
+            </div>
+          </div>
+          
+          <div class="accordion-item">
+            <button class="accordion-header">
+              <span>How is Bayes’ Theorem useful in medical diagnostics?
+</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="accordion-content">
+              <p>➤ Helps compute the probability of a disease given a test result, improving diagnostic accuracy.
+
+
+
+
+</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Data Science in my style</h2>
+        <p>Learn data science your way</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../../../index.html">Home</a></li>
+          <li><a href="../../topics.html">Topics</a></li>
+          <li><a href="../../about.html">About</a></li>
+          
+        </ul>
+      </div>
+     <div class="footer-social">
+  <h3>Connect With Us</h3>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-instagram">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+      </svg>
+    </a>
+    <a href="https://t.me/Tech_in_my_style_bot" class="social-icon" aria-label="Telegram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-send">
+        <path d="m22 2-7 20-4-9-9-4Z"></path>
+        <path d="M22 2 11 13"></path>
+      </svg>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-message-circle">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </a>
+    <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon" aria-label="YouTube">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-youtube">
+        <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"></path>
+        <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+      </svg>
+    </a>
+  </div>
+</div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Data Science in my style. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

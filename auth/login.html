@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign In - Tech In My Style</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body Styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Glassmorphic Login Card */
+    .login-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      padding: 40px 36px;
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+      width: 380px;
+      max-width: 90vw;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Heading */
+    h2 {
+      color: #fff;
+      margin-bottom: 24px;
+      font-weight: 800;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+      user-select: none;
+    }
+
+    /* Form Layout */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Labels */
+    label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-align: left;
+      color: #e3f2fd;
+      user-select: none;
+      display: block;
+    }
+
+    /* Input Fields */
+    .field-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 12px 14px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      transition: 0.3s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    input::placeholder {
+      color: #e0e0e0;
+    }
+    input:focus {
+      background: rgba(255,255,255,0.3);
+      box-shadow: 0 0 8px #00e676;
+    }
+
+    /* Error Message */
+    .error-msg {
+      color: #ff4d6d;
+      font-size: 0.85rem;
+      min-height: 16px;
+      text-align: left;
+      font-weight: 500;
+    }
+
+    /* Button Styling */
+    button {
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(135deg, #00e676, #00c853);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 230, 118, 0.4);
+    }
+    button:disabled {
+      background: #b2fab4;
+      cursor: not-allowed;
+    }
+    button:hover:not(:disabled) {
+      background: linear-gradient(135deg, #00c853, #00e676);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(0, 230, 118, 0.5);
+    }
+
+    /* Status Message */
+    #status {
+      margin-top: 14px;
+      min-height: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    /* Link */
+    a {
+      margin-top: 22px;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #00e676;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 420px) {
+      .login-container {
+        padding: 30px 24px;
+        width: 90%;
+      }
+      button {
+        font-size: 1rem;
+      }
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* Smooth Fade-in Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container" role="main" aria-label="Login Form">
+    <h2>Sign In</h2>
+    <form id="loginForm" onsubmit="event.preventDefault(); login();">
+      <div class="field-wrapper">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" autocomplete="username" required aria-required="true" aria-describedby="username-error status" />
+        <div class="error-msg" id="username-error"></div>
+      </div>
+      <div class="field-wrapper">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required aria-required="true" aria-describedby="password-error" />
+        <div class="error-msg" id="password-error"></div>
+      </div>
+      <button type="submit" id="loginBtn">Sign In</button>
+    </form>
+    <p id="status" role="alert" aria-live="polite"></p>
+    <a href="register.html">Don't have an account? Sign Up</a>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const status = document.getElementById('status');
+
+    function validateUsername(username) {
+      if (!username) return "Username is required.";
+      if (!/^[a-zA-Z0-9]{3,}$/.test(username)) {
+        return "Username must be at least 3 characters (letters/numbers).";
+      }
+      return "";
+    }
+    function validatePassword(password) {
+      if (!password) return "Password is required.";
+      if (password.length < 8) {
+        return "Password must be at least 8 characters.";
+      }
+      return "";
+    }
+    function showError(inputId, message) {
+      document.getElementById(inputId + "-error").textContent = message;
+    }
+    function clearErrors() {
+      showError("username", "");
+      showError("password", "");
+      status.textContent = "";
+    }
+
+    // Real-time validation
+    document.getElementById("username").addEventListener("input", function() {
+      showError("username", validateUsername(this.value.trim()));
+    });
+    document.getElementById("password").addEventListener("input", function() {
+      showError("password", validatePassword(this.value));
+    });
+
+    async function login() {
+      clearErrors();
+
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value;
+
+      let isValid = true;
+      const userErr = validateUsername(username);
+      const passErr = validatePassword(password);
+
+      if (userErr) { showError("username", userErr); isValid = false; }
+      if (passErr) { showError("password", passErr); isValid = false; }
+
+      if (!isValid) {
+        status.style.color = '#ff4d6d';
+        status.textContent = "Please fix the errors above.";
+        return;
+      }
+
+      loginBtn.disabled = true;
+      status.style.color = '#fff';
+      status.textContent = 'Signing in...';
+
+      try {
+        const response = await fetch('https://tech-trail-w2ap.onrender.com/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({ username, password })
+        });
+        const data = await response.json();
+
+        if (data.message === 'success') {
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('isLoggedIn', 'true');
+
+          status.style.color = '#00e676';
+          status.textContent = 'Login successful! Redirecting...';
+
+          setTimeout(() => {
+            window.location.href = '../index.html';
+          }, 1200);
+        } else {
+          status.style.color = '#ff4d6d';
+          if (data.message && data.message.toLowerCase().includes("username")) {
+            showError("username", data.message);
+          } else if (data.message && data.message.toLowerCase().includes("password")) {
+            showError("password", data.message);
+          }
+          status.textContent = data.message || 'Invalid username or password.';
+          loginBtn.disabled = false;
+        }
+      } catch (error) {
+        console.error('Login request failed:', error);
+        status.style.color = '#ff4d6d';
+        status.textContent = 'Server error, please try again later.';
+        loginBtn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

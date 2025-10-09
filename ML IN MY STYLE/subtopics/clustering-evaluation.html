@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation: Silhouette Score, Elbow Method | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Evaluation</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Evaluation: Silhouette Score, Elbow Method</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>When working with clustering algorithms, it is important to evaluate how well the data has been grouped. Two popular methods for evaluating clustering performance are the <strong>Silhouette Score</strong> and the <strong>Elbow Method</strong>. These methods help determine the optimal number of clusters and the quality of the clustering structure.</p>
+
+    <div class="glass-card">
+        <h3>Silhouette Score</h3>
+        <p>The Silhouette Score measures how similar a data point is to its own cluster compared to other clusters. It ranges from -1 to 1:</p>
+        <ul>
+            <li><strong>+1:</strong> Perfectly matched to its own cluster, and far from others</li>
+            <li><strong>0:</strong> On or very close to the decision boundary between two clusters</li>
+            <li><strong>-1:</strong> Probably assigned to the wrong cluster</li>
+        </ul>
+        <p>A higher average silhouette score indicates better-defined clusters.</p>
+    </div>
+
+    <div class="glass-card">
+        <h3>Elbow Method</h3>
+        <p>The Elbow Method helps determine the optimal number of clusters by plotting the within-cluster sum of squares (WCSS) against the number of clusters.</p>
+        <ul>
+            <li>As the number of clusters increases, WCSS decreases</li>
+            <li>The point where the WCSS curve starts to flatten is considered the "elbow," indicating the optimal cluster count</li>
+        </ul>
+        <p>This method is most effective when the data exhibits a clear elbow shape in the plot.</p>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+
+    <div class="glass-card">
+        <h3>Python Example: Silhouette Score & Elbow Method</h3>
+        <pre><code>from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score
+import matplotlib.pyplot as plt
+from sklearn.datasets import make_blobs
+
+# Create sample data
+X, _ = make_blobs(n_samples=300, centers=4, random_state=42)
+
+# Elbow Method
+wcss = []
+for i in range(1, 11):
+    kmeans = KMeans(n_clusters=i, random_state=42)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+
+plt.plot(range(1, 11), wcss, marker='o')
+plt.title('Elbow Method')
+plt.xlabel('Number of clusters')
+plt.ylabel('WCSS')
+plt.show()
+
+# Silhouette Score for 4 clusters
+kmeans = KMeans(n_clusters=4, random_state=42)
+labels = kmeans.fit_predict(X)
+score = silhouette_score(X, labels)
+print(f'Silhouette Score: {score:.2f}')</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+
+    <div class="glass-card application-card">
+        <h3>Applications of Silhouette Score and Elbow Method</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Customer Segmentation:</strong> Determining the optimal number of customer groups in marketing</li>
+                    <li><strong>Image Compression:</strong> Choosing the best cluster count for color quantization</li>
+                    <li><strong>Document Clustering:</strong> Grouping similar articles or documents based on content</li>
+                    <li><strong>Genomics:</strong> Clustering gene expression profiles for disease research</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cluster evaluation visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/_jg1UFoef1c?si=BdlQWeLyBdfgRLKw">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1FbAXQloZc6c_Pk_dO05pu55OR5xC5Vke/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What does a silhouette score of -1 indicate?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>It indicates that the data point may have been assigned to the wrong cluster since it is closer to a different cluster than its own.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. What is the goal of the Elbow Method in clustering?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>To identify the optimal number of clusters where adding more clusters doesn't significantly reduce the within-cluster variance (WCSS).</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. Can Silhouette Score be used with DBSCAN?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Yes, silhouette score can be used to evaluate the quality of clusters formed by DBSCAN or any clustering algorithm, as long as labels are assigned.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. Why does WCSS always decrease with more clusters?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Because more clusters result in smaller distances between points and their assigned centroids, reducing the overall within-cluster variance.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+         
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                  
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to C Programming - C In My Style</title>
+<link rel="icon" type="image/svg+xml" href="../img/c.svg">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/glassmorphism.css">
+    <link rel="stylesheet" href="../styles/topic.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../index.html" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-code nav-icon"></i>
+                    <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../index.html#topics" class="nav-link">Topics</a>
+                <a href="../index.html#resources" class="nav-link">Resources</a>
+                <a href="../index.html#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="topic-main">
+        <div class="topic-container">
+            <aside class="topic-sidebar glass-card">
+                <div class="sidebar-header">
+                    <h3>Introduction</h3>
+                    
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="introduction.html" class="sidebar-link active">
+                        <i class="fas fa-question-circle"></i>
+                        What is C?
+                    </a>
+                    <a href="introduction-history.html" class="sidebar-link">
+                        <i class="fas fa-history"></i>
+                        History of C
+                    </a>
+                    <a href="introduction-features.html" class="sidebar-link">
+                        <i class="fas fa-star"></i>
+                        Features of C
+                    </a>
+                    <a href="introduction-applications.html" class="sidebar-link">
+                        <i class="fas fa-laptop-code"></i>
+                        Applications of C
+                    </a>
+                    <a href="introduction-setup.html" class="sidebar-link">
+                        <i class="fas fa-tools"></i>
+                        Setting up Environment
+                    </a>
+                </nav>
+            </aside>
+
+            <div class="topic-content">
+                <header class="content-header">
+                    <nav class="breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <a href="../index.html#topics">Topics</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Introduction</span>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>What is C?</span>
+                    </nav>
+                    <h1 class="content-title">What is C Programming?</h1>
+                    
+                </header>
+
+                <article class="content-article">
+                    <section class="content-section">
+                        <h2>Overview</h2>
+                        <p>
+                            C is a general-purpose, procedural programming language that was originally developed by Dennis Ritchie 
+                            at Bell Labs between 1969 and 1973. It's one of the most widely used programming languages of all time 
+                            and has influenced many other programming languages including C++, Java, and JavaScript.
+                        </p>
+                        
+                        <div class="highlight-box">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Key Point</h4>
+                                <p>C is often called the "mother of all programming languages" because it has influenced the syntax and structure of many modern programming languages.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>What Makes C Special?</h2>
+                        <div class="feature-grid">
+                            <div class="feature-item glass-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h4>High Performance</h4>
+                                <p>C programs are compiled to machine code, making them extremely fast and efficient.</p>
+                            </div>
+                            <div class="feature-item glass-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h4>Low-Level Control</h4>
+                                <p>Direct memory management and hardware interaction capabilities.</p>
+                            </div>
+                            <div class="feature-item glass-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <h4>Portability</h4>
+                                <p>C programs can run on different platforms with minimal modifications.</p>
+                            </div>
+                            <div class="feature-item glass-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h4>Foundation Language</h4>
+                                <p>Many operating systems and system software are written in C.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Your First C Program</h2>
+                        <p>Let's start with the traditional "Hello, World!" program in C:</p>
+                        
+                        <div class="code-example glass-code">
+                            <div class="code-header">
+                                <div class="code-title">
+                                    <i class="fas fa-file-code"></i>
+                                    hello.c
+                                </div>
+                                <button class="copy-btn" onclick="copyCode(this)">
+                                    <i class="fas fa-copy"></i>
+                                    Copy
+                                </button>
+                            </div>
+                            <pre><code class="language-c">#include <stdio.h>
+
+int main() {
+    printf("Hello, World!\n");
+    return 0;
+}</code></pre>
+                        </div>
+
+                        <div class="code-explanation">
+                            <h4>Code Breakdown:</h4>
+                            <ul>
+                                <li><code>#include <stdio.h></code> - Includes the standard input/output library</li>
+                                <li><code>int main()</code> - The main function where program execution begins</li>
+                                <li><code>printf("Hello, World!\n")</code> - Prints text to the console</li>
+                                <li><code>return 0;</code> - Indicates successful program termination</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Real-World Applications</h2>
+                        <div class="applications-grid">
+                            <div class="app-card glass-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <h4>Operating Systems</h4>
+                                <p>Linux, Windows, macOS kernels</p>
+                                <div class="app-examples">
+                                    <span class="app-tag">Linux Kernel</span>
+                                    <span class="app-tag">Windows NT</span>
+                                </div>
+                            </div>
+                            <div class="app-card glass-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-microchip"></i>
+                                </div>
+                                <h4>Embedded Systems</h4>
+                                <p>IoT devices, microcontrollers</p>
+                                <div class="app-examples">
+                                    <span class="app-tag">Arduino</span>
+                                    <span class="app-tag">Raspberry Pi</span>
+                                </div>
+                            </div>
+                            <div class="app-card glass-card">
+                                <div class="app-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h4>System Software</h4>
+                                <p>Compilers, database systems</p>
+                                <div class="app-examples">
+                                    <span class="app-tag">MySQL</span>
+                                    <span class="app-tag">PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-section">
+                        <h2>Resources</h2>
+                        <div class="resources-list">
+                          <div class="resource-item">
+                            <div class="resource-icon"><i class="fas fa-book"></i></div>
+                            <div class="resource-content">
+                              <h4>Topic pdf</h4>
+                              
+                              <a href="https://drive.google.com/file/d/1JCddBNLDDx8OeeiI0U59WlRC9yTLpSNE/view?usp=drive_link" target="_blank" class="resource-link">
+                                Read More <i class="fas fa-external-link-alt"></i>
+                              </a>
+                            </div>
+                          </div>
+                    
+                         
+                      </section>
+
+                    <section class="content-section">
+                        <h2>Interview Questions</h2>
+                        <div class="interview-questions">
+                            <div class="question-item glass-card">
+                                <div class="question-header" onclick="toggleAnswer(this)">
+                                    <h4>What is C programming language?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="question-answer">
+                                    <p>C is a general-purpose, procedural programming language developed by Dennis Ritchie at Bell Labs. It's known for its efficiency, portability, and close-to-hardware programming capabilities.</p>
+                                </div>
+                            </div>
+                            <div class="question-item glass-card">
+                                <div class="question-header" onclick="toggleAnswer(this)">
+                                    <h4>Why is C called a middle-level language?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="question-answer">
+                                    <p>C is called a middle-level language because it combines features of both high-level and low-level languages. It provides high-level programming constructs while also allowing direct memory manipulation and hardware access.</p>
+                                </div>
+                            </div>
+                            <div class="question-item glass-card">
+                                <div class="question-header" onclick="toggleAnswer(this)">
+                                    <h4>What are the main features of C?</h4>
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="question-answer">
+                                    <p>Key features include: simplicity, efficiency, portability, structured programming, rich library support, pointer support, and direct memory management.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-code"></i>
+                       <span class="logo-text">C Programming<span class="logo-accent"> In My Style</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Master C programming with our comprehensive learning platform
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#topics">Topics</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="topics/introduction.html">Introduction</a></li>
+                        <li><a href="topics/basics.html">C Basics</a></li>
+                        <li><a href="topics/pointers.html">Pointers</a></li>
+                        <li><a href="topics/memory-management.html">Memory Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                     <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+               <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+               <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+               <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 C Programming In My Style. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/topic.js"></script>
+</body>
+</html>

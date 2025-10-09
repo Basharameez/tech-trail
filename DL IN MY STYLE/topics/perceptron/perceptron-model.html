@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptron - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+              
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>Perceptron</h1>
+                <div class="header-divider"></div>
+            </div>
+
+          <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>The <strong>Perceptron</strong> is one of the earliest and simplest types of artificial neural networks. It was introduced by Frank Rosenblatt in 1958 and is primarily used for <strong>binary classification tasks</strong>.</p>
+        
+        <p>A perceptron consists of one or more inputs, a processor (weighted sum), an activation function, and a single output. It learns a linear decision boundary to classify inputs into two distinct classes.</p>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Insight</div>
+            <p>Perceptrons can only solve problems that are linearly separable, meaning a straight line (or hyperplane) can separate the data classes.</p>
+        </div>
+
+        <p>The components of a perceptron include:</p>
+        <ul>
+            <li>Input features (x₁, x₂, ..., xₙ)</li>
+            <li>Weights for each input (w₁, w₂, ..., wₙ)</li>
+            <li>Bias term (b)</li>
+            <li>Activation function (usually step or sign function)</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Perceptron.svg" alt="Perceptron Diagram">
+            <p class="caption">Visualization of a single-layer perceptron model</p>
+        </div>
+    </div>
+</section>
+
+
+           <section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's a basic implementation of a single-layer perceptron in Python using NumPy:</p>
+        
+        <div class="code-container">
+            <pre><code class="language-python">import numpy as np
+
+# Activation Function
+def step_function(x):
+    return 1 if x >= 0 else 0
+
+# Perceptron Training
+def train_perceptron(X, y, lr=0.1, epochs=10):
+    n_samples, n_features = X.shape
+    weights = np.zeros(n_features)
+    bias = 0
+
+    for _ in range(epochs):
+        for idx, x_i in enumerate(X):
+            linear_output = np.dot(x_i, weights) + bias
+            y_pred = step_function(linear_output)
+            error = y[idx] - y_pred
+            weights += lr * error * x_i
+            bias += lr * error
+            
+    return weights, bias
+
+# Example Data (AND gate)
+X = np.array([[0,0], [0,1], [1,0], [1,1]])
+y = np.array([0, 0, 0, 1])
+
+w, b = train_perceptron(X, y)
+print("Trained weights:", w)
+print("Trained bias:", b)</code></pre>
+        </div>
+
+        <p>This perceptron is trained to learn the logic of an AND gate using a step activation function.</p>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-info-circle"></i> Note</div>
+            <p>The perceptron can’t solve problems like XOR, which are not linearly separable.</p>
+        </div>
+    </div>
+</section>
+
+          <section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Binary Classification</h3>
+                <p>Used in basic binary classifiers such as spam detection and sentiment analysis when data is linearly separable.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-lock"></i></div>
+                <h3>Simple Decision Systems</h3>
+                <p>Perceptrons can act as basic decision units in rule-based automation or filtering systems.</p>
+            </div>
+
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-network-wired"></i></div>
+                <h3>Foundation for Neural Networks</h3>
+                <p>Perceptron is the building block for more complex neural networks, making it foundational for deep learning.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section id="resources" class="content-section">
+     <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/i1G7PXZMnSc?si=pFtDla9Hmd4rS8L2'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1ZjUpYXLYl0JgnqRENos7hC1rXFef7cw0/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow, Yoshua Bengio, and Aaron Courville</li>
+                    <li><a href="https://mitpress.mit.edu/9780262043793/introduction-to-machine-learning/" target="_blank">Introduction to Machine Learning</a> by Ethem Alpaydin</li>
+                    <li><a href="https://www.oreilly.com/library/view/python-machine-learning/9781789347999/" target="_blank">Python Machine Learning</a> by Sebastian Raschka</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+            <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is a Perceptron?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>A Perceptron is a linear binary classifier that computes a weighted sum of the inputs and passes it through an activation function to produce a binary output (0 or 1).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What are the limitations of the Perceptron model?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Perceptrons can only solve linearly separable problems. They fail on tasks like XOR and cannot learn non-linear decision boundaries without additional layers.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the role of the activation function in a perceptron?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>The activation function in a perceptron determines whether a neuron should "fire" or not. In simple perceptrons, a step function is typically used to produce binary output.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

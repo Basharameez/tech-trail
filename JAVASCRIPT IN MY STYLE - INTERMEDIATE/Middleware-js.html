@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS IN MY STYLE | Middleware </title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+<link rel="icon" href="../img/JS-INTERMEDIATE.png" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header --> 
+    <header class="bg-[#f7df1e] text-white text-center py-6 px-4 shadow-lg relative"> 
+      <div class="flex items-center justify-between md:justify-center relative"> 
+        <a href="js_topics.html" class="absolute left-3 top-0 md:left-4 md:top-1"> 
+          <button id="BackBtn" class="px-3 py-1.5 md:px-4 md:py-2 bg-[#f7df1e] text-white text-sm md:text-base rounded hover:bg-[#e6cd1a] transition-colors border border-white"> 
+            Back 
+          </button> 
+        </a> 
+        <h1 class="text-2xl md:text-4xl font-bold animate-fade-in mx-auto">JS IN MY STYLE</h1> 
+        <!-- Triple Dot Menu Button --> 
+        <button class="menu-button md:absolute md:right-4 md:top-1" onclick="toggleNav()"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"> 
+            <circle cx="12" cy="12" r="1"/> 
+            <circle cx="12" cy="5" r="1"/> 
+            <circle cx="12" cy="19" r="1"/> 
+          </svg> 
+        </button> 
+      </div> 
+    </header>
+
+    <!-- Overlay and Navigation Menu -->
+    <div class="overlay" id="overlay" onclick="toggleNav()"></div>
+    <div class="nav-menu" id="navMenu">
+      <button class="close-button" onclick="toggleNav()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="nav-links">
+       <a href="abort-controller-js.html">Abort-Controller-js</a><br>
+        <a href="abstraction-js.html">Abstraction-js</a><br>
+        <a href="accessors-js.html">Accessors-js</a><br>
+        <a href="ajax-js.html">Ajax-js</a><br>
+        <a href="alert-js.html">Alert-js</a><br>
+        <a href="array-buffer-js.html">Array-Buffer-js</a><br>
+        <a href="array-js.html">Array-js</a><br>
+        <a href="arrow-functions-js.html">Arrow-Functions-js</a><br>
+        <a href="async-await-js.html">Async-await-js</a><br>
+        <a href="asynchronous-javascript-js.html">Asynchronous-javascript-js</a><br>
+        <a href="atomics-js.html">Atomics-js</a><br>
+        <a href="attributes-js.html">Attributes-js</a><br>
+        <p>B - Series</p>
+        <a href="babel-js.html">Babel-js</a><br>
+        <a href="backticks-js.html">Backticks-js</a><br>
+        <a href="bigint-js.html">Bigint-js</a><br>
+        <a href="bind-js.html">Bind-js</a><br>
+        <a href="block-scope-js.html">Block-scope-js</a><br>
+        <a href="bom-js.html">Bom-js</a><br>
+        <a href="boolean-js.html">Boolean-js</a><br>
+        <a href="break-statement-js.html">Break-statement-js</a><br>
+        <a href="buffer-js.html">Buffer-js</a><br>
+        <p>C - Series</p>
+        <a href="call-apply-js.html">Call-apply-js</a><br>
+        <a href="callback-functions-js.html">Callback-functions-js</a><br>
+        <a href="classes-js.html">Classes-js</a><br>
+        <a href="clousers-js.html">Clousers-js</a><br>
+        <a href="comparision-js.html">Comparision-js</a><br>
+        <a href="concatenation-js.html">Concatenation-js</a><br>
+        <a href="conditional-statements-js.html">Conditional-statements-js</a><br>
+        <a href="console-js.html">Console-js</a><br>
+        <a href="const-js.html">Const-js</a><br>
+        <a href="constructor-functions-js.html">Constructor-Functions-js</a><br>
+        <a href="continue-statement-js.html">Continue-statement-js</a><br>
+        <a href="control-flow-js.html">Control-Flow-js</a><br>
+        <a href="cookies-js.html">Cookies-js</a><br>
+        <a href="currying-js.html">Currying-js</a><br>
+        <p>D - Series</p>
+        <a href="dom-events-js.html">DOM-events-js</a><br>
+        <a href="datatypes-js.html">Datatypes-js</a><br>
+        <a href="date-object-js.html">Date-Object-js</a><br>
+        <a href="debugging-js.html">Debugging-js</a><br>
+        <a href="decarators-js.html">Decarators-js</a><br>
+        <a href="defer-attribute-js.html">Defer-attribute-js</a><br>
+        <a href="deno-js.html">Deno-js</a><br>
+        <a href="destructuring-js.html">Destructuring-js</a><br>
+        <a href="do-while-loop-js.html">Do-while-loop-js</a><br>
+        <a href="dom-js.html">Dom-js</a><br>
+        <p>E - Series</p>
+        <a href="ecma-js.html">Ecma-js</a><br>
+        <a href="encapsulation-js.html">Encapsulation-js</a><br>
+        <a href="encode-decode-js.html">Encode-decode-js</a><br>
+        <a href="error-handling-js.html">Error-handling-js</a><br>
+        <a href="eval-js.html">Eval-js</a><br>
+        <a href="event-bubling-js.html">Event-bubling-js</a><br>
+        <a href="event-delegation-js.html">Event-delegation-js</a><br>
+        <a href="event-loop-js.html">Event-loop-js</a><br>
+        <a href="events-js.html">Events-js</a><br>
+        <a href="expressions-js.html">Expressions-js</a><br>
+        <p>F - Series</p>
+        <a href="fetch-api-js.html">Fetch-Api-js</a><br>
+        <a href="file-api-js.html">File-Api-js</a><br>
+        <a href="filter-js.html">Filter-js</a><br>
+        <a href="final-classes-js.html">Final-classes-js</a><br>
+        <a href="find-index-js.html">Find-index-js</a><br>
+        <a href="float-js.html">Float-js</a><br>
+        <a href="form-js.html">Form-js</a><br>
+        <a href="function-constructor-js.html">Function-constructor-js</a><br>
+        <a href="function-decloration-js.html">Function-decloration-js</a><br>
+        <a href="function-hosting-js.html">Function-hosting-js</a><br>
+        <p>G - Series</p>
+        <a href="garbage-js.html">Garbage-js</a><br>
+        <a href="generators-js.html">Generators-js</a><br>
+        <a href="get-element-by-id-js.html">Get-element-by-id-js</a><br>
+        <a href="get-js.html">Get-js</a><br>
+        <a href="global-variables-js.html">Global-variables-js</a><br>
+        <a href="graphql-js.html">Graphql-js</a><br>
+        <a href="guard-classes-js.html">Guard-classes-js</a><br>
+        <p>H - Series</p>
+        <a href="heap-js.html">Heap-js</a><br>
+        <a href="higher-order-functions-js.html">Higher-order-functions-js</a><br>
+        <a href="history-api-js.html">History-api-js</a><br>
+        <a href="hosting-js.html">Hosting-js</a><br>
+        <a href="html-dom-methods-js.html">Html-dom-methods-js</a><br>
+        <a href="http-vs-https-js.html">Http-vs-Https-js</a><br>
+        <p>I - Series</p>
+        <a href="iife-js.html">IIFE-js</a><br>
+        <a href="immutable-data-js.html">Immutable-Data-js</a><br>
+        <a href="import-export-js.html">Import-export-js</a><br>
+        <a href="increment-decrement-js.html">Increment-decrement-js</a><br>
+        <a href="index-of-js.html">Index-of-js</a><br>
+        <a href="inheritance-js.html">Inheritance-js</a><br>
+        <a href="input-events-js.html">Input-Events-js</a><br>
+        <a href="instance-js.html">Instance-js</a><br>
+        <a href="intl-js.html">Intl-js</a><br>
+        <p>J - Series</p>
+        <a href="js-modules-js.html">JS-modules-js</a><br>
+        <a href="javascript-engine-v8-js.html">JavaScript Engine (V8)-js</a><br>
+        <a href="jest-js.html">Jest-js</a><br>
+        <a href="json-js.html">Json-js</a><br>
+        <p>K - Series</p>
+        <a href="key-events-js.html">Key-events-js</a><br>
+        <a href="keyboard-handling-js.html">Keyboard-handling-js</a><br>
+        <a href="keywords-js.html">Keywords-js</a><br>
+        <p>L - Series</p>
+        <a href="let-js.html">Let-js</a><br>
+        <a href="lexical-scope-js.html">Lexical-scope-js</a><br>
+        <a href="logical-operators-js.html">Logical-operators-js</a><br>
+        <a href="loops-js.html">Loops-js</a><br>
+        <p>M - Series</p>
+        <a href="map-js.html">Map-js</a><br>
+        <a href="math-object-js.html">Math-object-js</a><br>
+        <a href="memory-management-js.html">Memory-management-js</a><br>
+        <a href="method-overloading-js.html">Method-overloading-js</a><br>
+        <a href="middleware-js.html">Middleware-js</a><br>
+        <a href="module-js.html">Module-js</a><br>
+        <a href="module-pattern-js.html">Module-pattern-js</a><br>
+        <a href="mouse-events-js.html">Mouse-events-js</a><br>
+        <a href="mutation-observer-js.html">Mutation-observer-js</a><br>
+        <p>N - Series</p>
+        <a href="named-functions-js.html">Named-functions-js</a><br>
+        <a href="nan-js.html">Nan-js</a><br>
+        <a href="nested-functions-js.html">Nested-functions-js</a><br>
+        <a href="node-list-js.html">Node-list-js</a><br>
+        <a href="nodejs-js.html">Nodejs-js</a><br>
+        <a href="null-js.html">Null-js</a><br>
+        <p>O - Series</p>
+        <a href="oop-js.html">OOP-js</a><br>
+        <a href="object-freeze-js.html">Object-freeze-js</a><br>
+        <a href="object-js.html">Object-js</a><br>
+        <a href="observer-pattern-js.html">Observer-pattern-js</a><br>
+        <a href="operators-js.html">Operators-js</a><br>
+        <a href="optional-chaining-js.html">Optional-chaining-js</a><br>
+        <a href="output-methods-js.html">Output-methods-js</a><br>
+        <p>P - Series</p>
+        <a href="parse-float-js.html">Parse-float-js</a><br>
+        <a href="parse-int-js.html">Parse-int-js</a><br>
+        <a href="performance-api-js.html">Performance-API-js</a><br>
+        <a href="polyfill-js.html">Polyfill-js</a><br>
+        <a href="post-js.html">Post-js</a><br>
+        <a href="precedence-js.html">Precedence-js</a><br>
+        <a href="private-fields-js.html">Private-Fields-js</a><br>
+        <a href="promises-js.html">Promises-js</a><br>
+        <a href="prototype-chain-js.html">Prototype-chain-js</a><br>
+        <a href="prototypes-js.html">Prototypes-js</a><br>
+        <a href="proxy-js.html">Proxy-js</a><br>
+        <p>Q - Series</p>
+        <a href="query-selector-js.html">Query-Selector-js</a><br>
+        <a href="queue-js.html">Queue-js</a><br>
+        <a href="quirks-mode-js.html">Quirks-Mode-js</a><br>
+        <p>R - Series</p>
+        <a href="rest-api-js.html">REST-API-js</a><br>
+        <a href="recursion-js.html">Recursion-js</a><br>
+        <a href="regex-js.html">Regex-js</a><br>
+        <a href="rest-vs-soap-js.html">Rest-vs-soap-js</a><br>
+        <a href="rounding-numbers-js.html">Rounding-numbers-js</a><br>
+        <a href="return-statement-js.html">return-Statement-js</a><br>
+        <p>S - Series</p>
+        <a href="script-tag-js.html">SCRIPT-TAG-JS</a><br>
+        <a href="scope-js.html">Scope-js</a><br>
+        <a href="set-object-js.html">Set-object-js</a><br>
+        <a href="settimeout-js.html">SetTimeout-js</a><br>
+        <a href="shallow-vs-deep-copy-js.html">Shallow-vs-Deep-Copy-js</a><br>
+        <a href="short-circuiting-js.html">Short-circuiting-js</a><br>
+        <a href="slice-js.html">Slice-js</a><br>
+        <a href="spread-rest-operators-js.html">Spread-rest-operators-js</a><br>
+        <a href="stack-js.html">Stack-js</a><br>
+        <a href="strict-js.html">Strict-js</a><br>
+        <a href="string-methods-js.html">String-Methods-js</a><br>
+        <a href="switch-statement-js.html">Switch-Statement-js</a><br>
+        <a href="symbol-js.html">Symbol-js</a><br>
+        <p>T - Series</p>
+        <a href="tagged-templates-js.html">Tagged-Templates-js</a><br>
+        <a href="template-literals-js.html">Template-Literals-js</a><br>
+        <a href="ternary-operator-js.html">Ternary-Operator-js</a><br>
+        <a href="this-keyword-js.html">this-Keyword-js</a><br>
+        <a href="throttling-js.html">Throttling-js</a><br>
+        <a href="throw-statement-js.html">throw-Statement-js</a><br>
+        <a href="timers-js.html">Timers-js</a><br>
+        <a href="tree-traversal-js.html">Tree-Traversal-js</a><br>
+        <a href="try-catch-js.html">try-catch-js</a><br>
+        <a href="typed-arrays-js.html">Typed-Arrays-js</a><br>
+        <p>U - Series</p>
+        <a href="unary-operators.html">Unary-Operators</a><br>
+        <a href="undefined-js.html">Undefined-js</a><br>
+        <a href="url-api-js.html">URL-API-js</a><br>
+        <a href="user-events-js.html">User-Events-js</a><br>
+        <p>V - Series</p>
+        <a href="value-vs-reference.html">Value-vs-Reference</a><br>
+        <a href="vanilla-js.html">Vanilla-js</a><br>
+        <a href="var-js.html">Var-js</a><br>
+        <a href="variables-js.html">Variables-js</a><br>
+        <a href="void-operator-js.html">Void-Operator-js</a><br>
+        <p>W - Series</p>
+        <a href="watchers-js.html">Watchers-js</a><br>
+        <a href="weakmap-weakset-js.html">WeakMap-WeakSet-js</a><br>
+        <a href="web-api-js.html">Web-API-js</a><br>
+        <a href="web-sockets-js.html">Web-Sockets-js</a><br>
+        <a href="web-workers-js.html">Web-Workers-js</a><br>
+        <a href="while-loop-js.html">while-Loop-js</a><br>
+        <a href="window-object-js.html">Window-Object-js</a><br>
+        <p>X - Series</p>
+        <a href="xml-parsing-js.html">XML-Parsing-js</a><br>
+        <a href="xmlhttprequest-js.html">XMLHttpRequest-js</a><br>
+        <p>Y - Series</p>
+        <a href="yield-keyword-js.html">Yield-Keyword-js</a><br>
+        <p>Z - Series</p>
+        <a href="z-index-js.html">z-index-js</a><br>
+        <a href="zero-based-indexing-js.html">Zero-Based-Indexing-js</a><br>
+
+      </div>
+    </div>
+
+    <!-- Info Banner and Editor Content goes here - will be injected by the script -->
+    <div id="main-content"></div>
+
+    <footer>
+      <div class="footer-content">
+        <p>JS IN MY STYLE</p>
+        <p class="subtitle">Learn all the JavaScript content in my style</p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" target="_blank" class="social-link">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+              
+        <a href="https://t.me/Tech_in_my_style_bot" target="_blank" class="social-link">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 2L11 13"></path>
+            <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+          </svg>
+        </a>
+
+        <a href="https://www.youtube.com/@TECHINMYSTYLE" target="_blank" class="social-link">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+          </svg>
+        </a>
+      </div>
+      <div class="contact-info">
+        <p>Contact me: techinmystyle@gmail.com</p>
+        <p class="copyright">© 2025 JS IN MY STYLE. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>    
+  <script src="Middleware-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events &amp; DOM Manipulation - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Events &amp; DOM Manipulation</span>
+      </div>
+      <h1>Events &amp; DOM Manipulation</h1>
+      <p>Learn how to interact with HTML elements and respond to user actions using JavaScript.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript allows dynamic interaction with web pages through the Document Object Model (DOM). Using events and DOM manipulation, developers can change page content, style, and structure in response to user actions such as clicks, keypresses, and form submissions, enabling interactive and responsive web applications.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>Example demonstrating event handling and DOM manipulation:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Event &amp; DOM Manipulation Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// Select button and paragraph elements
+const button = document.getElementById('myButton');
+const paragraph = document.getElementById('myParagraph');
+
+// Add a click event listener to the button
+button.addEventListener('click', () => {
+  // Change the paragraph text and style on button click
+  paragraph.textContent = "You clicked the button!";
+  paragraph.style.color = 'blue';
+});
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Selecting HTML elements via <code>getElementById</code>.</li>
+          <li>Adding event listeners to respond to user actions.</li>
+          <li>Changing DOM content dynamically.</li>
+          <li>Modifying CSS styles programmatically.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p><strong>DOM (Document Object Model):</strong> The DOM is a programming interface for HTML documents. It represents the page so that programs can change the document structure, style, and content.</p>
+        <p><strong>Events:</strong> Events are actions or occurrences that happen in the system, such as user interactions like clicks, key presses, or page loads. JavaScript can listen to these events and execute code in response.</p>
+        <p><strong>Event Listeners:</strong> Functions that are called when an event occurs on a target element. They can be attached using methods like <code>addEventListener</code>.</p>
+        <p><strong>DOM Manipulation:</strong> Involves changing the elements, attributes, and styles of the HTML document dynamically using JavaScript.</p>
+        <ul>
+          <li>Selecting elements with methods like <code>getElementById</code>, <code>querySelector</code>.</li>
+          <li>Modifying content using <code>textContent</code>, <code>innerHTML</code>.</li>
+          <li>Changing styles via the <code>style</code> property.</li>
+          <li>Creating, appending, or removing elements dynamically.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li>Interactive form validations and user feedback.</li>
+          <li>Dynamic UI updates without page reloads.</li>
+          <li>Building responsive navigation menus and modal dialogs.</li>
+          <li>Games and animations that respond to user inputs.</li>
+          <li>Single Page Applications (SPAs) that manipulate DOM to show/hide content.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> Which method is used to attach an event listener to an element?</p>
+            <ul>
+              <li>A. <code>addEvent()</code></li>
+              <li>B. <code>addListener()</code></li>
+              <li>C. <code>addEventListener()</code></li>
+              <li>D. <code>attachEvent()</code></li>
+            </ul>
+            <p><strong>Answer:</strong> C. <code>addEventListener()</code></p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> What does <code>document.getElementById('id')</code> do?</p>
+            <ul>
+              <li>A. Selects all elements with the given tag name.</li>
+              <li>B. Selects the first element with the specified class.</li>
+              <li>C. Selects the element with the specified ID.</li>
+              <li>D. Creates a new element with the given ID.</li>
+            </ul>
+            <p><strong>Answer:</strong> C. Selects the element with the specified ID.</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> Which property changes the text content of an HTML element?</p>
+            <ul>
+              <li>A. <code>innerText</code></li>
+              <li>B. <code>textContent</code></li>
+              <li>C. <code>innerHTML</code></li>
+              <li>D. All of the above</li>
+            </ul>
+            <p><strong>Answer:</strong> D. All of the above</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> How do you change the color style of a paragraph with id "para"?</p>
+            <ul>
+              <li>A. <code>document.getElementById('para').style.color = 'red';</code></li>
+              <li>B. <code>document.getElementById('para').color = 'red';</code></li>
+              <li>C. <code>document.getElementById('para').setColor('red');</code></li>
+              <li>D. <code>document.getElementById('para').textColor = 'red';</code></li>
+            </ul>
+            <p><strong>Answer:</strong> A. <code>document.getElementById('para').style.color = 'red';</code></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Epochs, Batches, Learning Rate
+ - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+             
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+           
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Epochs, Batches, Learning Rate
+</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>When training deep learning models, three critical hyperparameters define the training process: <strong>Epochs</strong>, <strong>Batches</strong>, and <strong>Learning Rate</strong>.</p>
+        <ul>
+            <li><strong>Epoch</strong>: One complete pass through the entire training dataset.</li>
+            <li><strong>Batch</strong>: A subset of the training dataset used to train the model in one forward/backward pass.</li>
+            <li><strong>Learning Rate</strong>: The step size at which the model updates its weights after each batch.</li>
+        </ul>
+        <p>The combination of these parameters influences training speed, model accuracy, and convergence stability.</p>
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Did You Know?</div>
+            <p>Using too high a learning rate can cause the model to diverge, while too low a rate might slow convergence drastically.</p>
+        </div>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's how you set epochs, batch size, and learning rate in Keras and PyTorch:</p>
+        
+        <h3>TensorFlow/Keras</h3>
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam
+
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(100,)),
+    Dense(10, activation='softmax')
+])
+
+# Compile with custom learning rate
+optimizer = Adam(learning_rate=0.01)
+model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+
+# Train with specified epochs and batch size
+model.fit(X_train, y_train, epochs=20, batch_size=64)</code></pre>
+        </div>
+
+        <h3>PyTorch</h3>
+        <div class="code-container">
+            <pre><code class="language-python">import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import DataLoader, TensorDataset
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        self.fc1 = nn.Linear(100, 64)
+        self.fc2 = nn.Linear(64, 10)
+
+    def forward(self, x):
+        return torch.softmax(self.fc2(torch.relu(self.fc1(x))), dim=1)
+
+model = Net()
+optimizer = optim.Adam(model.parameters(), lr=0.01)
+criterion = nn.CrossEntropyLoss()
+train_loader = DataLoader(TensorDataset(X_train, y_train), batch_size=64, shuffle=True)
+
+# Train for 20 epochs
+for epoch in range(20):
+    for batch_X, batch_y in train_loader:
+        optimizer.zero_grad()
+        output = model(batch_X)
+        loss = criterion(output, batch_y)
+        loss.backward()
+        optimizer.step()</code></pre>
+        </div>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-heartbeat"></i></div>
+                <h3>Health Diagnostics</h3>
+                <p>Batch and learning rate tuning is crucial in training medical diagnosis models to avoid false positives or overfitting.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-robot"></i></div>
+                <h3>Robotics</h3>
+                <p>Deep models controlling robotic motion are trained using small batches and adaptive learning rates for precision tasks.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-comment-dots"></i></div>
+                <h3>Chatbots</h3>
+                <p>Training language models with the right batch size and learning rate enhances conversational fluency and coherence.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-signal"></i></div>
+                <h3>Stock Prediction</h3>
+                <p>Batch gradient descent and learning rate scheduling are vital to adapt models to changing financial data trends.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/_Tz_rd9cjFM?si=ucaf2EEzgu5l4YCL'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1b1RXr19ibqtW5Ljni5PETdEcAZffNq3b/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                    <li><a href="https://cs231n.github.io/" target="_blank">CS231n: Convolutional Neural Networks for Visual Recognition</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the difference between batch size and epoch?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Batch size is the number of samples processed before the model updates its weights. One epoch is when the entire dataset is passed once through the model.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does the learning rate affect model training?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>A high learning rate may lead to convergence issues, while a low one can slow training. Finding the right balance is critical for efficient learning.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is mini-batch gradient descent?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Mini-batch gradient descent updates the model weights after computing the loss over a subset (mini-batch) of the training data, balancing speed and stability.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+              
+            </div>
+         <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

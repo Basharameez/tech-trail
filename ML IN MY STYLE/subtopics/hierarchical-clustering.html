@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hierarchical Clustering | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Hierarchical Clustering</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Hierarchical Clustering</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Hierarchical Clustering is an unsupervised learning method used to group similar objects into clusters based on their distance or similarity. Unlike K-Means, it does not require the number of clusters to be defined upfront and builds a tree-like structure called a dendrogram to represent data hierarchy.</p>
+    
+    <div class="glass-card">
+        <h3>How It Works</h3>
+        <ul>
+            <li><strong>Agglomerative (Bottom-Up):</strong> Starts with each data point as a single cluster and merges the closest pairs iteratively until all points are merged into one cluster.</li>
+            <li><strong>Divisive (Top-Down):</strong> Starts with all data in one cluster and splits it recursively into smaller clusters.</li>
+            <li>Uses a distance metric (e.g., Euclidean) and a linkage criterion (e.g., single, complete, average) to measure similarity between clusters.</li>
+            <li>Results are visualized using a dendrogram, which helps in deciding the number of clusters by cutting the tree at a specific height.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>Python Example of Hierarchical Clustering</h3>
+        <pre><code>import matplotlib.pyplot as plt
+import scipy.cluster.hierarchy as sch
+from sklearn.datasets import make_blobs
+from sklearn.cluster import AgglomerativeClustering
+
+# Generate synthetic data
+X, _ = make_blobs(n_samples=150, centers=4, cluster_std=0.60, random_state=0)
+
+# Dendrogram
+plt.figure(figsize=(10, 7))
+dendrogram = sch.dendrogram(sch.linkage(X, method='ward'))
+plt.title("Dendrogram")
+plt.xlabel("Samples")
+plt.ylabel("Euclidean Distances")
+plt.show()
+
+# Agglomerative Clustering
+model = AgglomerativeClustering(n_clusters=4, affinity='euclidean', linkage='ward')
+y_pred = model.fit_predict(X)
+
+# Cluster Visualization
+plt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap='rainbow')
+plt.title("Hierarchical Clustering")
+plt.show()</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+
+    <div class="glass-card application-card">
+        <h3>Hierarchical Clustering Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Bioinformatics:</strong> Creating phylogenetic trees, gene expression data analysis</li>
+                    <li><strong>Social Network Analysis:</strong> Grouping users with similar behavior or interests</li>
+                    <li><strong>Market Research:</strong> Customer segmentation for targeted marketing</li>
+                    <li><strong>Document Classification:</strong> Clustering articles or research papers based on topics</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/267614/pexels-photo-267614.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hierarchical dendrogram visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/8QCBl-xdeZI?si=X3PZ-Y7D-vtcPTzi">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1lsuPcmYHedUqXkKmhTY_8C1-xHWi1f2L/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the difference between agglomerative and divisive hierarchical clustering?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>Agglomerative:</strong> Bottom-up approach where each observation starts in its own cluster, and pairs of clusters are merged as one moves up the hierarchy.</p>
+            <p><strong>Divisive:</strong> Top-down approach where all observations start in one cluster, and splits are performed recursively as one moves down the hierarchy.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How do you decide the number of clusters in hierarchical clustering?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>By analyzing the dendrogram and selecting a threshold to cut the tree. The number of vertical lines intersected by the cut corresponds to the number of clusters.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What is a dendrogram?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>A dendrogram is a tree-like diagram that records the sequences of merges or splits in hierarchical clustering. It helps in visualizing the arrangement of clusters.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What are linkage criteria in hierarchical clustering?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p><strong>Single linkage:</strong> Minimum distance between points in two clusters</p>
+            <p><strong>Complete linkage:</strong> Maximum distance between points in two clusters</p>
+            <p><strong>Average linkage:</strong> Average distance between all points in the two clusters</p>
+            <p><strong>Ward linkage:</strong> Minimizes the variance within each cluster</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. Is hierarchical clustering scalable to large datasets?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>No, hierarchical clustering is computationally expensive (O(n²) space and time complexity), which makes it unsuitable for very large datasets without optimization.</p>
+        </div>
+    </div>
+</section>
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                 
+                </ul>
+            </div>
+       <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross Validation (K-Fold) | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>Cross Validation (K-Fold)</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Cross Validation (K-Fold)</h1>
+            
+<section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>Cross Validation is a statistical method used to estimate the skill of machine learning models. It helps to assess how the results of a model will generalize to an independent dataset. K-Fold Cross Validation is one of the most commonly used techniques.</p>
+    
+    <div class="glass-card">
+        <h3>K-Fold Cross Validation</h3>
+        <p>In K-Fold Cross Validation, the dataset is divided into K equally sized folds. The model is trained K times, each time using K-1 folds as training data and the remaining one fold as testing data. The final evaluation metric is the average of the results across all K trials.</p>
+        <ul>
+            <li>Helps reduce overfitting and gives a more reliable estimate of model performance</li>
+            <li>Ensures every data point is used for both training and validation exactly once</li>
+            <li>K is typically chosen as 5 or 10, balancing bias and variance</li>
+        </ul>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>K-Fold Cross Validation Example in Python</h3>
+        <pre><code>from sklearn.datasets import load_iris
+from sklearn.model_selection import KFold, cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
+# Load dataset
+iris = load_iris()
+X, y = iris.data, iris.target
+
+# Initialize model
+model = RandomForestClassifier()
+
+# Setup K-Fold cross-validation with 5 folds
+kf = KFold(n_splits=5, shuffle=True, random_state=42)
+
+# Evaluate model using cross-validation
+scores = cross_val_score(model, X, y, cv=kf)
+
+print("Cross-validation scores:", scores)
+print("Average accuracy:", np.mean(scores))</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    <div class="glass-card application-card">
+        <h3>Cross Validation Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Model Selection:</strong> Comparing different models or hyperparameters to choose the best one</li>
+                    <li><strong>Medical Diagnosis:</strong> Validating models predicting diseases to ensure reliability</li>
+                    <li><strong>Finance:</strong> Risk modeling and fraud detection systems where robustness is critical</li>
+                    <li><strong>Natural Language Processing:</strong> Evaluating models on limited labeled text data</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cross validation illustration" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/v6DtYYafrWQ?si=7o67Y1JqApj83yEL">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1Yy6pws-0KNVXr9CbpvHmLLIhQQImurs5/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+           
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What is the purpose of K-Fold Cross Validation?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>K-Fold Cross Validation is used to assess how well a model generalizes to unseen data by training and testing it multiple times on different subsets of the dataset.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. How do you choose the value of K in K-Fold Cross Validation?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>K is often chosen as 5 or 10 as a trade-off between computational cost and reliable performance estimation. A smaller K increases bias but reduces variance, while a larger K reduces bias but increases variance.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. What is the difference between K-Fold Cross Validation and simple train-test split?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Train-test split divides the data once, which can lead to variance in evaluation results. K-Fold uses multiple splits to provide a more robust and less biased estimate of model performance.</p>
+        </div>
+    </div>
+
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What is stratified K-Fold Cross Validation?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Stratified K-Fold ensures that each fold has the same proportion of class labels as the original dataset, which is important for imbalanced classification problems.</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+         
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                   
+                </ul>
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

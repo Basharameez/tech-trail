@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loops - JS Basics in My Style</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <div class="navbar-logo">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo" >
+        <h1>Basics</h1>
+      </div>
+      <ul class="navbar-menu">
+       
+      </ul>
+      <button class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+<div class="subtopic-container">
+    <!-- Header -->
+    <div class="subtopic-header">
+      <div class="breadcrumbs">
+        <a href="../../index.html">Home</a> >
+        <a href="../../topics.html">Topics</a> >
+        <a href="../../topics.html#fundamentals">Fundamentals</a> >
+        <span>Loops</span>
+      </div>
+      <h1>Loops</h1>
+      <p>Discover <code>for</code>, <code>while</code>, and <code>do-while</code> loops for repeating code execution in JavaScript.</p>
+    </div>
+         <header>
+  <button onclick="location.href='../../topics.html'" style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    ⬅ Back to Topics
+  </button>
+</header>
+    <!-- Present State Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-info-circle"></i>
+        <h2>Present State</h2>
+      </div>
+      <div class="subtopic-section-body">
+        Loops in JavaScript provide a way to execute a block of code multiple times. Depending on the loop type and condition, the code will repeat until the condition evaluates to false. Common loop types include <code>for</code>, <code>while</code>, and <code>do-while</code>, each with their own specific use-cases.
+      </div>
+    </div>
+    
+    <!-- Code Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-code"></i>
+        <h2>Code Example</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <p>This example demonstrates the use of different loop types in JavaScript:</p>
+        
+        <div class="code-block">
+          <div class="code-block-header">
+            <span>JavaScript Loops Example</span>
+            <button class="copy-button">Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+// For loop
+for (let i = 1; i <= 5; i++) {
+  console.log("For loop count:", i);
+}
+
+// While loop
+let j = 1;
+while (j <= 5) {
+  console.log("While loop count:", j);
+  j++;
+}
+
+// Do-while loop
+let k = 1;
+do {
+  console.log("Do-while loop count:", k);
+  k++;
+} while (k <= 5);
+          </code></pre>
+        </div>
+        
+        <p>This code demonstrates:</p>
+        <ul>
+          <li>Using a <code>for</code> loop for a known number of iterations.</li>
+          <li>Using a <code>while</code> loop for condition-based repetition.</li>
+          <li>Using a <code>do-while</code> loop to ensure the block executes at least once.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Description Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-book"></i>
+        <h2>Description</h2>
+      </div>
+      <div class="subtopic-section-body">
+        JavaScript loops are used to execute the same block of code multiple times:
+        <ul>
+          <li><strong>for loop:</strong> Best when the number of iterations is known. Syntax: <code>for (init; condition; increment)</code>.</li>
+          <li><strong>while loop:</strong> Used when the condition is checked before each iteration.</li>
+          <li><strong>do-while loop:</strong> Executes the block at least once, then repeats as long as the condition is true.</li>
+        </ul>
+        Loops help reduce repetitive code and increase efficiency in operations like traversing arrays, performing calculations, and handling user input.
+      </div>
+    </div>
+    
+    <!-- Applications Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-laptop-code"></i>
+        <h2>Applications</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <ul>
+          <li><strong>Traversing Arrays:</strong> Loop through array elements for processing or display.</li>
+          <li><strong>Input Validation:</strong> Continuously prompt the user until valid input is received.</li>
+          <li><strong>Animation Loops:</strong> Create animations that update frame-by-frame.</li>
+          <li><strong>Batch Operations:</strong> Automate repetitive calculations or operations.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- MCQs Section -->
+    <div class="subtopic-section">
+      <div class="subtopic-section-header">
+        <i class="fas fa-question-circle"></i>
+        <h2>Multiple Choice Questions</h2>
+      </div>
+      <div class="subtopic-section-body">
+        <div class="mcq-section">
+          <div class="mcq-item">
+            <p><strong>Q1:</strong> What is the minimum number of times a <code>do-while</code> loop will execute?</p>
+            <ul>
+              <li>A. 0</li>
+              <li>B. 1</li>
+              <li>C. Infinite</li>
+              <li>D. Depends on the condition</li>
+            </ul>
+            <p><strong>Answer:</strong> B. 1</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q2:</strong> Which loop is ideal when the number of iterations is known beforehand?</p>
+            <ul>
+              <li>A. while</li>
+              <li>B. do-while</li>
+              <li>C. for</li>
+              <li>D. infinite</li>
+            </ul>
+            <p><strong>Answer:</strong> C. for</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q3:</strong> What happens if the loop condition never becomes false in a <code>while</code> loop?</p>
+            <ul>
+              <li>A. It runs once and stops</li>
+              <li>B. It results in an infinite loop</li>
+              <li>C. It throws an error</li>
+              <li>D. It exits automatically</li>
+            </ul>
+            <p><strong>Answer:</strong> B. It results in an infinite loop</p>
+          </div>
+
+          <div class="mcq-item">
+            <p><strong>Q4:</strong> Where is the loop condition evaluated in a <code>do-while</code> loop?</p>
+            <ul>
+              <li>A. Before the loop body</li>
+              <li>B. After the loop body</li>
+              <li>C. Inside the loop body</li>
+              <li>D. Only once</li>
+            </ul>
+            <p><strong>Answer:</strong> B. After the loop body</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+    
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS Logo">
+          <h2>JS Basics</h2>
+        </div>
+        <div class="social-links">
+          <a href="https://t.me/jsbasics" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://instagram.com/jsbasics" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="footer-text">
+        <p>© 2025 JS Basics in My Style. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- Page Transition -->
+  <div class="page-transition"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/topic-navigation.js"></script>
+</body>
+</html>

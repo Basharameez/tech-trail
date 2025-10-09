@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project2 | AI Topics</title>
+    <link rel="icon" type="image/svg+xml" href="../../img/Ai.svg">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="../../index.html">
+                     <h1><span class="gradient-text">Artificial Intelligence</span> In My Style</h1>
+                </a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../topics.html">Topics</a></li>
+                    <li><a href="../../about.html">About</a></li>
+                   
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../topics.html">Topics</a></li>
+                <li><a href="../../topics.html">mini</a></li>
+                <li>Project2</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Subtopic Content -->
+    <section class="subtopic-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <aside class="sidebar">
+                    <div class="topic-nav glass">
+                        <h3>mini</h3>
+                        <ul>
+                            
+                            <li ><a href="project1.html">Regression Model for Web-Friendly Data:</a></li>
+                            <li class="active"><a href="project2.html">Classification Model for Tabular Data</a></li>
+                        </ul>
+                       
+                    </div>
+                </aside>
+                
+                <main class="main-content glass">
+                    <h1>Classification Model for Tabular Data</h1>
+                    
+                    <section class="content-section">
+                        <h2>Description</h2>
+                        <p>Classification is a supervised learning approach used to categorize data into discrete classes or labels. Unlike regression, which predicts continuous values, classification answers yes/no, true/false, or multi-class questions. It is widely used in spam detection, medical diagnosis, fraud detection, and customer behavior prediction.
+
+A trained classification model analyzes patterns in input features and predicts the appropriate class for new data. Models like Logistic Regression, Decision Trees, SVM, and k-NN are popular for these tasks.
+
+
+</p>
+                        
+                       
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Examples (Code)</h2>
+                        <p>Below is a  example :</p>
+                        
+                        <pre><code class="language-python">
+backend file:
+# app.py
+from flask import Flask, render_template, request
+import pickle
+import numpy as np
+
+app = Flask(__name__)
+model = pickle.load(open('classification_model.pkl', 'rb'))
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    input_features = [float(x) for x in request.form.values()]
+    prediction = model.predict([input_features])[0]
+    output = "Malignant" if prediction == 0 else "Benign"
+    return render_template('index.html', prediction_text=f'Prediction: {output}')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+</code></pre>
+<pre><code class="language-python">
+# model_train.py
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import pickle
+
+# Load dataset
+data = load_breast_cancer()
+X, y = data.data, data.target
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+clf = RandomForestClassifier()
+clf.fit(X_train, y_train)
+
+# Save model
+pickle.dump(clf, open('classification_model.pkl', 'wb'))
+</code></pre>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Breast Cancer Classification&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;Enter Feature Values&lt;/h2&gt;
+    &lt;form action="/predict" method="post"&gt;
+        {% for i in range(30) %}
+        &lt;input type="text" name="feature{{i}}" placeholder="Feature {{i+1}}" required&gt;&lt;br&gt;
+        {% endfor %}
+        &lt;input type="submit" value="Predict"&gt;
+    &lt;/form&gt;
+    &lt;h3&gt;{{ prediction_text }}&lt;/h3&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+    </code></pre>note: above codes are to be different files and to run the code these are must 
+
+                        
+                       
+                    </section>
+                    
+                    
+  <section class="content-section">
+  <h2>Real-World Applications</h2>
+  <div class="applications-grid">
+    
+    <div class="application-card">
+      <i class="fas fa-stethoscope"></i>
+      <h3>Healthcare Diagnosis</h3>
+      <p>Classify patients based on symptoms to diagnose diseases like cancer, diabetes, etc.</p>
+    </div>
+    
+    <div class="application-card">
+      <i class="fas fa-user-shield"></i>
+      <h3>Fraud Detection</h3>
+      <p>Detect fraudulent transactions in banking using transaction features and history.</p>
+    </div>
+    
+    <div class="application-card">
+      <i class="fas fa-user-times"></i>
+      <h3>Customer Churn Prediction</h3>
+      <p>Predict whether a customer will leave the service or stay, based on usage data.</p>
+    </div>
+    
+    <div class="application-card">
+      <i class="fas fa-envelope-open-text"></i>
+      <h3>Email Spam Detection</h3>
+      <p>Classify emails as spam or not using text-based features.</p>
+    </div>
+    
+    <div class="application-card">
+      <i class="fas fa-briefcase"></i>
+      <h3>Resume Classification</h3>
+      <p>Filter and classify job applications based on skill match for roles.</p>
+    </div>
+    
+    <div class="application-card">
+      <i class="fas fa-user-graduate"></i>
+      <h3>Student Performance Prediction</h3>
+      <p>Predict student outcomes or risk of dropout based on academic history.</p>
+    </div>
+
+  </div>
+</section>
+
+
+                    <section class="content-section">
+                        <h2>Where topic Is Applied</h2>
+                        
+                        
+                        <div class="table-container">
+       <table>
+        <thead>
+            <tr>
+                <th>Domain</th>
+                <th>Use Case</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Healthcare</td>
+                <td>Disease prediction (e.g., cancer diagnosis)</td>
+            </tr>
+            <tr>
+                <td>Finance</td>
+                <td>Loan approval, fraud detection</td>
+            </tr>
+            <tr>
+                <td>Retail</td>
+                <td>Predicting customer churn</td>
+            </tr>
+            <tr>
+                <td>Marketing</td>
+                <td>Classifying user intent, lead qualification</td>
+            </tr>
+            <tr>
+                <td>HR</td>
+                <td>Resume classification for job screening</td>
+            </tr>
+            <tr>
+                <td>Email Systems</td>
+                <td>Spam or ham email classification</td>
+            </tr>
+            <tr>
+                <td>Education</td>
+                <td>Student performance categorization</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+                        </div>
+                    </section>
+                    
+                    <section class="content-section">
+                        <h2>Resources</h2>
+                        <div class="resources-box">
+                            <p>Additional resources </p>
+                            <ul>
+                                <a href=""><li>YouTube video tutorials </li></a>
+                              <a href="">  <li>PDF/DOC files via Drive links</li></a>
+                               <a href=""> <li>Recommended books and articles</li></a>
+                            </ul>
+                        </div>
+                    </section>
+                    
+                  <section class="content-section">
+  <section class="content-section"> <h2>Interview Questions with Answers</h2> <div class="accordion"> <div class="accordion-item"> <div class="accordion-header"> <h3>What is a classification problem in machine learning?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>It is a supervised learning task where the output variable is categorical, such as predicting whether an email is spam or not.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>What are some commonly used classification algorithms?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Logistic Regression, Decision Trees, Random Forest, SVM, k-NN, and Naive Bayes are commonly used.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>How do you evaluate classification models?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Using metrics like Accuracy, Precision, Recall, F1-Score, and Confusion Matrix.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>What is the difference between accuracy and precision?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Accuracy is the overall correctness; precision is the ratio of correctly predicted positive observations to the total predicted positives.</p> </div> </div> <div class="accordion-item"> <div class="accordion-header"> <h3>What is overfitting in classification?</h3> <span class="icon"><i class="fas fa-chevron-down"></i></span> </div> <div class="accordion-content"> <p>Overfitting occurs when the model performs well on training data but poorly on unseen data due to excessive learning of noise or irrelevant patterns.</p> </div> </div> </div> </section>
+                </main>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                   <h2><span class="gradient-text">Artificial Intelligence</span> In My Style</h2>
+                    <p>Your comprehensive resource for learning Artificial Intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="topics.html">Topics</a></li>
+                        <li><a href="about.html">About</a></li>
+                    
+                    </ul>
+                </div>
+                 <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                 <p>&copy; 2025 Artificial Intelligence In My Style. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/script.js"></script>
+</body>
+</html>

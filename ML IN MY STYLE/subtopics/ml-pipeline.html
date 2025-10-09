@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ml pipeline | ML in My Style</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../img/ml.svg"></head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../topics.html">Topics</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main class="subtopic-main">
+        <div class="breadcrumb">
+            <a href="../index.html">Home</a> / 
+            <a href="../topics.html">Topics</a> / 
+            <span>ML pipeline</span>
+        </div>
+
+        <article class="subtopic-content">
+            <h1>Data → Preprocessing → Model → Evaluation → Deployment</h1>
+            
+          <section class="subtopic-section" id="description">
+    <h2>Description</h2>
+    <p>The Machine Learning (ML) pipeline represents the step-by-step process to develop and deploy an ML model. It organizes the workflow from raw data collection to delivering a working model in production.</p>
+    
+    <div class="glass-card">
+        <h3>Data Collection</h3>
+        <p>This is the initial stage where raw data is gathered from various sources such as databases, sensors, files, or web scraping. The quality and quantity of data significantly affect the model's performance.</p>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Data Preprocessing</h3>
+        <p>Raw data often contains noise, missing values, or inconsistencies. Preprocessing prepares data for the model by cleaning, normalizing, transforming, and encoding it. This step ensures data quality and suitability for ML algorithms.</p>
+        <ul>
+            <li>Handling missing data</li>
+            <li>Data normalization or scaling</li>
+            <li>Encoding categorical variables</li>
+            <li>Feature engineering and selection</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Model Building</h3>
+        <p>At this stage, an appropriate machine learning algorithm is selected and trained on the preprocessed data. This involves choosing the model type, tuning hyperparameters, and training the model to learn patterns from data.</p>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Model Evaluation</h3>
+        <p>Once trained, the model's performance is assessed using various metrics on unseen test data. This step ensures the model generalizes well and performs as expected.</p>
+        <ul>
+            <li>Accuracy, Precision, Recall, F1 Score for classification</li>
+            <li>Mean Squared Error, R-squared for regression</li>
+            <li>Confusion matrix and ROC curves</li>
+        </ul>
+    </div>
+    
+    <div class="glass-card">
+        <h3>Deployment</h3>
+        <p>The final model is deployed to a production environment where it can make real-time or batch predictions. Deployment also involves monitoring, updating, and maintaining the model over time.</p>
+    </div>
+</section>
+
+<section class="subtopic-section" id="examples">
+    <h2>Examples</h2>
+    <div class="glass-card">
+        <h3>ML Pipeline Example Using Python (Simplified)</h3>
+        <pre><code>import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+import joblib
+
+# Data Collection
+data = pd.read_csv('data.csv')
+
+# Data Preprocessing
+X = data.drop('target', axis=1)
+y = data['target']
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Model Building
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# Model Evaluation
+y_pred = model.predict(X_test)
+print("Accuracy:", accuracy_score(y_test, y_pred))
+
+# Deployment (Save the model)
+joblib.dump(model, 'rf_model.pkl')
+joblib.dump(scaler, 'scaler.pkl')
+</code></pre>
+    </div>
+</section>
+
+<section class="subtopic-section" id="applications">
+    <h2>Real-World Applications</h2>
+    
+    <div class="glass-card application-card">
+        <h3>ML Pipeline Applications</h3>
+        <div class="application-content">
+            <div class="application-text">
+                <ul>
+                    <li><strong>Healthcare:</strong> Predicting patient readmission by processing electronic health records and deploying models to hospital systems.</li>
+                    <li><strong>Finance:</strong> Fraud detection systems that preprocess transaction data, train models, evaluate performance, and deploy real-time alert systems.</li>
+                    <li><strong>E-commerce:</strong> Recommendation engines that handle large user data, train collaborative filtering or content-based models, and serve personalized recommendations.</li>
+                    <li><strong>Manufacturing:</strong> Predictive maintenance using sensor data preprocessing, model training to predict equipment failures, and deployment for real-time monitoring.</li>
+                </ul>
+            </div>
+            <div class="application-image">
+                <img src="https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="ML pipeline visualization" class="app-image">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="subtopic-section" id="resources">
+                <h2>Resources</h2>
+                <p class="resource-note">The following resources will be manually added later:</p>
+                <div class="glass-card resource-card">
+                    <h3>Video Tutorials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fab fa-youtube"></i>
+                        <p><a href="https://youtu.be/HZ9MUzCRlzI?si=7wLGjnHv2olJRsIs">YouTube video link.</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card resource-card">
+                    <h3>PDF/DOC Materials</h3>
+                    <div class="resource-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p><a href="https://drive.google.com/file/d/1VAMqnsuorC1kJNRzce9ILu60C3auUBRi/view?usp=drive_link">Drive links for PDF/DOC files .</p>
+                    </div>
+                </div>
+                
+                
+            </section>
+<section class="subtopic-section" id="interview-questions">
+    <h2>Interview Questions</h2>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>1. What are the main stages of a machine learning pipeline?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>The main stages are Data Collection, Data Preprocessing, Model Building, Model Evaluation, and Deployment.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>2. Why is data preprocessing important in an ML pipeline?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Preprocessing improves data quality by handling missing values, noise, and inconsistencies, which helps models learn better and perform accurately.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>3. How do you evaluate if your ML model is good enough?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>By using evaluation metrics like accuracy, precision, recall, F1 score for classification or MSE and R-squared for regression, along with cross-validation to check generalization.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>4. What are common challenges faced during model deployment?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Challenges include handling scalability, monitoring model performance, managing updates, ensuring low latency, and integration with existing systems.</p>
+        </div>
+    </div>
+    
+    <div class="glass-card question-card">
+        <div class="question">
+            <h3>5. How does feature engineering fit into the ML pipeline?</h3>
+            <div class="toggle-answer" onclick="toggleAnswer(this)">Show Answer <i class="fas fa-chevron-down"></i></div>
+        </div>
+        <div class="answer">
+            <p>Feature engineering transforms raw data into meaningful features that improve the predictive power of the model. It is part of data preprocessing.</p>
+        </div>
+    </div>
+</section>
+
+
+
+        <div class="navigation-buttons">
+            <a href="../topics.html" class="nav-button back"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+           
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../topics.html">Topics</a></li>
+                 
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

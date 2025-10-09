@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Model definition, compiling, fitting, evaluating - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+               
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Model definition, compiling, fitting, evaluating</h1>
+                <div class="header-divider"></div>
+            </div>
+
+<section id="description" class="content-section">
+    <h2><i class="fas fa-info-circle"></i> Description</h2>
+    <div class="section-content">
+        <p>Model development in deep learning follows a pipeline involving:</p>
+        <ul>
+            <li><strong>Model Definition</strong>: Creating the architecture of the model using layers and configuration.</li>
+            <li><strong>Compiling</strong>: Configuring the model with optimizer, loss function, and metrics.</li>
+            <li><strong>Fitting</strong>: Training the model on data by adjusting weights based on the loss function.</li>
+            <li><strong>Evaluating</strong>: Measuring the model’s performance on test or validation data.</li>
+        </ul>
+        <p>This process is streamlined using high-level libraries like TensorFlow (Keras API) or PyTorch. While TensorFlow/Keras is more declarative, PyTorch allows greater flexibility with dynamic computation graphs.</p>
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Did You Know?</div>
+            <p>Model compilation does not occur in PyTorch the same way it does in Keras. In PyTorch, optimizers and loss functions are set manually before training.</p>
+        </div>
+    </div>
+</section>
+<section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here's a simple model pipeline example using both TensorFlow/Keras and PyTorch:</p>
+        
+        <h3>TensorFlow/Keras</h3>
+        <div class="code-container">
+            <pre><code class="language-python">from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.optimizers import Adam
+
+# Define model
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(100,)),
+    Dense(10, activation='softmax')
+])
+
+# Compile model
+model.compile(optimizer=Adam(learning_rate=0.001),
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Fit model
+model.fit(X_train, y_train, epochs=10, batch_size=32)
+
+# Evaluate model
+loss, accuracy = model.evaluate(X_test, y_test)</code></pre>
+        </div>
+
+        <h3>PyTorch</h3>
+        <div class="code-container">
+            <pre><code class="language-python">import torch
+import torch.nn as nn
+import torch.optim as optim
+
+class SimpleNet(nn.Module):
+    def __init__(self):
+        super(SimpleNet, self).__init__()
+        self.fc1 = nn.Linear(100, 64)
+        self.fc2 = nn.Linear(64, 10)
+
+    def forward(self, x):
+        x = torch.relu(self.fc1(x))
+        return torch.softmax(self.fc2(x), dim=1)
+
+model = SimpleNet()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Training loop
+for epoch in range(10):
+    optimizer.zero_grad()
+    outputs = model(X_train)
+    loss = criterion(outputs, y_train)
+    loss.backward()
+    optimizer.step()
+
+# Evaluation (basic)
+with torch.no_grad():
+    predictions = model(X_test)</code></pre>
+        </div>
+    </div>
+</section>
+<section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-brain"></i></div>
+                <h3>Medical Imaging Diagnosis</h3>
+                <p>Compiling and training models using Keras or PyTorch for automated disease detection from X-rays and MRIs.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-car"></i></div>
+                <h3>Self-Driving Cars</h3>
+                <p>Real-time neural network models trained and evaluated using PyTorch to interpret camera and sensor data.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-search"></i></div>
+                <h3>Search Engines</h3>
+                <p>Search ranking models developed and fine-tuned using TensorFlow to optimize result relevance.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Recommendations</h3>
+                <p>Neural networks trained using TensorFlow/Keras on viewing history data to suggest personalized videos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="resources" class="content-section">
+    <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/w8yWXqWQYmU?si=BL_7ym6QkRIu1z2M'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/18iUwQwgFt-XkQpGhSLTEQ1iGK_V-ddso/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                    <li><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+            <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the purpose of compiling a model in Keras?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Compiling a model in Keras configures the training process. It sets the optimizer, loss function, and evaluation metrics that the model will use when trained and evaluated.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How does model training differ in TensorFlow and PyTorch?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>TensorFlow typically uses a high-level API (Keras) where training is done via <code>fit()</code>. PyTorch uses a manual training loop offering greater flexibility and control over each step (forward, loss, backward, step).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is the role of the optimizer during training?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>The optimizer updates the weights of the model to minimize the loss function. It uses the gradients calculated during backpropagation to perform this update.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What are common evaluation metrics for classification tasks?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Accuracy</li>
+                        <li>Precision, Recall, F1-score</li>
+                        <li>ROC-AUC</li>
+                        <li>Confusion Matrix</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+           
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+              <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+           <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

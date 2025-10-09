@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn JavaScript and web development with interactive courses and hands-on practice at JavaScript in My Style.">
+    <title>JavaScript in My Style (Intermediate)</title>
+    <link rel="icon" href="./img/JS-INTERMEDIATE.png" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        /* CSS Variables - Skin and Black Theme */
+        :root {
+            --primary-color: #E8B895;
+            --primary-dark: #D2A373;
+            --secondary-color: #000000;
+            --light-bg: #FAFAFA;
+            --dark-bg: #0A0A0A;
+            --secondary-light: #FFFFFF;
+            --secondary-dark: #1A1A1A;
+            --light-text: #F5F5F5;
+            --dark-text: #1A1A1A;
+            --card-light: #FFFFFF;
+            --card-dark: #1A1A1A;
+            --gradient-primary: linear-gradient(135deg, #E8B895, #D2A373);
+            --box-shadow-light: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --box-shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+            --transition-fast: all 0.3s ease;
+            --transition-medium: all 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            min-width: 320px;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        body.dark-theme {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition-fast);
+            width: 100%;
+            max-width: 100vw;
+        }
+
+        .dark-theme header {
+            background-color: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.6rem;
+            transition: var(--transition-fast);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Logo Colors */
+        .logo span#myId {
+            color: #000000; /* Black for JS in light theme */
+            font-weight: bold;
+            transition: var(--transition-fast);
+        }
+
+        .logo span:last-child {
+            color: var(--secondary-color);
+            font-weight: normal;
+            transition: var(--transition-fast);
+            margin-left: 0.5rem;
+        }
+
+        .dark-theme .logo span#myId {
+            color: #FFFFFF; /* White for JS in dark theme */
+        }
+
+        .dark-theme .logo span:last-child {
+            color: var(--secondary-light);
+        }
+
+        /* Hover Effects */
+        .logo:hover span#myId {
+            color: var(--primary-dark);
+        }
+
+        .dark-theme .logo:hover span#myId,
+        .dark-theme .logo:hover span:last-child {
+            color: #FFFFFF;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 1rem;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            padding: 0.6rem 1rem;
+            border-radius: var(--border-radius-sm);
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition-fast);
+            transform: translateX(-50%);
+        }
+
+        .dark-theme nav li a {
+            color: var(--light-text);
+        }
+
+        nav li a:hover {
+            background-color: rgba(232, 184, 149, 0.08);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        nav li a:hover::after {
+            width: 70%;
+        }
+
+        nav li a.active {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            box-shadow: 0 4px 12px rgba(232, 184, 149, 0.25);
+        }
+
+        nav li a.active::after {
+            width: 0;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 5%;
+            min-height: 70vh;
+            position: relative;
+            overflow: visible;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(232, 184, 149, 0.1), transparent 70%);
+            top: -100px;
+            right: -100px;
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--dark-text);
+            margin-bottom: 1.2rem;
+            animation: typing 2s steps(30, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid var(--primary-color);
+            max-width: 600px;
+        }
+
+        .dark-theme .hero-subtitle {
+            color: var(--light-text);
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-color); }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--dark-text);
+            max-width: 550px;
+        }
+
+        .dark-theme .hero-description {
+            color: var(--light-text);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: var(--transition-fast);
+            z-index: -1;
+        }
+
+        .btn:hover::after {
+            left: 0;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--secondary-color);
+            box-shadow: 0 5px 15px rgba(232, 184, 149, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(232, 184, 149, 0.35);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            box-shadow: 0 3px 10px rgba(232, 184, 149, 0.1);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(232, 184, 149, 0.25);
+        }
+
+        .code-display {
+            flex: 1;
+            max-width: 450px;
+            background: #1E1E1E;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow-light);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-medium);
+            transform: translateX(20px);
+            opacity: 0;
+        }
+
+        .code-display.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .dark-theme .code-display {
+            box-shadow: var(--box-shadow-dark);
+            background: #0D0D0D;
+        }
+
+        .code-header {
+            background: #2D2D2D;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dark-theme .code-header {
+            background: #1A1A1A;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot.red { background: #FF5F56; }
+        .code-dot.yellow { background: var(--primary-color); }
+        .code-dot.green { background: #27C93F; }
+
+        .code-filename {
+            color: #ABB2BF;
+            font-size: 0.9rem;
+        }
+
+        .code-content {
+            padding: 1rem;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #ABB2BF;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-content .line-number {
+            position: absolute;
+            left: 0;
+            width: 2.5rem;
+            text-align: right;
+            color: #5C6370;
+            padding-right: 0.5rem;
+            user-select: none;
+        }
+
+        .code-content pre {
+            margin-left: 3rem;
+            padding: 0;
+        }
+
+        .code-keyword { color: var(--primary-color); }
+        .code-tag { color: #E06C75; }
+        .code-attribute { color: #D19A66; }
+        .code-string { color: #98C379; }
+        .code-comment { color: #5C6370; }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background-color: var(--secondary-light);
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .dark-theme .features-section {
+            background-color: var(--secondary-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .dark-theme .section-title {
+            color: var(--light-text);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 1.2rem auto 3rem;
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+        }
+
+        .dark-theme .section-subtitle {
+            color: var(--light-text);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-light);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--box-shadow-light);
+            transition: var(--transition-medium);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(232, 184, 149, 0.1);
+        }
+
+        .dark-theme .feature-card {
+            background-color: var(--card-dark);
+            box-shadow: var(--box-shadow-dark);
+            border: 1px solid rgba(232, 184, 149, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(232, 184, 149, 0.15);
+        }
+
+        .dark-theme .feature-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            transition: var(--transition-fast);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            color: var(--primary-dark);
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+        }
+
+        .dark-theme .feature-title {
+            color: var(--light-text);
+        }
+
+        .feature-description {
+            color: var(--dark-text);
+            line-height: 1.6;
+            flex-grow: 1;
+            transition: var(--transition-fast);
+        }
+
+        .dark-theme .feature-description {
+            color: var(--light-text);
+        }
+
+        /* Courses Section */
+        .courses-section {
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .course-card {
+            background-color: var(--card-light);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--box-shadow-light);
+            transition: var(--transition-medium);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            border: 1px solid rgba(232, 184, 149, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .dark-theme .course-card {
+            background-color: var(--card-dark);
+            box-shadow: var(--box-shadow-dark);
+            border: 1px solid rgba(232, 184, 149, 0.1);
+        }
+
+        .course-card.animate {
+            animation: fadeUpIn 0.8s forwards;
+        }
+
+        @keyframes fadeUpIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(232, 184, 149, 0.15);
+        }
+
+        .dark-theme .course-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition-medium);
+        }
+
+        .course-card:hover .course-image {
+            transform: scale(1.05);
+        }
+
+        .course-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .course-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+        }
+
+        .dark-theme .course-title {
+            color: var(--light-text);
+        }
+
+        .course-description {
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            transition: var(--transition-fast);
+        }
+
+        .dark-theme .course-description {
+            color: var(--light-text);
+        }
+
+        .course-link {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 0.7rem 1.2rem;
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-fast);
+            box-shadow: 0 4px 12px rgba(232, 184, 149, 0.15);
+        }
+
+        .course-card:hover .course-link {
+            box-shadow: 0 6px 15px rgba(232, 184, 149, 0.25);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: var(--secondary-light);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition-fast);
+            width: 100%;
+        }
+
+        .dark-theme .testimonials-section {
+            background-color: var(--secondary-dark);
+        }
+
+        .testimonials-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            gap: 2rem;
+            padding: 1rem 0 2rem;
+            margin-top: 2.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .testimonials-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .testimonial-card {
+            scroll-snap-align: start;
+            min-width: 300px;
+            max-width: 300px;
+            background-color: var(--card-light);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+            box-shadow: var(--box-shadow-light);
+            transition: var(--transition-medium);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border: 1px solid rgba(232, 184, 149, 0.1);
+        }
+
+        .dark-theme .testimonial-card {
+            background-color: var(--card-dark);
+            box-shadow: var(--box-shadow-dark);
+            border: 1px solid rgba(232, 184, 149, 0.1);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(232, 184, 149, 0.15);
+        }
+
+        .dark-theme .testimonial-card:hover {
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--dark-text);
+            transition: var(--transition-fast);
+            padding-top: 1.2rem;
+        }
+
+        .dark-theme .testimonial-text {
+            color: var(--light-text);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .testimonial-author::before {
+            content: '';
+            display: inline-block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--primary-color);
+            margin-right: 8px;
+            border-radius: 1px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+            background: var(--gradient-primary);
+            color: var(--secondary-color);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-section .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 3rem 0 1.2rem;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            box-sizing: border-box;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer Logo Colors */
+        .footer-logo span:first-child {
+            color: var(--primary-color);
+        }
+
+        .footer-logo span:last-child {
+            color: #FFFFFF;
+            margin-left: 0.5rem;
+        }
+
+        .footer-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #B0B9C8;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background-color: #2D2D2D;
+            color: #B0B9C8;
+            transition: var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(232, 184, 149, 0.3);
+        }
+
+        .footer-heading {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            padding-bottom: 0.6rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a {
+            color: #B0B9C8;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #B0B9C8;
+            transition: var(--transition-fast);
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 5%;
+            padding-right: 5%;
+            box-sizing: border-box;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-bottom-links a {
+            color: #B0B9C8;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(232, 184, 149, 0.3);
+            transition: var(--transition-fast);
+            opacity: 0;
+            z-index: 99;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-6px);
+            background-color: var(--primary-dark);
+        }
+
+        .theme-switch {
+            position: fixed;
+            bottom: 75px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: var(--dark-text);
+            color: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: var(--transition-fast);
+            z-index: 99;
+        }
+
+        .dark-theme .theme-switch {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+        }
+
+        .theme-switch:hover {
+            transform: translateY(-6px) rotate(360deg);
+        }
+
+        /* JavaScript Logo Animation */
+        .js-logo {
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            animation: logoFade 1.5s ease-in-out;
+        }
+
+        @keyframes logoFade {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .js-logo-shape {
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background: var(--primary-color);
+            margin-right: 12px;
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .logo:hover .js-logo-shape {
+            transform: rotate(10deg);
+            background: var(--primary-dark);
+        }
+
+        .js-logo-shape::before {
+            content: 'JS';
+            color: var(--secondary-color);
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title { font-size: 2.5rem; }
+            .hero-section { padding: 3rem 5%; }
+            .code-display { max-width: 400px; }
+        }
+
+        @media (max-width: 992px) {
+            .hero-section { 
+                flex-direction: column; 
+                padding: 3rem 5%;
+            }
+            .hero-content { 
+                padding-right: 0; 
+                margin-bottom: 2rem; 
+                text-align: center; 
+            }
+            .hero-buttons { 
+                justify-content: center; 
+                flex-wrap: wrap; 
+            }
+            .hero-title::after { 
+                left: 50%; 
+                transform: translateX(-50%); 
+            }
+            .hero-description { 
+                margin-left: auto; 
+                margin-right: auto; 
+            }
+            .code-display { max-width: 100%; }
+            .features-grid, .courses-grid { 
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+            }
+        }
+
+        @media (max-width: 768px) {
+            html, body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .header-container { 
+                flex-direction: column; 
+                padding: 1rem 3%;
+            }
+            .logo { 
+                margin-bottom: 1rem; 
+                font-size: 1.4rem; 
+            }
+            nav ul { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 0.6rem; 
+            }
+            nav li a { 
+                padding: 0.5rem 0.8rem; 
+                font-size: 0.9rem; 
+            }
+            .section-title { font-size: 2rem; }
+            .section-subtitle { 
+                font-size: 1rem; 
+                margin-bottom: 2rem; 
+            }
+            .features-grid, .courses-grid { 
+                grid-template-columns: 1fr; 
+            }
+            .testimonial-card { 
+                min-width: 260px; 
+                max-width: 260px; 
+                padding: 1.5rem; 
+            }
+            .footer-container { 
+                grid-template-columns: 1fr; 
+                padding: 0 3%;
+            }
+            .footer-bottom { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 1.2rem; 
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+            .footer-bottom-links { justify-content: center; }
+            .hero-section { padding: 3rem 3%; }
+            .main-content { padding: 0 3%; }
+
+            .theme-switch {
+                right: 15px;
+                bottom: 85px;
+            }
+
+            .back-to-top {
+                right: 15px;
+                bottom: 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html, body {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+
+            .hero-title { font-size: 1.8rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .hero-description { font-size: 1rem; }
+            .hero-buttons { 
+                flex-direction: column; 
+                width: 100%; 
+                gap: 0.8rem; 
+            }
+            .btn { 
+                width: 100%; 
+                text-align: center; 
+                justify-content: center; 
+            }
+            .section-title { font-size: 1.8rem; }
+            .section-subtitle { font-size: 0.9rem; }
+            .cta-title { font-size: 2rem; }
+            .cta-description { font-size: 1rem; }
+            .code-content { font-size: 0.85rem; }
+            .features-section, .courses-section, .testimonials-section, .cta-section { 
+                padding: 3rem 0; 
+            }
+            .hero-section { padding: 2rem 3%; }
+            .main-content { padding: 0 3%; }
+            .header-container { padding: 1rem 3%; }
+            .footer-container { padding: 0 3%; }
+            .footer-bottom { 
+                padding-left: 3%;
+                padding-right: 3%;
+            }
+
+            .theme-switch {
+                right: 10px;
+                bottom: 80px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .back-to-top {
+                right: 10px;
+                bottom: 20px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .header-container { padding: 1rem 2%; }
+            .hero-section { padding: 2rem 2%; }
+            .main-content { padding: 0 2%; }
+            .footer-container { padding: 0 2%; }
+            .footer-bottom { 
+                padding-left: 2%;
+                padding-right: 2%;
+            }
+
+            .theme-switch {
+                right: 8px;
+                bottom: 75px;
+            }
+
+            .back-to-top {
+                right: 8px;
+                bottom: 18px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--secondary-light);
+        }
+
+        .dark-theme ::-webkit-scrollbar-track {
+            background: var(--secondary-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Loading Animation */
+        .loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--light-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .dark-theme .loading-container {
+            background-color: var(--dark-bg);
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 4px solid rgba(232, 184, 149, 0.1);
+            border-top-color: var(--primary-color);
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="loading-container">
+    <div class="loading-spinner"></div>
+</div>
+<header role="banner">
+    <div class="header-container">
+        <a href="#" class="logo" aria-label="JavaScript in My Style Homepage">
+            <div class="js-logo">
+                <div class="js-logo-shape"></div>
+            </div>
+            <span id="myId">JS</span>
+            <span>in my style</span>
+        </a>
+        <nav role="navigation" aria-label="Main navigation">
+            <ul>
+                <li><a href="#" class="active" aria-current="page"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="javascript_index.html"><i class="fas fa-code"></i> JavaScript</a></li>
+                <li><a href="resources-js.html"><i class="fas fa-book"></i> Resources</a></li>
+               
+                <li><a href="COMPILER-JS.html"><i class="fas fa-laptop-code"></i> Playground</a></li>
+                <li><a href="tasks/task.html"><i class="fas fa-handshake"></i> Tasks</a></li>
+                <li><a href="none-js.html"><i class="fas fa-handshake"></i> Let's Connect</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <!-- Hero Section -->
+    <section class="hero-section" role="region" aria-labelledby="hero-title">
+        <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">Welcome to JS in My Style (Intermediate)</h1>
+            <div class="hero-subtitle">Your Gateway to Advanced Web Programming</div>
+            <p class="hero-description">
+                Level up your JavaScript skills with ES6 features, asynchronous programming, APIs, closures, and advanced DOM techniques. Master intermediate concepts that will make you a proficient JavaScript developer.
+            </p>
+            <div class="hero-buttons">
+                <a href="javascript_index.html" class="btn btn-primary"><i class="fas fa-play-circle"></i> Start Learning</a>
+                <a href="#courses" class="btn btn-outline"><i class="fas fa-th-list"></i> Explore Courses</a>
+            </div>
+        </div>
+        <div class="code-display">
+            <div class="code-header">
+                <div class="code-dots">
+                    <span class="code-dot red"></span>
+                    <span class="code-dot yellow"></span>
+                    <span class="code-dot green"></span>
+                </div>
+                <div class="code-filename">advanced.js</div>
+            </div>
+            <div class="code-content">
+                <pre><span class="line-number">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br></span><span class="code-comment">/* Advanced JavaScript Concepts */</span>
+<span class="code-keyword">const</span> <span class="code-tag">fetchData</span> = <span class="code-keyword">async</span> () => {
+  <span class="code-keyword">try</span> {
+    <span class="code-keyword">const</span> <span class="code-attribute">response</span> = <span class="code-keyword">await</span> <span class="code-tag">fetch</span>(<span class="code-string">'api/data'</span>);
+    <span class="code-keyword">const</span> <span class="code-attribute">data</span> = <span class="code-keyword">await</span> <span class="code-attribute">response</span>.<span class="code-attribute">json</span>();
+    <span class="code-keyword">return</span> <span class="code-attribute">data</span>;
+  } <span class="code-keyword">catch</span> (<span class="code-attribute">error</span>) {
+    <span class="code-tag">console</span>.<span class="code-attribute">error</span>(<span class="code-string">'Error:'</span>, <span class="code-attribute">error</span>);
+  }
+};
+
+<span class="code-tag">fetchData</span>().<span class="code-attribute">then</span>(<span class="code-attribute">data</span> => <span class="code-tag">console</span>.<span class="code-attribute">log</span>(<span class="code-attribute">data</span>));</pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" role="region" aria-labelledby="features-title">
+        <div class="main-content">
+            <h2 class="section-title" id="features-title">What Makes Us Different</h2>
+            <p class="section-subtitle">
+                Our platform provides everything for JavaScript intermediate learners: advanced courses, rich resources, hands-on tasks, and an interactive playground—all in one place.
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-home feature-icon"></i>
+                    <h3 class="feature-title">HOME</h3>
+                    <p class="feature-description">
+                        Your starting point with all the rules and guidelines to make your JavaScript intermediate learning journey smooth and effective.
+                    </p><br>
+                    <a class='btn btn-primary' href=""> Explore Home</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code feature-icon"></i>
+                    <h3 class="feature-title">JAVASCRIPT INTERMEDIATE</h3>
+                    <p class="feature-description">
+                        Complete JavaScript intermediate course organized by category and alphabetical order for easy reference and learning.
+                    </p><br>
+                    <a class='btn btn-primary' href='javascript_index.html'> Explore JavaScript</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-book feature-icon"></i>
+                    <h3 class="feature-title">RESOURCES</h3>
+                    <p class="feature-description">
+                        Access notes, textbooks, cheat sheets, YouTube links, certifications, and roadmaps all in one place.
+                    </p><br>
+                    <a class='btn btn-primary' href='resources-js.html'> Explore Resources</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tasks feature-icon"></i>
+                    <h3 class="feature-title">TASKS</h3>
+                    <p class="feature-description">
+                        Practice with randomly generated JavaScript intermediate tasks to test your skills and reinforce your learning.
+                    </p><br>
+                    <a class='btn btn-primary' href='tasks-js.html'> Explore Tasks</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code feature-icon"></i>
+                    <h3 class="feature-title">PLAYGROUND</h3>
+                    <p class="feature-description">
+                        An online JavaScript editor to run and test your code in real-time without leaving the site.
+                    </p><br>
+                    <a class='btn btn-primary' href='COMPILER-JS.html'> Explore Playground</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-handshake feature-icon"></i>
+                    <h3 class="feature-title">LET'S CONNECT</h3>
+                    <p class="feature-description">
+                        Stay updated with the latest news and updates about JavaScript trends and best practices.
+                    </p><br>
+                    <a class='btn btn-primary' href='none-js.html'> Explore Let's Connect</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Courses Section -->
+<!-- Popular Courses Section -->
+<section class="courses-section" id="courses" role="region" aria-labelledby="courses-title">
+<div class="main-content">
+<h2 class="section-title" id="courses-title">Popular Courses</h2>
+<p class="section-subtitle">
+Explore our most popular courses designed to take you from beginner to professional.
+</p>
+<div class="courses-grid">
+<div class="course-card" onclick="window.location.href='html_index.html'" role="button" tabindex="0" aria-label="HTML Course">
+<img src="img/HTML.png" alt="HTML Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">HTML in My Style</h3>
+<p class="course-description">
+Learn semantic HTML5, document structure, forms, and accessibility with our comprehensive course.
+</p>
+<a href="/HTML IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='css_index.html'" role="button" tabindex="0" aria-label="CSS Course">
+<img src="img/CSS.png" alt="CSS Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">CSS in My Style</h3>
+<p class="course-description">
+Master modern CSS techniques, layouts, animations, and responsive design principles with our comprehensive course.
+</p>
+<a href="/CSS IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='javascript_beginner.html'" role="button" tabindex="0" aria-label="JavaScript Course">
+<img src="img/JS-BEGINNERS.png" alt="JavaScript Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">JavaScript in My Style<br>(Beginner)</h3>
+<p class="course-description">
+Start your JavaScript journey by mastering variables, functions, conditionals, loops, and basic DOM manipulation with hands-on examples.
+</p>
+<a href="/JAVASCRIPT IN MY STYLE - BASIC/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='javascript_intermediate.html'" role="button" tabindex="0" aria-label="JavaScript Course">
+<img src="img/JS-INTERMEDIATE.png" alt="JavaScript Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">JavaScript in My Style<br>(Intermediate)</h3>
+<p class="course-description">
+Level up your JavaScript skills with ES6 features, asynchronous programming, APIs, closures, and advanced DOM techniques.
+</p>
+<a href="/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='java_index.html'" role="button" tabindex="0" aria-label="Java Course">
+<img src="img/JAVA.png" alt="Java Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Java in My Style</h3>
+<p class="course-description">
+Comprehensive Java programming from basics to advanced concepts and application development.
+</p>
+<a href="/JAVA IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='python_index.html'" role="button" tabindex="0" aria-label="Python Course">
+<img src="img/PYTHON.png" alt="Python Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Python in My Style</h3>
+<p class="course-description">
+Learn Python programming for web development, data science, and automation.
+</p>
+<a href="/PYTHON IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='deep_learning_index.html'" role="button" tabindex="0" aria-label="Deep-Learning Course">
+<img src="img/DL.png" alt="Deep-Learning Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Deep Learning in My Style</h3>
+<p class="course-description">
+Dive into deep learning with neural networks, backpropagation, CNNs, RNNs, and hands-on projects using frameworks like TensorFlow or PyTorch.
+</p>
+<a href="/DL IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='machine_learning_index.html'" role="button" tabindex="0" aria-label="Machine-Learning Course">
+<img src="img/ML.png" alt="Machine-Learning Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Machine Learning in My Style</h3>
+<p class="course-description">
+Explore machine learning fundamentals including supervised and unsupervised learning, model evaluation, and real-world ML projects.
+</p>
+<a href="/ML IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='ai_index.html'" role="button" tabindex="0" aria-label="Artificial-Intelligence Course">
+<img src="img/AI.png" alt="Artificial-Intelligence Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Artificial Intelligence in My Style</h3>
+<p class="course-description">
+Explore the fundamentals of Artificial Intelligence, including intelligent agents, search algorithms, knowledge representation, and decision-making models.
+</p>
+<a href="/AI IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='data_science_index.html'" role="button" tabindex="0" aria-label="Data-Science Course">
+<img src="img/DSC.png" alt="Data-Science Course" class="course-image" loading="lazy">
+<div class="course-content">
+<h3 class="course-title">Data Science in My Style</h3>
+<p class="course-description">
+Master Data Science with statistics, data wrangling, visualization, machine learning, and real-world analytics projects using Python.
+</p>
+<a href="/DSC IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+</div>
+</div>
+<div class="course-card" onclick="window.location.href='c_index.html'" role="button" tabindex="0" aria-label="C Programming Course">
+  <img src="img/C.png" alt="C Programming Course" class="course-image" loading="lazy">
+  <div class="course-content">
+    <h3 class="course-title">C in My Style</h3>
+    <p class="course-description">
+      Learn C programming from scratch with hands-on coding, memory management, pointers, data structures, and real-world system-level project applications.
+    </p>
+    <a href="/C IN MY STYLE/index.html" class="btn btn-primary course-link">Visit Course</a>
+  </div>
+</div>
+</div>
+</div>
+</section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" role="region" aria-labelledby="testimonials-title">
+        <div class="main-content">
+            <h2 class="section-title" id="testimonials-title">What We Say</h2>
+            <p class="section-subtitle">
+                Our thoughts and philosophy behind creating this JavaScript intermediate learning platform.
+            </p>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Intermediate JavaScript is where the real power lies. We focus on advanced concepts like closures, async programming, and ES6 features that make you a proficient developer."
+                    </p>
+                    <p class="testimonial-author">- The Founder</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Our intermediate course bridges the gap between basic syntax and professional development. We teach you to think like a JavaScript expert."
+                    </p>
+                    <p class="testimonial-author">- Lead Instructor</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Advanced JavaScript concepts can be challenging, but our structured approach makes complex topics accessible and practical for real-world applications."
+                    </p>
+                    <p class="testimonial-author">- Technical Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" role="region" aria-labelledby="cta-title">
+        <div class="main-content">
+            <h2 class="cta-title" id="cta-title">Start Your JavaScript Intermediate Journey</h2>
+            <p class="cta-description">
+                Join thousands of students who have successfully mastered intermediate JavaScript and advanced web development with our platform.
+            </p>
+            <a href="javascript_index.html" class="btn btn-outline"><i class="fas fa-graduation-cap"></i> Start Learning Now</a>
+        </div>
+    </section>
+</main>
+<footer role="contentinfo">
+    <div class="footer-container">
+        <div>
+            <div class="footer-logo">
+                <div class="js-logo">
+                    <div class="js-logo-shape"></div>
+                </div>
+                <span>JS in my style (Intermediate)</span>
+            </div>
+            <p class="footer-description">
+                A modern, interactive platform for learning intermediate JavaScript and advanced web development techniques.
+            </p>
+            <div class="social-icons">
+                <a href="https://t.me/Tech_in_my_style_bot" aria-label="telegram"><i class="fab fa-telegram"></i></a>
+                <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@TECHINMYSTYLE" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div>
+            <h3 class="footer-heading">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="javascript_index.html">Learn JavaScript</a></li>
+                <li><a href="resources-js.html">Resources</a></li>
+                <li><a href="tasks-js.html">Tasks</a></li>
+                <li><a href="COMPILER-JS.html">Playground</a></li>
+                <li><a href="none-js.html">Let's Connect</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="footer-heading">Courses</h3>
+            <ul class="footer-links">
+                <li><a href="/HTML IN MY STYLE/index.html">HTML IN MY STYLE</a></li>
+                <li><a href="/CSS IN MY STYLE/index.html">CSS IN MY STYLE</a></li>
+                <li><a href="/JAVASCRIPT IN MY STYLE - BASIC/index.html">JAVASCRIPT IN MY STYLE (BASIC)</a></li>
+                <li><a href="/JAVASCRIPT IN MY STYLE - INTERMEDIATE/index.html">JAVASCRIPT IN MY STYLE (INTERMEDIATE)</a></li>
+                <li><a href="/C IN MY STYLE/index.html">C IN MY STYLE</a></li>
+                <li><a href="/JAVA IN MY STYLE/index.html">JAVA IN MY STYLE</a></li>
+                <li><a href="/PYTHON IN MY STYLE/index.html">PYTHON IN MY STYLE</a></li>
+                <li><a href="/ML IN MY STYLE/index.html">MACHINE LEARNING IN MY STYLE</a></li>
+                <li><a href="/DL IN MY STYLE/index.html">DEEP LEARNING IN MY STYLE</a></li>
+                <li><a href="/DSC IN MY STYLE/">DATA SCIENCE IN MY STYLE</a></li>
+                <li><a href="/AI IN MY STYLE/index.html">ARTIFICIAL INTELLIGENCE IN MY STYLE</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="footer-heading">Contact Us</h3>
+            <div class="contact-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>India</span>
+            </div>
+            <div class="contact-info">
+                <i class="fab fa-whatsapp"></i>
+                <span>+91 9989562009</span>
+            </div>
+            <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <span>technologyinmystyle@gmail.com</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>| © 2025 JS in My Style (Intermediate), All rights reserved | Powered by Tech In My Style | Made with 🤎 by Tech In My Style |</p>
+        <div class="footer-bottom-links">
+        </div>
+    </div>
+</footer>
+
+<a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+<div class="theme-switch" id="theme-toggle" aria-label="Toggle theme"><i class="fas fa-moon"></i></div>
+
+<script>
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-theme');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        themeToggle.innerHTML = body.classList.contains('dark-theme') ?
+            '<i class="fas fa-sun"></i>' :
+            '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+        themeToggle.classList.add('rotate');
+        setTimeout(() => themeToggle.classList.remove('rotate'), 800);
+    });
+
+    // Code display scroll animation
+    const codeDisplay = document.querySelector('.code-display');
+    function animateCodeDisplay() {
+        const rect = codeDisplay.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+            codeDisplay.classList.add('visible');
+            window.removeEventListener('scroll', animateCodeDisplay);
+        }
+    }
+    window.addEventListener('scroll', animateCodeDisplay);
+    window.addEventListener('load', animateCodeDisplay);
+
+    // Animate course cards on scroll
+    const courseCards = document.querySelectorAll('.course-card');
+    function checkScroll() {
+        courseCards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < window.innerHeight * 0.9) {
+                setTimeout(() => card.classList.add('animate'), index * 100);
+            }
+        });
+    }
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+
+    // Make course cards keyboard accessible
+    courseCards.forEach(card => {
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                window.location.href = card.querySelector('.course-link').href;
+            }
+        });
+    });
+
+    // Auto-scroll testimonials
+    const testimonialSlider = document.querySelector('.testimonials-slider');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let currentIndex = 0;
+    let isPaused = false;
+
+    function scrollTestimonials() {
+        if (!isPaused && testimonialCards.length > 1) {
+            currentIndex = (currentIndex + 1) % testimonialCards.length;
+            const cardWidth = testimonialCards[0].offsetWidth + 32;
+            testimonialSlider.scrollTo({
+                left: currentIndex * cardWidth,
+                behavior: 'smooth'
+            });
+        }
+        setTimeout(scrollTestimonials, 4000);
+    }
+    setTimeout(scrollTestimonials, 2500);
+
+    testimonialSlider.addEventListener('mouseenter', () => isPaused = true);
+    testimonialSlider.addEventListener('mouseleave', () => isPaused = false);
+    testimonialSlider.addEventListener('touchstart', () => isPaused = true);
+    testimonialSlider.addEventListener('touchend', () => setTimeout(() => isPaused = false, 4000));
+
+    // Smooth scroll for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+        backToTopButton.style.opacity = window.pageYOffset > 200 ? '1' : '0';
+    });
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Preload images
+    function preloadImages() {
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            const src = img.getAttribute('src');
+            if (src) new Image().src = src;
+        });
+    }
+    window.addEventListener('load', preloadImages);
+
+    // JavaScript Logo animation
+    const jsLogo = document.querySelector('.js-logo');
+    jsLogo.addEventListener('mouseenter', () => {
+        const shape = jsLogo.querySelector('.js-logo-shape');
+        shape.style.transform = 'rotate(10deg) scale(1.1)';
+    });
+    jsLogo.addEventListener('mouseleave', () => {
+        const shape = jsLogo.querySelector('.js-logo-shape');
+        shape.style.transform = 'rotate(0deg)';
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.feature-card').forEach(el => {
+        observer.observe(el);
+        el.classList.add('observe-me');
+    });
+
+    // Loading screen
+    window.addEventListener('load', () => {
+        const loader = document.querySelector('.loading-container');
+        setTimeout(() => {
+            loader.classList.add('hidden');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }, 800);
+    });
+</script>
+</body>
+</html>

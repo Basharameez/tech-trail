@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+Multi-Layer Perceptron (MLP) - Deep Learning</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/subtopic.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="icon" type="image/x-icon" href="../../img/dl.svg"></head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+               <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="nav-links">
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+               
+            </div>
+            <div class="mobile-menu-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="topic-navigation">
+            <a href="../../topics.html"><i class="fas fa-arrow-left"></i> Back to Topics</a>
+            <div class="topic-path">
+            
+            </div>
+        </div>
+
+        <article class="subtopic-content">
+            <div class="subtopic-header">
+                <h1>
+Multi-Layer Perceptron (MLP)</h1>
+                <div class="header-divider"></div>
+            </div>
+
+            <section id="description" class="content-section">
+    <h2><i class="fas fa-book"></i> Description</h2>
+    <div class="section-content">
+        <p>The <strong>Multi-Layer Perceptron (MLP)</strong> is a class of feedforward artificial neural network that consists of at least three layers of nodes: an input layer, one or more hidden layers, and an output layer. Except for the input nodes, each node is a neuron that uses a non-linear activation function.</p>
+
+        <p>MLPs are capable of modeling complex relationships between inputs and outputs, making them suitable for both classification and regression tasks. They are fully connected networks, meaning each neuron in one layer is connected to every neuron in the next layer.</p>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-lightbulb"></i> Key Insight</div>
+            <p>MLPs can approximate any continuous function and are considered universal function approximators, provided they have enough hidden units.</p>
+        </div>
+
+        <p>Key characteristics of MLPs include:</p>
+        <ul>
+            <li>Fully connected layers</li>
+            <li>Use of non-linear activation functions (like ReLU, Sigmoid, or Tanh)</li>
+            <li>Trained using backpropagation and gradient descent</li>
+        </ul>
+
+        <div class="image-container">
+            <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*VNH75yeZr4nmMXQF4DB3Jg.png" alt="Multi-Layer Perceptron Visualization">
+            <p class="caption">Structure of a Multi-Layer Perceptron (MLP)</p>
+        </div>
+    </div>
+</section>
+
+
+            <section id="examples" class="content-section">
+    <h2><i class="fas fa-code"></i> Examples</h2>
+    <div class="section-content">
+        <p>Here’s a simple implementation of a Multi-Layer Perceptron (MLP) using TensorFlow/Keras:</p>
+
+        <div class="code-container">
+            <pre><code class="language-python">import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Create an MLP model
+model = Sequential([
+    Dense(64, activation='relu', input_shape=(100,)),
+    Dense(32, activation='relu'),
+    Dense(10, activation='softmax')
+])
+
+# Compile the model
+model.compile(optimizer='adam',
+              loss='categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Model summary
+model.summary()</code></pre>
+        </div>
+
+        <p>This MLP model has:</p>
+        <ul>
+            <li>An input layer of 100 features</li>
+            <li>Two hidden layers with 64 and 32 neurons using ReLU</li>
+            <li>An output layer with 10 neurons for multi-class classification</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-title"><i class="fas fa-info-circle"></i> Note</div>
+            <p>Don't forget to preprocess your input data and one-hot encode labels for classification tasks.</p>
+        </div>
+    </div>
+</section>
+
+
+            <section id="real-world" class="content-section">
+    <h2><i class="fas fa-globe"></i> Real-World Applications</h2>
+    <div class="section-content">
+        <div class="applications-grid">
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-search"></i></div>
+                <h3>Search Engines</h3>
+                <p>MLPs are used in ranking algorithms and relevance prediction in search engines.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-envelope-open-text"></i></div>
+                <h3>Email Spam Detection</h3>
+                <p>Helps identify and filter out spam emails using classification models.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Financial Forecasting</h3>
+                <p>Predicts stock trends and financial outcomes using historical data.</p>
+            </div>
+            <div class="application-card">
+                <div class="app-icon"><i class="fas fa-car-crash"></i></div>
+                <h3>Autonomous Vehicles</h3>
+                <p>MLPs process sensor data to make decisions in real-time for navigation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <section id="resources" class="content-section">
+     <h2><i class="fas fa-external-link-alt"></i> Resources</h2>
+    <div class="section-content">
+        <div class="resources-container">
+            <div class="resource-group">
+                <h3><i class="fab fa-youtube"></i> Video Tutorials</h3>
+                <p>below is the video resource</p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://youtu.be/tUoUdOdTkRw?si=fVOP4OIIj5sgbfFj'>YouTube: topic video</a></li>
+                  
+                </ul>
+            </div>
+
+            <div class="resource-group">
+                <h3><i class="fas fa-file-pdf"></i> PDFs </h3>
+                <p>The following documents </p>
+                <ul class="resource-list">
+                    <li class="resource-placeholder"><a href='https://drive.google.com/file/d/1ohZjwaQMr_oLSUKS0aSVOUc-k8uDni4-/view?usp=drive_link'>topic pdf</a></li>
+                    
+                </ul>
+            </div>
+            <div class="resource-group">
+                <h3><i class="fas fa-book"></i> Recommended Books</h3>
+                <ul class="resource-list">
+                    <li><a href="https://www.deeplearningbook.org/" target="_blank">Deep Learning</a> by Ian Goodfellow</li>
+                    <li><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/" target="_blank">Hands-On Machine Learning</a> by Aurélien Géron</li>
+                    <li><a href="https://www.manning.com/books/deep-learning-with-python" target="_blank">Deep Learning with Python</a> by François Chollet</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <section id="interview-questions" class="content-section">
+    <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+    <div class="section-content">
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What is a Multi-Layer Perceptron (MLP)?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>An MLP is a type of neural network with one or more hidden layers between input and output. It is used for classification and regression tasks and is trained using backpropagation.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>How is MLP different from a single-layer perceptron?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>A single-layer perceptron cannot solve non-linearly separable problems (like XOR), while an MLP with hidden layers can model non-linear decision boundaries due to its depth and non-linear activations.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>What activation functions are commonly used in MLP?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>Common activation functions include ReLU, Sigmoid, and Tanh. ReLU is widely used in hidden layers due to its efficiency and gradient propagation properties.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <h3>Why is MLP considered a universal approximator?</h3>
+                    <span class="toggle-icon"><i class="fas fa-plus"></i></span>
+                </div>
+                <div class="accordion-content">
+                    <p>MLPs can approximate any continuous function given sufficient neurons in the hidden layers. This property makes them powerful tools in a wide range of applications.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span>Deep</span>Learning <span>In My Style</span>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="../../index.html">Home</a>
+                <a href="../../topics.html">Topics</a>
+                <a href="../../index.html#about">About</a>
+                
+            </div>
+        <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Deep Learning in my style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/accordion.js"></script>
+</body>
+</html>

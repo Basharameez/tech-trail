@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Topics | ML in My Style</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/topics.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="img/dl.svg">
+</head>
+<body>
+    <div class="particles-container" id="particles-js"></div>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+              
+            </ul>
+        </nav>
+    </header>
+
+    <main class="topics-main">
+        <h1 class="page-title">Machine Learning Topics</h1>
+        <p class="page-description">Explore our comprehensive collection of machine learning topics. Click on any topic to dive deeper into its subtopics.</p>
+        
+        <div class="topics-container">
+            <!-- Topic 1 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-robot"></i></div>
+                    <h2 class="topic-title">What is Machine Learning?</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/types-of-ml.html" class="subtopic-item">
+                        <span class="subtopic-name">Types: Supervised, Unsupervised, Reinforcement Learning</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/ai-ml-dl-differences.html" class="subtopic-item">
+                        <span class="subtopic-name">Differences between AI, ML, DL</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-cogs"></i></div>
+                    <h2 class="topic-title">ML Workflow & Pipeline</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/ml-pipeline.html" class="subtopic-item">
+                        <span class="subtopic-name">Data → Preprocessing → Model → Evaluation → Deployment</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/training-vs-testing.html" class="subtopic-item">
+                        <span class="subtopic-name">Concept of training vs testing</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-chart-line"></i></div>
+                    <h2 class="topic-title">Regression Algorithms</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/linear-regression.html" class="subtopic-item">
+                        <span class="subtopic-name">Linear Regression (Simple & Multiple)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/polynomial-regression.html" class="subtopic-item">
+                        <span class="subtopic-name">Polynomial Regression</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/regression-metrics.html" class="subtopic-item">
+                        <span class="subtopic-name">Metrics: MAE, MSE, RMSE, R² Score</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-sitemap"></i></div>
+                    <h2 class="topic-title">Classification Algorithms</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/logistic-regression.html" class="subtopic-item">
+                        <span class="subtopic-name">Logistic Regression</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/knn.html" class="subtopic-item">
+                        <span class="subtopic-name">k-Nearest Neighbors (k-NN)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/decision-trees.html" class="subtopic-item">
+                        <span class="subtopic-name">Decision Trees</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/random-forest.html" class="subtopic-item">
+                        <span class="subtopic-name">Random Forest</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/naive-bayes.html" class="subtopic-item">
+                        <span class="subtopic-name">Naive Bayes</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/svm.html" class="subtopic-item">
+                        <span class="subtopic-name">Support Vector Machines (SVM)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/classification-metrics.html" class="subtopic-item">
+                        <span class="subtopic-name">Evaluation Metrics: Accuracy, Precision, Recall, F1-Score, etc.</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-object-group"></i></div>
+                    <h2 class="topic-title">Clustering Algorithms</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/kmeans.html" class="subtopic-item">
+                        <span class="subtopic-name">K-Means Clustering</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/hierarchical-clustering.html" class="subtopic-item">
+                        <span class="subtopic-name">Hierarchical Clustering</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/dbscan.html" class="subtopic-item">
+                        <span class="subtopic-name">DBSCAN</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/clustering-evaluation.html" class="subtopic-item">
+                        <span class="subtopic-name">Evaluation: Silhouette Score, Elbow Method</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-compress-arrows-alt"></i></div>
+                    <h2 class="topic-title">Dimensionality Reduction</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/pca.html" class="subtopic-item">
+                        <span class="subtopic-name">Principal Component Analysis (PCA)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/tsne.html" class="subtopic-item">
+                        <span class="subtopic-name">t-SNE</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/feature-selection-extraction.html" class="subtopic-item">
+                        <span class="subtopic-name">Feature Selection vs Feature Extraction</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-sliders-h"></i></div>
+                    <h2 class="topic-title">Model Selection & Tuning</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/cross-validation.html" class="subtopic-item">
+                        <span class="subtopic-name">Cross Validation (K-Fold)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/grid-random-search.html" class="subtopic-item">
+                        <span class="subtopic-name">Grid Search & Random Search</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/bias-variance.html" class="subtopic-item">
+                        <span class="subtopic-name">Bias-Variance Tradeoff</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/underfitting-overfitting.html" class="subtopic-item">
+                        <span class="subtopic-name">Underfitting vs Overfitting</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/regularization.html" class="subtopic-item">
+                        <span class="subtopic-name">Regularization: L1 (Lasso), L2 (Ridge)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h2 class="topic-title">Mini Projects</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/house-price-prediction.html" class="subtopic-item">
+                        <span class="subtopic-name">House Price Prediction (Regression)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/spam-detection.html" class="subtopic-item">
+                        <span class="subtopic-name">Email Spam Detection (Classification)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/customer-segmentation.html" class="subtopic-item">
+                        <span class="subtopic-name">Customer Segmentation (Clustering)</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/fraud-detection.html" class="subtopic-item">
+                        <span class="subtopic-name">Credit Card Fraud Detection</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-rocket"></i></div>
+                    <h2 class="topic-title">Model Deployment Basics</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/save-models.html" class="subtopic-item">
+                        <span class="subtopic-name">Save models with pickle or joblib</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/flask-deployment.html" class="subtopic-item">
+                        <span class="subtopic-name">Simple Flask web app to deploy a model</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-card">
+                <div class="topic-header">
+                    <div class="topic-icon"><i class="fas fa-brain"></i></div>
+                    <h2 class="topic-title">Bridge to Deep Learning / NLP</h2>
+                    <div class="expand-icon" onclick="toggleSubtopics(this)"><i class="fas fa-chevron-down"></i></div>
+                </div>
+                <div class="subtopics">
+                    <a href="subtopics/ml-limitations.html" class="subtopic-item">
+                        <span class="subtopic-name">Limitations of traditional ML</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/why-deep-learning.html" class="subtopic-item">
+                        <span class="subtopic-name">Why Deep Learning is needed</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="subtopics/intro-neural-networks.html" class="subtopic-item">
+                        <span class="subtopic-name">Intro to Neural Networks</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">ML<span class="highlight"> In My Style</span></span>
+                <p>Making Machine Learning accessible and engaging.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="topics.html">Topics</a></li>
+                 
+                </ul>
+            </div>
+          <div class="footer-social">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="https://t.me/Tech_in_my_style_bot" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Machine Learning in My Style. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Learning Resources</title>
+    <meta name="description" content="Complete JavaScript learning resources including tutorials, videos, notes, and roadmaps for web developers">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="../img/JS-INTERMEDIATE.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --skin-tone: #E8B895;
+            --darker-skin: #D2A373;
+            --light-skin: #F5E6D3;
+            --primary-black: #000000;
+            --light-theme-bg: #fafafa;
+            --light-theme-white: #ffffff;
+            --dark-theme-bg: #0a0a0a;
+            --dark-theme-surface: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .resource-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(232, 184, 149, 0.1);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--skin-tone);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .search-input {
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(232, 184, 149, 0.2);
+        }
+
+        .section-content {
+            transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 1000px;
+            opacity: 1;
+        }
+
+        .section-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .js-code-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .js-code-bg::before {
+            content: 'function()';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 6rem;
+            color: rgba(232, 184, 149, 0.1);
+            font-family: monospace;
+        }
+
+        .js-code-bg::after {
+            content: '{ }';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 6rem;
+            color: rgba(232, 184, 149, 0.1);
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="text-gray-700 hover:text-[var(--skin-tone)] transition-colors duration-300">
+                        <i class="fas fa-arrow-left text-xl"></i>
+                    </a>
+                    <h1 class="text-2xl font-bold">JS<span class="text-[var(--skin-tone)]">Hub</span></h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-[var(--skin-tone)]">Home</a>
+                    <a href="#resources" class="nav-link text-gray-700 hover:text-[var(--skin-tone)]">Resources</a>
+                    <a href="https://roadmap.sh" target="_blank" class="nav-link text-gray-700 hover:text-[var(--skin-tone)]">Roadmap</a>
+                </div>
+                <button class="md:hidden text-gray-700" id="mobileMenuBtn">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden" id="mobileMenu">
+            <div class="px-4 py-3 space-y-3">
+                <a href="index.html" class="block text-gray-700 hover:text-[var(--skin-tone)]">Home</a>
+                <a href="#resources" class="block text-gray-700 hover:text-[var(--skin-tone)]">Resources</a>
+                <a href="https://roadmap.sh/frontend" target="_blank" class="block text-gray-700 hover:text-[var(--skin-tone)]">Roadmap</a>
+                <button class="w-full bg-[var(--skin-tone)] text-[var(--primary-black)] px-6 py-2 rounded-full hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="js-code-bg bg-gradient-to-r from-[var(--primary-black)] to-gray-900 pt-32 pb-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Master <span class="text-[var(--skin-tone)]">JavaScript</span> and Web Development
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mb-10">
+                Your complete resource hub for learning JavaScript, ES6+, and modern web development. 
+                From beginner concepts to advanced frameworks, we've got everything you need.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#resources" class="bg-[var(--skin-tone)] text-[var(--primary-black)] px-8 py-3 rounded-full text-lg font-medium hover:bg-[var(--darker-skin)] transition-all duration-300 transform hover:scale-105">
+                    Explore Resources
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12" id="resources">
+        <!-- Search Bar -->
+        <div class="max-w-2xl mx-auto mb-12">
+            <div class="relative">
+                <input type="text" id="searchInput" placeholder="Search JavaScript resources..." 
+                    class="search-input w-full px-6 py-4 text-lg border-2 border-gray-200 rounded-full focus:outline-none focus:border-[var(--skin-tone)]">
+                <i class="fas fa-search absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+
+        <!-- Resources Sections -->
+        <div class="space-y-8">
+            <!-- Notes Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[var(--skin-tone)] p-6 flex justify-between items-center cursor-pointer" data-section="notes">
+                    <h2 class="text-2xl font-bold text-[var(--primary-black)] flex items-center">
+                        <i class="fas fa-book-open mr-3"></i>
+                        Notes
+                    </h2>
+                    <i class="fas fa-chevron-down text-[var(--primary-black)] transition-transform duration-300"></i>
+                </div>
+                <div class="section-content p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">JavaScript: The Definitive Guide</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive guide covering all JavaScript fundamentals and advanced concepts</p>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">ES6+ Modern JavaScript</h3>
+                        <p class="text-gray-600 mb-4">Quick reference guide for modern JavaScript features and syntax</p>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">JavaScript Patterns & Best Practices</h3>
+                        <p class="text-gray-600 mb-4">Advanced JavaScript patterns and coding best practices</p>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            DOWNLOAD PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videos Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[var(--skin-tone)] p-6 flex justify-between items-center cursor-pointer" data-section="videos">
+                    <h2 class="text-2xl font-bold text-[var(--primary-black)] flex items-center">
+                        <i class="fas fa-video mr-3"></i>
+                        Video Tutorials
+                    </h2>
+                    <i class="fas fa-chevron-down text-[var(--primary-black)] transition-transform duration-300"></i>
+                </div>
+                <div class="section-content p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">JavaScript Fundamentals - Traversy Media</h3>
+                        <p class="text-gray-600 mb-4">Complete JavaScript course covering all the basics for beginners</p>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            Watch Video
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">Advanced JavaScript - freeCodeCamp</h3>
+                        <p class="text-gray-600 mb-4">Deep dive into advanced JavaScript concepts and modern features</p>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            Watch Video
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certifications Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[var(--skin-tone)] p-6 flex justify-between items-center cursor-pointer" data-section="certifications">
+                    <h2 class="text-2xl font-bold text-[var(--primary-black)] flex items-center">
+                        <i class="fas fa-certificate mr-3"></i>
+                        Certifications
+                    </h2>
+                    <i class="fas fa-chevron-down text-[var(--primary-black)] transition-transform duration-300"></i>
+                </div>
+                <div class="section-content p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">SoloLearn JavaScript</h3>
+                        <p class="text-gray-600 mb-4">Free JavaScript certification course with interactive exercises</p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">Free</span>
+                        <a href="https://www.sololearn.com/en/learn/courses/javascript-introduction" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            Start Learning
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">Udemy JavaScript Mastery</h3>
+                        <p class="text-gray-600 mb-4">Complete JavaScript course from beginner to advanced level</p>
+                        <span class="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">Paid</span>
+                        <a href="#" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            Enroll Now
+                        </a>
+                    </div>
+                    <div class="resource-card bg-white p-6 rounded-lg shadow border-l-4 border-[var(--skin-tone)]">
+                        <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">freeCodeCamp JavaScript</h3>
+                        <p class="text-gray-600 mb-4">Complete JavaScript certification with hands-on projects</p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">Free</span>
+                        <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/" 
+                           class="block text-center bg-[var(--skin-tone)] text-[var(--primary-black)] py-2 px-4 rounded-lg hover:bg-[var(--darker-skin)] transition-colors duration-300 font-semibold"
+                           target="_blank">
+                            Start Course
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Roadmap Section -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="bg-[var(--skin-tone)] p-6">
+                    <h2 class="text-2xl font-bold text-[var(--primary-black)] flex items-center">
+                        <i class="fas fa-map mr-3"></i>
+                        Developer Roadmaps
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-700 mb-6">
+                        Follow structured learning paths created by experienced developers. These roadmaps will guide you through your JavaScript development journey.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <a href="https://roadmap.sh/javascript" target="_blank" 
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[var(--skin-tone)]">
+                            <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">JavaScript Fundamentals</h3>
+                            <p class="text-gray-600">Master core JavaScript concepts and modern ES6+ features</p>
+                        </a>
+                        <a href="https://roadmap.sh/frontend" target="_blank"
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[var(--skin-tone)]">
+                            <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">Frontend Development</h3>
+                            <p class="text-gray-600">Learn JavaScript frameworks like React, Vue, and Angular</p>
+                        </a>
+                        <a href="https://roadmap.sh/nodejs" target="_blank"
+                           class="block p-6 bg-gray-50 rounded-lg hover:shadow-lg transition-all duration-300 border-l-4 border-[var(--skin-tone)]">
+                            <h3 class="text-xl font-semibold text-[var(--primary-black)] mb-3">Node.js Development</h3>
+                            <p class="text-gray-600">Build server-side applications with JavaScript and Node.js</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4">JS<span class="text-[var(--skin-tone)]">Hub</span></h3>
+                    <p class="text-gray-400 mb-4">
+                        Your complete resource for learning JavaScript and mastering modern web development technologies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 hover:bg-[var(--skin-tone)] hover:text-[var(--primary-black)] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-[var(--skin-tone)] hover:text-[var(--primary-black)] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-[var(--skin-tone)] hover:text-[var(--primary-black)] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-[var(--skin-tone)] hover:text-[var(--primary-black)] p-2 rounded-full transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#notes" class="text-gray-400 hover:text-white transition-colors duration-300">Notes</a></li>
+                        <li><a href="#videos" class="text-gray-400 hover:text-white transition-colors duration-300">Video Tutorials</a></li>
+                        <li><a href="#certifications" class="text-gray-400 hover:text-white transition-colors duration-300">Certifications</a></li>
+                        <li><a href="https://roadmap.sh" class="text-gray-400 hover:text-white transition-colors duration-300">Roadmaps</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Learn</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">JavaScript</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">React</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Node.js</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">TypeScript</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Vue.js</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Community</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">YouTube</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">WhatsApp</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Instagram</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-300">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">© 2025 JSHub. All rights reserved.</p>
+                <p class="text-gray-400 flex items-center mt-4 md:mt-0">
+                    Made With <i class="fas fa-heart text-[var(--skin-tone)] mx-1"></i> For All Developers
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Section toggle functionality
+        document.querySelectorAll('[data-section]').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                const content = section.querySelector('.section-content');
+                const icon = header.querySelector('.fa-chevron-down');
+                
+                content.classList.toggle('collapsed');
+                icon.style.transform = content.classList.contains('collapsed') 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0)';
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            document.querySelectorAll('.resource-card').forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+                card.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

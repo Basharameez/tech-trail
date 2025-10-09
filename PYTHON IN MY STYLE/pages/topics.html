@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Topics - Python in my style</title>
+  <link rel="icon" type="image/x-icon" href="../img/py.svg">
+  <style>
+    :root {
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --color-primary: #306998;
+      --color-primary-dark: #264969;
+      --color-bg: #fff;
+      --color-bg-alt: #f6f8fa;
+      --color-text-main: #223b55;
+      --color-text-secondary: #46628a;
+      --shadow-md: 0 4px 16px rgba(38, 70, 105, 0.11);
+      --shadow-lg: 0 8px 26px rgba(38, 70, 105, 0.15);
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: 'Poppins', Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      min-height: 100vh;
+    }
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: var(--color-primary-dark);
+    }
+    .header {
+      background: linear-gradient(90deg, var(--color-primary) 70%, var(--color-primary-dark) 100%);
+      color: #fff;
+      padding: var(--space-4) var(--space-6);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .logo h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(38,105,152,0.12);
+      letter-spacing: 1.5px;
+      margin: 0;
+    }
+    .nav ul {
+      list-style: none;
+      display: flex;
+      gap: var(--space-6);
+      margin: 0;
+      padding: 0;
+    }
+    .nav a {
+      font-weight: 600;
+      color: #fff;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding: var(--space-2) 0;
+    }
+    .nav a.active,
+    .nav a:hover {
+      border-color: #fff;
+      color: #fff;
+    }
+    .mobile-menu-btn {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      padding: var(--space-2);
+    }
+    .mobile-menu-btn span {
+      width: 28px;
+      height: 4px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-btn.active span:nth-child(1) { 
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+    .mobile-menu-btn.active span:nth-child(2) { 
+      opacity: 0;
+    }
+    .mobile-menu-btn.active span:nth-child(3) { 
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+    .topics-header {
+      background: var(--color-bg-alt);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .topics-header h1 {
+      font-size: 2.5rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 1rem;
+    }
+    .topics-header p {
+      font-size: 1.1rem;
+      color: var(--color-text-secondary);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .topics-container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .topic-section {
+      margin-bottom: 3rem;
+    }
+    .topic-section-title {
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--color-primary);
+      padding-bottom: 0.5rem;
+    }
+    .topic-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+    .topic-card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      transition: transform 0.24s, box-shadow 0.27s;
+    }
+    .topic-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .topic-card-title {
+      font-size: 1.3rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    .topic-card-description {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+    }
+    .topic-card-subtopics {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .topic-card-subtopics li {
+      margin: 0.5rem 0;
+    }
+    .topic-card-subtopics a {
+      display: block;
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+      transition: background 0.2s;
+    }
+    .topic-card-subtopics a:hover {
+      background: var(--color-bg-alt);
+    }
+    .footer {
+      background: var(--color-primary-dark);
+      color: #dde6f3;
+      padding: 3rem 2rem;
+      font-size: 0.96rem;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-6);
+    }
+    .footer-logo h2 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo p {
+      color: #b7c4d3;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .footer-links h3,
+    .footer-social h3 {
+      color: #fff;
+      margin-bottom: var(--space-3);
+      font-weight: 600;
+    }
+    .footer-links ul {
+      list-style: none;
+      margin: 0; 
+      padding: 0;
+    }
+    .footer-links li { 
+      margin: 0.3rem 0; 
+    }
+    .footer-links a {
+      color: #dde6f3;
+      transition: color 0.18s;
+      padding: var(--space-1) 0;
+      display: inline-block;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .social-icons {
+      display: flex;
+      gap: var(--space-4);
+      margin-top: 0.5rem;
+    }
+    .social-icon {
+      min-height: 44px;
+      min-width: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .social-icon svg {
+      stroke: #dde6f3;
+      transition: stroke 0.21s;
+      width: 24px; 
+      height: 24px;
+    }
+    .social-icon:hover svg {
+      stroke: #fff;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: var(--space-6);
+      border-top: 1px solid #1a283c;
+      padding-top: var(--space-3);
+      color: #b7c4d3;
+      line-height: 1.5;
+    }
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .topics-header {
+        padding: 2.5rem 1.5rem;
+      }
+      .topics-container {
+        padding: 2rem 1.5rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .mobile-menu-btn { 
+        display: flex; 
+      }
+      .header {
+        padding: var(--space-3) var(--space-4);
+      }
+      .logo h1 {
+        font-size: 1.6rem;
+        letter-spacing: 1px;
+      }
+      .nav { 
+        position: fixed;
+        top: 0; 
+        right: 0;
+        background: var(--color-primary);
+        height: 100vh;
+        width: 85vw;
+        max-width: 300px;
+        flex-direction: column;
+        padding: 5rem 1rem 1rem;
+        transform: translateX(100%);
+        transition: transform 0.33s;
+        opacity: 0; 
+        visibility: hidden; 
+        z-index: 100;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      }
+      .nav.nav-open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav ul { 
+        flex-direction: column; 
+        gap: var(--space-4);
+        width: 100%;
+      }
+      .nav a { 
+        font-size: 1.2rem; 
+        color: #fff;
+        padding: var(--space-3) var(--space-4);
+        border-radius: var(--radius-md);
+        width: 100%;
+        text-align: left;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+      .nav a:hover {
+        background: rgba(255,255,255,0.1);
+      }
+      .topics-header {
+        padding: 2rem 1rem;
+      }
+      .topics-header h1 {
+        font-size: 2rem;
+      }
+      .topics-container {
+        padding: 1.5rem 1rem;
+      }
+      .topic-cards {
+        grid-template-columns: 1fr;
+      }
+      .footer {
+        padding: 2rem 1rem;
+      }
+      .footer-content {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .header {
+        padding: var(--space-2) var(--space-3);
+      }
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+      .nav {
+        width: 90vw;
+        padding: 4rem 0.5rem 1rem;
+      }
+      .nav a {
+        font-size: 1.1rem;
+        padding: var(--space-2) var(--space-3);
+      }
+      .topics-header {
+        padding: 1.5rem 0.75rem;
+      }
+      .topics-header h1 {
+        font-size: 1.6rem;
+      }
+      .topics-container {
+        padding: 1rem 0.75rem;
+      }
+      .topic-section-title {
+        font-size: 1.5rem;
+      }
+      .topic-card {
+        padding: 1rem;
+      }
+      .footer {
+        padding: 1.5rem 0.75rem;
+        font-size: 0.9rem;
+      }
+    }
+    /* Touch-friendly improvements */
+    @media (max-width: 768px) {
+      /* Disable hover effects on touch devices */
+      .topic-card:hover {
+        transform: none;
+      }
+      /* Add active states for better touch feedback */
+      .topic-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s;
+      }
+    }
+    /* Improved text readability on small screens */
+    @media (max-width: 480px) {
+      body {
+        line-height: 1.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">
+      <h1>Python in my style</h1>
+    </div>
+    <nav class="nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="topics.html" class="active">Topics</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <button class="mobile-menu-btn" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  <div class="topics-header">
+    <h1>Python Topics</h1>
+    <p>Explore our comprehensive Python curriculum. Each topic contains detailed explanations, examples, and interactive elements to enhance your learning experience.</p>
+  </div>
+  <main class="topics-container">
+    <section class="topic-section">
+      <h2 class="topic-section-title">Getting Started with Python</h2>
+      <div class="topic-cards">
+        <div class="topic-card">
+          <h3 class="topic-card-title">Introduction to Python</h3>
+          <p class="topic-card-description">Begin your Python journey with fundamental concepts and setup instructions.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/python-overview.html">Python Overview</a></li>
+            <li><a href="subtopics/python-installation.html">Python Installation and Setup</a></li>
+            <li><a href="subtopics/ides.html">Python IDEs</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Syntax and Semantics</h3>
+          <p class="topic-card-description">Learn the basic structure and rules of Python code.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/indentation.html">Indentation and Code Blocks</a></li>
+            <li><a href="subtopics/comments.html">Comments</a></li>
+            <li><a href="subtopics/statements.html">Statements and Expressions</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Data Types</h3>
+          <p class="topic-card-description">Explore the various data types available in Python.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/numbers.html">Numbers (int, float, complex)</a></li>
+            <li><a href="subtopics/strings.html">Strings</a></li>
+            <li><a href="subtopics/booleans.html">Booleans</a></li>
+            <li><a href="subtopics/lists.html">Lists</a></li>
+            <li><a href="subtopics/tuples.html">Tuples</a></li>
+            <li><a href="subtopics/sets.html">Sets</a></li>
+            <li><a href="subtopics/dictionaries.html">Dictionaries</a></li>
+            <li><a href="subtopics/nonetype.html">NoneType</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="topic-section">
+      <h2 class="topic-section-title">Python Fundamentals</h2>
+      <div class="topic-cards">
+        <div class="topic-card">
+          <h3 class="topic-card-title">Variables and Constants</h3>
+          <p class="topic-card-description">Learn how to declare and work with variables in Python.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/variable-declaration.html">Variable Declaration and Assignment</a></li>
+            <li><a href="subtopics/constants.html">Constants in Python</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Operators</h3>
+          <p class="topic-card-description">Understand the various operators used in Python programming.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/arithmetic-operators.html">Arithmetic Operators</a></li>
+            <li><a href="subtopics/comparison-operators.html">Comparison Operators</a></li>
+            <li><a href="subtopics/logical-operators.html">Logical Operators</a></li>
+            <li><a href="subtopics/membership-operators.html">Membership Operators</a></li>
+            <li><a href="subtopics/identity-operators.html">Identity Operators</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Control Flow</h3>
+          <p class="topic-card-description">Master the tools to control the flow of your Python programs.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/conditional-statements.html">Conditional Statements</a></li>
+            <li><a href="subtopics/loops.html">Loops (for, while)</a></li>
+            <li><a href="subtopics/break-continue-pass.html">Break, Continue, Pass</a></li>
+            <li><a href="subtopics/list-comprehensions.html">List Comprehensions</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="topic-section">
+      <h2 class="topic-section-title">Advanced Concepts</h2>
+      <div class="topic-cards">
+        <div class="topic-card">
+          <h3 class="topic-card-title">Functions</h3>
+          <p class="topic-card-description">Learn how to create and use functions in Python.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/function-definition.html">Function Definition and Calling</a></li>
+            <li><a href="subtopics/function-arguments.html">Arguments</a></li>
+            <li><a href="subtopics/return-statement.html">Return Statement</a></li>
+            <li><a href="subtopics/lambda-functions.html">Lambda Functions</a></li>
+            <li><a href="subtopics/recursion.html">Recursion</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Error Handling</h3>
+          <p class="topic-card-description">Learn techniques to handle errors in your Python programs.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/exceptions.html">Exceptions</a></li>
+            <li><a href="subtopics/raising-exceptions.html">Raising Exceptions</a></li>
+            <li><a href="subtopics/custom-exceptions.html">Custom Exception Classes</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Data Structures</h3>
+          <p class="topic-card-description">Deep dive into Python's built-in data structures.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/lists-advanced.html">Lists (Advanced)</a></li>
+            <li><a href="subtopics/tuples-advanced.html">Tuples (Advanced)</a></li>
+            <li><a href="subtopics/sets-advanced.html">Sets (Advanced)</a></li>
+            <li><a href="subtopics/dictionaries-advanced.html">Dictionaries (Advanced)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="topic-section">
+      <h2 class="topic-section-title">Intermediate Topics</h2>
+      <div class="topic-cards">
+        <div class="topic-card">
+          <h3 class="topic-card-title">Object-Oriented Programming</h3>
+          <p class="topic-card-description">Master object-oriented programming concepts in Python.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/classes-objects.html">Classes and Objects</a></li>
+            <li><a href="subtopics/variables-oop.html">Instance and Class Variables</a></li>
+            <li><a href="subtopics/methods.html">Methods</a></li>
+            <li><a href="subtopics/inheritance.html">Inheritance</a></li>
+            <li><a href="subtopics/encapsulation.html">Encapsulation</a></li>
+            <li><a href="subtopics/polymorphism.html">Polymorphism</a></li>
+            <li><a href="subtopics/abstraction.html">Abstraction</a></li>
+            <li><a href="subtopics/magic-methods.html">Magic Methods</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Regular Expressions</h3>
+          <p class="topic-card-description">Learn how to use regular expressions for pattern matching in Python.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/regex-intro.html">Introduction to regex</a></li>
+            <li><a href="subtopics/regex-syntax.html">Syntax and Patterns</a></li>
+            <li><a href="subtopics/re-module.html">re Module</a></li>
+          </ul>
+        </div>
+        <div class="topic-card">
+          <h3 class="topic-card-title">Advanced Topics</h3>
+          <p class="topic-card-description">Explore advanced Python concepts for building sophisticated applications.</p>
+          <ul class="topic-card-subtopics">
+            <li><a href="subtopics/iterators.html">Iterators and Generators</a></li>
+            <li><a href="subtopics/multithreading.html">Multithreading and Multiprocessing</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h2>Python in my style</h2>
+        <p>Learn Python your way</p>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/techinmystyle?igsh=YXIxdWl2NGFmdXZk" class="social-icon" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-instagram">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://t.me/Tech_in_my_style_bot" class="social-icon" aria-label="Telegram">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-send">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </a>
+          <a href="https://whatsapp.com/channel/0029VbAZrCD5fM5aOU10Av0d" class="social-icon" aria-label="WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-message-circle">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@TECHINMYSTYLE" class="social-icon" aria-label="YouTube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-youtube">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-2C18.88 4 12 4 12 4s-6.88 0-8.59.42a2.78 2.78 0 0 0-1.95 2A29.94 29.94 0 0 0 1 12a29.94 29.94 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 2C5.12 20 12 20 12 20s6.88 0 8.59-.42a2.78 2.78 0 0 0 1.95-2A29.94 29.94 0 0 0 23 12a29.94 29.94 0 0 0-.46-5.58z"></path>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Python in my style. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuBtn = document.querySelector('.mobile-menu-btn');
+      const nav = document.querySelector('.nav');
+      const body = document.body;
+
+      if (!menuBtn || !nav) {
+        console.warn('Menu elements not found - check class names.');
+        return;
+      }
+
+      // Toggle menu on button click
+      menuBtn.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent immediate close from outside click
+        menuBtn.classList.toggle('active');
+        nav.classList.toggle('nav-open');
+        body.style.overflow = nav.classList.contains('nav-open') ? 'hidden' : '';
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', (event) => {
+        if (nav.classList.contains('nav-open') && !nav.contains(event.target) && !menuBtn.contains(event.target)) {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        }
+      });
+
+      // Close menu when clicking a nav link
+      nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          menuBtn.classList.remove('active');
+          nav.classList.remove('nav-open');
+          body.style.overflow = '';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
