@@ -158,37 +158,68 @@ def reset_password(data: ResetPasswordData):
 
 @app.post("/task/complete")
 def complete_task(task: TaskUpdate):
-    users_collection.update_one(
-        {"username": task.username, f"progress.{task.course.lower()}": {"$ne": task.task_id}},
-        {"$push": {f"progress.{task.course.lower()}": task.task_id}, "$inc": {"total_completed": 1}}
+    # This query ensures we only add the task_id if it's not already in the array.
+    # It also increments the total_completed field in the same atomic operation.
+    result = users_collection.update_one(
+        {
+            "username": task.username,
+            f"progress.{task.course.lower()}": {"$ne": task.task_id}
+        },
+        {
+            "$push": {f"progress.{task.course.lower()}": task.task_id},
+            "$inc": {"total_completed": 1}
+        }
     )
-    return {"message": "Task marked as complete."}
+    
+    if result.modified_count > 0:
+        return {"message": "Task marked as complete."}
+    else:
+        # This can happen if the task was already completed or the user wasn't found.
+        return {"message": "Task already completed or user not found."}
+
 
 @app.post("/task/save-progress")
 def save_progress(data: dict):
     username = data.get("username")
     if not username: return {"error": "Username is required"}
     
-    # Create a clean update object
+    # Create a clean update object, excluding username
     update_data = {key: value for key, value in data.items() if key != "username"}
     
-    # Recalculate total_completed based on the progress object
-    if 'progress' in update_data and isinstance(update_data['progress'], dict):
+    # Recalculate total_completed based on the progress object if it exists
+    if 'progress' in update_data and isinstance(update_data.get('progress'), dict):
         total_completed = sum(len(tasks) for tasks in update_data['progress'].values())
         update_data['total_completed'] = total_completed
 
-    users_collection.update_one({"username": username}, {"$set": update_data})
+    users_collection.update_one(
+        {"username": username},
+        {"$set": update_data},
+        upsert=True # Creates the document if it doesn't exist
+    )
     return {"message": "Progress saved successfully"}
+
 
 @app.get("/progress/{username}")
 def get_progress(username: str):
-    user = users_collection.find_one({"username": username}, {"_id": 0, "password": 0, "reset_token": 0, "reset_token_expires": 0})
+    # Exclude sensitive fields like password and reset tokens from the response
+    user = users_collection.find_one(
+        {"username": username}, 
+        {"_id": 0, "password": 0, "reset_token": 0, "reset_token_expires": 0}
+    )
     return user or {}
 
 @app.get("/leaderboard")
 def leaderboard():
-    users = users_collection.find({}, {"username": 1, "total_completed": 1, "_id": 0}).sort("total_completed", -1).limit(100)
+    # Retrieve the top 100 users, sorted by their total_completed score.
+    # Only return the username and their score to keep the payload small.
+    users = users_collection.find(
+        {}, 
+        {"username": 1, "total_completed": 1, "_id": 0}
+    ).sort("total_completed", -1).limit(100)
+    
+    # Convert the cursor to a list and return it
     return list(users)
+
 
 @app.get("/courses/meta")
 def courses_meta():
