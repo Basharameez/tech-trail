@@ -158,8 +158,6 @@ def reset_password(data: ResetPasswordData):
 
 @app.post("/task/complete")
 def complete_task(task: TaskUpdate):
-    # This query ensures we only add the task_id if it's not already in the array.
-    # It also increments the total_completed field in the same atomic operation.
     result = users_collection.update_one(
         {
             "username": task.username,
@@ -174,7 +172,6 @@ def complete_task(task: TaskUpdate):
     if result.modified_count > 0:
         return {"message": "Task marked as complete."}
     else:
-        # This can happen if the task was already completed or the user wasn't found.
         return {"message": "Task already completed or user not found."}
 
 
@@ -183,10 +180,8 @@ def save_progress(data: dict):
     username = data.get("username")
     if not username: return {"error": "Username is required"}
     
-    # Create a clean update object, excluding username
     update_data = {key: value for key, value in data.items() if key != "username"}
     
-    # Recalculate total_completed based on the progress object if it exists
     if 'progress' in update_data and isinstance(update_data.get('progress'), dict):
         total_completed = sum(len(tasks) for tasks in update_data['progress'].values())
         update_data['total_completed'] = total_completed
@@ -194,14 +189,13 @@ def save_progress(data: dict):
     users_collection.update_one(
         {"username": username},
         {"$set": update_data},
-        upsert=True # Creates the document if it doesn't exist
+        upsert=True
     )
     return {"message": "Progress saved successfully"}
 
 
 @app.get("/progress/{username}")
 def get_progress(username: str):
-    # Exclude sensitive fields like password and reset tokens from the response
     user = users_collection.find_one(
         {"username": username}, 
         {"_id": 0, "password": 0, "reset_token": 0, "reset_token_expires": 0}
@@ -210,20 +204,20 @@ def get_progress(username: str):
 
 @app.get("/leaderboard")
 def leaderboard():
-    # Retrieve the top 100 users, sorted by their total_completed score.
-    # Filter ensures username field exists and is not null.
     user_cursor = users_collection.find(
         {"username": {"$exists": True, "$ne": None}},
         {"username": 1, "total_completed": 1, "_id": 0}
     ).sort("total_completed", -1).limit(100)
 
-    # Robustly build the leaderboard list, ensuring each entry is valid.
-    # This prevents malformed data in the database from crashing the frontend.
     leaderboard_data = []
     for user in user_cursor:
-        # Check that username is a non-empty string and total_completed is a number
+        # This check ensures no bad data from the DB can crash the frontend
         if isinstance(user.get("username"), str) and user["username"] and isinstance(user.get("total_completed"), (int, float)):
-            leaderboard_data.append(user)
+            # This formats the data with the keys the frontend expects ('user' and 'score')
+            leaderboard_data.append({
+                "user": user["username"],
+                "score": user["total_completed"]
+            })
             
     return leaderboard_data
 
