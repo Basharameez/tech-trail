@@ -211,14 +211,21 @@ def get_progress(username: str):
 @app.get("/leaderboard")
 def leaderboard():
     # Retrieve the top 100 users, sorted by their total_completed score.
-    # ADDED FILTER: Ensure that only users with an existing username are returned.
-    users = users_collection.find(
-        {"username": {"$exists": True, "$ne": None}}, 
+    # Filter ensures username field exists and is not null.
+    user_cursor = users_collection.find(
+        {"username": {"$exists": True, "$ne": None}},
         {"username": 1, "total_completed": 1, "_id": 0}
     ).sort("total_completed", -1).limit(100)
-    
-    # Convert the cursor to a list and return it
-    return list(users)
+
+    # Robustly build the leaderboard list, ensuring each entry is valid.
+    # This prevents malformed data in the database from crashing the frontend.
+    leaderboard_data = []
+    for user in user_cursor:
+        # Check that username is a non-empty string and total_completed is a number
+        if isinstance(user.get("username"), str) and user["username"] and isinstance(user.get("total_completed"), (int, float)):
+            leaderboard_data.append(user)
+            
+    return leaderboard_data
 
 
 @app.get("/courses/meta")
