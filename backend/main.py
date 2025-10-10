@@ -11,11 +11,17 @@ import bcrypt
 import secrets
 import datetime
 from datetime import timezone
+from dotenv import load_dotenv  # ✅ Load environment variables from .env
+
+# --- Load environment variables ---
+load_dotenv()
 
 # --- MongoDB Connection ---
-# It's recommended to move your connection string to an environment variable for better security.
-MONGO_URI = "mongodb+srv://shaikbasharam20:basharam@cluster0.lwcietu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-client = MongoClient(MONGO_URI)
+MONGO_URL = os.getenv("MONGO_URL")
+if not MONGO_URL:
+    raise ValueError("❌ MONGO_URL not found in .env file")
+
+client = MongoClient(MONGO_URL)
 db = client["tech_in_my_style"]
 users_collection = db["users"]
 
@@ -158,73 +164,65 @@ def reset_password(data: ResetPasswordData):
 
 @app.post("/task/complete")
 def complete_task(task: TaskUpdate):
-    result = users_collection.update_one(
-        {
-            "username": task.username,
-            f"progress.{task.course.lower()}": {"$ne": task.task_id}
-        },
-        {
-            "$push": {f"progress.{task.course.lower()}": task.task_id},
-            "$inc": {"total_completed": 1}
-        }
-    )
-    
-    if result.modified_count > 0:
-        return {"message": "Task marked as complete."}
-    else:
-        return {"message": "Task already completed or user not found."}
+    user = users_collection.find_one({"username": task.username})
+    if not user:
+        return {"error": "User not found"}
 
+    progress = user.get("progress", {})
+    course = task.course.lower()
+    task_list = progress.get(course, [])
 
-@app.post("/task/save-progress")
-def save_progress(data: dict):
-    username = data.get("username")
-    if not username: return {"error": "Username is required"}
-    
-    update_data = {key: value for key, value in data.items() if key != "username"}
-    
-    if 'progress' in update_data and isinstance(update_data.get('progress'), dict):
-        total_completed = sum(len(tasks) for tasks in update_data['progress'].values())
-        update_data['total_completed'] = total_completed
+    if task.task_id not in task_list:
+        task_list.append(task.task_id)
+        progress[course] = task_list
+        total_completed = sum(len(tasks) for tasks in progress.values())
 
-    users_collection.update_one(
-        {"username": username},
-        {"$set": update_data},
-        upsert=True
-    )
-    return {"message": "Progress saved successfully"}
+        users_collection.update_one(
+            {"username": task.username},
+            {"$set": {"progress": progress, "total_completed": total_completed}}
+        )
+    return {"message": "Task marked as complete."}
 
-
-@app.get("/progress/{username}")
-def get_progress(username: str):
-    user = users_collection.find_one(
-        {"username": username}, 
-        {"_id": 0, "password": 0, "reset_token": 0, "reset_token_expires": 0}
-    )
-    return user or {}
-
+# --- Leaderboard ---
 @app.get("/leaderboard")
 def leaderboard():
-    user_cursor = users_collection.find(
-        {"username": {"$exists": True, "$ne": None}},
-        {"username": 1, "total_completed": 1, "_id": 0}
-    ).sort("total_completed", -1).limit(100)
+    users = users_collection.find()
+    board = []
+    for user in users:
+        progress = user.get("progress", {})
+        course_progress = {course: len(tasks) for course, tasks in progress.items()}
+        board.append({
+            "user": user["username"],
+            "score": user.get("total_completed", 0),
+            "courses": course_progress
+        })
+    return sorted(board, key=lambda x: x["score"], reverse=True)
 
-    leaderboard_data = []
-    for user in user_cursor:
-        # This check ensures no bad data from the DB can crash the frontend
-        if isinstance(user.get("username"), str) and user["username"] and isinstance(user.get("total_completed"), (int, float)):
-            # This formats the data with the keys the frontend expects ('user' and 'score')
-            leaderboard_data.append({
-                "user": user["username"],
-                "score": user["total_completed"]
-            })
-            
-    return leaderboard_data
+# --- Progress by username ---
+@app.get("/progress/{username}")
+def progress(username: str):
+    user = users_collection.find_one({"username": username})
+    if not user:
+        return {}
+    return user.get("progress", {})
 
+@app.post("/user/progress")
+def get_progress(user: dict):
+    username = user.get("username")
+    password = user.get("password")
+    user_data = users_collection.find_one({"username": username, "password": password})
+    if user_data:
+        return {"progress": user_data.get("progress", {})}
+    return {"message": "unauthorized"}
 
+# --- Courses Meta ---
 @app.get("/courses/meta")
 def courses_meta():
-    return { "ai": 30, "ml": 30, "dl": 30, "java": 30, "c": 30, "html": 30, "css": 30, "js": 30, "js-intermediate": 30, "python": 30, "dsc": 30 }
+    return {
+        "ai": 30, "ml": 30, "dl": 30, "java": 30, "c": 30,
+        "html": 30, "css": 30, "js": 30, "js-intermediate": 30,
+        "python": 30, "dsc": 30
+    }
 
 @app.get("/", response_class=HTMLResponse)
 async def home():
