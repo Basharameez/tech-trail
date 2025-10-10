@@ -211,9 +211,9 @@ def get_progress(username: str):
 @app.get("/leaderboard")
 def leaderboard():
     # Retrieve the top 100 users, sorted by their total_completed score.
-    # Only return the username and their score to keep the payload small.
+    # ADDED FILTER: Ensure that only users with an existing username are returned.
     users = users_collection.find(
-        {}, 
+        {"username": {"$exists": True, "$ne": None}}, 
         {"username": 1, "total_completed": 1, "_id": 0}
     ).sort("total_completed", -1).limit(100)
     
