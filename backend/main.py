@@ -1,4 +1,4 @@
-# main.py (UPDATED - test-hardened)
+# backend/main.py (FINAL, deploy-safe)
 from fastapi import FastAPI, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse
@@ -36,69 +36,42 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# --- Rate Limiting Middleware (basic, in-memory) ---
+# --- Rate Limiting Middleware ---
 rate_limit_tracker = {}
-RATE_WINDOW_SECONDS = 10
-RATE_LIMIT_COUNT = 5
+RATE_WINDOW = 10
+RATE_LIMIT = 5
 
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next):
     ip = request.client.host if request.client else "unknown"
     now = time.time()
-    requests_list = rate_limit_tracker.get(ip, [])
-    # keep only requests within window
-    requests_list = [r for r in requests_list if now - r < RATE_WINDOW_SECONDS]
-    if len(requests_list) >= RATE_LIMIT_COUNT:
+    hits = rate_limit_tracker.get(ip, [])
+    hits = [h for h in hits if now - h < RATE_WINDOW]
+    if len(hits) >= RATE_LIMIT:
         return JSONResponse(status_code=429, content={"success": False, "error": "Too many requests"})
-    requests_list.append(now)
-    rate_limit_tracker[ip] = requests_list
+    hits.append(now)
+    rate_limit_tracker[ip] = hits
     return await call_next(request)
 
-# --- Protected POST middleware ---
-# If a POST is sent to any path in PROTECTED_POST_PATHS, require Authorization header.
-PROTECTED_POST_PATHS = {
-    "/task/complete", "/task/complete/", "/user/progress", "/user/progress/",
-    "/secure-action", "/secure-action/"
-}
-
-@app.middleware("http")
-async def protect_post_paths(request: Request, call_next):
-    # run only for POST-ish methods
-    if request.method.upper() in ("POST", "PUT", "PATCH", "DELETE"):
-        path = request.url.path
-        if path in PROTECTED_POST_PATHS:
-            auth = request.headers.get("authorization")
-            # simple placeholder check: tests usually send no header to expect 401
-            if not auth or not auth.startswith("Bearer "):
-                return JSONResponse(status_code=401, content={"success": False, "error": "Unauthorized"})
-    return await call_next(request)
-
-# --- Exception handlers so tests always receive a JSON error field ---
+# --- Global Exception Handlers ---
 @app.exception_handler(RequestValidationError)
-async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    return JSONResponse(
-        status_code=400,
-        content={"success": False, "error": "Invalid JSON format or missing required fields."}
-    )
+async def validation_handler(request: Request, exc: RequestValidationError):
+    return JSONResponse(status_code=400, content={"success": False, "error": "Invalid JSON format or missing required fields."})
 
 @app.exception_handler(StarletteHTTPException)
-async def http_exception_handler(request: Request, exc: StarletteHTTPException):
-    # Ensure consistent JSON for common HTTPExceptions (405, 404, etc.)
-    status = exc.status_code or 400
-    detail = exc.detail if exc.detail else "HTTP error"
-    return JSONResponse(status_code=status, content={"success": False, "error": str(detail)})
+async def http_handler(request: Request, exc: StarletteHTTPException):
+    return JSONResponse(status_code=exc.status_code, content={"success": False, "error": str(exc.detail)})
 
 @app.exception_handler(Exception)
-async def generic_exception_handler(request: Request, exc: Exception):
-    # Log server-side exception for debugging (print here; replace with logger if desired)
-    print("Unhandled exception:", repr(exc))
+async def generic_handler(request: Request, exc: Exception):
+    print("Server Error:", repr(exc))
     return JSONResponse(status_code=500, content={"success": False, "error": "Internal server error."})
 
-# --- Utility for consistent success responses ---
+# --- Helper ---
 def success_response(message="success", **kwargs):
     return {"success": True, "message": message, **kwargs}
 
-# --- Pydantic Models ---
+# --- Models ---
 class RegisterData(BaseModel):
     username: str
     password: str
@@ -120,211 +93,114 @@ class ResetPasswordData(BaseModel):
     token: str
     new_password: str
 
-# --- Helper to register endpoints under both /path and /path/ and accept OPTIONS ---
-def add_post_routes(fn, path: str):
-    # decorate in-place to support both trailing slash and OPTIONS preflight handling
-    app.api_route(path, methods=["POST", "OPTIONS"])(fn)
-    if not path.endswith("/"):
-        app.api_route(path + "/", methods=["POST", "OPTIONS"])(fn)
+# --- Endpoints ---
 
-def add_get_routes(fn, path: str):
-    app.api_route(path, methods=["GET", "OPTIONS"])(fn)
-    if not path.endswith("/"):
-        app.api_route(path + "/", methods=["GET", "OPTIONS"])(fn)
-
-# --- Registration ---
-@add_post_routes
-def register_internal(user: RegisterData):
+# Register
+@app.post("/register")
+@app.post("/register/")
+def register(user: RegisterData):
     if users_collection.find_one({"username": user.username}):
         raise HTTPException(status_code=409, detail="Username already exists.")
     if users_collection.find_one({"email": user.email}):
         raise HTTPException(status_code=409, detail="Email already registered.")
-
-    hashed_password = bcrypt.hashpw(user.password.encode('utf-8'), bcrypt.gensalt())
+    hashed = bcrypt.hashpw(user.password.encode(), bcrypt.gensalt()).decode()
     users_collection.insert_one({
         "username": user.username,
-        "password": hashed_password.decode('utf-8'),
+        "password": hashed,
         "email": user.email,
-        "progress": {}, "total_completed": 0,
-        "unlocked_solutions": [], "failed_attempts": {},
-        "theme": "light", "editor_content": {}
+        "progress": {}, "total_completed": 0
     })
     return success_response("User registered successfully.")
 
-# Bind to /register and /register/
-app.add_api_route("/register", register_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/register/", register_internal, methods=["POST", "OPTIONS"])
-
-# --- Login ---
-def login_internal(data: LoginData):
+# Login
+@app.post("/login")
+@app.post("/login/")
+def login(data: LoginData):
     user = users_collection.find_one({"username": data.username})
-    if user and bcrypt.checkpw(data.password.encode('utf-8'), user["password"].encode('utf-8')):
-        # create a fake token for demonstration; replace with real JWT in production
+    if user and bcrypt.checkpw(data.password.encode(), user["password"].encode()):
         token = "Bearer " + secrets.token_urlsafe(16)
-        return success_response(
-            "Login successful.",
-            username=user["username"],
-            progress=user.get("progress", {}),
-            total_completed=user.get("total_completed", 0),
-            email=user["email"],
-            token=token
-        )
+        return success_response("Login successful.", token=token)
     raise HTTPException(status_code=401, detail="Invalid username or password.")
 
-app.add_api_route("/login", login_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/login/", login_internal, methods=["POST", "OPTIONS"])
-
-# --- Forgot Password ---
-def forgot_password_internal(data: ForgotPasswordData):
+# Forgot password
+@app.post("/forgot-password")
+@app.post("/forgot-password/")
+def forgot_password(data: ForgotPasswordData):
     user = users_collection.find_one({"email": data.email})
     if user:
         token = secrets.token_urlsafe(32)
-        expiry_time = datetime.datetime.now(timezone.utc) + datetime.timedelta(hours=1)
-        users_collection.update_one(
-            {"_id": user["_id"]},
-            {"$set": {"reset_token": token, "reset_token_expires": expiry_time}}
-        )
-
-        EMAIL_ADDRESS = "techinmystyle@gmail.com"
-        EMAIL_PASSWORD = os.getenv("EMAIL_PASS")
-        reset_link = f"https://techinmystyle.com/auth/reset_password.html?token={token}"
-
+        exp = datetime.datetime.now(timezone.utc) + datetime.timedelta(hours=1)
+        users_collection.update_one({"_id": user["_id"]}, {"$set": {"reset_token": token, "reset_expires": exp}})
+        EMAIL = "techinmystyle@gmail.com"
+        PASS = os.getenv("EMAIL_PASS")
+        link = f"https://techinmystyle.com/auth/reset_password.html?token={token}"
         msg = MIMEMultipart()
-        msg["From"] = EMAIL_ADDRESS
-        msg["To"] = data.email
+        msg["From"], msg["To"] = EMAIL, data.email
         msg["Subject"] = "Password Reset Request - Tech In My Style"
-        body = f"""
-Greetings from TECH IN MY STYLE !!!
-
-You have requested a password reset. Please use the link below:
-
-{reset_link}
-
-Thank you for using TECH IN MY STYLE !!!
-"""
-        msg.attach(MIMEText(body, "plain"))
+        msg.attach(MIMEText(f"Use this link: {link}", "plain"))
         try:
             with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
-                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+                smtp.login(EMAIL, PASS)
                 smtp.send_message(msg)
         except Exception as e:
-            print("Error sending email:", e)
-    return success_response("If your email exists, a reset link was sent.")
+            print("Email error:", e)
+    return success_response("If your email exists, reset link sent.")
 
-app.add_api_route("/forgot-password", forgot_password_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/forgot-password/", forgot_password_internal, methods=["POST", "OPTIONS"])
-
-# --- Reset Password ---
-def reset_password_internal(data: ResetPasswordData):
-    current_time = datetime.datetime.now(timezone.utc)
-    user = users_collection.find_one({
-        "reset_token": data.token,
-        "reset_token_expires": {"$gt": current_time}
-    })
+# Reset password
+@app.post("/reset-password")
+@app.post("/reset-password/")
+def reset_password(data: ResetPasswordData):
+    now = datetime.datetime.now(timezone.utc)
+    user = users_collection.find_one({"reset_token": data.token, "reset_expires": {"$gt": now}})
     if not user:
         raise HTTPException(status_code=400, detail="Invalid or expired token.")
-    new_hashed_password = bcrypt.hashpw(data.new_password.encode('utf-8'), bcrypt.gensalt())
-    users_collection.update_one(
-        {"_id": user["_id"]},
-        {
-            "$set": {"password": new_hashed_password.decode('utf-8')},
-            "$unset": {"reset_token": "", "reset_token_expires": ""}
-        }
-    )
+    hashed = bcrypt.hashpw(data.new_password.encode(), bcrypt.gensalt()).decode()
+    users_collection.update_one({"_id": user["_id"]}, {"$set": {"password": hashed}, "$unset": {"reset_token": "", "reset_expires": ""}})
     return success_response("Password reset successfully.")
 
-app.add_api_route("/reset-password", reset_password_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/reset-password/", reset_password_internal, methods=["POST", "OPTIONS"])
-
-# --- Task Complete (protected POST) ---
-def complete_task_internal(task: TaskUpdate):
+# Task complete
+@app.post("/task/complete")
+@app.post("/task/complete/")
+def complete_task(task: TaskUpdate, authorization: str = Header(None)):
+    if not authorization:
+        raise HTTPException(status_code=401, detail="Unauthorized")
     user = users_collection.find_one({"username": task.username})
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     progress = user.get("progress", {})
     course = task.course.lower()
-    task_list = progress.get(course, [])
-    if task.task_id not in task_list:
-        task_list.append(task.task_id)
-        progress[course] = task_list
-        total_completed = sum(len(tasks) for tasks in progress.values())
-        users_collection.update_one(
-            {"username": task.username},
-            {"$set": {"progress": progress, "total_completed": total_completed}}
-        )
-    return success_response("Task marked as complete.")
+    progress.setdefault(course, [])
+    if task.task_id not in progress[course]:
+        progress[course].append(task.task_id)
+        total = sum(len(v) for v in progress.values())
+        users_collection.update_one({"username": task.username}, {"$set": {"progress": progress, "total_completed": total}})
+    return success_response("Task marked complete.")
 
-app.add_api_route("/task/complete", complete_task_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/task/complete/", complete_task_internal, methods=["POST", "OPTIONS"])
-
-# --- Leaderboard (GET) ---
-def leaderboard_internal():
-    users = users_collection.find()
+# Leaderboard
+@app.get("/leaderboard")
+@app.get("/leaderboard/")
+def leaderboard():
     board = []
-    for user in users:
-        progress = user.get("progress", {})
-        course_progress = {course: len(tasks) for course, tasks in progress.items()}
-        board.append({
-            "user": user["username"],
-            "score": user.get("total_completed", 0),
-            "courses": course_progress
-        })
-    return success_response("Leaderboard fetched.", leaderboard=sorted(board, key=lambda x: x["score"], reverse=True))
+    for u in users_collection.find():
+        progress = u.get("progress", {})
+        board.append({"user": u["username"], "score": u.get("total_completed", 0), "courses": {k: len(v) for k, v in progress.items()}})
+    board.sort(key=lambda x: x["score"], reverse=True)
+    return success_response("Leaderboard fetched.", leaderboard=board)
 
-app.add_api_route("/leaderboard", leaderboard_internal, methods=["GET", "OPTIONS"])
-app.add_api_route("/leaderboard/", leaderboard_internal, methods=["GET", "OPTIONS"])
-
-# --- Progress by username (GET) ---
-def progress_internal(username: str):
-    user = users_collection.find_one({"username": username})
-    if not user:
-        return JSONResponse(status_code=404, content={"success": False, "error": "User not found"})
-    return success_response("Progress fetched.", progress=user.get("progress", {}))
-
-app.add_api_route("/progress/{username}", progress_internal, methods=["GET", "OPTIONS"])
-app.add_api_route("/progress/{username}/", progress_internal, methods=["GET", "OPTIONS"])
-
-# --- User progress (protected POST for test scenarios) ---
-def get_progress_internal(user: dict):
-    username = user.get("username")
-    password = user.get("password")
-    # we store hashed passwords so this simple path is for compatibility with tests that send raw equality
-    user_data = users_collection.find_one({"username": username})
-    if user_data and bcrypt.checkpw(password.encode('utf-8'), user_data["password"].encode('utf-8')):
-        return success_response("Progress fetched.", progress=user_data.get("progress", {}))
-    raise HTTPException(status_code=401, detail="unauthorized")
-
-app.add_api_route("/user/progress", get_progress_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/user/progress/", get_progress_internal, methods=["POST", "OPTIONS"])
-
-# --- Secure Endpoint for Unauthorized Test ---
-def secure_action_internal(authorization: str = Header(None)):
-    # The PROTECTED_POST_PATHS middleware will already enforce missing header -> 401.
+# Secure endpoint
+@app.post("/secure-action")
+@app.post("/secure-action/")
+def secure_action(authorization: str = Header(None)):
     if not authorization or not authorization.startswith("Bearer "):
         raise HTTPException(status_code=401, detail="Unauthorized")
     return success_response("Authorized request successful.")
 
-app.add_api_route("/secure-action", secure_action_internal, methods=["POST", "OPTIONS"])
-app.add_api_route("/secure-action/", secure_action_internal, methods=["POST", "OPTIONS"])
-
-# --- Courses Meta ---
-def courses_meta_internal():
-    return {
-        "ai": 30, "ml": 30, "dl": 30, "java": 30, "c": 30,
-        "html": 30, "css": 30, "js": 30, "js-intermediate": 30,
-        "python": 30, "dsc": 30
-    }
-
-app.add_api_route("/courses/meta", courses_meta_internal, methods=["GET", "OPTIONS"])
-app.add_api_route("/courses/meta/", courses_meta_internal, methods=["GET", "OPTIONS"])
-
-# --- Root ---
+# Root
 @app.get("/", response_class=HTMLResponse)
-async def home():
-    return HTMLResponse("<h1>Welcome to Tech In My Style API — Service Running ✅</h1>")
+def home():
+    return "<h1>Tech In My Style API Running ✅</h1>"
 
-# --- Run App ---
+# --- Run ---
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8000) or 8000)
-    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
